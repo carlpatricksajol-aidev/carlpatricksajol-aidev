@@ -12,7 +12,7 @@ const Hero = () => {
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(17, 100, 102, 0.85), rgba(44, 53, 49, 0.9)), url(${heroBg})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(27, 69, 67, 0.85), rgba(27, 69, 67, 0.95)), url(${heroBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -8,46 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 164 41% 88%;
-    --foreground: 166 10% 19%;
+    --background: 155 28% 76%;
+    --foreground: 178 44% 19%;
 
     --card: 0 0% 100%;
-    --card-foreground: 166 10% 19%;
+    --card-foreground: 178 44% 19%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 166 10% 19%;
+    --popover-foreground: 178 44% 19%;
 
-    --primary: 181 73% 23%;
-    --primary-foreground: 164 41% 88%;
+    --primary: 178 44% 19%;
+    --primary-foreground: 155 28% 76%;
 
-    --secondary: 166 10% 19%;
-    --secondary-foreground: 164 41% 88%;
+    --secondary: 40 78% 69%;
+    --secondary-foreground: 178 44% 19%;
 
-    --muted: 164 30% 82%;
-    --muted-foreground: 166 10% 35%;
+    --muted: 155 28% 85%;
+    --muted-foreground: 178 44% 35%;
 
-    --accent: 28 100% 80%;
-    --accent-foreground: 166 10% 19%;
+    --accent: 40 78% 69%;
+    --accent-foreground: 178 44% 19%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 164 41% 88%;
+    --destructive-foreground: 155 28% 76%;
 
-    --border: 164 30% 75%;
-    --input: 164 30% 75%;
-    --ring: 181 73% 23%;
+    --border: 155 28% 70%;
+    --input: 155 28% 70%;
+    --ring: 178 44% 19%;
 
     --radius: 0.75rem;
 
     /* Custom portfolio colors */
-    --tech-teal: 181 73% 23%;
-    --soft-rose: 340 34% 77%;
-    --warm-peach: 28 100% 80%;
-    --fresh-mint: 164 41% 88%;
-    --dark-base: 166 10% 19%;
+    --dark-teal: 178 44% 19%;
+    --warm-gold: 40 78% 69%;
+    --soft-mint: 155 28% 76%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--tech-teal)) 0%, hsl(var(--dark-base)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--fresh-mint)) 0%, hsl(0 0% 100%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--dark-teal)) 0%, hsl(178 44% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--soft-mint)) 0%, hsl(0 0% 100%) 100%);
   }
 }
 
