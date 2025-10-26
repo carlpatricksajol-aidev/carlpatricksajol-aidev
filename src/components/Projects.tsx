@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Bot, Workflow, Zap, Database, Mail, Calendar, MessageSquare, ShoppingCart } from "lucide-react";
 
@@ -55,34 +54,50 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-background">
+    <section id="projects" className="py-32 bg-background relative">
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
+      
+      {/* Vertical text */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
+        <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
+          Featured Work
+        </p>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-12 text-center text-foreground">Featured Projects</h2>
+        <h2 className="text-5xl font-bold mb-20 text-center text-foreground tracking-tight">
+          Featured Projects
+        </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
-              <Card 
+              <div 
                 key={index}
-                className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card border-border group"
+                className="group hover:translate-y-[-4px] transition-transform duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="mb-4">
+                  <Icon className="h-8 w-8 text-foreground group-hover:text-muted-foreground transition-colors" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                <h3 className="text-2xl font-semibold mb-3 text-foreground">{project.title}</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tools.map((tool, idx) => (
-                    <Badge key={idx} variant="secondary" className="bg-secondary text-secondary-foreground">
+                    <Badge 
+                      key={idx} 
+                      variant="outline" 
+                      className="border-border text-muted-foreground hover:text-foreground transition-colors"
+                    >
                       {tool}
                     </Badge>
                   ))}
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>

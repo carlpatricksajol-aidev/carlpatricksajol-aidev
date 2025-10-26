@@ -8,9 +8,9 @@ const ToolsMarquee = () => {
   ];
 
   return (
-    <section className="py-16 bg-muted/30 overflow-hidden">
-      <div className="container mx-auto px-4 mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-primary">
+    <section className="py-20 bg-background overflow-hidden border-y border-border">
+      <div className="container mx-auto px-4 mb-12">
+        <h2 className="text-5xl font-bold text-center text-foreground tracking-tight">
           Tools & Technologies
         </h2>
       </div>
@@ -21,7 +21,7 @@ const ToolsMarquee = () => {
           {[...tools, ...tools].map((tool, index) => (
             <div
               key={index}
-              className="flex-shrink-0 px-6 py-3 bg-card border-2 border-primary/20 rounded-lg text-foreground font-semibold whitespace-nowrap hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+              className="flex-shrink-0 px-6 py-3 border border-border text-foreground font-medium whitespace-nowrap hover:bg-foreground hover:text-background transition-colors duration-300"
             >
               {tool}
             </div>

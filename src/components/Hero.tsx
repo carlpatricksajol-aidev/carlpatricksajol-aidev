@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { ArrowRight } from "lucide-react";
+import profileImage from "@/assets/profile.png";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -9,23 +9,46 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(27, 69, 67, 0.85), rgba(27, 69, 67, 0.95)), url(${heroBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Decorative vertical line */}
+      <div className="absolute left-20 top-0 bottom-0 w-px bg-border"></div>
+      
+      {/* Decorative vertical ring */}
+      <div className="absolute right-20 top-1/2 -translate-y-1/2 w-32 h-64 border border-border rounded-full"></div>
+      
+      {/* Vertical text */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
+        <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
+          Automation Specialist
+        </p>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-primary-foreground">
+          {/* Profile image with fade effect */}
+          <div className="relative w-64 h-64 mx-auto mb-12">
+            <div className="absolute inset-0">
+              <img 
+                src={profileImage} 
+                alt="Carl Patrick Sajol" 
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div 
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, transparent 40%, hsl(var(--background)) 100%)'
+              }}
+            ></div>
+          </div>
+
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 text-foreground tracking-tight">
             Carl Patrick Sajol
           </h1>
-          <p className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4 text-primary-foreground/90">
+          <p className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4 text-foreground/80">
             Automation Specialist & AI Developer
           </p>
-          <p className="text-lg sm:text-xl text-primary-foreground/80 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
             Building scalable no-code systems with N8N • Zapier • Make.com
           </p>
           
@@ -33,7 +56,7 @@ const Hero = () => {
             <Button 
               size="lg"
               onClick={() => scrollToSection("contact")}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold group"
+              className="bg-foreground hover:bg-foreground/90 text-background font-semibold group"
             >
               Get In Touch
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -42,7 +65,7 @@ const Hero = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("projects")}
-              className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border-2 border-border text-foreground hover:bg-muted"
             >
               View Projects
             </Button>
@@ -51,8 +74,8 @@ const Hero = () => {
       </div>
       
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-border rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-muted-foreground rounded-full animate-pulse"></div>
         </div>
       </div>
     </section>

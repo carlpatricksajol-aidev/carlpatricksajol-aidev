@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,9 +50,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "dark-teal": "hsl(var(--dark-teal))",
-        "warm-gold": "hsl(var(--warm-gold))",
-        "soft-mint": "hsl(var(--soft-mint))",
       },
       borderRadius: {
         lg: "var(--radius)",
