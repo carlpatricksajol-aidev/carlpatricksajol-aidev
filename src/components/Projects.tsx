@@ -54,7 +54,19 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-32 bg-background relative">
+    <section id="projects" className="py-32 bg-background relative overflow-hidden">
+      {/* Animated dots pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: "radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+        }} />
+      </div>
+
+      {/* Floating hexagons */}
+      <div className="absolute top-32 right-1/3 w-28 h-28 border border-border animate-float-slow opacity-10" style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)" }} />
+      <div className="absolute bottom-32 left-1/3 w-20 h-20 border border-border animate-float-medium opacity-10" style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)" }} />
+      
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
       

@@ -1,6 +1,27 @@
 const About = () => {
   return (
     <section id="about" className="py-32 bg-background relative overflow-hidden">
+      {/* Animated diagonal lines */}
+      <div className="absolute inset-0 opacity-5">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-px bg-border animate-pulse"
+            style={{
+              width: "200%",
+              top: `${i * 10}%`,
+              left: "-50%",
+              transform: "rotate(-15deg)",
+              animationDelay: `${i * 0.2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating circles */}
+      <div className="absolute top-20 right-1/4 w-40 h-40 border border-border rounded-full animate-float-slow opacity-10" />
+      <div className="absolute bottom-20 left-1/4 w-24 h-24 border border-border rounded-full animate-float-medium opacity-10" />
+      
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-border"></div>

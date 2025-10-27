@@ -70,6 +70,29 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-32 bg-background relative overflow-hidden">
+      {/* Animated concentric circles */}
+      <div className="absolute inset-0 opacity-5 overflow-hidden">
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute border border-border rounded-full animate-pulse"
+            style={{
+              width: `${(i + 1) * 200}px`,
+              height: `${(i + 1) * 200}px`,
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              animationDelay: `${i * 0.3}s`,
+              animationDuration: "3s",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating squares */}
+      <div className="absolute top-40 left-20 w-20 h-20 border border-border rotate-12 animate-float-slow opacity-10" />
+      <div className="absolute bottom-40 right-20 w-28 h-28 border border-border rotate-45 animate-float-medium opacity-10" />
+      
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
       

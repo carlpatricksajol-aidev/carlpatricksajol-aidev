@@ -10,11 +10,24 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Animated background grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }} />
+      </div>
+
+      {/* Floating geometric shapes */}
+      <div className="absolute top-40 left-1/4 w-24 h-24 border border-border rotate-45 animate-float-slow opacity-10" />
+      <div className="absolute bottom-40 right-1/4 w-32 h-32 border border-border rounded-full animate-float-medium opacity-10" />
+      <div className="absolute top-1/2 left-10 w-16 h-16 border border-border animate-float-fast opacity-10" />
+      
       {/* Decorative vertical line */}
       <div className="absolute left-20 top-0 bottom-0 w-px bg-border"></div>
       
       {/* Decorative vertical ring */}
-      <div className="absolute right-20 top-1/2 -translate-y-1/2 w-32 h-64 border border-border rounded-full"></div>
+      <div className="absolute right-20 top-1/2 -translate-y-1/2 w-32 h-64 border border-border rounded-full animate-float"></div>
       
       {/* Vertical text */}
       <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
