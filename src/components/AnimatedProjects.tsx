@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import workflow1 from "@/assets/workflow-1.png";
 import workflow2 from "@/assets/workflow-2.png";
 import workflow3 from "@/assets/workflow-3.png";
@@ -166,6 +167,7 @@ const AnimatedProjects = () => {
   const [selectedWorkflow, setSelectedWorkflow] = useState<typeof workflows[0] | null>(null);
   const [phase, setPhase] = useState<AnimationPhase>("scatter");
   const [positions, setPositions] = useState<Array<{ x: number; y: number }>>([]);
+  const { ref, isVisible } = useScrollAnimation();
 
   useEffect(() => {
     // Initialize random scattered positions
@@ -206,7 +208,11 @@ const AnimatedProjects = () => {
 
   return (
     <>
-      <section id="projects-animated" className="py-32 bg-background relative overflow-hidden">
+      <section 
+        id="projects-animated" 
+        ref={ref}
+        className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+      >
         {/* Animated background grid */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{

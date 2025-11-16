@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
@@ -27,9 +28,33 @@ const testimonials = [
   }
 ];
 
+// Testimonial Card Component
+const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
+  <div className="flex-shrink-0 w-full md:w-[500px] px-4">
+    <div className="relative p-8 border border-border hover:border-foreground/30 transition-colors duration-300 h-full bg-background">
+      <Quote className="h-8 w-8 text-muted-foreground mb-4 opacity-50" />
+      <p className="text-muted-foreground mb-6 leading-relaxed italic">
+        "{testimonial.quote}"
+      </p>
+      <div className="pt-4 border-t border-border">
+        <p className="text-foreground font-semibold text-lg">{testimonial.name}</p>
+        <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+        <p className="text-muted-foreground text-sm">{testimonial.company}</p>
+      </div>
+      <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-border"></div>
+      <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-border"></div>
+    </div>
+  </div>
+);
+
 const Testimonials = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
+    <section 
+      ref={ref}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+    >
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -61,36 +86,19 @@ const Testimonials = () => {
           What People Say
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className="group hover:translate-y-[-4px] transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="relative p-8 border border-border hover:border-foreground/30 transition-colors duration-300 h-full">
-                {/* Quote icon */}
-                <Quote className="h-8 w-8 text-muted-foreground mb-4 opacity-50" />
-                
-                {/* Testimonial text */}
-                <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                
-                {/* Author info */}
-                <div className="pt-4 border-t border-border">
-                  <p className="text-foreground font-semibold text-lg">{testimonial.name}</p>
-                  <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                  <p className="text-muted-foreground text-sm">{testimonial.company}</p>
-                </div>
-
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-border group-hover:border-foreground/30 transition-colors duration-300"></div>
-                <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-border group-hover:border-foreground/30 transition-colors duration-300"></div>
-              </div>
-            </div>
-          ))}
+        {/* Vertical scrolling testimonials */}
+        <div className="relative h-[600px] overflow-hidden max-w-3xl mx-auto">
+          <div className="flex flex-col gap-6 animate-scroll-vertical">
+            {/* Duplicate testimonials for seamless loop */}
+            {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} />
+            ))}
+          </div>
         </div>
+        
+        <p className="text-center mt-8 text-muted-foreground text-sm">
+          Hover to pause • Scroll continues automatically
+        </p>
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Bot, Workflow, Zap, Database, Mail, Calendar, MessageSquare, ShoppingCart } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projects = [
   {
@@ -126,10 +127,15 @@ const projects = [
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const { ref, isVisible } = useScrollAnimation();
 
   return (
     <>
-    <section id="projects" className="py-32 bg-background relative overflow-hidden">
+    <section 
+      id="projects" 
+      ref={ref}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+    >
       {/* Animated dots pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

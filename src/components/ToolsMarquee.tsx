@@ -1,4 +1,5 @@
 import { Workflow, Zap, Code, Webhook, MessageSquare, ShoppingCart, Calendar, CheckSquare, Layout, Bot, Sparkles, Users, FileText, Video, Database, Mail, Globe } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const tools = [
   { name: "N8N", icon: Workflow },
@@ -28,8 +29,13 @@ const tools = [
 ];
 
 const ToolsMarquee = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="py-20 bg-background overflow-hidden border-y border-border">
+    <section 
+      ref={ref}
+      className={`py-20 bg-background overflow-hidden border-y border-border animate-on-scroll ${isVisible ? 'visible' : ''}`}
+    >
       <div className="container mx-auto px-4 mb-12">
         <h2 className="text-5xl font-bold text-center text-foreground tracking-tight">
           Tools & Technologies

@@ -1,6 +1,15 @@
+import { CheckCircle2 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section id="about" className="py-32 bg-background relative overflow-hidden">
+    <section 
+      id="about" 
+      ref={ref}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+    >
       {/* Animated diagonal lines */}
       <div className="absolute inset-0 opacity-5">
         {[...Array(10)].map((_, i) => (
