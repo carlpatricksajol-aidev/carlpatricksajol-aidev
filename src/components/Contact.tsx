@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -14,6 +15,7 @@ const contactSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -70,7 +72,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 bg-background relative overflow-hidden">
+    <section 
+      id="contact" 
+      ref={ref}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+    >
       {/* Animated concentric circles */}
       <div className="absolute inset-0 opacity-5 overflow-hidden">
         {[...Array(5)].map((_, i) => (
