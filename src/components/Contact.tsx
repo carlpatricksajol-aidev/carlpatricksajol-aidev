@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { InlineWidget } from "react-calendly";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,26 +109,42 @@ const Contact = () => {
           Get In Touch
         </h2>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-2">Email</h3>
-              <p className="text-muted-foreground text-lg">carlpatricksajol@gmail.com</p>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-2">Location</h3>
-              <p className="text-muted-foreground text-lg">Available for remote work worldwide</p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-4">Let's Work Together</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                I specialize in building custom automation solutions that streamline your business operations. 
-                Whether you need CRM integrations, workflow automation, or AI-powered systems, I'm here to help.
-              </p>
+        <div className="max-w-6xl mx-auto space-y-16">
+          {/* Calendly Widget */}
+          <div className="w-full">
+            <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">Book a Meeting</h3>
+            <div className="border border-border overflow-hidden" style={{ minHeight: "700px" }}>
+              <InlineWidget 
+                url="https://calendly.com/carlpatricksajol/30min"
+                styles={{
+                  height: '700px',
+                  width: '100%'
+                }}
+              />
             </div>
           </div>
+
+          {/* Contact Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-semibold text-foreground mb-2">Email</h3>
+                <p className="text-muted-foreground text-lg">carlpatricksajol@gmail.com</p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-semibold text-foreground mb-2">Location</h3>
+                <p className="text-muted-foreground text-lg">Available for remote work worldwide</p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold text-foreground mb-4">Let's Work Together</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  I specialize in building custom automation solutions that streamline your business operations. 
+                  Whether you need CRM integrations, workflow automation, or AI-powered systems, I'm here to help.
+                </p>
+              </div>
+            </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -180,6 +197,7 @@ const Contact = () => {
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
+          </div>
         </div>
       </div>
     </section>
