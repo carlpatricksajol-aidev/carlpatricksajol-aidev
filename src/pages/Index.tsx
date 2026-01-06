@@ -4,6 +4,7 @@ import ToolsMarquee from "@/components/ToolsMarquee";
 import Projects from "@/components/Projects";
 import AnimatedProjects from "@/components/AnimatedProjects";
 import Testimonials from "@/components/Testimonials";
+import MarketingExperience from "@/components/MarketingExperience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -18,6 +19,7 @@ const Index = () => {
       <Projects />
       <AnimatedProjects />
       <Testimonials />
+      <MarketingExperience />
       <Contact />
       <Footer />
     </div>
