@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ToolsMarquee from "@/components/ToolsMarquee";
@@ -14,6 +15,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <CustomCursor />
+      <Navbar />
       <Hero />
       <About />
       <ToolsMarquee />

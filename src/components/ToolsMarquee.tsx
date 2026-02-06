@@ -1,4 +1,4 @@
-import { Workflow, Zap, Code, Webhook, MessageSquare, ShoppingCart, Calendar, CheckSquare, Layout, Bot, Sparkles, Users, FileText, Video, Database, Mail, Globe } from "lucide-react";
+import { Workflow, Zap, Code, Webhook, MessageSquare, ShoppingCart, CheckSquare, Layout, Bot, Sparkles, FileText, Video, Database, Mail, Globe } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const tools = [
@@ -34,23 +34,33 @@ const ToolsMarquee = () => {
   return (
     <section 
       ref={ref}
-      className={`py-20 bg-background overflow-hidden border-y border-border animate-on-scroll ${isVisible ? 'visible' : ''}`}
+      className={`py-20 bg-background overflow-hidden border-y border-border relative animate-on-scroll ${isVisible ? 'visible' : ''}`}
     >
+      {/* Glow effect */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-32 bg-foreground/5 rounded-full blur-3xl" />
+      
       <div className="container mx-auto px-4 mb-12">
-        <h2 className="text-5xl font-bold text-center text-foreground tracking-tight">
-          Tools & Technologies
-        </h2>
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+            <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-foreground/80">My Tech Stack</span>
+          </div>
+          
+          <h2 className="text-5xl font-bold text-center text-foreground tracking-tight">
+            Tools & <span className="text-gradient">Technologies</span>
+          </h2>
+        </div>
       </div>
       
       <div className="relative">
-        <div className="flex gap-8 animate-scroll-left hover:[animation-play-state:paused]">
+        <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused]">
           {/* Duplicate the array twice for seamless loop */}
           {[...tools, ...tools].map((tool, index) => {
             const Icon = tool.icon;
             return (
               <div
                 key={index}
-                className="flex-shrink-0 px-6 py-4 border border-border text-foreground font-medium whitespace-nowrap hover:bg-foreground hover:text-background transition-colors duration-300 flex items-center gap-3"
+                className="flex-shrink-0 px-6 py-4 glass-card rounded-xl text-foreground font-medium whitespace-nowrap hover:glow-effect transition-all duration-300 flex items-center gap-3"
               >
                 <Icon className="h-5 w-5" />
                 <span>{tool.name}</span>
