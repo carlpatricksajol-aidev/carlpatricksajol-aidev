@@ -9,38 +9,40 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Monochrome color scheme - Black, Grey, White */
-    --background: 0 0% 7%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 12%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 95%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 7%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 0 0% 25%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
 
     --accent: 0 0% 85%;
-    --accent-foreground: 0 0% 7%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
     --ring: 0 0% 80%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Gradients */
-    --gradient-fade: linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 100%);
+    /* Gradient accents */
+    --gradient-glow: radial-gradient(ellipse at center, hsl(0 0% 20% / 0.4) 0%, transparent 70%);
+    --gradient-hero: radial-gradient(ellipse at top, hsl(0 0% 15% / 0.5) 0%, transparent 50%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 10% / 0.8) 0%, hsl(0 0% 6% / 0.9) 100%);
   }
 
   /* Scroll animations */
@@ -97,6 +99,24 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
   .animate-on-scroll {
     opacity: 0;
   }
@@ -112,6 +132,67 @@ All colors MUST be HSL.
   .animate-scroll-vertical:hover {
     animation-play-state: paused;
   }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: hsl(0 0% 8% / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 20% / 0.5);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, hsl(0 0% 12% / 0.8) 0%, hsl(0 0% 8% / 0.6) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 20% / 0.3);
+  }
+
+  /* Glow effects */
+  .glow-effect {
+    box-shadow: 0 0 40px hsl(0 0% 30% / 0.2);
+  }
+
+  .glow-effect-strong {
+    box-shadow: 0 0 60px hsl(0 0% 40% / 0.3), 0 0 100px hsl(0 0% 30% / 0.2);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 70%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero pattern */
+  .hero-pattern {
+    background-image: 
+      radial-gradient(ellipse at top center, hsl(0 0% 15% / 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(0 0% 20% / 0.3) 0%, transparent 30%),
+      radial-gradient(circle at 20% 80%, hsl(0 0% 18% / 0.3) 0%, transparent 30%);
+  }
+
+  /* Dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(circle, hsl(0 0% 25% / 0.3) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Grid pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(0 0% 20% / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 20% / 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 }
 
 @layer base {
@@ -122,4 +203,27 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0 0% 8%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 25%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 0% 35%);
 }

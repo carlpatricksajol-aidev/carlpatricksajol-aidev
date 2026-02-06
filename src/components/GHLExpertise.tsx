@@ -79,12 +79,8 @@ const GHLExpertise = () => {
       </div>
 
       {/* Glowing orbs */}
-      <div className="absolute top-20 left-20 w-64 h-64 bg-background/5 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-20 right-20 w-48 h-48 bg-background/5 rounded-full blur-3xl animate-float-medium" />
-
-      {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-background/20" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-background/20" />
+      <div className="absolute top-20 left-20 w-64 h-64 bg-background/10 rounded-full blur-3xl animate-glow" />
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-background/10 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -96,7 +92,7 @@ const GHLExpertise = () => {
             </div>
             
             <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              Go High Level (GHL)
+              Go High Level
             </h2>
             
             <p className="text-xl text-background/70 max-w-3xl mx-auto leading-relaxed">
@@ -105,17 +101,17 @@ const GHLExpertise = () => {
             </p>
           </div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Skills Grid - Bento Style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {ghlSkills.map((skill, index) => {
               const Icon = skill.icon;
               return (
                 <div
                   key={index}
-                  className="group p-6 bg-background/5 border border-background/10 hover:bg-background/10 hover:border-background/30 transition-all duration-300 rounded-lg"
+                  className="group p-6 bg-background/5 border border-background/10 hover:bg-background/10 hover:border-background/30 transition-all duration-300 rounded-2xl"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="mb-4 p-3 bg-background/10 rounded-lg w-fit group-hover:bg-background/20 transition-colors">
+                  <div className="mb-4 p-3 bg-background/10 rounded-xl w-fit group-hover:bg-background/20 transition-colors">
                     <Icon className="w-6 h-6 text-background" />
                   </div>
                   

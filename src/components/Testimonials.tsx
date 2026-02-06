@@ -30,19 +30,17 @@ const testimonials = [
 
 // Testimonial Card Component
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-  <div className="flex-shrink-0 w-full md:w-[500px] px-4">
-    <div className="relative p-8 border border-border hover:border-foreground/30 transition-colors duration-300 h-full bg-background">
-      <Quote className="h-8 w-8 text-muted-foreground mb-4 opacity-50" />
-      <p className="text-muted-foreground mb-6 leading-relaxed italic">
+  <div className="flex-shrink-0 w-full px-4">
+    <div className="glass-card rounded-2xl p-8 h-full hover:glow-effect transition-all duration-300">
+      <Quote className="h-8 w-8 text-foreground/30 mb-4" />
+      <p className="text-foreground/80 mb-6 leading-relaxed text-lg italic">
         "{testimonial.quote}"
       </p>
-      <div className="pt-4 border-t border-border">
+      <div className="pt-4 border-t border-border/50">
         <p className="text-foreground font-semibold text-lg">{testimonial.name}</p>
         <p className="text-muted-foreground text-sm">{testimonial.role}</p>
         <p className="text-muted-foreground text-sm">{testimonial.company}</p>
       </div>
-      <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-border"></div>
-      <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-border"></div>
     </div>
   </div>
 );
@@ -55,36 +53,26 @@ const Testimonials = () => {
       ref={ref}
       className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
     >
-      {/* Animated background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: "repeating-linear-gradient(45deg, hsl(var(--border)) 0px, hsl(var(--border)) 1px, transparent 1px, transparent 20px)",
-        }} />
-      </div>
+      {/* Glow effects */}
+      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-foreground/5 rounded-full blur-3xl animate-glow" />
+      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-foreground/5 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }} />
 
-      {/* Floating quote marks */}
-      <div className="absolute top-32 left-20 opacity-10">
-        <Quote className="h-32 w-32 text-foreground" />
-      </div>
-      <div className="absolute bottom-32 right-20 opacity-10 rotate-180">
-        <Quote className="h-32 w-32 text-foreground" />
-      </div>
-      
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-border"></div>
-      
-      {/* Vertical text */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 rotate-90 origin-center">
-        <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
-          Testimonials
-        </p>
-      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 className="text-5xl font-bold mb-20 text-center text-foreground tracking-tight">
-          What People Say
-        </h2>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+            <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-foreground/80">Testimonials</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
+            What People <span className="text-gradient">Say</span>
+          </h2>
+        </div>
         
         {/* Vertical scrolling testimonials */}
         <div className="relative h-[600px] overflow-hidden max-w-3xl mx-auto">

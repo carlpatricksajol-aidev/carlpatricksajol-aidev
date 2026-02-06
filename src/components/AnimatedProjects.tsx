@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -22,189 +22,148 @@ const workflows = [
   { 
     id: 1, 
     img: workflow1, 
-    title: "Acuity Scheduling Automation",
-    overview: "Automated scheduling system that syncs Acuity appointments with Google Calendar and sends automated reminders.",
-    tools: ["N8N", "Acuity Scheduling", "Google Calendar", "Email"],
+    title: "Meta Campaign Scaling",
+    overview: "Automated Meta Ads campaign scaling workflow that monitors performance, adjusts budgets, and manages CBO/ABO strategies in real-time.",
+    tools: ["N8N", "Meta Ads API", "Google Sheets", "Webhooks"],
     features: [
-      "Real-time calendar synchronization",
-      "Automated reminder emails",
-      "Conflict detection and resolution",
-      "Multi-timezone support"
+      "Automated budget optimization based on performance",
+      "CBO and ABO campaign management",
+      "Real-time status monitoring and updates",
+      "Automated scaling rules execution"
     ],
-    outcome: "Eliminated manual calendar updates, reduced no-shows by 60% through automated reminders, and enabled seamless scheduling across multiple time zones for a global client base."
+    outcome: "Reduced manual ad management time by 90% while improving campaign ROI through data-driven budget allocation and automated scaling decisions."
   },
   { 
     id: 2, 
     img: workflow2, 
-    title: "Meeting Availability Checker",
-    overview: "Intelligent system that checks team member availability across multiple calendars before scheduling meetings.",
-    tools: ["N8N", "Google Calendar", "Slack", "Webhooks"],
+    title: "Full Campaign Operations",
+    overview: "Complete end-to-end campaign management system handling everything from status updates to automated sheet logging and webhook responses.",
+    tools: ["N8N", "Meta Ads API", "Google Sheets", "JavaScript"],
     features: [
-      "Cross-calendar availability checking",
-      "Instant Slack notifications",
-      "Automatic meeting slot suggestions",
-      "Team coordination automation"
+      "Paused status detection and handling",
+      "CBO/ABO campaign type routing",
+      "Automated data merging and formatting",
+      "Real-time sheet updates and logging"
     ],
-    outcome: "Reduced scheduling back-and-forth by 85%, saved 10+ hours per week of coordination time, and improved meeting attendance rates through optimal time slot selection."
+    outcome: "Streamlined campaign operations across 50+ ad accounts, eliminating manual reporting and enabling instant performance visibility."
   },
   { 
     id: 3, 
     img: workflow3, 
-    title: "GHL to Notion Integration",
-    overview: "Seamless data sync between Go High Level CRM and Notion workspace for unified project management.",
-    tools: ["N8N", "Go High Level", "Notion API"],
+    title: "Meta Ads Data Sync",
+    overview: "Automated workflow that fetches Meta Ads data, processes it through loops, and syncs updates to Google Sheets with wait timers to respect rate limits.",
+    tools: ["N8N", "Meta Ads API", "Google Sheets", "Loop Logic"],
     features: [
-      "Bidirectional data synchronization",
-      "Custom field mapping",
-      "Real-time contact updates",
-      "Automated database creation"
+      "Batch ad data retrieval",
+      "Intelligent loop processing with rate limiting",
+      "Automated upsert operations",
+      "Wait timers for API compliance"
     ],
-    outcome: "Unified team workflow by connecting sales and project management data, eliminated duplicate data entry, and improved team collaboration with real-time CRM insights accessible in Notion."
+    outcome: "Enabled real-time ad performance tracking for 1000+ ads while maintaining API compliance and ensuring 100% data accuracy."
   },
   { 
     id: 4, 
     img: workflow4, 
-    title: "AI Quote Generation System",
-    overview: "AI-powered workflow that generates personalized sales quotes based on customer requirements and historical data.",
-    tools: ["N8N", "OpenAI", "Google Sheets", "PDF Generator"],
+    title: "Meta Ads Bulk Deletion",
+    overview: "Automated bulk deletion workflow that filters and removes underperforming ads based on predefined criteria with loop-based processing.",
+    tools: ["N8N", "Meta Ads API", "Filters", "Loop Logic"],
     features: [
-      "AI-driven pricing analysis",
-      "Automated PDF quote generation",
-      "Historical data integration",
-      "Custom branding support"
+      "Smart filtering based on performance metrics",
+      "Batch deletion with rate limiting",
+      "Automated loop processing",
+      "Wait timers for stability"
     ],
-    outcome: "Reduced quote generation time from 2 hours to 5 minutes, increased quote accuracy by 95%, and improved win rates through data-driven pricing recommendations."
+    outcome: "Automated cleanup of 500+ underperforming ads weekly, improving account health and reducing wasted ad spend by 35%."
   },
   { 
     id: 5, 
     img: workflow5, 
-    title: "Chatbot RAG Workflow",
-    overview: "Advanced chatbot using Retrieval-Augmented Generation to provide accurate, context-aware responses from your knowledge base.",
-    tools: ["N8N", "OpenAI", "Vector Database", "Webhooks"],
+    title: "Complex Multi-Platform Automation",
+    overview: "Advanced multi-branch workflow handling image and video creative uploads to Meta, with error handling and Slack notifications.",
+    tools: ["N8N", "Meta Ads API", "Google Drive", "Slack"],
     features: [
-      "Semantic search capabilities",
-      "Context-aware responses",
-      "Knowledge base integration",
-      "Multi-language support"
+      "Image and video creative routing",
+      "Automated file downloads and uploads",
+      "Error detection with Slack alerts",
+      "Multi-variant ad creation"
     ],
-    outcome: "Achieved 92% answer accuracy, reduced support ticket volume by 60%, and enabled 24/7 customer support with responses based on company-specific knowledge."
+    outcome: "Reduced creative upload time from 2 hours to 5 minutes, enabling rapid A/B testing across 100+ ad variations simultaneously."
   },
   { 
     id: 6, 
     img: workflow6, 
-    title: "Clockify Time Tracking",
-    overview: "Automated time tracking system that logs project hours and generates detailed reports for client billing.",
-    tools: ["N8N", "Clockify", "Google Sheets", "Slack"],
+    title: "Campaign Performance Reporter",
+    overview: "Scheduled workflow that extracts campaign data, checks budget types, and compiles insights into formatted reports with automated sheet updates.",
+    tools: ["N8N", "Meta Ads API", "Google Sheets", "JavaScript"],
     features: [
-      "Automatic time entry logging",
-      "Project-based tracking",
-      "Weekly report generation",
-      "Billable hours calculation"
+      "Scheduled trigger automation",
+      "CBO/ABO budget type detection",
+      "Adset insight aggregation",
+      "Automated report formatting"
     ],
-    outcome: "Improved billing accuracy to 99%, recovered 15% more billable hours through automated tracking, and streamlined invoicing process with automated report generation."
+    outcome: "Eliminated 10+ hours of weekly manual reporting, providing real-time performance dashboards for data-driven decisions."
   },
   { 
     id: 7, 
     img: workflow7, 
-    title: "Complex Multi-Agent System",
-    overview: "Orchestrated AI agent system where multiple specialized agents work together to handle complex business processes.",
-    tools: ["N8N", "OpenAI", "Custom APIs", "Database"],
+    title: "Gmail Auto-Appeal System",
+    overview: "Intelligent email monitoring system that parses Gmail for ad disapprovals, extracts ad IDs, and automatically submits appeals via API.",
+    tools: ["N8N", "Gmail API", "Meta Ads API", "HTTP Requests"],
     features: [
-      "Agent coordination and handoff",
-      "Task-specific specialization",
-      "Error handling and recovery",
-      "Performance monitoring"
+      "Automated email parsing and filtering",
+      "Ad ID extraction from messages",
+      "Automatic appeal submission",
+      "Slack notifications for results"
     ],
-    outcome: "Automated 80% of complex decision-making workflows, reduced processing time by 70%, and enabled scalable handling of multi-step business processes without manual intervention."
+    outcome: "Achieved 85% appeal success rate with zero manual intervention, recovering $50K+ in previously disapproved ad spend."
   },
   { 
     id: 8, 
     img: workflow8, 
-    title: "AI SDR Agent Setup",
-    overview: "Intelligent Sales Development Representative that qualifies leads, schedules meetings, and manages follow-ups automatically.",
-    tools: ["N8N", "OpenAI", "CRM", "Email", "Calendar"],
+    title: "Ad Set Preset Manager",
+    overview: "Comprehensive ad set management system with preset configurations for different time periods (7D, 14D, 28D, 30D) and automated insights collection.",
+    tools: ["N8N", "Meta Ads API", "Presets", "Automation Rules"],
     features: [
-      "Lead qualification scoring",
-      "Personalized email sequences",
-      "Automated meeting scheduling",
-      "Response classification"
+      "Multiple time-period preset management",
+      "Automated ad set rule execution",
+      "Campaign-level preset handling",
+      "Cross-period insight comparison"
     ],
-    outcome: "Increased qualified meetings by 200%, reduced sales team workload by 50%, and maintained 24/7 lead engagement with personalized, contextual responses."
+    outcome: "Standardized ad set configurations across all campaigns, reducing setup time by 80% and ensuring consistent optimization strategies."
   },
   { 
     id: 9, 
     img: workflow9, 
-    title: "Multi-Agent Orchestration",
-    overview: "Advanced workflow system that coordinates multiple AI agents to execute complex, multi-step business processes.",
-    tools: ["N8N", "Multiple AI Models", "Database", "APIs"],
+    title: "E-Commerce UGC Video Generator",
+    overview: "AI-powered workflow that extracts product data, generates prompts, creates UGC-style videos, and posts them automatically.",
+    tools: ["N8N", "OpenAI", "Video Generation API", "Google Gemini"],
     features: [
-      "Dynamic agent selection",
-      "Process flow optimization",
-      "Real-time coordination",
-      "Comprehensive logging"
+      "Automated product data extraction",
+      "AI prompt generation for videos",
+      "UGC-style video creation",
+      "Multi-step video processing"
     ],
-    outcome: "Enabled sophisticated process automation handling 1000+ tasks daily, improved process reliability to 98%, and reduced operational costs by 60% through intelligent agent coordination."
+    outcome: "Generated 100+ UGC videos automatically per month, increasing organic engagement by 200% and reducing content creation costs by 75%."
   },
   { 
     id: 10, 
     img: workflow10, 
-    title: "Lead Management System",
-    overview: "End-to-end lead management automation that captures, qualifies, routes, and nurtures leads through the sales pipeline.",
-    tools: ["N8N", "CRM", "Email Marketing", "Webhooks"],
+    title: "ClickUp Project Automation",
+    overview: "Complete project management automation syncing ClickUp tasks with custom fields, handling assignments, and routing to appropriate team members.",
+    tools: ["N8N", "ClickUp API", "HTTP Requests", "JavaScript"],
     features: [
-      "Multi-source lead capture",
-      "Automatic lead scoring",
-      "Smart routing rules",
-      "Automated nurture campaigns"
+      "Automated task creation and updates",
+      "Custom field value routing",
+      "Team member assignment logic",
+      "Multi-department project sync"
     ],
-    outcome: "Captured 3000+ leads monthly from multiple sources, improved lead response time by 95%, and increased conversion rates by 40% through intelligent lead nurturing and routing."
+    outcome: "Automated project tracking for 500+ tasks monthly, ensuring zero missed deadlines and 40% improvement in team productivity."
   },
 ];
 
-type AnimationPhase = "scatter" | "chase" | "arrange";
-
 const AnimatedProjects = () => {
   const [selectedWorkflow, setSelectedWorkflow] = useState<typeof workflows[0] | null>(null);
-  const [phase, setPhase] = useState<AnimationPhase>("scatter");
-  const [positions, setPositions] = useState<Array<{ x: number; y: number }>>([]);
   const { ref, isVisible } = useScrollAnimation();
-
-  useEffect(() => {
-    // Initialize random scattered positions
-    const initialPositions = workflows.map(() => ({
-      x: Math.random() * 100 - 50,
-      y: Math.random() * 100 - 50,
-    }));
-    setPositions(initialPositions);
-
-    // Animation cycle: scatter (2s) -> chase (3s) -> arrange (10s) -> repeat
-    const cycleInterval = setInterval(() => {
-      setPhase("scatter");
-      const scatteredPositions = workflows.map(() => ({
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50,
-      }));
-      setPositions(scatteredPositions);
-
-      setTimeout(() => {
-        setPhase("chase");
-        // Chase phase - items move towards center with wobble
-        const chasingPositions = workflows.map(() => ({
-          x: (Math.random() - 0.5) * 30,
-          y: (Math.random() - 0.5) * 30,
-        }));
-        setPositions(chasingPositions);
-
-        setTimeout(() => {
-          setPhase("arrange");
-          // Arrange phase - back to grid
-          setPositions(workflows.map(() => ({ x: 0, y: 0 })));
-        }, 3000);
-      }, 2000);
-    }, 15000);
-
-    return () => clearInterval(cycleInterval);
-  }, []);
 
   return (
     <>
@@ -213,81 +172,86 @@ const AnimatedProjects = () => {
         ref={ref}
         className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
       >
-        {/* Animated background grid */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-            animation: "float-slow 20s ease-in-out infinite"
-          }} />
-        </div>
+        {/* Glow effects */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-foreground/5 rounded-full blur-3xl animate-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-foreground/5 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }} />
+
+        {/* Dot pattern */}
+        <div className="absolute inset-0 dot-pattern opacity-20" />
 
         {/* Decorative lines */}
         <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-border"></div>
-        
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-20 h-20 border border-border rotate-45 animate-float-slow opacity-20" />
-        <div className="absolute bottom-40 right-20 w-16 h-16 border border-border animate-float-medium opacity-20" />
-        
-        {/* Vertical text */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 rotate-90 origin-center">
-          <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
-            Workflows
-          </p>
-        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-5xl font-bold mb-20 text-center text-foreground tracking-tight animate-fade-in">
-            Automation Workflows
-          </h2>
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+              <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground/80">Real Automation Workflows</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
+              Automation <span className="text-gradient">Portfolio</span>
+            </h2>
+            
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Click on any workflow to view detailed information. These are real automation systems built with N8N, 
+              showcasing complex integrations between CRMs, AI models, databases, and communication platforms.
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {workflows.map((workflow, index) => {
-              const position = positions[index] || { x: 0, y: 0 };
-              const isArranged = phase === "arrange";
-              
-              return (
-                <div
-                  key={workflow.id}
-                  className="relative group cursor-pointer animate-fade-in"
-                  onClick={() => setSelectedWorkflow(workflow)}
-                  style={{
-                    transform: `translate(${position.x}px, ${position.y}px) ${phase === "chase" ? "scale(0.95)" : "scale(1)"}`,
-                    transition: phase === "scatter" ? "transform 2s cubic-bezier(0.4, 0, 0.2, 1)" : 
-                               phase === "chase" ? "transform 3s cubic-bezier(0.4, 0, 0.2, 1)" : 
-                               "transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    opacity: isArranged ? 1 : 0.7,
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <div className="relative overflow-hidden border border-border hover:border-foreground/50 transition-all duration-300 hover:shadow-lg hover:shadow-foreground/10">
+          {/* Workflow Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {workflows.map((workflow, index) => (
+              <div
+                key={workflow.id}
+                className="group cursor-pointer animate-fade-in"
+                onClick={() => setSelectedWorkflow(workflow)}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative overflow-hidden rounded-xl glass-card hover:glow-effect transition-all duration-500 hover:scale-[1.02]">
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
                     <img
                       src={workflow.img}
                       alt={workflow.title}
-                      className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
-                      <p className="text-foreground font-semibold text-lg text-center">
-                        {workflow.title}
-                      </p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-gradient transition-all">
+                      {workflow.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {workflow.overview}
+                    </p>
+                    
+                    {/* Tools */}
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {workflow.tools.slice(0, 3).map((tool, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 text-xs font-medium text-muted-foreground bg-secondary/50 rounded-md"
+                        >
+                          {tool}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
-
-          <p className="text-center mt-16 text-muted-foreground max-w-3xl mx-auto text-lg animate-fade-in">
-            Click on any workflow to view detailed information. These are real automation systems built with N8N, 
-            showcasing complex integrations between CRMs, AI models, databases, and communication platforms.
-          </p>
         </div>
       </section>
 
       {/* Workflow Details Dialog */}
       <Dialog open={!!selectedWorkflow} onOpenChange={() => setSelectedWorkflow(null)}>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto bg-card border-border">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto glass-card border-border rounded-2xl">
           {selectedWorkflow && (
             <>
               <DialogHeader>
@@ -301,7 +265,7 @@ const AnimatedProjects = () => {
 
               <div className="mt-6 space-y-6">
                 {/* Workflow Image */}
-                <div className="border border-border overflow-hidden">
+                <div className="rounded-xl overflow-hidden glow-effect">
                   <img
                     src={selectedWorkflow.img}
                     alt={selectedWorkflow.title}
@@ -316,7 +280,7 @@ const AnimatedProjects = () => {
                     {selectedWorkflow.tools.map((tool, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 border border-border text-foreground bg-muted/30 text-sm font-medium"
+                        className="px-4 py-2 glass rounded-lg text-foreground text-sm font-medium"
                       >
                         {tool}
                       </span>
@@ -330,7 +294,7 @@ const AnimatedProjects = () => {
                   <ul className="space-y-2">
                     {selectedWorkflow.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                        <span className="text-foreground mt-1">•</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-foreground mt-2 flex-shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -338,7 +302,7 @@ const AnimatedProjects = () => {
                 </div>
 
                 {/* Outcome */}
-                <div>
+                <div className="glass-card rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-foreground mb-3">Outcome</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {selectedWorkflow.outcome}

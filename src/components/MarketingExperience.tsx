@@ -64,38 +64,47 @@ const MarketingExperience = () => {
     <section
       id="marketing-experience"
       ref={ref}
-      className={`py-32 bg-secondary/30 relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
     >
-      {/* Decorative elements */}
+      {/* Glow effects */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-foreground/5 rounded-full blur-3xl animate-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-foreground/5 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }} />
+      
+      {/* Dot pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-20" />
+
+      {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
-      
-      {/* Floating shapes */}
-      <div className="absolute top-20 left-10 w-32 h-32 border border-border rounded-full animate-float-slow opacity-10" />
-      <div className="absolute bottom-20 right-10 w-20 h-20 border border-border rounded-full animate-float-medium opacity-10" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl font-bold mb-8 text-center text-foreground tracking-tight">
-            Marketing Experience
-          </h2>
-          
-          <p className="text-xl leading-relaxed text-foreground/80 text-center mb-16 max-w-4xl mx-auto">
-            Results-driven Digital Marketing professional with hands-on experience in social media marketing, 
-            SEO, paid advertising, website development, funnel building, and client support. Skilled in 
-            supporting B2B and service-based campaigns, building websites and funnels from scratch, and 
-            managing paid ads with performance reporting.
-          </p>
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+              <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground/80">Professional Background</span>
+            </div>
+            
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
+              Marketing <span className="text-gradient">Experience</span>
+            </h2>
+            
+            <p className="text-xl leading-relaxed text-foreground/80 max-w-4xl mx-auto">
+              Results-driven Digital Marketing professional with hands-on experience in social media marketing, 
+              SEO, paid advertising, website development, funnel building, and client support.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className="bg-background border border-border rounded-lg p-8 hover:border-foreground/30 transition-all duration-300 group"
+                className="glass-card rounded-2xl p-8 hover:glow-effect transition-all duration-300 group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="p-3 bg-secondary rounded-lg group-hover:bg-foreground/10 transition-colors">
+                  <div className="p-3 bg-secondary/50 rounded-xl group-hover:bg-foreground/10 transition-colors">
                     <exp.icon className="w-6 h-6 text-foreground" />
                   </div>
                   <div className="flex-1">
@@ -123,22 +132,22 @@ const MarketingExperience = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-border">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2">3+</div>
-              <p className="text-muted-foreground">Years Experience</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-16 border-t border-border">
+            <div className="glass-card rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-gradient mb-2">3+</div>
+              <p className="text-muted-foreground text-sm">Years Experience</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2">20%</div>
-              <p className="text-muted-foreground">SEO Improvement</p>
+            <div className="glass-card rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-gradient mb-2">20%</div>
+              <p className="text-muted-foreground text-sm">SEO Improvement</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2">5+</div>
-              <p className="text-muted-foreground">Platforms Managed</p>
+            <div className="glass-card rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-gradient mb-2">5+</div>
+              <p className="text-muted-foreground text-sm">Platforms Managed</p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2">10+</div>
-              <p className="text-muted-foreground">Clients Served</p>
+            <div className="glass-card rounded-2xl p-6 text-center">
+              <div className="text-4xl font-bold text-gradient mb-2">10+</div>
+              <p className="text-muted-foreground text-sm">Clients Served</p>
             </div>
           </div>
         </div>

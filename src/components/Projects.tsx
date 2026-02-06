@@ -136,60 +136,57 @@ const Projects = () => {
       ref={ref}
       className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
     >
-      {/* Animated dots pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: "radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }} />
-      </div>
-
-      {/* Floating hexagons */}
-      <div className="absolute top-32 right-1/3 w-28 h-28 border border-border animate-float-slow opacity-10" style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)" }} />
-      <div className="absolute bottom-32 left-1/3 w-20 h-20 border border-border animate-float-medium opacity-10" style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)" }} />
+      {/* Glow effects */}
+      <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-foreground/5 rounded-full blur-3xl animate-glow" />
       
+      {/* Dot pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-20" />
+
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
-      
-      {/* Vertical text */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
-        <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
-          Featured Work
-        </p>
-      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-5xl font-bold mb-20 text-center text-foreground tracking-tight">
-          Featured Projects
-        </h2>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+            <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-foreground/80">What I've Built</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
               <div 
                 key={index}
-                className="group hover:translate-y-[-4px] transition-transform duration-300 cursor-pointer"
+                className="group cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="mb-4">
-                  <Icon className="h-8 w-8 text-foreground group-hover:text-muted-foreground transition-colors" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-3 text-foreground">{project.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool, idx) => (
-                    <Badge 
-                      key={idx} 
-                      variant="outline" 
-                      className="border-border text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {tool}
-                    </Badge>
-                  ))}
+                <div className="glass-card rounded-2xl p-6 h-full hover:glow-effect transition-all duration-300 hover:scale-[1.02]">
+                  <div className="w-12 h-12 rounded-xl bg-secondary/50 flex items-center justify-center mb-4 group-hover:bg-foreground/10 transition-colors">
+                    <Icon className="h-6 w-6 text-foreground" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-3 text-foreground">{project.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tools.slice(0, 2).map((tool, idx) => (
+                      <Badge 
+                        key={idx} 
+                        variant="outline" 
+                        className="border-border/50 text-muted-foreground text-xs"
+                      >
+                        {tool}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
@@ -200,7 +197,7 @@ const Projects = () => {
 
     {/* Project Details Dialog */}
     <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-      <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto bg-card border-border">
+      <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto glass-card border-border rounded-2xl">
         {selectedProject && (
           <>
             <DialogHeader>
@@ -224,7 +221,7 @@ const Projects = () => {
                   {selectedProject.tools.map((tool, idx) => (
                     <span
                       key={idx}
-                      className="px-4 py-2 border border-border text-foreground bg-muted/30 text-sm font-medium"
+                      className="px-4 py-2 glass rounded-lg text-foreground text-sm font-medium"
                     >
                       {tool}
                     </span>
@@ -238,7 +235,7 @@ const Projects = () => {
                 <ul className="space-y-2">
                   {selectedProject.keyFeatures.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="text-foreground mt-1">•</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-foreground mt-2 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -246,7 +243,7 @@ const Projects = () => {
               </div>
 
               {/* Outcome */}
-              <div>
+              <div className="glass-card rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-foreground mb-3">Outcome</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {selectedProject.outcome}

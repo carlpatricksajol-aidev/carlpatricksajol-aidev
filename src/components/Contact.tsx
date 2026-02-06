@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Mail, MapPin, Calendar } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -77,49 +78,36 @@ const Contact = () => {
       ref={ref}
       className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
     >
-      {/* Animated concentric circles */}
-      <div className="absolute inset-0 opacity-5 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute border border-border rounded-full animate-pulse"
-            style={{
-              width: `${(i + 1) * 200}px`,
-              height: `${(i + 1) * 200}px`,
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              animationDelay: `${i * 0.3}s`,
-              animationDuration: "3s",
-            }}
-          />
-        ))}
-      </div>
+      {/* Glow effects */}
+      <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-foreground/5 rounded-full blur-3xl animate-glow" />
 
-      {/* Floating squares */}
-      <div className="absolute top-40 left-20 w-20 h-20 border border-border rotate-12 animate-float-slow opacity-10" />
-      <div className="absolute bottom-40 right-20 w-28 h-28 border border-border rotate-45 animate-float-medium opacity-10" />
-      
+      {/* Dot pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-20" />
+
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-border"></div>
-      
-      {/* Vertical text */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center">
-        <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase whitespace-nowrap">
-          Contact
-        </p>
-      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-5xl font-bold mb-20 text-center text-foreground tracking-tight">
-          Get In Touch
-        </h2>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6">
+            <span className="w-2 h-2 bg-foreground rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-foreground/80">Get Started</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
+            Let's <span className="text-gradient">Connect</span>
+          </h2>
+          
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Ready to automate your business? Book a call or send me a message.
+          </p>
+        </div>
 
         <div className="max-w-6xl mx-auto space-y-16">
           {/* Calendly Widget */}
           <div className="w-full">
-            <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">Book a Meeting</h3>
-            <div className="border border-border overflow-hidden" style={{ minHeight: "700px" }}>
+            <div className="glass-card rounded-2xl overflow-hidden glow-effect" style={{ minHeight: "700px" }}>
               <InlineWidget 
                 url="https://calendly.com/carlpatricksajol/30min"
                 styles={{
@@ -130,79 +118,96 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Contact Form & Info */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Info */}
             <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-2">Email</h3>
-                <p className="text-muted-foreground text-lg">carlpatricksajol@gmail.com</p>
+              <div className="glass-card rounded-2xl p-6 flex items-start gap-4">
+                <div className="p-3 bg-secondary/50 rounded-xl">
+                  <Mail className="w-6 h-6 text-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Email</h3>
+                  <p className="text-muted-foreground">carlpatricksajol@gmail.com</p>
+                </div>
               </div>
               
+              <div className="glass-card rounded-2xl p-6 flex items-start gap-4">
+                <div className="p-3 bg-secondary/50 rounded-xl">
+                  <MapPin className="w-6 h-6 text-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Location</h3>
+                  <p className="text-muted-foreground">Available for remote work worldwide</p>
+                </div>
+              </div>
+
+              <div className="glass-card rounded-2xl p-6 flex items-start gap-4">
+                <div className="p-3 bg-secondary/50 rounded-xl">
+                  <Calendar className="w-6 h-6 text-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Let's Work Together</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    I specialize in building custom automation solutions that streamline your business operations. 
+                    Whether you need CRM integrations, workflow automation, or AI-powered systems, I'm here to help.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-2">Location</h3>
-                <p className="text-muted-foreground text-lg">Available for remote work worldwide</p>
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="bg-secondary/30 border-border text-foreground placeholder:text-muted-foreground h-14 rounded-xl"
+                />
+                {errors.name && (
+                  <p className="text-destructive text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-4">Let's Work Together</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  I specialize in building custom automation solutions that streamline your business operations. 
-                  Whether you need CRM integrations, workflow automation, or AI-powered systems, I'm here to help.
-                </p>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="bg-secondary/30 border-border text-foreground placeholder:text-muted-foreground h-14 rounded-xl"
+                />
+                {errors.email && (
+                  <p className="text-destructive text-sm mt-1">{errors.email}</p>
+                )}
               </div>
-            </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="bg-background border-border text-foreground placeholder:text-muted-foreground h-12"
-              />
-              {errors.name && (
-                <p className="text-destructive text-sm mt-1">{errors.name}</p>
-              )}
-            </div>
+              <div>
+                <Textarea
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className="bg-secondary/30 border-border text-foreground placeholder:text-muted-foreground resize-none rounded-xl"
+                />
+                {errors.message && (
+                  <p className="text-destructive text-sm mt-1">{errors.message}</p>
+                )}
+              </div>
 
-            <div>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="bg-background border-border text-foreground placeholder:text-muted-foreground h-12"
-              />
-              {errors.email && (
-                <p className="text-destructive text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            <div>
-              <Textarea
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className="bg-background border-border text-foreground placeholder:text-muted-foreground resize-none"
-              />
-              {errors.message && (
-                <p className="text-destructive text-sm mt-1">{errors.message}</p>
-              )}
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full h-12 bg-foreground text-background hover:bg-foreground/90 font-semibold"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </Button>
-          </form>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full h-14 bg-foreground text-background hover:bg-foreground/90 font-semibold rounded-xl glow-effect"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
           </div>
         </div>
       </div>
