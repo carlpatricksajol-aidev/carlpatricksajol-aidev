@@ -64,7 +64,7 @@ const MarketingExperience = () => {
     <section
       id="marketing-experience"
       ref={ref}
-      className={`py-32 bg-background relative overflow-hidden animate-on-scroll ${isVisible ? 'visible' : ''}`}
+      className={`py-32 bg-background relative overflow-hidden animate-on-scroll section-parallax noise-overlay ${isVisible ? 'visible' : ''}`}
     >
       {/* Glow effects */}
       <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-foreground/5 rounded-full blur-3xl animate-glow" />
@@ -74,8 +74,8 @@ const MarketingExperience = () => {
       <div className="absolute inset-0 dot-pattern opacity-20" />
 
       {/* Decorative lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-border" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
+      <div className="section-glow-line section-glow-line--top" />
+      <div className="section-glow-line section-glow-line--bottom" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
