@@ -96,7 +96,7 @@ const Contact = () => {
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
-            Let's <span className="text-gradient">Connect</span>
+            Let's <span className="text-gradient-animated">Connect</span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile.png";
+import FlipWords from "@/components/FlipWords";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -41,7 +42,9 @@ const Hero = () => {
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                 Automate Your
-                <span className="block text-gradient">Business Growth</span>
+                <span className="block text-gradient-animated">
+                  <FlipWords words={["Business Growth", "Sales Pipeline", "Lead Generation", "Marketing Ops"]} />
+                </span>
               </h1>
               
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
