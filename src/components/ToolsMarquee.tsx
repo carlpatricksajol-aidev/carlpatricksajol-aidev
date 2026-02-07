@@ -47,7 +47,7 @@ const ToolsMarquee = () => {
           </div>
           
           <h2 className="text-5xl font-bold text-center text-foreground tracking-tight">
-            Tools & <span className="text-gradient">Technologies</span>
+            Tools & <span className="text-gradient-animated">Technologies</span>
           </h2>
         </div>
       </div>

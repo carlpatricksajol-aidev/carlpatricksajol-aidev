@@ -153,15 +153,109 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(0 0% 12% / 0.8) 0%, hsl(0 0% 8% / 0.6) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid hsl(0 0% 20% / 0.3);
+    position: relative;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(0 0% 30% / 0.5);
+    box-shadow: 
+      0 0 30px hsl(0 0% 30% / 0.15),
+      0 0 60px hsl(0 0% 20% / 0.1),
+      inset 0 1px 0 hsl(0 0% 30% / 0.2);
   }
 
   /* Glow effects */
   .glow-effect {
-    box-shadow: 0 0 40px hsl(0 0% 30% / 0.2);
+    box-shadow: 
+      0 0 40px hsl(0 0% 30% / 0.2),
+      0 0 80px hsl(0 0% 20% / 0.1);
   }
 
   .glow-effect-strong {
-    box-shadow: 0 0 60px hsl(0 0% 40% / 0.3), 0 0 100px hsl(0 0% 30% / 0.2);
+    box-shadow: 
+      0 0 60px hsl(0 0% 40% / 0.3),
+      0 0 100px hsl(0 0% 30% / 0.2),
+      0 0 140px hsl(0 0% 20% / 0.1);
+  }
+
+  /* Glowing container border */
+  .glow-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .glow-container::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(0 0% 40% / 0.4), transparent 40%, transparent 60%, hsl(0 0% 40% / 0.4));
+    z-index: -1;
+    animation: rotate-glow 6s linear infinite;
+  }
+  @keyframes rotate-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Pulse glow on containers */
+  .pulse-glow {
+    animation: container-pulse 3s ease-in-out infinite;
+  }
+  @keyframes container-pulse {
+    0%, 100% { box-shadow: 0 0 20px hsl(0 0% 20% / 0.1); }
+    50% { box-shadow: 0 0 40px hsl(0 0% 35% / 0.25), 0 0 80px hsl(0 0% 25% / 0.15); }
+  }
+
+  /* Flip word animations */
+  .flip-word-container {
+    perspective: 600px;
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+  }
+  .flip-word {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center bottom;
+  }
+  .flip-out {
+    opacity: 0;
+    transform: rotateX(90deg) translateY(-10px);
+  }
+  .flip-in {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+  }
+
+  /* Breathing glow for stat numbers */
+  .stat-glow {
+    text-shadow: 0 0 20px hsl(0 0% 80% / 0.3), 0 0 40px hsl(0 0% 60% / 0.2);
+    animation: stat-breathe 2.5s ease-in-out infinite;
+  }
+  @keyframes stat-breathe {
+    0%, 100% { text-shadow: 0 0 20px hsl(0 0% 80% / 0.2), 0 0 40px hsl(0 0% 60% / 0.1); }
+    50% { text-shadow: 0 0 30px hsl(0 0% 90% / 0.4), 0 0 60px hsl(0 0% 70% / 0.2); }
+  }
+
+  /* Moving border light */
+  .moving-border {
+    position: relative;
+    overflow: hidden;
+  }
+  .moving-border::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, hsl(0 0% 50% / 0.15), transparent, transparent);
+    animation: spin-border 4s linear infinite;
+  }
+  @keyframes spin-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   /* Text gradient */

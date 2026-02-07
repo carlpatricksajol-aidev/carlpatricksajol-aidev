@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FlipWords from "@/components/FlipWords";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -29,7 +30,9 @@ const About = () => {
             </div>
             
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
-              About <span className="text-gradient">Me</span>
+              About <span className="text-gradient-animated">
+                <FlipWords words={["Me", "My Work", "My Craft"]} interval={3000} />
+              </span>
             </h2>
           </div>
           
@@ -44,16 +47,16 @@ const About = () => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass-card rounded-2xl p-8 text-center hover:glow-effect transition-all duration-300">
-              <div className="text-5xl font-bold text-gradient mb-3">50+</div>
+            <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300">
+              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">50+</div>
               <p className="text-muted-foreground text-lg">Automations Built</p>
             </div>
-            <div className="glass-card rounded-2xl p-8 text-center hover:glow-effect transition-all duration-300" style={{ animationDelay: '0.1s' }}>
-              <div className="text-5xl font-bold text-gradient mb-3">15+</div>
+            <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300" style={{ animationDelay: '0.1s' }}>
+              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">15+</div>
               <p className="text-muted-foreground text-lg">Platforms Integrated</p>
             </div>
-            <div className="glass-card rounded-2xl p-8 text-center hover:glow-effect transition-all duration-300" style={{ animationDelay: '0.2s' }}>
-              <div className="text-5xl font-bold text-gradient mb-3">1000+</div>
+            <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300" style={{ animationDelay: '0.2s' }}>
+              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">1000+</div>
               <p className="text-muted-foreground text-lg">Hours Saved</p>
             </div>
           </div>

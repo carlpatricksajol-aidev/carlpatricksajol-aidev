@@ -70,7 +70,7 @@ const Testimonials = () => {
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
-            What People <span className="text-gradient">Say</span>
+            What People <span className="text-gradient-animated">Say</span>
           </h2>
         </div>
         

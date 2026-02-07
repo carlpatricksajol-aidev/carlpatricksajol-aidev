@@ -154,7 +154,7 @@ const Projects = () => {
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
-            Featured <span className="text-gradient">Projects</span>
+            Featured <span className="text-gradient-animated">Projects</span>
           </h2>
         </div>
         
