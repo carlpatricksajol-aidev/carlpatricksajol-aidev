@@ -22,7 +22,7 @@ const FlipWords = ({ words, interval = 2500, className = "" }: FlipWordsProps) =
   }, [words.length, interval]);
 
   return (
-    <span className={`inline-block flip-word-container ${className}`}>
+    <span className={`inline-flex flip-word-container ${className}`}>
       <span className={`flip-word ${isFlipping ? "flip-out" : "flip-in"}`}>
         {words[currentIndex]}
       </span>

@@ -210,9 +210,9 @@ All colors MUST be HSL.
   /* Flip word animations */
   .flip-word-container {
     perspective: 600px;
-    display: inline-block;
-    min-width: 200px;
-    text-align: center;
+    display: inline-flex;
+    min-width: auto;
+    text-align: left;
   }
   .flip-word {
     display: inline-block;
@@ -416,6 +416,158 @@ All colors MUST be HSL.
     inset: 0;
     opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ===== 3D MOTION GRAPHICS SYSTEM ===== */
+
+  /* 3D perspective wrapper */
+  .perspective-container {
+    perspective: 1200px;
+    perspective-origin: center;
+  }
+
+  /* 3D card with tilt hover */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+    will-change: transform;
+  }
+  .card-3d:hover {
+    transform: rotateY(-5deg) rotateX(5deg) translateZ(30px) scale(1.02);
+    box-shadow:
+      20px 20px 60px hsl(0 0% 0% / 0.4),
+      -5px -5px 20px hsl(0 0% 20% / 0.1),
+      0 0 40px hsl(0 0% 30% / 0.15);
+  }
+
+  /* 3D card face with inner glow */
+  .card-3d-face {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  .card-3d-face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.05) 0%, transparent 50%, hsl(0 0% 0% / 0.1) 100%);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+  }
+  .card-3d:hover .card-3d-face::after {
+    opacity: 1;
+  }
+
+  /* 3D float animation */
+  @keyframes float-3d {
+    0%, 100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
+    25% { transform: translateZ(20px) rotateX(2deg) rotateY(-2deg); }
+    50% { transform: translateZ(40px) rotateX(-1deg) rotateY(3deg); }
+    75% { transform: translateZ(15px) rotateX(1.5deg) rotateY(-1deg); }
+  }
+  .animate-float-3d {
+    animation: float-3d 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  /* 3D entrance animations */
+  @keyframes enter-3d-left {
+    from { opacity: 0; transform: rotateY(25deg) translateX(-80px) translateZ(-100px); }
+    to { opacity: 1; transform: rotateY(0deg) translateX(0) translateZ(0); }
+  }
+  @keyframes enter-3d-right {
+    from { opacity: 0; transform: rotateY(-25deg) translateX(80px) translateZ(-100px); }
+    to { opacity: 1; transform: rotateY(0deg) translateX(0) translateZ(0); }
+  }
+  @keyframes enter-3d-up {
+    from { opacity: 0; transform: rotateX(15deg) translateY(60px) translateZ(-80px); }
+    to { opacity: 1; transform: rotateX(0deg) translateY(0) translateZ(0); }
+  }
+
+  .animate-enter-3d-left { animation: enter-3d-left 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+  .animate-enter-3d-right { animation: enter-3d-right 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+  .animate-enter-3d-up { animation: enter-3d-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+
+  /* Running 3D marquee for cards */
+  @keyframes run-3d {
+    0% { transform: translateX(0) rotateY(0deg); }
+    100% { transform: translateX(-50%) rotateY(0deg); }
+  }
+  .animate-run-3d {
+    animation: run-3d 40s linear infinite;
+  }
+  .animate-run-3d:hover {
+    animation-play-state: paused;
+  }
+
+  /* 3D tilt on mouse - subtle constant */
+  @keyframes tilt-3d {
+    0%, 100% { transform: perspective(800px) rotateX(0deg) rotateY(0deg); }
+    25% { transform: perspective(800px) rotateX(2deg) rotateY(-3deg); }
+    50% { transform: perspective(800px) rotateX(-1deg) rotateY(2deg); }
+    75% { transform: perspective(800px) rotateX(1deg) rotateY(-1deg); }
+  }
+  .animate-tilt-3d {
+    animation: tilt-3d 8s ease-in-out infinite;
+  }
+
+  /* Holographic shine sweep */
+  .holo-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .holo-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      hsl(0 0% 100% / 0.03) 35%,
+      hsl(0 0% 100% / 0.08) 42%,
+      hsl(0 0% 100% / 0.03) 50%,
+      transparent 65%
+    );
+    animation: holo-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes holo-sweep {
+    0%, 100% { left: -150%; }
+    50% { left: 150%; }
+  }
+
+  /* Depth shadow for 3D sections */
+  .depth-shadow {
+    box-shadow:
+      0 2px 4px hsl(0 0% 0% / 0.1),
+      0 8px 16px hsl(0 0% 0% / 0.15),
+      0 24px 48px hsl(0 0% 0% / 0.2),
+      0 48px 96px hsl(0 0% 0% / 0.25);
+  }
+
+  /* Animated border gradient */
+  .border-gradient-animated {
+    position: relative;
+    border: none !important;
+  }
+  .border-gradient-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(0 0% 40% / 0.6), hsl(0 0% 15% / 0.1), hsl(0 0% 40% / 0.6));
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
   }
 }
