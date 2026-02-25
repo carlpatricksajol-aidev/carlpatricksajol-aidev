@@ -42,7 +42,7 @@ const Hero = () => {
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                 Automate Your
-                <span className="block text-gradient-animated overflow-visible" style={{ minHeight: '1.2em' }}>
+                <span className="block text-gradient-purple overflow-visible" style={{ minHeight: '1.2em' }}>
                   <FlipWords words={["Business Growth", "Sales Pipeline", "Lead Generation", "Marketing Ops"]} />
                 </span>
               </h1>
