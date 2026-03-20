@@ -1,59 +1,77 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef, useState } from "react";
-import { Briefcase, TrendingUp, Globe, Megaphone } from "lucide-react";
+import { Briefcase, Bot, Globe, Megaphone, TrendingUp, Rocket } from "lucide-react";
 
 const experiences = [
   {
-    title: "Marketing Assistant / Paid Ads & Social Media Support",
-    company: "DreamTeam PH",
-    period: "Feb 2023 - Mar 2024",
-    icon: Megaphone,
+    title: "AI Automation & Platform Manager",
+    company: "Bumpy App",
+    period: "Nov 2025 – Present",
+    icon: Bot,
     responsibilities: [
-      "Managed and optimized Meta (Facebook & Instagram) Ads campaigns for clients",
-      "Monitored ad performance and prepared weekly performance reports with key metrics",
-      "Adjusted targeting, creatives, and messaging based on performance insights",
-      "Assisted in social media content management and engagement tracking",
-      "Coordinated with internal teams and clients to implement revisions"
+      "Architected and deployed a production Claude MCP server connecting internal SDK, database, and Singular attribution platform to Claude",
+      "Built Claude Code agent infrastructure for autonomous multi-step operations across campaign management and reporting",
+      "Deployed specialist AI agents in Slack — User Strategist, UA Performance, and Creative Concept agents",
+      "Automated Meta advertising suite: bulk uploads, performance-based deletion, campaign parameters, and analytics dashboard",
+      "Built TikTok appeal automation increasing successful appeal rate by 40%"
     ]
   },
   {
-    title: "Social Media Marketing Associate / Marketing Assistant",
+    title: "AI Automation Specialist",
+    company: "Creative Abundance",
+    period: "Aug 2025 – Present",
+    icon: Rocket,
+    responsibilities: [
+      "Designed fully autonomous content creator sourcing and contracting system using Claude Code — zero manual handoffs",
+      "Built lead scraping & enrichment, onboarding automation, database processing, and proposal/payment workflows",
+      "Set up HubSpot CRM from scratch — lead management, workflow automation, survey forms, and pipeline routing",
+      "Architected internal database infrastructure in Supabase for creator lifecycle management"
+    ]
+  },
+  {
+    title: "Business Consultant – AI Automation",
+    company: "White Key Marketing",
+    period: "Aug 2024 – Present",
+    icon: Globe,
+    responsibilities: [
+      "Managed end-to-end HubSpot CRM: lead flows, pipeline automation, email campaigns, landing pages, and reporting dashboards",
+      "Built GHL client onboarding workflows reducing manual tasks by 80%",
+      "Implemented AI-powered conversation agents for 24/7 lead engagement and appointment booking",
+      "Architected Notion workspace managing 50+ client accounts with automated intake workflows"
+    ]
+  },
+  {
+    title: "Social Media Marketing Associate",
     company: "Actional Marketing",
-    period: "Apr 2024 - Aug 2025",
+    period: "Apr 2024 – Aug 2025",
     icon: TrendingUp,
     responsibilities: [
       "Developed and managed social media marketing strategies for multiple clients",
-      "Executed content planning, copywriting, and campaign messaging",
-      "Supported B2B marketing campaigns including buyer persona development",
+      "Executed content planning, copywriting, and B2B campaign messaging",
       "Conducted SEO audits and on-page optimization for search visibility",
-      "Created campaigns across Facebook, Google, Instagram, TikTok, and YouTube",
-      "Provided client support communicating directly with Israel-based clients"
+      "Created campaigns across Facebook, Google, Instagram, TikTok, and YouTube"
     ]
   },
   {
     title: "Digital Marketing Specialist",
     company: "Business Connect World",
-    period: "Jan 2024 - Feb 2025",
-    icon: Globe,
+    period: "Jan 2024 – Feb 2025",
+    icon: Megaphone,
     responsibilities: [
-      "Implemented SEO strategies for Amazon product listings",
-      "Increased product discoverability through search by approximately 20%",
+      "Implemented SEO strategies for Amazon product listings increasing discoverability by ~20%",
       "Conducted competitor and keyword research for optimization",
-      "Optimized product titles, descriptions, and keywords",
       "Monitored performance metrics and adjusted strategies for ROI"
     ]
   },
   {
-    title: "Freelance Website Designer & Funnel Builder",
-    company: "Contract / Project-Based",
-    period: "Ongoing",
+    title: "Marketing Assistant / Paid Ads Support",
+    company: "DreamTeam PH",
+    period: "Feb 2023 – Mar 2024",
     icon: Briefcase,
     responsibilities: [
-      "Designed and built websites from scratch using WordPress",
-      "Developed sales funnels and landing pages using GoHighLevel (GHL)",
-      "Built GHL SaaS-style accounts with funnels, pipelines, and automations",
-      "Customized websites and funnels for client branding and conversion goals",
-      "Worked directly with clients for requirements and delivery"
+      "Managed and optimized Meta Ads campaigns for clients with weekly performance reports",
+      "Adjusted targeting, creatives, and messaging based on performance insights",
+      "Coordinated with internal teams and clients to implement revisions"
     ]
   }
 ];
@@ -105,12 +123,12 @@ const MarketingExperience = () => {
             </div>
             
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground tracking-tight">
-              Marketing <span className="text-gradient-animated">Experience</span>
+              Professional <span className="text-gradient-animated">Experience</span>
             </h2>
             
             <p className="text-xl leading-relaxed text-foreground/80 max-w-4xl mx-auto">
-              Results-driven Digital Marketing professional with hands-on experience in social media marketing, 
-              SEO, paid advertising, website development, funnel building, and client support.
+              From digital marketing foundations to building production-grade AI automation systems 
+              and managing platform infrastructure for growth companies.
             </p>
           </div>
 
@@ -181,9 +199,9 @@ const MarketingExperience = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-16 border-t border-border">
               {[
                 { value: "3+", label: "Years Experience" },
-                { value: "20%", label: "SEO Improvement" },
-                { value: "5+", label: "Platforms Managed" },
-                { value: "10+", label: "Clients Served" },
+                { value: "80%", label: "Task Reduction" },
+                { value: "20+", label: "Platforms Managed" },
+                { value: "50+", label: "Clients & Accounts" },
               ].map((stat, i) => (
                 <div key={i} className="glass-card rounded-2xl p-6 text-center animate-tilt-3d depth-shadow" style={{ animationDelay: `${i * 0.7}s` }}>
                   <div className="text-4xl font-bold text-gradient-animated stat-glow mb-2">{stat.value}</div>
