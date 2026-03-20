@@ -6,7 +6,7 @@ const CustomCursor = () => {
   const [isMoving, setIsMoving] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     let trailCounter = 0;
 
     const handleMouseMove = (e: MouseEvent) => {

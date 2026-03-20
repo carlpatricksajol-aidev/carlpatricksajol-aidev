@@ -37,19 +37,19 @@ const Hero = () => {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
                 <Sparkles className="w-4 h-4 text-foreground" />
-                <span className="text-sm font-medium text-foreground/80">Automation Expert & AI Developer</span>
+                <span className="text-sm font-medium text-foreground/80">AI Automation & Platform Manager</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                 Automate Your
                 <span className="block text-gradient-purple overflow-visible" style={{ minHeight: '1.2em' }}>
-                  <FlipWords words={["Business Growth", "Sales Pipeline", "Lead Generation", "Marketing Ops"]} />
+                  <FlipWords words={["AI Agent Systems", "CRM Pipelines", "Lead Generation", "Business Ops"]} />
                 </span>
               </h1>
               
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                I build scalable automation systems with N8N, Zapier, and Make.com that save you 
-                1000+ hours and transform your operations into efficient, AI-powered workflows.
+                I build production-grade Claude MCP servers, AI agent systems, and multi-agent pipelines 
+                that eliminate manual handoffs and transform your operations into intelligent, automated workflows.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -83,7 +83,7 @@ const Hero = () => {
                   <p className="text-sm text-muted-foreground">Hours Saved</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-foreground">15+</div>
+                  <div className="text-3xl font-bold text-foreground">20+</div>
                   <p className="text-sm text-muted-foreground">Platforms</p>
                 </div>
               </div>
@@ -115,10 +115,10 @@ const Hero = () => {
 
                 {/* Floating badges around profile */}
                 <div className="absolute -top-4 -right-4 glass-card rounded-lg px-4 py-2 animate-float-slow">
-                  <span className="text-sm font-semibold text-foreground">N8N Expert</span>
+                  <span className="text-sm font-semibold text-foreground">Claude MCP</span>
                 </div>
                 <div className="absolute -bottom-4 -left-4 glass-card rounded-lg px-4 py-2 animate-float-medium">
-                  <span className="text-sm font-semibold text-foreground">AI Developer</span>
+                  <span className="text-sm font-semibold text-foreground">AI Agent Builder</span>
                 </div>
               </div>
             </div>

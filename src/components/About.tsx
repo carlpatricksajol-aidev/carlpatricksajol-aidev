@@ -37,27 +37,33 @@ const About = () => {
           </div>
           
           <p className="text-xl leading-relaxed text-foreground/80 text-center animate-fade-in mb-16">
-            Tech-driven <span className="font-semibold text-foreground">Automation Specialist</span> with expertise in{" "}
-            <span className="font-semibold">N8N, Zapier, and Make.com</span>, building scalable no-code systems 
-            that streamline sales, CRM, and marketing operations. Skilled in integrating{" "}
-            <span className="font-semibold">HubSpot, Go High Level, Systeme.io, Shopify, and WordPress</span>, 
-            with a strong focus on AI-driven sales workflows and process automation that save time, reduce errors, 
-            and increase team efficiency.
+            AI Automation and Platform Manager with hands-on experience building production-grade{" "}
+            <span className="font-semibold text-foreground">Claude MCP servers</span>,{" "}
+            <span className="font-semibold">Claude Code agent systems</span>, and multi-agent pipelines deployed 
+            operationally in Slack. Expert in{" "}
+            <span className="font-semibold">HubSpot CRM workflows</span>, pipeline automation, lead qualification 
+            systems, and CRM-integrated tooling. Proven builder of practical business systems — from lead scraping 
+            and enrichment to proposal delivery, payment processing, and CRM storage — with{" "}
+            <span className="font-semibold text-foreground">zero manual handoffs</span>.
           </p>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300">
               <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">50+</div>
               <p className="text-muted-foreground text-lg">Automations Built</p>
             </div>
             <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300" style={{ animationDelay: '0.1s' }}>
-              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">15+</div>
+              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">20+</div>
               <p className="text-muted-foreground text-lg">Platforms Integrated</p>
             </div>
             <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300" style={{ animationDelay: '0.2s' }}>
               <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">1000+</div>
               <p className="text-muted-foreground text-lg">Hours Saved</p>
+            </div>
+            <div className="glass-card rounded-2xl p-8 text-center pulse-glow transition-all duration-300" style={{ animationDelay: '0.3s' }}>
+              <div className="text-5xl font-bold text-gradient-animated stat-glow mb-3">90%</div>
+              <p className="text-muted-foreground text-lg">Task Reduction</p>
             </div>
           </div>
         </div>
