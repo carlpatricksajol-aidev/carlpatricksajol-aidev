@@ -1,18 +1,17 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef, useState } from "react";
-import { 
-  Users, 
-  Rocket, 
-  Target, 
-  Bot, 
-  Workflow, 
-  Share2, 
-  Settings, 
+import {
+  Rocket,
+  Target,
+  Bot,
+  Workflow,
+  Settings,
   Plug,
   Brain,
   Database,
-  Mail,
-  BarChart3
+  BarChart3,
+  Palette,
+  Clapperboard
 } from "lucide-react";
 
 const ghlSkills = [
@@ -65,10 +64,10 @@ const ghlSkills = [
     icon: Database
   },
   {
-    title: "Email Campaigns & Sequences",
-    description: "Created HubSpot email campaigns and automated sequences covering lead nurture, re-engagement, post-sale onboarding, and event-triggered communications.",
-    highlight: "Optimised for deliverability and open rates",
-    icon: Mail
+    title: "AI Ad Creative Production",
+    description: "Concept-first static ad generation at batch scale — Claude creative direction, brand-accurate HTML/CSS text rendering, Nano Banana Pro imagery, and a vision-QA gate before anything ships.",
+    highlight: "Up to 50 client-ready statics per batch",
+    icon: Palette
   },
   {
     title: "API & Cross-Platform Integration",
@@ -83,10 +82,10 @@ const ghlSkills = [
     icon: BarChart3
   },
   {
-    title: "Team & Contractor Management",
-    description: "Hired, trained, and managed AI-capable support staff and contractors responsible for system maintenance, content operations, and prompt workflows.",
-    highlight: "Process documentation & SOPs",
-    icon: Users
+    title: "AI Video Post-Production",
+    description: "Whisper transcription, Claude edit-brain take selection, waveform-snapped cuts, and word-timed karaoke captions — raw creator footage into an editable Premiere timeline.",
+    highlight: "7 hours of pre-production → 5 minutes",
+    icon: Clapperboard
   }
 ];
 

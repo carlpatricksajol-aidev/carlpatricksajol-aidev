@@ -25,6 +25,12 @@ const tools = [
   { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/white" },
   { name: "ActiveCampaign", logo: "https://cdn.simpleicons.org/activecampaign/white" },
   { name: "Google Workspace", logo: "https://cdn.simpleicons.org/google/white" },
+  { name: "Higgsfield", logo: "" },
+  { name: "Nano Banana Pro", logo: "https://cdn.simpleicons.org/googlegemini/white" },
+  { name: "Seedance", logo: "https://cdn.simpleicons.org/bytedance/white" },
+  { name: "KIE.ai", logo: "" },
+  { name: "Gemini", logo: "https://cdn.simpleicons.org/googlegemini/white" },
+  { name: "FFmpeg", logo: "https://cdn.simpleicons.org/ffmpeg/white" },
 ];
 
 const ToolsMarquee = () => {
@@ -56,22 +62,22 @@ const ToolsMarquee = () => {
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
         
-        <div className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused]">
+        <div className="flex gap-6 w-max animate-scroll-left hover:[animation-play-state:paused]">
           {/* Duplicate the array twice for seamless loop */}
           {[...tools, ...tools].map((tool, index) => (
             <div
               key={index}
               className="flex-shrink-0 px-6 py-4 glass-card rounded-xl text-foreground font-medium whitespace-nowrap hover:glow-effect transition-all duration-300 flex items-center gap-3"
             >
-              <img 
-                src={tool.logo} 
+              {tool.logo && <img
+                src={tool.logo}
                 alt={tool.name} 
                 className="h-5 w-5 object-contain"
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
                 }}
-              />
+              />}
               <span>{tool.name}</span>
             </div>
           ))}

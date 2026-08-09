@@ -22,10 +22,11 @@ const experiences = [
     period: "Aug 2025 – Present",
     icon: Rocket,
     responsibilities: [
-      "Designed fully autonomous content creator sourcing and contracting system using Claude Code — zero manual handoffs",
-      "Built lead scraping & enrichment, onboarding automation, database processing, and proposal/payment workflows",
-      "Set up HubSpot CRM from scratch — lead management, workflow automation, survey forms, and pipeline routing",
-      "Architected internal database infrastructure in Supabase for creator lifecycle management"
+      "Architected the SA1 → SA2 → SA3 automated ad production pipeline — client intake through competitor research, concept generation, scriptwriting, and delivery with zero manual handoffs",
+      "Built the AI Static Ads Generator: concept-first batches of up to 50 on-brand statics with a vision-QA gate (Claude + Nano Banana Pro via KIE.ai)",
+      "Shipped the AI Video Editor: raw creator footage → a ~90% cut Premiere timeline, compressing ~7 hours of pre-production into a 5-minute automated job",
+      "Designed two-tier AI video production across Higgsfield and kie.ai, routing each concept to the right model tier for bulk versus hero-quality output",
+      "Designed fully autonomous creator sourcing and contracting via Claude Code, backed by HubSpot CRM and Supabase infrastructure built from scratch"
     ]
   },
   {

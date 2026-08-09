@@ -5,6 +5,9 @@ import About from "@/components/About";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import Projects from "@/components/Projects";
 import AnimatedProjects from "@/components/AnimatedProjects";
+import CreativeStudio from "@/components/CreativeStudio";
+import StaticAdsShowcase from "@/components/StaticAdsShowcase";
+import VideoAdsShowcase from "@/components/VideoAdsShowcase";
 import Testimonials from "@/components/Testimonials";
 import GHLExpertise from "@/components/GHLExpertise";
 import MarketingExperience from "@/components/MarketingExperience";
@@ -52,6 +55,15 @@ const Index = () => {
       </ParallaxSection>
       <ParallaxSection speed={-0.08}>
         <AnimatedProjects />
+      </ParallaxSection>
+      <ParallaxSection speed={0.07}>
+        <CreativeStudio />
+      </ParallaxSection>
+      <ParallaxSection speed={-0.06}>
+        <StaticAdsShowcase />
+      </ParallaxSection>
+      <ParallaxSection speed={0.08}>
+        <VideoAdsShowcase />
       </ParallaxSection>
       <ParallaxSection speed={0.06}>
         <Testimonials />

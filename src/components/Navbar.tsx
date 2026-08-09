@@ -23,7 +23,8 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "About", id: "about" },
-    { label: "Workflows", id: "projects-animated" },
+    { label: "Automation", id: "projects-animated" },
+    { label: "Creative AI", id: "creative-ai" },
     { label: "Experience", id: "ghl-expertise" },
     { label: "Contact", id: "contact" },
   ];

@@ -42,9 +42,13 @@ const About = () => {
             <span className="font-semibold">Claude Code agent systems</span>, and multi-agent pipelines deployed 
             operationally in Slack. Expert in{" "}
             <span className="font-semibold">HubSpot CRM workflows</span>, pipeline automation, lead qualification 
-            systems, and CRM-integrated tooling. Proven builder of practical business systems — from lead scraping 
+            systems, and CRM-integrated tooling. Proven builder of practical business systems — from lead scraping
             and enrichment to proposal delivery, payment processing, and CRM storage — with{" "}
-            <span className="font-semibold text-foreground">zero manual handoffs</span>.
+            <span className="font-semibold text-foreground">zero manual handoffs</span>. And a second craft
+            built at Creative Abundance:{" "}
+            <span className="font-semibold text-foreground">creative AI automation</span> — multi-model
+            pipelines across <span className="font-semibold">Nano Banana Pro, Higgsfield, Seedance, and kie.ai</span>{" "}
+            that concept, generate, quality-gate, and deliver finished static and video ad campaigns for real clients.
           </p>
 
           {/* Stats Grid */}

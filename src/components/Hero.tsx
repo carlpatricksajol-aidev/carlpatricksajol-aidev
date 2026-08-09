@@ -43,13 +43,14 @@ const Hero = () => {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                 Automate Your
                 <span className="block text-gradient-purple overflow-visible" style={{ minHeight: '1.2em' }}>
-                  <FlipWords words={["AI Agent Systems", "CRM Pipelines", "Lead Generation", "Business Ops"]} />
+                  <FlipWords words={["AI Agent Systems", "Ad Creatives", "CRM Pipelines", "AI Video Ads", "Business Ops"]} />
                 </span>
               </h1>
               
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                I build production-grade Claude MCP servers, AI agent systems, and multi-agent pipelines 
-                that eliminate manual handoffs and transform your operations into intelligent, automated workflows.
+                Two years of production-grade automation — Claude MCP servers, AI agent systems, and
+                multi-agent pipelines with zero manual handoffs. And a creative AI studio that turns
+                a product photo into finished, delivered ad campaigns.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -61,14 +62,14 @@ const Hero = () => {
                   Book a Call
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button 
+                <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => scrollToSection("projects-animated")}
+                  onClick={() => scrollToSection("creative-ai")}
                   className="border-2 border-border text-foreground hover:bg-muted/50 h-14 px-8 text-base glass"
                 >
                   <Play className="mr-2 h-5 w-5" />
-                  View My Work
+                  Explore Creative AI
                 </Button>
               </div>
 
@@ -83,8 +84,8 @@ const Hero = () => {
                   <p className="text-sm text-muted-foreground">Hours Saved</p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-foreground">20+</div>
-                  <p className="text-sm text-muted-foreground">Platforms</p>
+                  <div className="text-3xl font-bold text-foreground">100+</div>
+                  <p className="text-sm text-muted-foreground">AI Ad Creatives</p>
                 </div>
               </div>
             </div>
