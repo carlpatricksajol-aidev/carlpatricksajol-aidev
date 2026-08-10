@@ -102,16 +102,17 @@ export interface VideoAd {
   duration: string;
 }
 
-/** symple-stitched is excluded: its 720x1254 delivery is an upscale of a
- *  496x864 master and it breaks the 9:16 grid. */
+/** One clip was excluded: its delivery file was an upscale of a much smaller
+ *  master and it broke the 9:16 grid. Filenames are deliberately neutral —
+ *  a public asset path is copy too, and client names must not leak through it. */
 export const videoAds: VideoAd[] = [
-  { src: "/showcase/videos/adr-same-person-skit.mp4", poster: "/showcase/posters/adr-same-person-skit.jpg", title: "Talking to my past self", format: "Same-person skit", duration: "0:40" },
-  { src: "/showcase/videos/adr-street-interview.mp4", poster: "/showcase/posters/adr-street-interview.jpg", title: "Street interview", format: "Multi-person interview", duration: "0:45" },
-  { src: "/showcase/videos/adr-googling-debt.mp4", poster: "/showcase/posters/adr-googling-debt.jpg", title: "Search-intent open", format: "UGC presenter", duration: "0:41" },
-  { src: "/showcase/videos/adr-incar-rant.mp4", poster: "/showcase/posters/adr-incar-rant.jpg", title: "In-car rant", format: "UGC, sound-on", duration: "0:34" },
-  { src: "/showcase/videos/adr-trustpilot.mp4", poster: "/showcase/posters/adr-trustpilot.jpg", title: "Review scroll", format: "Social proof", duration: "0:46" },
-  { src: "/showcase/videos/adr-rapid-fire.mp4", poster: "/showcase/posters/adr-rapid-fire.jpg", title: "Rapid-fire Q&A", format: "Platform-native pacing", duration: "1:04" },
-  { src: "/showcase/videos/pixar-onsen.mp4", poster: "/showcase/posters/pixar-onsen.jpg", title: "Animated product concept", format: "3D stylised", duration: "0:14" },
+  { src: "/showcase/videos/video-01-same-person-skit.mp4", poster: "/showcase/posters/video-01-same-person-skit.jpg", title: "Talking to my past self", format: "Same-person skit", duration: "0:40" },
+  { src: "/showcase/videos/video-02-street-interview.mp4", poster: "/showcase/posters/video-02-street-interview.jpg", title: "Street interview", format: "Multi-person interview", duration: "0:45" },
+  { src: "/showcase/videos/video-03-search-intent-open.mp4", poster: "/showcase/posters/video-03-search-intent-open.jpg", title: "Search-intent open", format: "UGC presenter", duration: "0:41" },
+  { src: "/showcase/videos/video-04-in-car-rant.mp4", poster: "/showcase/posters/video-04-in-car-rant.jpg", title: "In-car rant", format: "UGC, sound-on", duration: "0:34" },
+  { src: "/showcase/videos/video-05-review-scroll.mp4", poster: "/showcase/posters/video-05-review-scroll.jpg", title: "Review scroll", format: "Social proof", duration: "0:46" },
+  { src: "/showcase/videos/video-06-rapid-fire.mp4", poster: "/showcase/posters/video-06-rapid-fire.jpg", title: "Rapid-fire Q&A", format: "Platform-native pacing", duration: "1:04" },
+  { src: "/showcase/videos/video-07-animated-concept.mp4", poster: "/showcase/posters/video-07-animated-concept.jpg", title: "Animated product concept", format: "3D stylised", duration: "0:14" },
 ];
 
 export interface StaticAd {
@@ -121,17 +122,17 @@ export interface StaticAd {
 }
 
 export const staticAds: StaticAd[] = [
-  { src: "/showcase/ads/adr-napkin-math.webp", title: "Napkin math", concept: "The saving worked out by hand" },
-  { src: "/showcase/ads/adr-sticky-note.webp", title: "Sticky note", concept: "A note left on the fridge" },
-  { src: "/showcase/ads/adr-crayon-free.webp", title: "Crayon drawing", concept: "The emotional angle, drawn by a child" },
-  { src: "/showcase/ads/adr-vintage-poster.webp", title: "Vintage poster", concept: "Retro travel poster treatment" },
-  { src: "/showcase/ads/adr-keep-coming.webp", title: "Notification stack", concept: "The scroll-stopper" },
-  { src: "/showcase/ads/adr-sticky-wall.webp", title: "Wall of bills", concept: "Density as the message" },
-  { src: "/showcase/ads/adr-three-panel.webp", title: "Three panel", concept: "Before, during, after" },
-  { src: "/showcase/ads/adr-breaking-chains.webp", title: "Breaking chains", concept: "Freedom as visual metaphor" },
-  { src: "/showcase/ads/adr-consolidate-grid.webp", title: "Consolidation grid", concept: "Many bills into one" },
-  { src: "/showcase/ads/adr-magnet-payment.webp", title: "One-payment magnet", concept: "Payments pulled together" },
-  { src: "/showcase/ads/adr-magnet-wrecking.webp", title: "Wrecking ball", concept: "High-concept imagery" },
+  { src: "/showcase/ads/static-01-napkin-math.webp", title: "Napkin math", concept: "The saving worked out by hand" },
+  { src: "/showcase/ads/static-02-sticky-note.webp", title: "Sticky note", concept: "A note left on the fridge" },
+  { src: "/showcase/ads/static-03-crayon-drawing.webp", title: "Crayon drawing", concept: "The emotional angle, drawn by a child" },
+  { src: "/showcase/ads/static-04-vintage-poster.webp", title: "Vintage poster", concept: "Retro travel poster treatment" },
+  { src: "/showcase/ads/static-05-notification-stack.webp", title: "Notification stack", concept: "The scroll-stopper" },
+  { src: "/showcase/ads/static-06-wall-of-bills.webp", title: "Wall of bills", concept: "Density as the message" },
+  { src: "/showcase/ads/static-07-three-panel.webp", title: "Three panel", concept: "Before, during, after" },
+  { src: "/showcase/ads/static-08-breaking-chains.webp", title: "Breaking chains", concept: "Freedom as visual metaphor" },
+  { src: "/showcase/ads/static-09-consolidation-grid.webp", title: "Consolidation grid", concept: "Many bills into one" },
+  { src: "/showcase/ads/static-10-one-payment-magnet.webp", title: "One-payment magnet", concept: "Payments pulled together" },
+  { src: "/showcase/ads/static-11-wrecking-ball.webp", title: "Wrecking ball", concept: "High-concept imagery" },
 ];
 
 export type Status = "Live in production" | "Piloted, not scaled" | "Private beta" | "Built, not yet run end to end";
@@ -183,9 +184,9 @@ export const caseStudies: CaseStudy[] = [
       "The obvious build is a pipeline that renders a finished video. That was rejected on day one, and the whole architecture follows from rejecting it.",
     constraint: "The output must be an editable timeline, never a render, because a render cannot be fixed.",
     build: [
-      { title: "Read the storyboard as pasted", body: "Parses the strategist's Notion storyboard table in whatever shape it arrives, rather than demanding a format nobody will maintain." },
+      { title: "Read the storyboard from Notion", body: "Parses the strategist's storyboard table by column header rather than by position, so an added column doesn't break the run." },
       { title: "Transcribe every take to the word", body: "faster-whisper produces word-level timings across all takes, so the pipeline knows what was said and exactly when." },
-      { title: "Choose the best delivery per line", body: "Claude matches each scripted line to its strongest take, which is the one genuinely judgement-heavy step in the process." },
+      { title: "Match every line to its take", body: "Each scripted line is matched deterministically against the word-level transcript of every take, so the selection is reproducible and can be audited rather than re-rolled." },
       { title: "Cut on the waveform, not the transcript", body: "Every cut snaps to the real speech boundary in the audio and lead breath is trimmed by waveform, because transcript times are approximate and the drift accumulates." },
       { title: "Build captions from what was actually said", body: "Karaoke captions are generated from the transcript, so a caption can never show a word the talent did not say." },
       { title: "Write a timeline, not a video", body: "Outputs FCP7/XMEML plus a burned preview. Each source appears once in the bin at full length and is reused on the timeline, so any cut can be re-trimmed instead of re-shot." },
@@ -202,7 +203,7 @@ export const caseStudies: CaseStudy[] = [
       "It is live but piloted — not yet the standard production workflow.",
     ],
     stack: ["Python", "ffmpeg", "faster-whisper", "Claude via OpenRouter", "FCP7 / XMEML", "Docker", "Traefik", "Dropbox API", "n8n"],
-    hero: { type: "video", src: "/showcase/videos/adr-same-person-skit.mp4", poster: "/showcase/posters/adr-same-person-skit.jpg", caption: "A finished ad assembled through the pipeline" },
+    hero: { type: "video", src: "/showcase/videos/video-01-same-person-skit.mp4", poster: "/showcase/posters/video-01-same-person-skit.jpg", caption: "A delivered ad in the format the pipeline was built to cut" },
   },
   {
     slug: "static-ads-service",
@@ -228,8 +229,8 @@ export const caseStudies: CaseStudy[] = [
     constraint: "Anything that cannot clear 7/10 unattended is dropped rather than shipped broken.",
     build: [
       { title: "Claude directs, once per batch", body: "A creative-director pass decides the angle, format and headline for each ad before anything is rendered, so the concept leads instead of the template." },
-      { title: "Text and logos render deterministically", body: "Headlines, CTAs and logos are drawn in HTML/CSS through local headless Chrome. Type is always crisp and the real logo is composited, never redrawn by a model." },
-      { title: "The image model only paints scenery", body: "It generates a background scene, with the client's real product cutout placed on top — so the product is the actual product." },
+      { title: "Render text and logos as code where it counts", body: "In the HTML lane, headlines, CTAs and logos are drawn in HTML/CSS through local headless Chrome, so type is crisp and the real logo is composited rather than redrawn. A second photoreal lane trades that for image-model output when the concept needs it." },
+      { title: "Ground the imagery in the real product", body: "Scenes are generated image-to-image from the client's own product photo rather than described from scratch." },
       { title: "Brand comes from the brand's own site", body: "Colours and fonts are scanned from the client's website, and logo placement is decided per ad so it never covers the call to action." },
       { title: "A vision pass scores every render", body: "Each output is graded and retried. Anything that cannot clear the bar unattended is dropped, which means a 15-template request can legitimately return fewer than 15." },
     ],
@@ -243,7 +244,7 @@ export const caseStudies: CaseStudy[] = [
       "Premium and hero creative still wants a human in the loop.",
     ],
     stack: ["Node", "puppeteer-core", "headless Chrome", "Claude via OpenRouter", "Supabase", "KIE.ai", "HTML/CSS render engine"],
-    hero: { type: "mat", src: "/showcase/ads/adr-napkin-math.webp", caption: "A finished static that cleared the gate" },
+    hero: { type: "mat", src: "/showcase/ads/static-01-napkin-math.webp", caption: "A delivered static in one of the high-signal formats" },
   },
   {
     slug: "creative-os",
@@ -283,7 +284,7 @@ export const caseStudies: CaseStudy[] = [
       "Private beta, not open to the public.",
     ],
     stack: ["n8n", "Claude via OpenRouter", "KIE.ai", "Whisper via Groq", "ffmpeg", "Vercel"],
-    hero: { type: "video", src: "/showcase/videos/pixar-onsen.mp4", poster: "/showcase/posters/pixar-onsen.jpg", caption: "A generated product ad concept" },
+    hero: { type: "video", src: "/showcase/videos/video-07-animated-concept.mp4", poster: "/showcase/posters/video-07-animated-concept.jpg", caption: "A generated product ad concept" },
   },
   {
     slug: "mcp-and-agents",

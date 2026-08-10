@@ -137,8 +137,12 @@ export const MetricRow = ({
   items: { value: string; caption: string }[];
   tone?: "light" | "ink";
 }) => (
+  // column count must follow the item count, or the trailing empty cells expose
+  // the rule-grid's border-coloured background as a solid block
   <dl
-    className={`rule-grid grid grid-cols-2 ${items.length === 3 ? "sm:grid-cols-3" : "lg:grid-cols-4"}`}
+    className={`rule-grid grid grid-cols-2 ${
+      items.length === 2 ? "" : items.length === 3 ? "sm:grid-cols-3" : "lg:grid-cols-4"
+    }`}
     style={tone === "ink" ? { background: "hsl(var(--border-default) / 0.14)" } : undefined}
   >
     {items.map((m) => (

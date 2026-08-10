@@ -17,7 +17,7 @@
     /* --- surfaces --- */
     --surface-base: 240 20% 99%;      /* #FCFCFD  off-white: keeps hairlines visible */
     --surface-raised: 0 0% 100%;      /* #FFFFFF  cards, sticky bar */
-    --surface-sunken: 220 16% 96%;    /* #F4F5F7  mats, wells, pull-outs */
+    --surface-sunken: 220 16% 96%;    /* #F3F4F6  mats, wells, pull-outs */
     --surface-ink: 220 18% 7%;        /* #0E1014  the one dark band */
     --surface-ink-raised: 223 14% 10%;/* #16181D  tiles + phone bezels on ink */
 
@@ -30,7 +30,9 @@
     /* --- text --- */
     --text-primary: 223 14% 10%;      /* #16181D  17.3:1 */
     --text-secondary: 219 9% 32%;     /* #4A4F58   8.1:1 — default reading colour */
-    --text-tertiary: 220 9% 46%;      /* #6B7280   4.72:1 FLOOR — one line only */
+    /* Darkened from 46%: at 46% this cleared 4.5:1 on --surface-base but fell to
+       4.39:1 on --surface-sunken, where it is also used. Sized for the worse ground. */
+    --text-tertiary: 220 9% 41%;      /* #5E6472   >=4.5:1 on base AND sunken */
     --text-on-ink: 220 11% 94%;       /* #EDEFF2  ~15:1 on ink */
     --text-on-ink-secondary: 218 11% 69%; /* #A8AEB8 ~8:1 */
     --text-on-ink-tertiary: 217 8% 55%;   /* #868D97 ~5.2:1 floor */
@@ -93,6 +95,14 @@
     --background: var(--surface-ink);
     --foreground: var(--text-on-ink);
     --border: 0 0% 100%;
+    /* shadcn tokens must follow the override too, or controls rendered inside
+       the band keep the light-ground accent and their focus rings fail contrast. */
+    --ring: var(--accent-400);
+    --primary: var(--accent-400);
+    --primary-foreground: var(--surface-ink);
+    --muted-foreground: var(--text-on-ink-tertiary);
+    --popover: var(--surface-ink-raised);
+    --popover-foreground: var(--text-on-ink);
   }
 
   * {
@@ -101,6 +111,13 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* the sticky header is 56px; without this every in-page anchor lands its
+       target underneath it and clips the section eyebrow */
+    scroll-padding-top: 5rem;
+  }
+
+  [id] {
+    scroll-margin-top: 5rem;
   }
 
   body {

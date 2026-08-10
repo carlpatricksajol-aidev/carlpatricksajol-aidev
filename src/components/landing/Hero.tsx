@@ -52,6 +52,7 @@ const Hero = () => {
                   width={900}
                   height={1600}
                   className="aspect-[9/16] w-full object-cover"
+                  style={{ objectPosition: "top" }}
                   loading="eager"
                   decoding="async"
                 />

@@ -12,12 +12,29 @@ export const SiteHeader = ({
   centerLabel?: string;
 }) => {
   const [scrolled, setScrolled] = useState(false);
+  // The header must adopt the tone of whatever is behind it. Left light over the
+  // ink band it renders as an opaque grey slab meeting near-black at a hard
+  // full-width edge — a seam parked on screen for the whole gallery chapter.
+  const [overInk, setOverInk] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const band = document.querySelector<HTMLElement>('[data-tone="ink"]');
+      if (!band) {
+        setOverInk(false);
+        return;
+      }
+      const r = band.getBoundingClientRect();
+      setOverInk(r.top <= 56 && r.bottom >= 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const nav = [
@@ -27,10 +44,15 @@ export const SiteHeader = ({
 
   return (
     <header
+      data-tone={overInk ? "ink" : undefined}
       className={`sticky top-0 z-50 h-14 transition-colors duration-180 ${
         scrolled ? "border-b border-line-subtle" : "border-b border-transparent"
       }`}
-      style={{ background: "hsl(var(--surface-base) / 0.88)", backdropFilter: "blur(12px)" }}
+      style={{
+        background: overInk ? "hsl(var(--surface-ink) / 0.82)" : "hsl(var(--surface-base) / 0.88)",
+        backdropFilter: "blur(12px)",
+        color: overInk ? "hsl(var(--text-on-ink))" : undefined,
+      }}
     >
       <div className="w-shell gutter flex h-14 items-center justify-between gap-s4">
         {backTo ? (
@@ -65,11 +87,13 @@ export const SiteHeader = ({
               ))}
             </nav>
           )}
+          {/* outlined, not filled: the page's focal budget allows one saturated
+              accent fill per viewport, and the hero / final CTA own it */}
           <a
             href={profile.calendly}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-9 items-center rounded-sm bg-brand-600 px-s4 text-[0.8125rem] font-medium text-white transition-colors duration-120 ease-out hover:bg-brand-700"
+            className="inline-flex h-9 items-center rounded-sm border border-line-interactive px-s4 text-[0.8125rem] font-medium text-ink transition-colors duration-120 ease-out hover:bg-surface-sunken"
           >
             Book a call
           </a>
@@ -98,7 +122,8 @@ export const SiteFooter = () => (
     </div>
     <div className="w-shell gutter pb-s8">
       <p className="t-step--2 text-ink-tertiary">
-        © {new Date().getFullYear()} {profile.name}. Client creative shown with permission of the agency that produced it.
+        © {new Date().getFullYear()} {profile.name}. Brand marks belong to their owners and are shown
+        to identify the platforms worked with.
       </p>
     </div>
   </footer>
@@ -107,7 +132,10 @@ export const SiteFooter = () => (
 export const Page = ({ children, header }: { children: ReactNode; header?: ReactNode }) => (
   <div className="min-h-screen bg-surface">
     {header ?? <SiteHeader />}
-    <main id="main">{children}</main>
+    {/* tabIndex=-1 so the skip link actually moves focus, not just the hash */}
+    <main id="main" tabIndex={-1} className="outline-none">
+      {children}
+    </main>
     <SiteFooter />
   </div>
 );

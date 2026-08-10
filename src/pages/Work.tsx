@@ -77,13 +77,15 @@ const Work = () => {
         </div>
       </div>
 
-      <div className="w-shell gutter section">
+      <div className="w-shell gutter pb-s10 pt-s8">
         <ul className="border-t border-line">
           {visible.map((r) => {
             const inner = (
               <>
                 <span className="min-w-0">
-                  <span className="t-step-2 block text-ink">{r.title}</span>
+                  {/* a real h2 so the page has a heading outline a screen reader
+                      (and the headings-only scan test) can actually use */}
+                  <h2 className="t-step-2 text-ink">{r.title}</h2>
                   <span className="t-step-0 mt-1 block max-w-[62ch] text-ink-secondary">{r.note}</span>
                   <span className="mt-s3 flex flex-wrap items-center gap-x-s3 gap-y-1">
                     {r.status && (

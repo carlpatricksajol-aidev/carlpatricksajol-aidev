@@ -15,10 +15,6 @@ const CaseStudy = () => {
   const study = caseStudies[index];
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-
-  useEffect(() => {
     if (!study) return;
     const previous = document.title;
     document.title = `${study.title} — ${profile.name}`;
@@ -36,7 +32,7 @@ const CaseStudy = () => {
     <div className="min-h-screen bg-surface">
       <SiteHeader backTo={{ to: "/work", label: "Work" }} centerLabel={study.title} />
 
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none">
         {/* 1 — header */}
         <header className="w-shell gutter pt-s9 md:pt-s10">
           <div className="w-text">
@@ -145,7 +141,8 @@ const CaseStudy = () => {
         {/* 8 — what it doesn't do yet. Mandatory; never softened into a roadmap. */}
         <section className="w-shell gutter pb-s9" aria-labelledby="limits">
           <div className="w-wide rounded-lg border border-line bg-surface-sunken p-s6">
-            <h2 id="limits" className="t-step-2">What it doesn't do yet</h2>
+            {/* ranked with its siblings: this is a peer section, not a footnote */}
+            <h2 id="limits" className="t-step-3">What it doesn't do yet</h2>
             <ul className="mt-s4 space-y-s3">
               {study.limits.map((l) => (
                 <li key={l} className="grid grid-cols-[16px_1fr] gap-s3">
@@ -158,8 +155,10 @@ const CaseStudy = () => {
         </section>
 
         {/* 9 — stack, at the bottom */}
+        {/* "Built with" is genuinely subordinate, so it is a label rather than a
+            heading — the heading outline should not list it as a peer section */}
         <section className="w-shell gutter pb-s9" aria-labelledby="stack">
-          <h2 id="stack" className="t-step--2 text-ink-tertiary">Built with</h2>
+          <p id="stack" className="t-step--2 text-ink-tertiary">Built with</p>
           <ul className="mt-s4 flex flex-wrap gap-s2">
             {study.stack.map((s) => (
               <li key={s} className="rounded-xs border border-line bg-surface-raised px-s3 py-1.5">

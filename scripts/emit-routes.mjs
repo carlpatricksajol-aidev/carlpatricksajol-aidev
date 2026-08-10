@@ -24,12 +24,28 @@ if (!existsSync(manifest)) {
 const indexHtml = readFileSync(join(dist, "index.html"), "utf8");
 const routes = JSON.parse(readFileSync(manifest, "utf8"));
 
+const ORIGIN = "https://carlpatricksajol-aidev.onrender.com";
+
+// A byte-identical copy would make every deep-link page advertise the site root
+// as its canonical URL, telling crawlers the five case studies are duplicates
+// of the homepage. Rewrite the per-page URLs.
+const forRoute = (html, route) =>
+  html
+    .replace(
+      /<link rel="canonical" href="[^"]*"\s*\/?>/,
+      `<link rel="canonical" href="${ORIGIN}${route}" />`
+    )
+    .replace(
+      /<meta property="og:url" content="[^"]*"\s*\/?>/,
+      `<meta property="og:url" content="${ORIGIN}${route}" />`
+    );
+
 let count = 0;
 for (const route of routes) {
   if (route === "/") continue; // already emitted by Vite
   const dir = join(dist, route.replace(/^\//, ""));
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, "index.html"), indexHtml);
+  writeFileSync(join(dir, "index.html"), forRoute(indexHtml, route));
   count++;
 }
 
