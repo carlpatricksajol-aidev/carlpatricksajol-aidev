@@ -1,0 +1,451 @@
+/**
+ * Single source of truth for every fact on the site.
+ *
+ * Two rules govern this file:
+ *  1. Nothing here may be stated that the working repos don't evidence. Numbers
+ *     that are self-reported without an artefact are recorded in `unverified`
+ *     and phrased as scope on the page, never as measured outcomes.
+ *  2. Client names are anonymised. They are internal working names from an
+ *     agency repo, not cleared public references.
+ */
+
+export const profile = {
+  name: "Carl Patrick Sajol",
+  role: "AI Automation & Platform Manager",
+  email: "carlpatricksajol@gmail.com",
+  calendly: "https://calendly.com/carlpatricksajol/30min",
+  location: "Remote · Philippines",
+  available: true,
+};
+
+/** Four numbers, each traceable to a system that is actually running. */
+export const proofMetrics = [
+  { value: "~5 min", caption: "end-to-end rough cut, first real client job", note: "7 scenes, 1.2 GB of footage" },
+  { value: "7 / 10", caption: "minimum QA score before a static ad ships", note: "sub-bar ads are dropped, not delivered" },
+  { value: "$3.08", caption: "cost of one finished 15-second video ad", note: "at 720p" },
+  { value: "Jul 2026", caption: "in production since — not a demo", note: "password-gated, queued, monitored" },
+];
+
+export interface Track {
+  id: string;
+  number: string;
+  label: string;
+  title: string;
+  body: string;
+  meta: string;
+  capabilities: string[];
+  href: string;
+  linkLabel: string;
+}
+
+export const tracks: Track[] = [
+  {
+    id: "automation",
+    number: "01",
+    label: "Business & ops automation",
+    title: "The systems your team already runs on, wired to AI",
+    body: "Custom MCP servers and Claude Code agents that read your real data and write back where the work already happens — Slack, Notion, Airtable, HubSpot, Supabase.",
+    meta: "2+ years · running in production",
+    capabilities: [
+      "Claude MCP servers exposing internal SDKs, databases and attribution data",
+      "Claude Code agent systems and specialist agents deployed in Slack",
+      "n8n pipelines, HubSpot and GoHighLevel CRM automation, Notion / Airtable / Supabase plumbing",
+    ],
+    href: "/work?track=automation",
+    linkLabel: "See the operations systems",
+  },
+  {
+    id: "creative",
+    number: "02",
+    label: "Creative AI production",
+    title: "Pipelines that hand back finished ads, not prompts",
+    body: "Concept, generate, quality-gate and deliver — static and video ad creative produced end to end by systems built inside a working ad agency.",
+    meta: "Built at an ad agency · since Aug 2025",
+    capabilities: [
+      "Static ads that must clear a measurable QA score before they ship",
+      "Raw creator footage in, an editable Premiere timeline out",
+      "One product photo in, a captioned 15-second vertical ad out",
+    ],
+    href: "/work?track=creative",
+    linkLabel: "See the creative work",
+  },
+];
+
+/** 18 cells. Marks that exist in the icon set; wordmark chips for the rest —
+ *  tracing or generating a brand's mark would be legally worse than naming it. */
+export const platformField: { key?: string; word?: string; name: string }[] = [
+  { key: "anthropic", name: "Anthropic Claude" },
+  { key: "n8n", name: "n8n" },
+  { word: "Seedance 2", name: "Seedance 2" },
+  { key: "supabase", name: "Supabase" },
+  { key: "meta", name: "Meta" },
+  { key: "notion", name: "Notion" },
+  { key: "openai", name: "OpenAI" },
+  { word: "Higgsfield", name: "Higgsfield" },
+  { key: "airtable", name: "Airtable" },
+  { key: "tiktok", name: "TikTok" },
+  { key: "slack", name: "Slack" },
+  { word: "KIE.ai", name: "KIE.ai" },
+  { key: "googlegemini", name: "Google Gemini" },
+  { key: "hubspot", name: "HubSpot" },
+  { key: "dropbox", name: "Dropbox" },
+  { word: "Whisper", name: "Whisper" },
+  { key: "docker", name: "Docker" },
+  { key: "adobepremierepro", name: "Adobe Premiere Pro" },
+];
+
+export interface VideoAd {
+  src: string;
+  poster: string;
+  title: string;
+  format: string;
+  duration: string;
+}
+
+/** symple-stitched is excluded: its 720x1254 delivery is an upscale of a
+ *  496x864 master and it breaks the 9:16 grid. */
+export const videoAds: VideoAd[] = [
+  { src: "/showcase/videos/adr-same-person-skit.mp4", poster: "/showcase/posters/adr-same-person-skit.jpg", title: "Talking to my past self", format: "Same-person skit", duration: "0:40" },
+  { src: "/showcase/videos/adr-street-interview.mp4", poster: "/showcase/posters/adr-street-interview.jpg", title: "Street interview", format: "Multi-person interview", duration: "0:45" },
+  { src: "/showcase/videos/adr-googling-debt.mp4", poster: "/showcase/posters/adr-googling-debt.jpg", title: "Search-intent open", format: "UGC presenter", duration: "0:41" },
+  { src: "/showcase/videos/adr-incar-rant.mp4", poster: "/showcase/posters/adr-incar-rant.jpg", title: "In-car rant", format: "UGC, sound-on", duration: "0:34" },
+  { src: "/showcase/videos/adr-trustpilot.mp4", poster: "/showcase/posters/adr-trustpilot.jpg", title: "Review scroll", format: "Social proof", duration: "0:46" },
+  { src: "/showcase/videos/adr-rapid-fire.mp4", poster: "/showcase/posters/adr-rapid-fire.jpg", title: "Rapid-fire Q&A", format: "Platform-native pacing", duration: "1:04" },
+  { src: "/showcase/videos/pixar-onsen.mp4", poster: "/showcase/posters/pixar-onsen.jpg", title: "Animated product concept", format: "3D stylised", duration: "0:14" },
+];
+
+export interface StaticAd {
+  src: string;
+  title: string;
+  concept: string;
+}
+
+export const staticAds: StaticAd[] = [
+  { src: "/showcase/ads/adr-napkin-math.webp", title: "Napkin math", concept: "The saving worked out by hand" },
+  { src: "/showcase/ads/adr-sticky-note.webp", title: "Sticky note", concept: "A note left on the fridge" },
+  { src: "/showcase/ads/adr-crayon-free.webp", title: "Crayon drawing", concept: "The emotional angle, drawn by a child" },
+  { src: "/showcase/ads/adr-vintage-poster.webp", title: "Vintage poster", concept: "Retro travel poster treatment" },
+  { src: "/showcase/ads/adr-keep-coming.webp", title: "Notification stack", concept: "The scroll-stopper" },
+  { src: "/showcase/ads/adr-sticky-wall.webp", title: "Wall of bills", concept: "Density as the message" },
+  { src: "/showcase/ads/adr-three-panel.webp", title: "Three panel", concept: "Before, during, after" },
+  { src: "/showcase/ads/adr-breaking-chains.webp", title: "Breaking chains", concept: "Freedom as visual metaphor" },
+  { src: "/showcase/ads/adr-consolidate-grid.webp", title: "Consolidation grid", concept: "Many bills into one" },
+  { src: "/showcase/ads/adr-magnet-payment.webp", title: "One-payment magnet", concept: "Payments pulled together" },
+  { src: "/showcase/ads/adr-magnet-wrecking.webp", title: "Wrecking ball", concept: "High-concept imagery" },
+];
+
+export type Status = "Live in production" | "Piloted, not scaled" | "Private beta" | "Built, not yet run end to end";
+
+export interface CaseStudy {
+  slug: string;
+  track: "automation" | "creative";
+  trackLabel: string;
+  title: string;
+  oneLiner: string;
+  deck: string;
+  year: string;
+  role: string;
+  client: string;
+  status: Status;
+  metrics: { value: string; caption: string }[];
+  situation: string[];
+  constraintIntro: string;
+  constraint: string;
+  build: { title: string; body: string }[];
+  result: string[];
+  limits: string[];
+  stack: string[];
+  hero?: { type: "video" | "image" | "mat"; src: string; poster?: string; caption: string };
+}
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: "ai-video-editor",
+    track: "creative",
+    trackLabel: "Creative AI production",
+    title: "Raw creator footage in, an editable timeline out",
+    oneLiner: "Raw creator footage in, editable Premiere timeline out.",
+    deck: "An eleven-step pipeline that turns a folder of unsorted takes into a Premiere timeline an editor can actually finish.",
+    year: "2026",
+    role: "Sole architect and builder",
+    client: "Ad agency, in-house",
+    status: "Piloted, not scaled",
+    metrics: [
+      { value: "~5 min", caption: "first real client job, end to end" },
+      { value: "12 of 12", caption: "scenes verified caption-on-word" },
+      { value: "0.10s", caption: "caption lead-gap tolerance" },
+    ],
+    situation: [
+      "Cutting a paid-social ad is mostly mechanical work. Someone watches every take, finds the usable one, trims the heads and tails, lays b-roll against the right line of script, then types and times the captions.",
+      "It is high-volume and judgement-light, and it consumes most of the clock. The internal estimate for a single ad was roughly seven hours of pre-production spread across five or six freelancers — an estimate, never measured.",
+    ],
+    constraintIntro:
+      "The obvious build is a pipeline that renders a finished video. That was rejected on day one, and the whole architecture follows from rejecting it.",
+    constraint: "The output must be an editable timeline, never a render, because a render cannot be fixed.",
+    build: [
+      { title: "Read the storyboard as pasted", body: "Parses the strategist's Notion storyboard table in whatever shape it arrives, rather than demanding a format nobody will maintain." },
+      { title: "Transcribe every take to the word", body: "faster-whisper produces word-level timings across all takes, so the pipeline knows what was said and exactly when." },
+      { title: "Choose the best delivery per line", body: "Claude matches each scripted line to its strongest take, which is the one genuinely judgement-heavy step in the process." },
+      { title: "Cut on the waveform, not the transcript", body: "Every cut snaps to the real speech boundary in the audio and lead breath is trimmed by waveform, because transcript times are approximate and the drift accumulates." },
+      { title: "Build captions from what was actually said", body: "Karaoke captions are generated from the transcript, so a caption can never show a word the talent did not say." },
+      { title: "Write a timeline, not a video", body: "Outputs FCP7/XMEML plus a burned preview. Each source appears once in the bin at full length and is reused on the timeline, so any cut can be re-trimmed instead of re-shot." },
+    ],
+    result: [
+      "Live in production since 16 July 2026 behind HTTPS and a password gate, with a job queue, a jobs page with inline preview, disk cleanup and failure reporting.",
+      "The first real client job — seven scenes — finished in about five minutes including a 1.2 GB download. The motion designer imported and relinked the handoff on a second machine in one step and signed off on the format.",
+      "Sync was hardened over several rounds of real review: WAV instead of MP3 segments to kill accumulated encoder delay, frame-aligned durations, waveform lead-trim. Verified on all twelve scenes of a client ad.",
+    ],
+    limits: [
+      "Colour grade is not built.",
+      "Hook variants are parsed, but only Hook 1 is produced.",
+      "The 20-ad volume test has not been run.",
+      "It is live but piloted — not yet the standard production workflow.",
+    ],
+    stack: ["Python", "ffmpeg", "faster-whisper", "Claude via OpenRouter", "FCP7 / XMEML", "Docker", "Traefik", "Dropbox API", "n8n"],
+    hero: { type: "video", src: "/showcase/videos/adr-same-person-skit.mp4", poster: "/showcase/posters/adr-same-person-skit.jpg", caption: "A finished ad assembled through the pipeline" },
+  },
+  {
+    slug: "static-ads-service",
+    track: "creative",
+    trackLabel: "Creative AI production",
+    title: "Static ads that have to earn their way out the door",
+    oneLiner: "QA-gated static ads: only the passers ship, the rest drop.",
+    deck: "Concept-first generation with a vision-QA gate — so what reaches the client is the subset that scored, not everything the model produced.",
+    year: "2026",
+    role: "Sole architect and builder",
+    client: "Ad agency, in-house",
+    status: "Live in production",
+    metrics: [
+      { value: "7 / 10", caption: "minimum vision-QA score to ship" },
+      { value: "up to 50", caption: "renders per batch run" },
+    ],
+    situation: [
+      "The original version asked a single image model to render layout, imagery and text in one shot.",
+      "It produced garbled brand text on billboards, uncanny faces that changed between frames, soft crooked headlines baked into the pixels — and no real concept. Whichever template got picked was the idea.",
+    ],
+    constraintIntro:
+      "The fix was not a better prompt. It was noticing that one model was being asked to do three different jobs, and it was only good at one of them.",
+    constraint: "Anything that cannot clear 7/10 unattended is dropped rather than shipped broken.",
+    build: [
+      { title: "Claude directs, once per batch", body: "A creative-director pass decides the angle, format and headline for each ad before anything is rendered, so the concept leads instead of the template." },
+      { title: "Text and logos render deterministically", body: "Headlines, CTAs and logos are drawn in HTML/CSS through local headless Chrome. Type is always crisp and the real logo is composited, never redrawn by a model." },
+      { title: "The image model only paints scenery", body: "It generates a background scene, with the client's real product cutout placed on top — so the product is the actual product." },
+      { title: "Brand comes from the brand's own site", body: "Colours and fonts are scanned from the client's website, and logo placement is decided per ad so it never covers the call to action." },
+      { title: "A vision pass scores every render", body: "Each output is graded and retried. Anything that cannot clear the bar unattended is dropped, which means a 15-template request can legitimately return fewer than 15." },
+    ],
+    result: [
+      "Runs headless as a Node service beside n8n, fed by the existing intake form and asset library. Local rendering makes retries free, so the gate is cheap to enforce.",
+      "It performs best on high-signal formats — big-question, notes-app, statistic, testimonial, comparison — and drops dense templates more often. That trade is stated in the README rather than hidden.",
+    ],
+    limits: [
+      "Dense templates drop more often than high-signal ones.",
+      "A request for N ads can legitimately return fewer than N.",
+      "Premium and hero creative still wants a human in the loop.",
+    ],
+    stack: ["Node", "puppeteer-core", "headless Chrome", "Claude via OpenRouter", "Supabase", "KIE.ai", "HTML/CSS render engine"],
+    hero: { type: "mat", src: "/showcase/ads/adr-napkin-math.webp", caption: "A finished static that cleared the gate" },
+  },
+  {
+    slug: "creative-os",
+    track: "creative",
+    trackLabel: "Creative AI production",
+    title: "One product photo in, a finished vertical ad out",
+    oneLiner: "Product photo in, captioned fifteen-second vertical ad out.",
+    deck: "A self-serve generator that productises an agency's ad-making process — five fields and a photo, no strategist, no shoot.",
+    year: "2026",
+    role: "Sole architect and builder",
+    client: "Ad agency product",
+    status: "Private beta",
+    metrics: [
+      { value: "$3.08", caption: "per finished 15-second ad at 720p" },
+      { value: "~1 in 15", caption: "generations that come back weak" },
+    ],
+    situation: [
+      "The agency's ad-making expertise was human-limited. Every ad needed a strategist, a shoot or an editor, and a week of back-and-forth.",
+      "The bet was that productising that expertise could work as a front door for the agency — but only if the output was good enough that no client ever saw an embarrassing result.",
+    ],
+    constraintIntro:
+      "Video models garble rendered text. Every attempt to have the model produce captions failed the same way, so captions were moved out of generation entirely.",
+    constraint: "Captions may only ever show words that were actually spoken.",
+    build: [
+      { title: "Describe the product forensically", body: "A vision pass writes down every colour, material, label word and proportion — the single source of truth for what the product actually looks like." },
+      { title: "Run three roles in one pass", body: "A creative director picks the format and writes a twelve-beat script, a timing auditor does the arithmetic so nothing is cut off inside fifteen seconds, and a story director assigns shots." },
+      { title: "Generate against the real product", body: "Video generation is locked to a model tier proven to hold label fidelity; cheaper tiers garbled labels and one platform ignored the product photo entirely." },
+      { title: "Add captions in post, never in-model", body: "The finished clip is transcribed word by word, a vision pass decides where captions will not cover the product, and ffmpeg burns them in." },
+    ],
+    result: [
+      "Live in private beta with the full pipeline working end to end. Exact-product fidelity was the biggest fix and is proven on real products — a beverage can and a hardware device both rendered with legible labels.",
+      "Cost is roughly $3.08 per finished ad at 720p and $7.65 at 1080p.",
+    ],
+    limits: [
+      "About one generation in fifteen fails or comes back weak.",
+      "There is no automated quality gate yet — that is the next build.",
+      "Private beta, not open to the public.",
+    ],
+    stack: ["n8n", "Claude via OpenRouter", "KIE.ai", "Whisper via Groq", "ffmpeg", "Vercel"],
+    hero: { type: "video", src: "/showcase/videos/pixar-onsen.mp4", poster: "/showcase/posters/pixar-onsen.jpg", caption: "A generated product ad concept" },
+  },
+  {
+    slug: "mcp-and-agents",
+    track: "automation",
+    trackLabel: "Business & ops automation",
+    title: "Putting a company's own data inside Claude",
+    oneLiner: "Custom MCP servers that make internal systems first-class Claude tools.",
+    deck: "Model Context Protocol servers and Claude Code agents that let a team ask questions in natural language and get answers joined across systems that never talked to each other.",
+    year: "2025 – 2026",
+    role: "Architect and builder",
+    client: "Mobile app company · ad agency",
+    status: "Live in production",
+    metrics: [
+      { value: "10", caption: "MCP tools over an undocumented REST API" },
+      { value: "34", caption: "vendor flows retrievable with prompts intact" },
+      { value: "3", caption: "specialist agents deployed in Slack" },
+    ],
+    situation: [
+      "Answering a question about users, product behaviour and paid-acquisition performance meant a human joining three systems by hand every time — an internal SDK, a proprietary database, and an attribution platform. The data existed; the access path did not.",
+      "Separately, at the agency, a team's tuned master prompts and proven ad concepts were locked inside a third-party visual flow tool whose engine only runs while a browser tab is open. Nothing could be inspected, chained or iterated from outside its UI.",
+    ],
+    constraintIntro:
+      "Both problems have the same shape: the value is not the model, it is the plumbing. So the work was building access paths, not assistants.",
+    constraint: "The leverage is not the model — it is wiring AI into the systems the business already runs on.",
+    build: [
+      { title: "Expose internal systems as tools", body: "A production MCP server makes an internal SDK, a proprietary database and attribution data first-class Claude tools, with the agent infrastructure to use them unattended." },
+      { title: "Reverse-engineer what has no API docs", body: "For the creative platform, the undocumented REST API was mapped and wrapped as ten MCP tools — list flows, extract every master prompt, upload assets, generate, poll, and create pre-wired flows." },
+      { title: "Document the sharp edges in place", body: "Where the platform ignores reference images server-side, that is written down next to the tool that hits it, so the next person does not rediscover it." },
+      { title: "Scope agents to one job each", body: "Three specialist Slack agents — a user strategist, an acquisition-performance agent and a creative concept agent — rather than one general assistant nobody trusts." },
+    ],
+    result: [
+      "Analysts and marketers ask questions in natural language and get answers joined across all three systems, with weekly digests delivered on a schedule instead of assembled by hand.",
+      "Registered in Claude Code and Claude Desktop, the creative-platform server lets Claude chain upload → extract prompts → generate → wait → critique → regenerate in a single session. That iteration loop is the real unlock over one-shot pipelines.",
+    ],
+    limits: [
+      "The employer-side impact figures are internal and are not published here without sign-off.",
+      "The extracted master prompts are reusable assets, but they belong to the platform's account, not to the server.",
+    ],
+    stack: ["Claude MCP", "MCP SDK", "Claude Code", "Node", "PostgreSQL", "Slack API", "Singular API"],
+  },
+  {
+    slug: "concept-pipeline",
+    track: "automation",
+    trackLabel: "Business & ops automation",
+    title: "From an intake form to fifteen scripted concepts",
+    oneLiner: "Intake form to fifteen scripted concept variants and slides.",
+    deck: "The concept bottleneck in front of every ad batch, rebuilt as an n8n chain that writes the angles, the scripts and the deck.",
+    year: "2026",
+    role: "Sole architect and builder",
+    client: "Ad agency, in-house",
+    status: "Built, not yet run end to end",
+    metrics: [
+      { value: "15", caption: "scripted variants per batch (5 concepts x 3 angles)" },
+      { value: "15", caption: "slides auto-built per batch" },
+    ],
+    situation: [
+      "Concept generation was the bottleneck in front of every ad. Getting from a client brief to a reviewable set of angles with scripts meant a strategist mining inspiration by hand, writing concepts, then rebuilding the same deck layout every batch.",
+    ],
+    constraintIntro:
+      "The interesting part of this build is what got removed. An inspiration source that looked productive turned out to be returning the same evergreen ads every day.",
+    constraint: "A source that returns the same answer daily is not a source — it is a habit.",
+    build: [
+      { title: "Take the brief from the live form", body: "The intake form's payload feeds straight in, pulling the client's brand record so the concepts start grounded in the actual brand." },
+      { title: "Fan every concept into three angles", body: "Pain-point first, product first, and a bold pattern-interrupt hook — so a batch covers the spread rather than five versions of one idea." },
+      { title: "Write a script per variant", body: "Each of the fifteen variants gets its own script, not a shared outline." },
+      { title: "Build the review surface automatically", body: "Every variant becomes one review record and one auto-built slide, with a checkbox triggering the downstream thumbnail generation." },
+    ],
+    result: [
+      "Five concepts by three angles gives fifteen review records and fifteen slides per batch, with every node built and individually working.",
+      "It also carries a real negative result: the original inspiration source was removed once it was diagnosed as returning identical evergreen ads daily, and replaced with a curated deck.",
+    ],
+    limits: [
+      "A confirmed full end-to-end run has not been recorded.",
+      "Slack notification is still pending.",
+      "Two platform inspiration APIs remain blocked on approvals.",
+    ],
+    stack: ["n8n", "Airtable", "Claude via OpenRouter", "Google Slides API", "Google Drive API", "GoHighLevel", "Supabase"],
+  },
+];
+
+/** Everything else, for the /work archive. */
+export const otherSystems = [
+  { title: "Footage Renamer", track: "automation" as const, year: "2026", note: "A creator's messy Dropbox uploads, renamed to the storyboard.", stack: ["n8n", "Notion API", "Gemini Flash", "ffmpeg"] },
+  { title: "Figma Comment Digest", track: "automation" as const, year: "2026", note: "Client Figma comments become a live designer revision brief.", stack: ["Node", "Figma API", "Supabase", "cron"] },
+  { title: "Meta advertising automation suite", track: "automation" as const, year: "2025", note: "Bulk upload, auto-pruning and reporting across Meta and TikTok.", stack: ["Meta Ads API", "TikTok Ads API", "Airtable", "n8n"] },
+  { title: "Creator sourcing pipeline", track: "automation" as const, year: "2025", note: "Scrape to signed creator: sourcing, proposal, payment, CRM.", stack: ["Claude Code", "Supabase", "HubSpot", "Stripe"] },
+  { title: "Hermes — AI SDR agent", track: "automation" as const, year: "2024", note: "An SDR agent that qualifies and books, so humans don't.", stack: ["n8n", "OpenAI", "Calendar API"] },
+  { title: "Two-tier AI video stack", track: "creative" as const, year: "2026", note: "Ten Claude Code skills route each script to the right model.", stack: ["Claude Code", "Higgsfield", "KIE.ai", "Nano Banana Pro"] },
+  { title: "SongReels", track: "creative" as const, year: "2026", note: "Photos and clips become a personalised AI music video.", stack: ["Gemini", "Claude", "Suno", "Creatomate", "Stripe"] },
+];
+
+export interface Role {
+  title: string;
+  company: string;
+  period: string;
+  summary: string;
+  points: string[];
+}
+
+export const experience: Role[] = [
+  {
+    title: "AI Automation & Platform Manager",
+    company: "Bumpy App",
+    period: "Nov 2025 — Present",
+    summary: "Production Claude MCP infrastructure and the paid-social automation suite around it.",
+    points: [
+      "Built and shipped a production Claude MCP server exposing the internal SDK, proprietary database and attribution platform to Claude as first-class tools",
+      "Deployed Claude Code agent infrastructure plus three specialist Slack agents scoped to users, acquisition performance and creative concepts",
+      "Automated bulk creative upload, performance-based ad pruning, campaign parameters and cross-platform reporting across Meta and TikTok",
+      "Built AI ad-comment moderation on webhook triggers with layered classification, and TikTok creative pre-review before spend",
+    ],
+  },
+  {
+    title: "AI Automation Specialist",
+    company: "Creative Abundance",
+    period: "Aug 2025 — Present",
+    summary: "The creative production line: static ads, video assembly, and the self-serve generator.",
+    points: [
+      "Built the concept-first static ad service with a vision-QA ship gate that drops sub-bar renders rather than delivering them",
+      "Built the AI video editor that turns raw creator footage into an editable Premiere timeline, live in production behind a queue and password gate",
+      "Built Creative OS: a self-serve generator taking one product photo to a captioned fifteen-second vertical ad",
+      "Built the concept pipeline, footage renamer and Figma comment digest that feed and surround the production line",
+    ],
+  },
+  {
+    title: "Business Consultant — AI Automation",
+    company: "White Key Marketing",
+    period: "Aug 2024 — Present",
+    summary: "CRM architecture and internal platform for a marketing agency's client base.",
+    points: [
+      "End-to-end HubSpot: lead flows, pipeline automation, sequences, landing pages and reporting dashboards",
+      "GoHighLevel onboarding workflows, AI conversation agents and multi-channel nurture sequences",
+      "Company-wide Notion workspace and Supabase dashboards covering client, project and campaign operations",
+    ],
+  },
+  {
+    title: "Social Media Marketing Associate",
+    company: "Actional Marketing",
+    period: "Apr 2024 — Aug 2025",
+    summary: "Organic and paid social execution across client accounts.",
+    points: [],
+  },
+  {
+    title: "Digital Marketing Specialist",
+    company: "Business Connect World",
+    period: "Jan 2024 — Feb 2025",
+    summary: "Amazon SEO and marketplace listing optimisation.",
+    points: [],
+  },
+  {
+    title: "Marketing Assistant — Paid Ads",
+    company: "DreamTeam PH",
+    period: "Feb 2023 — Mar 2024",
+    summary: "Meta Ads support and campaign operations.",
+    points: [],
+  },
+];
+
+export const processSteps = [
+  { n: "01", title: "Find the step that eats the week", body: "Usually it is clerical, high-volume and judgement-light. That is the one worth automating first." },
+  { n: "02", title: "Decide what must never break", body: "Every system here has one non-negotiable constraint written down before anything is built. It shapes the architecture more than the tooling does." },
+  { n: "03", title: "Build the gate before the volume", body: "Generative output only becomes deliverable when something measurable decides what does not ship." },
+  { n: "04", title: "Hand back something editable", body: "The deliverable is a timeline, a draft, a review record — something a person can correct. Not a black box." },
+  { n: "05", title: "Write down what it can't do", body: "Every system ships with its open gaps listed. It is the fastest way to know whether it fits your problem." },
+];
