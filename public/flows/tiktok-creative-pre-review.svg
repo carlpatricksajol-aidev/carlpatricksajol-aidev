@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2160 700" width="2160" height="700" role="img" aria-label="TikTok Creative Pre-review workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 193.79999999999998 C 240 193.79999999999998, 224 193.79999999999998, 252 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 193.79999999999998 C 782.8 193.79999999999998, 817.2 65, 972 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 193.79999999999998 C 674.8 193.79999999999998, 685.2 543.4, 732 543.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 193.79999999999998 C 448 193.79999999999998, 432 193.79999999999998, 460 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1380 65 C 1441.2 65, 1454.8 249, 1516 249" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1684 249 C 1712 249, 1712 138.6, 1740 138.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1684 249 C 1712 249, 1712 359.4, 1740 359.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1908 359.4 C 1936 359.4, 1920 359.4, 1948 359.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1908 138.6 C 1936 138.6, 1920 138.6, 1948 138.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1140 65 C 1172.4 65, 1179.6 65, 1212 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1140 414.59999999999997 C 1172.4 414.59999999999997, 1179.6 414.59999999999997, 1212 414.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1380 414.59999999999997 C 1441.2 414.59999999999997, 1454.8 249, 1516 249" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 900 543.4 C 932.4 543.4, 939.6 414.59999999999997, 972 414.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 900 543.4 C 932.4 543.4, 939.6 635.4, 972 635.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1140 635.4 C 1172.4 635.4, 1179.6 635.4, 1212 635.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1380 635.4 C 1441.2 635.4, 1454.8 249, 1516 249" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="172.79999999999998" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Webhook</text>
+      <text x="56" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">webhook</text>
+    </g>
+<g>
+      <rect x="460" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If</text>
+      <text x="472" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="252" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript</text>
+      <text x="264" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1212" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1224" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Pre Review Result</text>
+      <text x="1224" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1516" y="228" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1528" y="245" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If1</text>
+      <text x="1528" y="259" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="1740" y="117.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1752" y="134.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Send a message</text>
+      <text x="1752" y="148.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">slack</text>
+    </g>
+<g>
+      <rect x="1740" y="338.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1752" y="355.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Append or update row …</text>
+      <text x="1752" y="369.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="1948" y="338.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1960" y="355.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Send a message1</text>
+      <text x="1960" y="369.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">slack</text>
+    </g>
+<g>
+      <rect x="1948" y="117.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1960" y="134.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Append row in sheet</text>
+      <text x="1960" y="148.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="972" y="393.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="984" y="410.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Upload Video - Android</text>
+      <text x="984" y="424.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="972" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="984" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Upload Video - iOS</text>
+      <text x="984" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1212" y="393.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1224" y="410.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Pre Review Result1</text>
+      <text x="1224" y="424.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="732" y="522.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="744" y="539.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If2</text>
+      <text x="744" y="553.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="972" y="614.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="984" y="631.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Upload Video - Androi…</text>
+      <text x="984" y="645.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1212" y="614.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1224" y="631.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Pre Review Result2</text>
+      <text x="1224" y="645.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g></g>
+</svg>

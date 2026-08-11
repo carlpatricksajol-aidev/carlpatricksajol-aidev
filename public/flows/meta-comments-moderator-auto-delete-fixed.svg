@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4432 516" width="4432" height="516" role="img" aria-label="Meta Comments Moderator - Auto Delete (FIXED) workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 304.2 C 240 304.2, 224 304.2, 252 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1524 304.2 C 1552 304.2, 1552 304.2, 1580 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2180 304.2 C 2208 304.2, 2208 304.2, 2236 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2404 304.2 C 2432 304.2, 2432 304.2, 2460 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2628 304.2 C 2656 304.2, 2656 193.79999999999998, 2684 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2628 304.2 C 2948.4 304.2, 3019.6 322.59999999999997, 3340 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2852 193.79999999999998 C 2880 193.79999999999998, 2864 193.79999999999998, 2892 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3060 451.4 C 3135.6 451.4, 2816.4 193.79999999999998, 2892 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3060 193.79999999999998 C 3121.2 193.79999999999998, 3134.8 193.79999999999998, 3196 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3508 322.59999999999997 C 3536 322.59999999999997, 3536 322.59999999999997, 3564 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 304.2 C 448 304.2, 448 304.2, 476 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 644 304.2 C 672 304.2, 672 304.2, 700 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 868 304.2 C 896 304.2, 896 304.2, 924 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1092 304.2 C 1120 304.2, 1104 304.2, 1132 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 304.2 C 1328 304.2, 1328 304.2, 1356 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1748 304.2 C 1776 304.2, 1776 304.2, 1804 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1972 304.2 C 2000 304.2, 1984 304.2, 2012 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3364 193.79999999999998 C 3392 193.79999999999998, 3312 322.59999999999997, 3340 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3732 322.59999999999997 C 3760 322.59999999999997, 3744 322.59999999999997, 3772 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3940 322.59999999999997 C 3968 322.59999999999997, 3968 212.2, 3996 212.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3940 322.59999999999997 C 4066 322.59999999999997, 4094 322.59999999999997, 4220 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4164 212.2 C 4192 212.2, 4192 322.59999999999997, 4220 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4164 212.2 C 4192 212.2, 4192 65, 4220 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="283.2" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger</text>
+      <text x="56" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g>
+<g>
+      <rect x="1356" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1368" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Recent Only (14 days)</text>
+      <text x="1368" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">filter</text>
+    </g>
+<g>
+      <rect x="2012" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2024" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Cap 500 Per Run</text>
+      <text x="2024" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g>
+<g>
+      <rect x="2236" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2248" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Pre-Screen (spam/beni…</text>
+      <text x="2248" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="2460" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2472" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Needs AI Review?</text>
+      <text x="2472" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2684" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2696" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Needs Review</text>
+      <text x="2696" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">noOp</text>
+    </g>
+<g>
+      <rect x="2892" y="172.79999999999998" width="168" height="42" rx="7" fill="#ECF7F2" stroke="#0F6E4E" stroke-width="1.4"/>
+      <text x="2904" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">AI Agent</text>
+      <text x="2904" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">agent</text>
+    </g>
+<g>
+      <rect x="2892" y="430.4" width="168" height="42" rx="7" fill="#ECF7F2" stroke="#0F6E4E" stroke-width="1.4"/>
+      <text x="2904" y="447.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">OpenRouter Chat Model</text>
+      <text x="2904" y="461.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">lmChatOpenRouter</text>
+    </g>
+<g>
+      <rect x="3340" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3352" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Finalize</text>
+      <text x="3352" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">noOp</text>
+    </g>
+<g>
+      <rect x="4220" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4232" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete Failed (retry …</text>
+      <text x="4232" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">noOp</text>
+    </g>
+<g>
+      <rect x="252" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads1</text>
+      <text x="264" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="476" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="488" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Extract &amp; Dedupe Post…</text>
+      <text x="488" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="700" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="712" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Comments1</text>
+      <text x="712" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="924" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="936" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Has Comments1</text>
+      <text x="936" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">filter</text>
+    </g>
+<g>
+      <rect x="1132" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1144" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out Comments1</text>
+      <text x="1144" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1580" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1592" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Skip Empty Comments1</text>
+      <text x="1592" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">filter</text>
+    </g>
+<g>
+      <rect x="1804" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1816" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If Not Already Proces…</text>
+      <text x="1816" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">dataTable</text>
+    </g>
+<g>
+      <rect x="3196" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3208" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Parse Decision1</text>
+      <text x="3208" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="3564" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3576" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Log Decision (KEEP+DE…</text>
+      <text x="3576" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="3772" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3784" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">DELETE or KEEP?1</text>
+      <text x="3784" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="3996" y="191.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4008" y="208.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete Comment1</text>
+      <text x="4008" y="222.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="4220" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4232" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Mark Processed1</text>
+      <text x="4232" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">dataTable</text>
+    </g></g>
+</svg>

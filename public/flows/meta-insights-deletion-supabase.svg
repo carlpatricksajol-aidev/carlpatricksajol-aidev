@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 590" width="1680" height="590" role="img" aria-label="Meta Insights - Deletion - Supabase workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 484 65 C 512 65, 512 65, 540 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 484 285.79999999999995 C 512 285.79999999999995, 512 285.79999999999995, 540 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 484 506.59999999999997 C 512 506.59999999999997, 512 506.59999999999997, 540 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 932 65 C 1108.4 65, 363.6 65, 540 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 65 C 736 65, 736 65, 764 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 285.79999999999995 C 736 285.79999999999995, 736 285.79999999999995, 764 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 506.59999999999997 C 942 506.59999999999997, 994 285.79999999999995, 1228 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 506.59999999999997 C 736 506.59999999999997, 736 506.59999999999997, 764 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 932 285.79999999999995 C 960 285.79999999999995, 944 285.79999999999995, 972 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 932 506.59999999999997 C 1108.4 506.59999999999997, 363.6 506.59999999999997, 540 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 258.8 285.79999999999995, 269.2 65, 316 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 258.8 285.79999999999995, 269.2 285.79999999999995, 316 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 258.8 285.79999999999995, 269.2 506.59999999999997, 316 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1140 285.79999999999995 C 1410 285.79999999999995, 270 285.79999999999995, 540 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1396 285.79999999999995 C 1428.4 285.79999999999995, 1435.6 285.79999999999995, 1468 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="264.79999999999995" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger</text>
+      <text x="56" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g>
+<g>
+      <rect x="316" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="328" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ad_sets</text>
+      <text x="328" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="316" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="328" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Campaigns</text>
+      <text x="328" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="316" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="328" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads</text>
+      <text x="328" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="764" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="776" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete a row</text>
+      <text x="776" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="540" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="552" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items4</text>
+      <text x="552" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="540" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="552" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items6</text>
+      <text x="552" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="540" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="552" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items7</text>
+      <text x="552" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="764" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="776" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete a row1</text>
+      <text x="776" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="764" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="776" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete a row2</text>
+      <text x="776" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="972" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="984" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Delete row(s)</text>
+      <text x="984" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">dataTable</text>
+    </g>
+<g>
+      <rect x="1468" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1480" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Call 'Meta Campaign I…</text>
+      <text x="1480" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1228" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1240" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Limit</text>
+      <text x="1240" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g>
+<g>
+      <rect x="60" y="503.99999999999994" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="72" y="521" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">When clicking ‘Execut…</text>
+      <text x="72" y="535" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">manual</text>
+    </g></g>
+</svg>

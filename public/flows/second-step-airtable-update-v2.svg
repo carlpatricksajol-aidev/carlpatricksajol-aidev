@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2544 369" width="2544" height="369" role="img" aria-label="Second Step: Airtable update (v2) workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 193.79999999999998 C 240 193.79999999999998, 224 193.79999999999998, 252 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 836 193.79999999999998 C 864 193.79999999999998, 848 193.79999999999998, 876 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1492 193.79999999999998 C 1520 193.79999999999998, 1472 193.79999999999998, 1500 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1668 193.79999999999998 C 1696 193.79999999999998, 1632 193.79999999999998, 1660 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1828 193.79999999999998 C 1856 193.79999999999998, 1840 193.79999999999998, 1868 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2036 193.79999999999998 C 2064 193.79999999999998, 2064 65, 2092 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2036 193.79999999999998 C 2064 193.79999999999998, 2064 304.2, 2092 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 193.79999999999998 C 448 193.79999999999998, 432 193.79999999999998, 460 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 193.79999999999998 C 656 193.79999999999998, 640 193.79999999999998, 668 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1044 193.79999999999998 C 1072 193.79999999999998, 1056 193.79999999999998, 1084 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1252 193.79999999999998 C 1284.4 193.79999999999998, 1291.6 193.79999999999998, 1324 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 65 C 3137.2 65, 446.79999999999995 193.79999999999998, 1084 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 304.2 C 3137.2 304.2, 446.79999999999995 193.79999999999998, 1084 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2260 65 C 2789.2 65, 554.8 193.79999999999998, 1084 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2260 65 C 2292.4 65, 2299.6 65, 2332 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2260 304.2 C 2789.2 304.2, 554.8 193.79999999999998, 1084 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2260 304.2 C 2292.4 304.2, 2299.6 304.2, 2332 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="172.79999999999998" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">When Executed by Anot…</text>
+      <text x="56" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="668" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="680" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript</text>
+      <text x="680" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1324" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1336" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Existing Rows</text>
+      <text x="1336" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1500" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1512" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Search files and fold…</text>
+      <text x="1512" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleDrive</text>
+    </g>
+<g>
+      <rect x="1660" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1672" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript1</text>
+      <text x="1672" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1868" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1880" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If</text>
+      <text x="1880" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="252" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Empty Creative Fi…</text>
+      <text x="264" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out</text>
+      <text x="472" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="876" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="888" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Extract Unique folders</text>
+      <text x="888" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1084" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1096" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items</text>
+      <text x="1096" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="2332" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Patch File</text>
+      <text x="2344" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2332" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Post File</text>
+      <text x="2344" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2092" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2104" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If1</text>
+      <text x="2104" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2092" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2104" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If2</text>
+      <text x="2104" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g></g>
+</svg>

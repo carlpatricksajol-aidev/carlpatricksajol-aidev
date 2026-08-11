@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { SectionHeader, useEnter } from "@/components/primitives";
-import { workflowEvidence } from "@/data/site";
+import { flows } from "@/data/flows";
 
 /**
- * The automation equivalent of the ad gallery: real production canvases.
- * They are illegible at card size by nature — that is the point of the
- * click-to-zoom, and the caption carries what each one actually does.
+ * The automation counterpart to the ad gallery: real production workflow graphs,
+ * rendered from their own node positions and connection lists. Not screenshots —
+ * so they carry no other product's UI, stay crisp at any zoom, and cost ~10KB of
+ * vector each instead of a raster.
  */
 const Workflows = () => {
   const { ref, className } = useEnter<HTMLElement>();
   const [open, setOpen] = useState<number | null>(null);
-  const wf = open === null ? null : workflowEvidence[open];
+  const featured = flows.filter((f) => f.feature);
+  const current = open === null ? null : featured[open];
 
   return (
     <section id="workflows" ref={ref} className={`${className} section bg-surface-sunken`} aria-labelledby="wf-h">
@@ -21,33 +23,32 @@ const Workflows = () => {
           id="wf-h"
           eyebrow="Evidence"
           title="The graphs behind the systems"
-          deck="Production workflow canvases from live automation work. Click any one to read it full size."
+          deck={`Live production workflows, drawn from their own node graphs. ${flows.length} are running right now — these are eight of them.`}
         />
 
-        <ul className="mt-s9 grid gap-s4 sm:grid-cols-2 lg:grid-cols-4">
-          {workflowEvidence.map((w, i) => (
-            <li key={w.src}>
-              {/* the canvas is dark, so the card carries the ink tone override —
-                  without it the light-theme text tokens land dark-on-dark */}
+        <ul className="mt-s9 grid gap-s5 md:grid-cols-2">
+          {featured.map((f, i) => (
+            <li key={f.src}>
               <button
                 type="button"
-                data-tone="ink"
                 onClick={() => setOpen(i)}
-                className="group flex h-full w-full flex-col rounded-lg border border-line bg-surface-ink p-s3 text-left transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(16,24,40,.06),0_10px_24px_-8px_rgba(16,24,40,.16)]"
-                aria-label={`View workflow: ${w.title}`}
+                className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-surface-raised text-left transition-[transform,box-shadow,border-color] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(16,24,40,.04),0_10px_24px_-8px_rgba(16,24,40,.10)]"
+                aria-label={`View workflow graph: ${f.title}`}
               >
-                <span className="grid h-[128px] w-full place-items-center overflow-hidden rounded-sm">
+                {/* these graphs run up to 8:1, so the thumbnail fits the whole
+                    shape rather than cropping to an empty-looking strip */}
+                <span className="grid h-[150px] place-items-center overflow-hidden border-b border-line-subtle bg-surface p-s4">
                   <img
-                    src={w.src}
+                    src={f.src}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="max-h-full w-full object-contain opacity-85 transition-opacity duration-[180ms] group-hover:opacity-100"
+                    className="max-h-full w-full object-contain opacity-90 transition-opacity duration-[180ms] group-hover:opacity-100"
                   />
                 </span>
-                <span className="t-step--1 mt-s3 block font-medium text-ink">{w.title}</span>
-                <span className="t-step--2 mt-1 block !normal-case !tracking-normal text-ink-secondary">
-                  {w.note}
+                <span className="flex flex-1 flex-col p-s5">
+                  <span className="t-step-2 text-ink">{f.title}</span>
+                  <span className="t-step-0 mt-s2 text-ink-secondary">{f.note}</span>
                 </span>
               </button>
             </li>
@@ -56,15 +57,16 @@ const Workflows = () => {
       </div>
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
-        <DialogContent className="max-w-[min(96vw,1200px)] gap-0 overflow-hidden p-0">
-          {wf && (
+        <DialogContent className="max-h-[92vh] max-w-[min(96vw,1400px)] gap-0 overflow-hidden p-0">
+          {current && (
             <>
-              <div className="bg-surface-ink p-s4">
-                <img src={wf.src} alt={`Workflow canvas: ${wf.title}`} className="w-full" />
+              <div className="max-h-[70vh] overflow-auto bg-surface p-s4">
+                <img src={current.src} alt={`Workflow graph: ${current.title}`} className="min-w-[900px] max-w-none" />
               </div>
-              <div className="p-s5">
-                <DialogTitle className="t-step-2">{wf.title}</DialogTitle>
-                <DialogDescription className="t-step-0 mt-s2 text-ink-secondary">{wf.note}</DialogDescription>
+              <div className="border-t border-line p-s5">
+                <DialogTitle className="t-step-2">{current.title}</DialogTitle>
+                <DialogDescription className="t-step-0 mt-s2 text-ink-secondary">{current.note}</DialogDescription>
+                <p className="t-step--2 mt-s3 text-ink-tertiary">Scroll to pan · drawn from the live workflow graph</p>
               </div>
             </>
           )}

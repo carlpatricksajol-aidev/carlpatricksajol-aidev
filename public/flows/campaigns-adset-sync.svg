@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2704 627" width="2704" height="627" role="img" aria-label="Campaigns &amp; Adset Sync workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 1044 396.2 C 1083.6 396.2, 1092.4 230.6, 1132 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1044 396.2 C 1083.6 396.2, 1092.4 561.8, 1132 561.8" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 230.6 C 1368.4 230.6, 1383.6 230.6, 1452 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 561.8 C 1368.4 561.8, 1383.6 230.6, 1452 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2420 230.6 C 2452.4 230.6, 2459.6 65, 2492 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2420 230.6 C 2452.4 230.6, 2459.6 396.2, 2492 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 396.2 C 448 396.2, 432 396.2, 460 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 396.2 C 656 396.2, 640 396.2, 668 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 836 396.2 C 864 396.2, 848 396.2, 876 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1620 230.6 C 1648 230.6, 1616 230.6, 1644 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1812 230.6 C 1840 230.6, 1824 230.6, 1852 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2020 230.6 C 2048 230.6, 2016 230.6, 2044 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2212 230.6 C 2240 230.6, 2224 230.6, 2252 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 396.2 C 240 396.2, 224 396.2, 252 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="876" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="888" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">New or Existing Campa…</text>
+      <text x="888" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="1132" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1144" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create Campaign in Ai…</text>
+      <text x="1144" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1132" y="540.8" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1144" y="557.8" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update Campaign in Ai…</text>
+      <text x="1144" y="571.8" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2252" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2264" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">New or Existing Ad Se…</text>
+      <text x="2264" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2492" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2504" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create Ad Set in Airt…</text>
+      <text x="2504" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2492" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2504" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update Ad Set in Airt…</text>
+      <text x="2504" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="252" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Campaigns from …</text>
+      <text x="264" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Existing Campai…</text>
+      <text x="472" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="668" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="680" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Find New Campaigns1</text>
+      <text x="680" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1452" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1464" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Ad Sets from Me…</text>
+      <text x="1464" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1644" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1656" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Existing Ad Set…</text>
+      <text x="1656" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1852" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1864" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch All Campaigns f…</text>
+      <text x="1864" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2044" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2056" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Find New Ad Sets1</text>
+      <text x="2056" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="44" y="375.2" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger</text>
+      <text x="56" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g></g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2080 719" width="2080" height="719" role="img" aria-label="Meta Ad Set (28D) Insights - Update - Supabase workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 580 65 C 734.8 65, 769.2 341, 924 341" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1412 377.79999999999995 C 1440 377.79999999999995, 1424 377.79999999999995, 1452 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1092 341 C 1160.4 341, 1175.6 377.79999999999995, 1244 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 580 267.4 C 734.8 267.4, 769.2 341, 924 341" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 580 451.4 C 734.8 451.4, 769.2 341, 924 341" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 580 653.8 C 734.8 653.8, 769.2 341, 924 341" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 377.79999999999995 C 302 377.79999999999995, 322 65, 412 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 377.79999999999995 C 302 377.79999999999995, 322 267.4, 412 267.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 377.79999999999995 C 302 377.79999999999995, 322 451.4, 412 451.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 377.79999999999995 C 302 377.79999999999995, 322 653.8, 412 653.8" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1620 377.79999999999995 C 1648 377.79999999999995, 1632 377.79999999999995, 1660 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1828 377.79999999999995 C 1856 377.79999999999995, 1840 377.79999999999995, 1868 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="412" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="424" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ad Sets for Campa…</text>
+      <text x="424" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1244" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1256" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript13</text>
+      <text x="1256" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="924" y="320" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="936" y="337" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge2</text>
+      <text x="936" y="351" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">merge</text>
+    </g>
+<g>
+      <rect x="412" y="246.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="424" y="263.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ad Sets - Metrics…</text>
+      <text x="424" y="277.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="412" y="430.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="424" y="447.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ad Sets - Country…</text>
+      <text x="424" y="461.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="412" y="632.8" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="424" y="649.8" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ad Sets - Device …</text>
+      <text x="424" y="663.8" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1452" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1464" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a row for 28d</text>
+      <text x="1464" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="44" y="356.79999999999995" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">When Executed by Anot…</text>
+      <text x="56" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1868" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1880" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Call 'Meta Ad Set (30…</text>
+      <text x="1880" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1660" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1672" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Limit</text>
+      <text x="1672" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g></g>
+</svg>

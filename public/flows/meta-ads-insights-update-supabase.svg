@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1904 572" width="1904" height="572" role="img" aria-label="Meta Ads Insights - Update - Supabase workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 1396 65 C 1428.4 65, 1435.6 65, 1468 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1636 65 C 1664 65, 1664 65, 1692 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 740 65 C 768 65, 752 65, 780 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 532 65 C 560 65, 544 65, 572 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1860 65 C 2346 65, 294 65, 780 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1172 65 C 1200 65, 1200 65, 1228 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1396 285.79999999999995 C 1428.4 285.79999999999995, 1435.6 285.79999999999995, 1468 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1636 285.79999999999995 C 1664 285.79999999999995, 1664 285.79999999999995, 1692 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 740 285.79999999999995 C 768 285.79999999999995, 752 285.79999999999995, 780 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 532 285.79999999999995 C 560 285.79999999999995, 544 285.79999999999995, 572 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1860 285.79999999999995 C 2346 285.79999999999995, 294 285.79999999999995, 780 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1172 285.79999999999995 C 1200 285.79999999999995, 1200 285.79999999999995, 1228 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1396 506.59999999999997 C 1428.4 506.59999999999997, 1435.6 506.59999999999997, 1468 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1636 506.59999999999997 C 1664 506.59999999999997, 1664 506.59999999999997, 1692 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 740 506.59999999999997 C 768 506.59999999999997, 752 506.59999999999997, 780 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 532 506.59999999999997 C 560 506.59999999999997, 544 506.59999999999997, 572 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1860 506.59999999999997 C 2346 506.59999999999997, 294 506.59999999999997, 780 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1172 506.59999999999997 C 1200 506.59999999999997, 1200 506.59999999999997, 1228 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 948 65 C 976 65, 976 65, 1004 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 948 285.79999999999995 C 976 285.79999999999995, 976 285.79999999999995, 1004 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 948 506.59999999999997 C 976 506.59999999999997, 976 506.59999999999997, 1004 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 280.4 285.79999999999995, 295.6 506.59999999999997, 364 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 280.4 285.79999999999995, 295.6 285.79999999999995, 364 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 285.79999999999995 C 280.4 285.79999999999995, 295.6 65, 364 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="1228" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1240" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out13</text>
+      <text x="1240" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1468" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1480" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript12</text>
+      <text x="1480" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="572" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="584" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out17</text>
+      <text x="584" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="364" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="376" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Active Campaign</text>
+      <text x="376" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1692" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1704" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a row4</text>
+      <text x="1704" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="1004" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1016" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads Insight_14d</text>
+      <text x="1016" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1228" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1240" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out</text>
+      <text x="1240" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1468" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1480" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript</text>
+      <text x="1480" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="572" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="584" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out18</text>
+      <text x="584" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="364" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="376" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Active Campaign2</text>
+      <text x="376" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1692" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1704" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a row</text>
+      <text x="1704" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="1004" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1016" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads Insight_28d</text>
+      <text x="1016" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1228" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1240" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out1</text>
+      <text x="1240" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1468" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1480" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript1</text>
+      <text x="1480" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="572" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="584" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out19</text>
+      <text x="584" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="364" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="376" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Active Campaign3</text>
+      <text x="376" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1692" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1704" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a row1</text>
+      <text x="1704" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="1004" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1016" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads Insight_30d</text>
+      <text x="1016" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="780" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="792" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items1</text>
+      <text x="792" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="780" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="792" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items</text>
+      <text x="792" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="780" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="792" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items2</text>
+      <text x="792" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="44" y="264.79999999999995" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">When Executed by Anot…</text>
+      <text x="56" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g></g>
+</svg>

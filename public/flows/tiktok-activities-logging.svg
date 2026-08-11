@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2688 369" width="2688" height="369" role="img" aria-label="TikTok Activities Logging workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 193.79999999999998 C 266 193.79999999999998, 278 83.4, 332 83.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 193.79999999999998 C 266 193.79999999999998, 278 304.2, 332 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1684 175.39999999999998 C 1716.4 175.39999999999998, 1723.6 175.39999999999998, 1756 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 916 83.4 C 970 83.4, 982 175.39999999999998, 1036 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2180 175.39999999999998 C 2208 175.39999999999998, 2208 175.39999999999998, 2236 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 916 304.2 C 970 304.2, 982 175.39999999999998, 1036 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 500 83.4 C 528 83.4, 512 83.4, 540 83.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 83.4 C 736 83.4, 720 83.4, 748 83.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 500 304.2 C 528 304.2, 512 304.2, 540 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 708 304.2 C 736 304.2, 720 304.2, 748 304.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1924 175.39999999999998 C 1963.6 175.39999999999998, 1972.4 175.39999999999998, 2012 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2404 175.39999999999998 C 2436.4 175.39999999999998, 2443.6 65, 2476 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2404 175.39999999999998 C 2436.4 175.39999999999998, 2443.6 267.4, 2476 267.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1204 175.39999999999998 C 1232 175.39999999999998, 1232 175.39999999999998, 1260 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1428 175.39999999999998 C 1467.6 175.39999999999998, 1476.4 175.39999999999998, 1516 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="172.79999999999998" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger</text>
+      <text x="56" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g>
+<g>
+      <rect x="1516" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1528" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Read Sheet1</text>
+      <text x="1528" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="748" y="62.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="760" y="79.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge Both Levels</text>
+      <text x="760" y="93.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="2012" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2024" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If</text>
+      <text x="2024" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="748" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="760" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge Both Levels1</text>
+      <text x="760" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="332" y="62.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="344" y="79.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get TikTok Campaigns …</text>
+      <text x="344" y="93.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="540" y="62.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="552" y="79.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get TikTok Ad Groups …</text>
+      <text x="552" y="93.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="332" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="344" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get TikTok Campaigns …</text>
+      <text x="344" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="540" y="283.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="552" y="300.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get TikTok Ad Groups1…</text>
+      <text x="552" y="314.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1756" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1768" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Detect Budget Changes</text>
+      <text x="1768" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="2236" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2248" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If1</text>
+      <text x="2248" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2476" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2488" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Campaign</text>
+      <text x="2488" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="2476" y="246.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2488" y="263.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Ad Group</text>
+      <text x="2488" y="277.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="1036" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1048" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge</text>
+      <text x="1048" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1260" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1272" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Remove Duplicates</text>
+      <text x="1272" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">removeDuplicates</text>
+    </g></g>
+</svg>

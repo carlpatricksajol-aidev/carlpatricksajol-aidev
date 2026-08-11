@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2160 130" width="2160" height="130" role="img" aria-label="Meta Ads Insight - Create Rows - Supabase workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 1268 65 C 1296 65, 1280 65, 1308 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1476 65 C 1504 65, 1504 65, 1532 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 660 65 C 688 65, 672 65, 700 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 452 65 C 480 65, 464 65, 492 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1700 65 C 2150 65, 250 65, 700 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1076 65 C 1104 65, 1072 65, 1100 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 868 65 C 1260.4 65, 1347.6 65, 1740 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 868 65 C 896 65, 880 65, 908 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 65 C 244.4 65, 251.6 65, 284 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1908 65 C 1936 65, 1920 65, 1948 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="1100" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1112" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out3</text>
+      <text x="1112" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1308" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1320" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript2</text>
+      <text x="1320" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="492" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="504" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out2</text>
+      <text x="504" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="284" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="296" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Active Campaign1</text>
+      <text x="296" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1532" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1544" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create a row</text>
+      <text x="1544" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">supabase</text>
+    </g>
+<g>
+      <rect x="908" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="920" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads Insight_7d</text>
+      <text x="920" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="700" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="712" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items</text>
+      <text x="712" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g>
+<g>
+      <rect x="44" y="44" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">When Executed by Anot…</text>
+      <text x="56" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1948" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1960" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Call 'Meta Insights -…</text>
+      <text x="1960" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1740" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1752" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Limit</text>
+      <text x="1752" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g></g>
+</svg>

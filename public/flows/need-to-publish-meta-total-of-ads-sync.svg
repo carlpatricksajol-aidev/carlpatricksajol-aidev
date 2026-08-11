@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 130" width="2560" height="130" role="img" aria-label="NEED TO PUBLISH - Meta Total of Ads Sync workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 420 65 C 448 65, 432 65, 460 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 65 C 656 65, 640 65, 668 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 836 65 C 864 65, 848 65, 876 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1252 65 C 1280 65, 1280 65, 1308 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1044 65 C 1072 65, 1056 65, 1084 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1876 65 C 1904 65, 1904 65, 1932 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1476 65 C 1504 65, 1488 65, 1516 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2100 65 C 2128 65, 2112 65, 2140 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1684 65 C 1712 65, 1680 65, 1708 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2308 65 C 2336 65, 2320 65, 2348 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 65 C 240 65, 224 65, 252 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="252" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">HTTP Request</text>
+      <text x="264" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="668" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="680" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">HTTP Request1</text>
+      <text x="680" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out</text>
+      <text x="472" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1084" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1096" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update row(s)</text>
+      <text x="1096" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">dataTable</text>
+    </g>
+<g>
+      <rect x="1308" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1320" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update row in sheet</text>
+      <text x="1320" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="876" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="888" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out1</text>
+      <text x="888" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1708" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1720" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get row(s) in sheet</text>
+      <text x="1720" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="1932" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1944" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Filter</text>
+      <text x="1944" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">filter</text>
+    </g>
+<g>
+      <rect x="2140" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2152" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If row exists</text>
+      <text x="2152" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">dataTable</text>
+    </g>
+<g>
+      <rect x="1516" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1528" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Limit</text>
+      <text x="1528" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g>
+<g>
+      <rect x="2348" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2360" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update row in sheet1</text>
+      <text x="2360" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="44" y="44" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger</text>
+      <text x="56" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g></g>
+</svg>

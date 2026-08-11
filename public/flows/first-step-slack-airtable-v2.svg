@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 240" width="1760" height="240" role="img" aria-label="First Step: Slack -&gt; Airtable (v2) workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 175.39999999999998 C 240 175.39999999999998, 240 175.39999999999998, 268 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 436 175.39999999999998 C 468.4 175.39999999999998, 475.6 175.39999999999998, 508 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 676 175.39999999999998 C 704 175.39999999999998, 688 175.39999999999998, 716 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1092 175.39999999999998 C 1120 175.39999999999998, 1104 65, 1132 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 884 175.39999999999998 C 912 175.39999999999998, 896 175.39999999999998, 924 175.39999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 65 C 1328 65, 1312 65, 1340 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1508 65 C 1536 65, 1520 65, 1548 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="154.39999999999998" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Slack Trigger1</text>
+      <text x="56" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">slack</text>
+    </g>
+<g>
+      <rect x="268" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="280" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Filter1</text>
+      <text x="280" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">filter</text>
+    </g>
+<g>
+      <rect x="508" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="520" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript1</text>
+      <text x="520" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="924" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="936" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If1</text>
+      <text x="936" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="716" y="154.39999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="728" y="171.39999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Records1</text>
+      <text x="728" y="185.39999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1132" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1144" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Post to Airtable1</text>
+      <text x="1144" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1548" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1560" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Call 'Second Step: Ai…</text>
+      <text x="1560" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">executeWorkflow</text>
+    </g>
+<g>
+      <rect x="1340" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1352" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Limit1</text>
+      <text x="1352" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">limit</text>
+    </g></g>
+</svg>

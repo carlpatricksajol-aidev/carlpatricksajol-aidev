@@ -119,6 +119,28 @@ const CaseStudy = () => {
               <PipelineDiagram stages={study.pipeline} />
             </div>
           )}
+
+          {/* the real production graph, when this system has one */}
+          {study.flow && (
+            <figure className="w-wide mt-s7">
+              <a
+                href={study.flow}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-lg border border-line bg-surface p-s4 transition-[border-color,box-shadow] duration-[180ms] hover:border-line-strong hover:shadow-[0_1px_2px_rgba(16,24,40,.04),0_8px_20px_-6px_rgba(16,24,40,.08)]"
+              >
+                <img
+                  src={study.flow}
+                  alt={`Production workflow graph for ${study.title}`}
+                  loading="lazy"
+                  className="w-full"
+                />
+              </a>
+              <figcaption className="t-step--2 mt-s3 text-ink-tertiary">
+                The live workflow, drawn from its own node graph · open for full size
+              </figcaption>
+            </figure>
+          )}
           <div className="w-prose">
             <ol className="mt-s6 grid grid-cols-[auto_1fr] gap-x-s5">
               {study.build.map((step, i) => (

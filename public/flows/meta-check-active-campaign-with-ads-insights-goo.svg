@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 130" width="2000" height="130" role="img" aria-label="Meta Check Active Campaign with Ads - Insights =&gt; Google Sheet workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 436 65 C 464 65, 448 65, 476 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 644 65 C 672 65, 656 65, 684 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 212 65 C 240 65, 240 65, 268 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1092 65 C 1120 65, 1120 65, 1148 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1316 65 C 1344 65, 1344 65, 1372 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1956 65 C 2528.4 65, 111.60000000000002 65, 684 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1764 65 C 1792 65, 1760 65, 1788 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1540 65 C 1568 65, 1568 65, 1596 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 852 65 C 884.4 65, 891.6 65, 924 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="268" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="280" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Active Campaign1</text>
+      <text x="280" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="476" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="488" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out</text>
+      <text x="488" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="44" y="44" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Schedule Trigger1</text>
+      <text x="56" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g>
+<g>
+      <rect x="924" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="936" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Get Ads Insight</text>
+      <text x="936" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1148" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1160" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Split Out1</text>
+      <text x="1160" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitOut</text>
+    </g>
+<g>
+      <rect x="1372" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1384" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Code in JavaScript4</text>
+      <text x="1384" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1788" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1800" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Append or update row …</text>
+      <text x="1800" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">googleSheets</text>
+    </g>
+<g>
+      <rect x="1596" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1608" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait1</text>
+      <text x="1608" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="684" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="696" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Loop Over Items2</text>
+      <text x="696" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">splitInBatches</text>
+    </g></g>
+</svg>

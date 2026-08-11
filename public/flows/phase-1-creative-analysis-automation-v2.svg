@@ -1,0 +1,320 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5968 792" width="5968" height="792" role="img" aria-label="PHASE 1 | Creative_Analysis_Automation v2 workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 377.79999999999995 C 240 377.79999999999995, 224 377.79999999999995, 252 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 377.79999999999995 C 448 377.79999999999995, 432 377.79999999999995, 460 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 377.79999999999995 C 656 377.79999999999995, 656 377.79999999999995, 684 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 852 377.79999999999995 C 880 377.79999999999995, 864 377.79999999999995, 892 377.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1060 377.79999999999995 C 1088 377.79999999999995, 1088 635.4, 1116 635.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1060 377.79999999999995 C 1438 377.79999999999995, 1522 65, 1900 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1060 377.79999999999995 C 1438 377.79999999999995, 1522 285.79999999999995, 1900 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2292 65 C 2320 65, 2304 65, 2332 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2292 285.79999999999995 C 2320 285.79999999999995, 2304 285.79999999999995, 2332 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2292 506.59999999999997 C 2320 506.59999999999997, 2304 506.59999999999997, 2332 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2292 727.4 C 2320 727.4, 2304 727.4, 2332 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 65 C 2528 65, 2512 65, 2540 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 285.79999999999995 C 2528 285.79999999999995, 2512 285.79999999999995, 2540 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 506.59999999999997 C 2528 506.59999999999997, 2512 506.59999999999997, 2540 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2500 727.4 C 2528 727.4, 2512 727.4, 2540 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 65 C 2736 65, 2736 65, 2764 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 65 C 2970.8 65, 1861.2 65, 2124 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 285.79999999999995 C 2736 285.79999999999995, 2736 285.79999999999995, 2764 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 285.79999999999995 C 2970.8 285.79999999999995, 1861.2 285.79999999999995, 2124 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 506.59999999999997 C 2736 506.59999999999997, 2736 506.59999999999997, 2764 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 506.59999999999997 C 2970.8 506.59999999999997, 1861.2 506.59999999999997, 2124 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 727.4 C 2736 727.4, 2736 727.4, 2764 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2708 727.4 C 2970.8 727.4, 1861.2 727.4, 2124 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2932 65 C 2964.4 65, 2971.6 193.79999999999998, 3004 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2932 285.79999999999995 C 2964.4 285.79999999999995, 2971.6 193.79999999999998, 3004 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2932 506.59999999999997 C 2964.4 506.59999999999997, 2971.6 617, 3004 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2932 727.4 C 2964.4 727.4, 2971.6 617, 3004 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3172 193.79999999999998 C 3200 193.79999999999998, 3184 193.79999999999998, 3212 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3172 617 C 3200 617, 3184 617, 3212 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3380 193.79999999999998 C 3408 193.79999999999998, 3392 193.79999999999998, 3420 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3380 617 C 3408 617, 3392 617, 3420 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4036 193.79999999999998 C 4064 193.79999999999998, 4048 193.79999999999998, 4076 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4244 193.79999999999998 C 4272 193.79999999999998, 4256 193.79999999999998, 4284 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4452 193.79999999999998 C 4480 193.79999999999998, 4464 193.79999999999998, 4492 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 5508 617 C 5536 617, 5520 617, 5548 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4660 193.79999999999998 C 4688 193.79999999999998, 4672 193.79999999999998, 4700 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 5716 617 C 5744 617, 5728 617, 5756 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3588 193.79999999999998 C 3616 193.79999999999998, 3616 193.79999999999998, 3644 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3812 193.79999999999998 C 3840 193.79999999999998, 3840 193.79999999999998, 3868 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3588 617 C 3616 617, 3616 617, 3644 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4244 617 C 4272 617, 4256 617, 4284 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 3812 617 C 3840 617, 3840 617, 3868 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4036 617 C 4064 617, 4048 617, 4076 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4452 617 C 4480 617, 4464 617, 4492 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 5092 617 C 5120 617, 5104 617, 5132 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 5300 617 C 5328 617, 5312 617, 5340 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1284 635.4 C 1312 635.4, 1296 635.4, 1324 635.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1492 635.4 C 1520 635.4, 1520 635.4, 1548 635.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1716 635.4 C 1798.8 635.4, 1817.2 727.4, 1900 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1716 635.4 C 1798.8 635.4, 1817.2 506.59999999999997, 1900 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4660 617 C 4688 617, 4672 617, 4700 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4868 617 C 4896 617, 4896 617, 4924 617" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 4868 193.79999999999998 C 4896 193.79999999999998, 4880 193.79999999999998, 4908 193.79999999999998" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2068 65 C 2096 65, 2096 65, 2124 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2068 285.79999999999995 C 2096 285.79999999999995, 2096 285.79999999999995, 2124 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2068 506.59999999999997 C 2096 506.59999999999997, 2096 506.59999999999997, 2124 506.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 2068 727.4 C 2096 727.4, 2096 727.4, 2124 727.4" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="356.79999999999995" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Webhook1</text>
+      <text x="56" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">webhook</text>
+    </g>
+<g>
+      <rect x="252" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a database pag…</text>
+      <text x="264" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">notion</text>
+    </g>
+<g>
+      <rect x="460" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Extract Persona Data1</text>
+      <text x="472" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="684" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="696" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Claude Keyword Genera…</text>
+      <text x="696" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="892" y="356.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="904" y="373.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Parse Keywords1</text>
+      <text x="904" y="387.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="2124" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2136" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait4</text>
+      <text x="2136" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="2124" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2136" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait5</text>
+      <text x="2136" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="2124" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2136" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait6</text>
+      <text x="2136" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="2124" y="706.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2136" y="723.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait7</text>
+      <text x="2136" y="737.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="2332" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Check Run Status for …</text>
+      <text x="2344" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2332" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Check Run Status for …</text>
+      <text x="2344" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2332" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Check Run Status for …</text>
+      <text x="2344" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2332" y="706.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2344" y="723.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Check Run Status for …</text>
+      <text x="2344" y="737.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2540" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2552" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If Success for TikTok1</text>
+      <text x="2552" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2540" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2552" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If Success for Instag…</text>
+      <text x="2552" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2540" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2552" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If Success for Meta1</text>
+      <text x="2552" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2540" y="706.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2552" y="723.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">If Success for TikTok…</text>
+      <text x="2552" y="737.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="2764" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2776" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch TikTok Results1</text>
+      <text x="2776" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2764" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2776" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Instagram Resul…</text>
+      <text x="2776" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2764" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2776" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Meta Ad Library…</text>
+      <text x="2776" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="2764" y="706.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="2776" y="723.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch TikTok Creative…</text>
+      <text x="2776" y="737.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="3004" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3016" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge2</text>
+      <text x="3016" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">merge</text>
+    </g>
+<g>
+      <rect x="3004" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3016" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge3</text>
+      <text x="3016" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">merge</text>
+    </g>
+<g>
+      <rect x="3212" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3224" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Normalize &amp; Merge1</text>
+      <text x="3224" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="3212" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3224" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Normalize &amp; Merge for…</text>
+      <text x="3224" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="3868" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3880" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Claude Analysis1</text>
+      <text x="3880" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="4076" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4088" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Parse Response2</text>
+      <text x="4088" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4284" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4296" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create a database pag…</text>
+      <text x="4296" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">notion</text>
+    </g>
+<g>
+      <rect x="5340" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="5352" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create a database pag…</text>
+      <text x="5352" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">notion</text>
+    </g>
+<g>
+      <rect x="4492" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4504" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Persona Relation for …</text>
+      <text x="4504" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="5548" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="5560" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Persona Relation for …</text>
+      <text x="5560" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="4908" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4920" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update a database pag…</text>
+      <text x="4920" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">notion</text>
+    </g>
+<g>
+      <rect x="3420" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3432" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Extract Hook (Vision)</text>
+      <text x="3432" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="3644" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3656" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Apply Real Hooks</text>
+      <text x="3656" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="3420" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3432" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Pick Top Videos</text>
+      <text x="3432" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4076" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4088" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Analyze Video</text>
+      <text x="4088" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="3644" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3656" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Download Video</text>
+      <text x="3656" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="3868" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="3880" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">To Data URL</text>
+      <text x="3880" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4284" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4296" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Build Patterns</text>
+      <text x="4296" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4924" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4936" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Why It Works</text>
+      <text x="4936" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="5132" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="5144" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Parse Why</text>
+      <text x="5144" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1116" y="614.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1128" y="631.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Build iTunes URLs</text>
+      <text x="1128" y="645.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1324" y="614.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1336" y="631.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">iTunes Search</text>
+      <text x="1336" y="645.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1548" y="614.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1560" y="631.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge Apps</text>
+      <text x="1560" y="645.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4492" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4504" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create Video Upload</text>
+      <text x="4504" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="4700" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4712" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Wait Video</text>
+      <text x="4712" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">wait</text>
+    </g>
+<g>
+      <rect x="5756" y="596" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="5768" y="613" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Attach Video</text>
+      <text x="5768" y="627" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="4700" y="172.79999999999998" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="4712" y="189.79999999999998" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Attach Org Embed</text>
+      <text x="4712" y="203.79999999999998" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1900" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1912" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">TikTok Scraper1</text>
+      <text x="1912" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1900" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1912" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Instagram Scraper1</text>
+      <text x="1912" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1900" y="485.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1912" y="502.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Meta Ad Library Scrap…</text>
+      <text x="1912" y="516.5999999999999" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1900" y="706.4" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1912" y="723.4" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">TikTok Creative Cente…</text>
+      <text x="1912" y="737.4" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g></g>
+</svg>

@@ -1,4 +1,5 @@
 import { automationCases } from "./automationCases";
+import { n8nCases } from "./n8nCases";
 
 /**
  * Single source of truth for every fact on the site.
@@ -160,6 +161,8 @@ export interface CaseStudy {
   stack: string[];
   /** 4-6 short stage labels, rendered as an animated flow diagram */
   pipeline?: string[];
+  /** path to the rendered production workflow graph, when one exists */
+  flow?: string;
   hero?: { type: "video" | "image" | "mat"; src: string; poster?: string; caption: string };
 }
 
@@ -296,18 +299,6 @@ export const creativeCases: CaseStudy[] = [
   },
 ];
 
-/** Real n8n canvases from production work — evidence, not decoration. */
-export const workflowEvidence = [
-  { src: "/workflows/wf-2.webp", title: "Campaign scaling", note: "Webhook decides CBO or ABO, calls the ads API, logs the change." },
-  { src: "/workflows/wf-8.webp", title: "Metrics harvester", note: "One schedule fans into seven reporting presets and writes each to a sheet." },
-  { src: "/workflows/wf-5.webp", title: "Creative upload pipeline", note: "Bulk creative upload with per-market ad creation and Slack success/failure paths." },
-  { src: "/workflows/wf-7.webp", title: "Ad appeal automation", note: "Rejection mail in, ad IDs parsed, appeals filed, outcome logged to Slack." },
-  { src: "/workflows/wf-10.webp", title: "Project sync", note: "Project tasks synced out to eight custom fields across systems." },
-  { src: "/workflows/wf-6.webp", title: "Budget-type reporting", note: "Branches on budget type, pulls the right insights, upserts one row." },
-  { src: "/workflows/wf-3.webp", title: "Ad inventory check", note: "Pulls every ad, upserts to a sheet, then walks it rate-limited." },
-  { src: "/workflows/wf-4.webp", title: "Bulk deletion", note: "Filtered bulk delete with a wait between iterations to respect rate limits." },
-];
-
 /** Everything else, for the /work archive. */
 export const otherSystems = [
   { title: "SA-1 to SA-2 concept pipeline", track: "automation" as const, year: "2026", note: "Intake form to fifteen scripted concept variants and slides.", stack: ["n8n", "Airtable", "Claude", "Slides API"] },
@@ -395,5 +386,9 @@ export const processSteps = [
   { n: "05", title: "Write down what it can't do", body: "Every system ships with its open gaps listed. It is the fastest way to know whether it fits your problem." },
 ];
 
-/** Automation leads. Creative is real proof but it is the second track, not the thesis. */
-export const caseStudies: CaseStudy[] = [...automationCases, ...creativeCases];
+/**
+ * Automation leads. The n8n cases come first because they are the best-evidenced
+ * work on the site — each one was written from the live production graph, not
+ * from memory. Creative is real proof but it is the second track, not the thesis.
+ */
+export const caseStudies: CaseStudy[] = [...n8nCases, ...automationCases, ...creativeCases];

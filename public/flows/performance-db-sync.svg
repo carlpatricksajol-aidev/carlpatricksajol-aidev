@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 627" width="1536" height="627" role="img" aria-label="Performance DB Sync workflow graph">
+  <rect width="100%" height="100%" fill="#FCFCFD"/>
+  <g><path d="M 212 322.59999999999997 C 240 322.59999999999997, 224 322.59999999999997, 252 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 322.59999999999997 C 448 322.59999999999997, 432 65, 460 65" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 322.59999999999997 C 448 322.59999999999997, 432 230.6, 460 230.6" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 322.59999999999997 C 448 322.59999999999997, 432 396.2, 460 396.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 420 322.59999999999997 C 448 322.59999999999997, 432 561.8, 460 561.8" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 65 C 674.8 65, 685.2 285.79999999999995, 732 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 230.6 C 674.8 230.6, 685.2 285.79999999999995, 732 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 396.2 C 674.8 396.2, 685.2 285.79999999999995, 732 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 628 561.8 C 674.8 561.8, 685.2 285.79999999999995, 732 285.79999999999995" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1092 322.59999999999997 C 1120 322.59999999999997, 1104 322.59999999999997, 1132 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 322.59999999999997 C 1328 322.59999999999997, 1296 157, 1324 157" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 1300 322.59999999999997 C 1328 322.59999999999997, 1296 488.2, 1324 488.2" fill="none" stroke="#C9CDD4" stroke-width="1.4"/>
+<path d="M 900 285.79999999999995 C 928 285.79999999999995, 896 322.59999999999997, 924 322.59999999999997" fill="none" stroke="#C9CDD4" stroke-width="1.4"/></g>
+  <g><g>
+      <rect x="44" y="301.59999999999997" width="168" height="42" rx="7" fill="#F2F4FE" stroke="#2E4BDA" stroke-width="1.4"/>
+      <text x="56" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Daily at 2AM</text>
+      <text x="56" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">schedule</text>
+    </g>
+<g>
+      <rect x="252" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="264" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Meta Insights</text>
+      <text x="264" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="44" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="61" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Upload Queue Re…</text>
+      <text x="472" y="75" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="209.6" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="226.6" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Campaigns DB Re…</text>
+      <text x="472" y="240.6" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="375.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="392.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Ad Sets DB Reco…</text>
+      <text x="472" y="406.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="460" y="540.8" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="472" y="557.8" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Fetch Existing Perfor…</text>
+      <text x="472" y="571.8" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="924" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="936" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Process Insights</text>
+      <text x="936" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">code</text>
+    </g>
+<g>
+      <rect x="1132" y="301.59999999999997" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1144" y="318.59999999999997" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">New or Existing Recor…</text>
+      <text x="1144" y="332.59999999999997" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">if</text>
+    </g>
+<g>
+      <rect x="1324" y="136" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1336" y="153" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Create Performance Re…</text>
+      <text x="1336" y="167" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="1324" y="467.2" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="1336" y="484.2" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Update Performance Re…</text>
+      <text x="1336" y="498.2" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">httpRequest</text>
+    </g>
+<g>
+      <rect x="732" y="264.79999999999995" width="168" height="42" rx="7" fill="#FFFFFF" stroke="#E3E5E9" stroke-width="1"/>
+      <text x="744" y="281.79999999999995" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="500" fill="#16181D">Merge</text>
+      <text x="744" y="295.79999999999995" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#5E6472">merge</text>
+    </g></g>
+</svg>
