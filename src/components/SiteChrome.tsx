@@ -20,7 +20,7 @@ export const SiteHeader = ({
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
-      const band = document.querySelector<HTMLElement>('[data-tone="ink"]');
+      const band = document.querySelector<HTMLElement>('[data-tone="plate"]');
       if (!band) {
         setOverInk(false);
         return;
@@ -44,7 +44,7 @@ export const SiteHeader = ({
 
   return (
     <header
-      data-tone={overInk ? "ink" : undefined}
+      data-tone={overInk ? "plate" : undefined}
       className={`sticky top-0 z-50 h-14 transition-colors duration-180 ${
         scrolled ? "border-b border-line-subtle" : "border-b border-transparent"
       }`}

@@ -8,7 +8,7 @@ import {
   StatusDot,
   useEnter,
 } from "@/components/primitives";
-import { caseStudies, experience, processSteps, profile, proofMetrics, tracks } from "@/data/site";
+import { caseStudies, experience, otherSystems, processSteps, profile, proofMetrics, tracks } from "@/data/site";
 import { sectionCopy } from "@/data/copy";
 
 /* ---------- 2. Four production numbers ---------- */
@@ -17,75 +17,95 @@ import { sectionCopy } from "@/data/copy";
  * hairlines, and a mono footnote apparatus — the qualifications sit under the
  * row as footnotes rather than shrinking the numbers into a caption.
  */
+/**
+ * ARCHETYPE: dense ledger band, full bleed.
+ * Four numbers with footnotes IS a table, so it is shaped like one — and it is
+ * the page's first full-width event rather than its flattest block. Each
+ * footnote lives under its own numeral instead of pooling into a fifth,
+ * headerless list nobody reads.
+ */
 export const Proof = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
-    <section ref={ref} className={`${className} border-y border-line bg-surface-sunken`} aria-labelledby="proof-h">
-      <div className="w-shell gutter py-s7">
-        <h2 id="proof-h" className="sr-only-heading">Production results</h2>
-        <p className="t-body max-w-[54ch] text-ink-secondary">{sectionCopy.proof.deck}</p>
+    <section
+      ref={ref}
+      className={`${className} bleed border-y border-line-strong bg-surface-sunken`}
+      aria-labelledby="proof-h"
+    >
+      <div className="grid12 py-s6">
+        <h2 id="proof-h" className="t-sub col-span-12 lg:col-span-4">
+          {sectionCopy.proof.title}
+        </h2>
+        <p className="t-micro col-span-12 self-end text-ink-tertiary lg:col-span-7 lg:col-start-6 lg:text-right">
+          {sectionCopy.proof.deck}
+        </p>
 
-        <dl className="mt-s6 grid grid-cols-2 gap-x-s6 gap-y-s6 border-t border-line-strong pt-s6 lg:grid-cols-4">
+        <dl className="col-span-12 mt-s5 grid grid-cols-2 gap-y-s6 border-t border-line-strong pt-s5 lg:grid-cols-4 lg:gap-0">
           {proofMetrics.map((m, i) => (
-            <div key={m.caption}>
-              <dt className="t-numeral text-ink">
+            <div
+              key={m.caption}
+              /* partial rules that stop short of the band edges — a ledger page,
+                 not a table widget */
+              className={i > 0 ? "lg:border-l lg:border-line-strong lg:pl-s5" : ""}
+            >
+              <dt className="t-numeral tnum text-ink">
                 {m.value}
-                <sup className="t-mono ml-1 align-super text-[0.28em] text-ink-tertiary">{i + 1}</sup>
+                <sup className="t-mono ml-1 align-super text-[0.26em] text-ink-tertiary">{i + 1}</sup>
               </dt>
-              <dd className="t-micro mt-s3 max-w-[26ch] text-ink-tertiary">{m.caption}</dd>
+              <dd className="t-micro mt-s3 max-w-[24ch] text-ink-tertiary">{m.caption}</dd>
+              <p className="t-mono mt-s4 max-w-[26ch] border-t border-line pt-s2 text-[0.6875rem] leading-[1.5] text-ink-tertiary opacity-70">
+                <span className="mr-1 align-super">{i + 1}</span>
+                {m.note}
+              </p>
             </div>
           ))}
         </dl>
-
-        <ol className="mt-s6 border-t border-line pt-s4">
-          {proofMetrics.map((m, i) => (
-            <li key={m.note} className="t-micro text-ink-tertiary">
-              <span className="mr-2 align-super text-[0.75em]">{i + 1}</span>
-              {m.note}
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
 };
 
-/* ---------- 3. The two tracks ---------- */
+/* ---------- 3. Two tracks — ARCHETYPE: full-bleed two-up fork ----------
+   No header above; the two halves ARE the statement. A centre seam and two
+   different ground tones make the fork visible rather than described. */
 export const Tracks = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
-    <section id="tracks" ref={ref} className={`${className} section`} aria-labelledby="tracks-h">
-      <div className="w-shell gutter">
-        <SectionHeader
-          split
-          id="tracks-h"
-          eyebrow="Two ways I help"
-          title="Two tracks, one discipline"
-          deck="One is the work behind the scenes. The other is the work your customers actually see."
-        />
-        <div className="mt-s9 grid gap-s8 md:grid-cols-2 md:gap-0">
-          {tracks.map((t, i) => (
-            <div key={t.id} className={i === 1 ? "md:border-l md:border-line md:pl-s8" : "md:pr-s8"}>
-              <div className="flex items-baseline gap-s3">
-                <span className="t-mono t-slug text-ink-tertiary">{t.number}</span>
-                <span className="t-slug text-brand-600">{t.label}</span>
-              </div>
-              <h3 className="t-sub mt-s3 max-w-[26ch]">{t.title}</h3>
-              <p className="t-body mt-s3 max-w-[46ch] text-ink-secondary">{t.body}</p>
-              <ul className="mt-s5 space-y-s3">
-                {t.capabilities.map((c) => (
-                  <li key={c} className="grid grid-cols-[16px_1fr] gap-s3">
-                    <span className="mt-2.5 h-px w-2 bg-line-interactive" aria-hidden="true" />
-                    <span className="t-body max-w-[46ch] text-ink-secondary">{c}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-s6">
-                <ArrowLink to={t.href}>{t.linkLabel}</ArrowLink>
-              </p>
+    <section id="tracks" ref={ref} className={`${className} bleed border-y border-line`} aria-label="What I build">
+      <div className="grid12">
+        {tracks.map((t, i) => (
+          <div
+            key={t.id}
+            className={`col-span-12 py-s7 lg:col-span-6 ${
+              i === 1
+                ? "lg:col-start-7 lg:border-l lg:border-line lg:pl-s6"
+                : "lg:pr-s6"
+            }`}
+          >
+            <div className="flex items-baseline gap-s3">
+              <span className={`t-mono tnum text-[0.8125rem] ${i === 1 ? "text-oxide-600" : "text-brand-600"}`}>
+                {t.number}
+              </span>
+              <span className={`t-slug ${i === 1 ? "text-oxide-600" : "text-brand-600"}`}>{t.label}</span>
             </div>
-          ))}
-        </div>
+            <h2 className="t-section mt-s4 max-w-[18ch]">{t.title}</h2>
+            <p className="t-body mt-s4 max-w-[44ch] text-ink-secondary">{t.body}</p>
+            <ul className="mt-s5 space-y-s3">
+              {t.capabilities.map((c) => (
+                <li key={c} className="grid grid-cols-[14px_1fr] gap-s3">
+                  <span
+                    className={`mt-2.5 h-px w-2.5 ${i === 1 ? "bg-oxide-600" : "bg-brand-600"}`}
+                    aria-hidden="true"
+                  />
+                  <span className="t-body max-w-[44ch] text-ink-secondary">{c}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-s5">
+              <ArrowLink to={t.href}>{t.linkLabel}</ArrowLink>
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -96,7 +116,7 @@ export const Systems = () => {
   const { ref, className } = useEnter<HTMLElement>();
   const [lead, ...rest] = caseStudies;
   const mid = rest.slice(0, 2);
-  const tail = rest.slice(2, 6);
+  const tail = rest.slice(2);
 
   return (
     <section id="systems" ref={ref} className={`${className} section`} aria-labelledby="systems-h">
@@ -192,36 +212,43 @@ export const Systems = () => {
         </ul>
 
         <p className="mt-s6">
-          <ArrowLink to="/work">See all {caseStudies.length + 8} systems</ArrowLink>
+          <ArrowLink to="/work">See all {caseStudies.length + otherSystems.length} systems</ArrowLink>
         </p>
       </div>
     </section>
   );
 };
 
-/* ---------- 8. Process — removes the "what is working with him like" objection ---------- */
+/* ---------- 8. Process — ARCHETYPE: five-column spine ----------
+   It is a sequence, so it reads once, left to right. As a 3-column card grid it
+   broke 3+2 across a row boundary and read as an unordered set of five things,
+   which is the opposite of "the same five steps, every time". */
 export const Process = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
-    <section id="process" ref={ref} className={`${className} bg-surface-sunken`} aria-labelledby="process-h">
-      <div className="w-shell gutter section">
-        <SectionHeader
-          split
-          id="process-h"
-          eyebrow={sectionCopy.process.eyebrow}
-          title={sectionCopy.process.title}
-          deck={sectionCopy.process.deck}
-        />
-        <ol className="mt-s9 grid gap-s6 md:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((s) => (
-            <li key={s.n} className="border-t border-line pt-s4">
-              <span className="t-mono t-slug text-ink-tertiary">{s.n}</span>
-              <h3 className="t-sub mt-s2 max-w-[26ch]">{s.title}</h3>
-              <p className="t-body mt-s2 max-w-[38ch] text-ink-secondary">{s.body}</p>
-            </li>
-          ))}
-        </ol>
+    <section id="process" ref={ref} className={`${className} section bg-surface-sunken`} aria-labelledby="process-h">
+      <div className="grid12">
+        <div className="col-span-12 lg:col-span-6">
+          <span className="mb-s4 block h-px w-10 bg-line-edge" aria-hidden="true" />
+          <p className="t-slug text-ink-tertiary">{sectionCopy.process.eyebrow}</p>
+          <h2 id="process-h" className="t-section mt-s4 max-w-[18ch]">{sectionCopy.process.title}</h2>
+        </div>
       </div>
+
+      <ol className="grid12 mt-s7">
+        {processSteps.map((st, i) => (
+          <li
+            key={st.n}
+            className={`col-span-12 border-t border-line-strong pt-s4 sm:col-span-6 lg:col-span-2 ${
+              i === 0 ? "" : "lg:border-l lg:pl-s4"
+            } ${i > 0 ? "mt-s5 lg:mt-0" : ""}`}
+          >
+            <span className="t-mono tnum text-[0.8125rem] text-ink-tertiary">{st.n}</span>
+            <h3 className="t-sub mt-s3 max-w-[16ch]">{st.title}</h3>
+            <p className="t-small mt-s3 text-ink-secondary">{st.body}</p>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 };

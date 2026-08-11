@@ -27,29 +27,31 @@ const Workflows = () => {
           deck={sectionCopy.workflows.deck}
         />
 
-        <ul className="mt-s9 grid gap-s5 md:grid-cols-2">
+        <ul className="mt-s7 border-t border-line">
           {featured.map((f, i) => (
-            <li key={f.src}>
+            <li key={f.src} className="border-b border-line">
               <button
                 type="button"
                 onClick={() => setOpen(i)}
-                className="group flex h-full w-full flex-col overflow-hidden surface surface-hover text-left transition-[transform,box-shadow,border-color] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(16,24,40,.04),0_10px_24px_-8px_rgba(16,24,40,.10)]"
+                className="group grid12 w-full items-center py-s5 text-left transition-colors duration-180 hover:bg-surface-sunken"
                 aria-label={`View workflow graph: ${f.title}`}
               >
-                {/* these graphs run up to 8:1, so the thumbnail fits the whole
-                    shape rather than cropping to an empty-looking strip */}
-                <span className="grid h-[150px] place-items-center overflow-hidden border-b border-line-subtle bg-surface p-s4">
+                <span className="t-mono tnum col-span-2 hidden self-start pt-1 text-[0.8125rem] text-ink-tertiary lg:block">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="col-span-12 lg:col-span-4">
+                  <span className="t-sub block text-ink">{f.title}</span>
+                  <span className="t-small mt-s2 block max-w-[42ch] text-ink-secondary">{f.note}</span>
+                </span>
+                {/* the plate: a legible detail of the real graph, bleeding right */}
+                <span className="col-span-12 mt-s4 block overflow-hidden rounded-md border border-line bg-surface-sunken lg:col-span-6 lg:col-start-7 lg:mt-0">
                   <img
-                    src={f.src}
+                    src={f.src.replace("/flows/", "/flows/detail/")}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="max-h-full w-full object-contain opacity-90 transition-opacity duration-[180ms] group-hover:opacity-100"
+                    className="w-full transition-transform duration-[600ms] ease-entrance group-hover:scale-[1.03]"
                   />
-                </span>
-                <span className="flex flex-1 flex-col p-s5">
-                  <span className="t-sub text-ink">{f.title}</span>
-                  <span className="t-body mt-s2 text-ink-secondary">{f.note}</span>
                 </span>
               </button>
             </li>

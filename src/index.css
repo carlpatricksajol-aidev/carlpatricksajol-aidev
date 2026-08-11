@@ -80,6 +80,19 @@
     --r-card: 16px;
     --r-panel: 20px;
 
+    /* ---- grid + rhythm ----
+       --vw uses body width rather than 100vw so a bleed never counts the
+       scrollbar and causes horizontal overflow. */
+    --vw: 100%;
+    --shell: 86rem;
+    --side: clamp(20px, 4.2vw, 72px);
+    --gutter: clamp(14px, 1.4vw, 24px);
+    --bleed-r: calc(-1 * (var(--side) + max(0px, (100vw - min(100vw, 86rem)) / 2)));
+    /* four turn sizes: the gap encodes how big the transition is */
+    --turn-minor: clamp(48px, 5vw, 68px);
+    --turn: clamp(72px, 8vw, 110px);
+    --turn-major: clamp(120px, 13vw, 176px);
+
     /* ---- weights: 700 is deliberately absent ---- */
     --w-body: 400;
     --w-read: 450;
@@ -144,6 +157,9 @@
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 5.5rem;
   }
+
+  /* clip, not hidden — hidden would kill position:sticky in ancestors */
+  body, main { overflow-x: clip; }
 
   [id] {
     scroll-margin-top: 5.5rem;
@@ -255,20 +271,43 @@
   }
   .tnum { font-variant-numeric: tabular-nums lining-nums; }
 
-  /* ================= containers ================= */
+  /* ================= the grid =================
+     A real 12-column grid, declared once, so "column 3" and "column 10" become
+     sayable. The previous build had one container, one left edge and one header
+     shape repeated eleven times — placement had no vocabulary. */
   .w-shell { max-width: 86rem; margin-inline: auto; }
   .w-wide { max-width: 70rem; }
   .w-text { max-width: 52rem; }
   .w-prose { max-width: 42rem; }
 
-  .gutter { padding-inline: 20px; }
-  @media (min-width: 640px) { .gutter { padding-inline: 32px; } }
-  @media (min-width: 1024px) { .gutter { padding-inline: 48px; } }
-  @media (min-width: 1440px) { .gutter { padding-inline: 72px; } }
+  .gutter { padding-inline: var(--side); }
 
-  .section-sm { padding-block: clamp(4rem, 6vw, 5.5rem); }
-  .section { padding-block: clamp(7rem, 11vw, 11rem); }
-  .chapter { padding-block: clamp(10rem, 16vw, 16rem); }
+  .grid12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    padding-inline: var(--side);
+    max-width: var(--shell);
+    margin-inline: auto;
+  }
+  /* below 1024 nearly every span collapses — rhythm is then carried by which
+     element leads the section and by vertical padding, not by offsets */
+  @media (max-width: 1023px) {
+    .grid12 > * { grid-column: 1 / -1 !important; }
+  }
+
+  /* full-bleed: uses body width, not 100vw, so it never counts the scrollbar */
+  .bleed {
+    width: var(--vw);
+    margin-inline: calc(50% - var(--vw) / 2);
+  }
+  /* one-edge bleed reads stronger than a symmetrical one: it tells you which
+     way the page is leaning */
+  .bleed-r { margin-right: var(--bleed-r); }
+
+  .section-sm { padding-block: var(--turn-minor); }
+  .section { padding-block: var(--turn); }
+  .chapter { padding-block: var(--turn-major); }
 
   /* ================= material =================
      Cards carry a resting shadow, a specular top edge and a 1.6% gradient.

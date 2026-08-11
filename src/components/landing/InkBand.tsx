@@ -50,7 +50,7 @@ const VideoWall = () => {
   }, [playing]);
 
   return (
-    <ul className="mt-s8 grid grid-cols-2 gap-s4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-s5">
+    <ul className="mt-s7 grid grid-cols-2 gap-s4 sm:grid-cols-3 lg:gap-s5">
       {videoAds.map((v, i) => {
         const isPlaying = playing === i;
         return (
@@ -141,7 +141,7 @@ const StaticWall = () => {
 
   return (
     <>
-      <ul className="mt-s8 grid grid-cols-2 gap-s3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-s4">
+      <ul className="mt-s7 grid grid-cols-2 gap-s3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-s4">
         {staticAds.map((a, i) => (
           <li key={a.src}>
             <button
@@ -175,7 +175,7 @@ const StaticWall = () => {
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent
-          data-tone="ink"
+          data-tone="plate"
           onCloseAutoFocus={(e) => {
             e.preventDefault();
             triggerRef.current?.focus();
@@ -205,7 +205,7 @@ const InkBand = () => {
   const statics = useEnter<HTMLDivElement>();
 
   return (
-    <div data-tone="ink" className="gallery-contain bg-surface-ink text-ink">
+    <div data-tone="plate" className="gallery-contain bg-surface-ink text-ink">
       <div className="w-shell gutter">
         {/* chapter opener */}
         <section id="logo-field" className="section" ref={logo.ref}>
