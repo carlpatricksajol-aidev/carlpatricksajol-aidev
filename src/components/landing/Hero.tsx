@@ -17,15 +17,15 @@ const Hero = () => {
           {profile.available && (
             <p className="inline-flex items-center gap-s2 rounded-full border border-line px-s3 py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
-              <span className="t-step--1 text-ink-secondary">Available for new engagements</span>
+              <span className="t-small text-ink-secondary">Available for new engagements</span>
             </p>
           )}
 
-          <h1 className="t-step-4 mt-s5 max-w-[21ch]">
+          <h1 className="t-display mt-s5 max-w-[21ch]">
             {hero.h1}
           </h1>
 
-          <p className="t-step-1 mt-s5 max-w-[52ch] text-ink-secondary">
+          <p className="t-lead mt-s5 max-w-[52ch] text-ink-secondary">
             {hero.deck}
           </p>
 
@@ -33,7 +33,7 @@ const Hero = () => {
             <PrimaryButton href={profile.calendly} large>
               {hero.primaryCta}
             </PrimaryButton>
-            <a href="#problems" className="t-step-0 font-medium text-brand-600 hover:text-brand-700">
+            <a href="#problems" className="t-body font-medium text-brand-600 hover:text-brand-700">
               {hero.secondaryCta} ↓
             </a>
           </div>
@@ -44,7 +44,7 @@ const Hero = () => {
             right, and real traffic moving between them. */}
         <div className="hidden lg:col-span-5 lg:block">
           <SystemMap />
-          <p className="t-step--1 mt-s5 text-ink-tertiary">
+          <p className="t-small mt-s5 text-ink-tertiary">
             The usual shape: your tools in, an agent layer, work back out.
           </p>
         </div>
@@ -59,13 +59,13 @@ const Hero = () => {
               href={`#${t.id === "automation" ? "tracks" : "logo-field"}`}
               className="group flex items-baseline gap-s4 py-s6 transition-colors duration-120 md:px-s6 md:first:pl-0 md:last:pr-0"
             >
-              <span className="t-mono t-step--2 shrink-0 text-ink-tertiary transition-colors group-hover:text-brand-600">
+              <span className="t-mono t-slug shrink-0 text-ink-tertiary transition-colors group-hover:text-brand-600">
                 {t.number}
               </span>
               <span className="min-w-0">
-                <span className="t-eyebrow block text-ink-tertiary">{t.label}</span>
-                <span className="t-step-0 mt-s2 block text-ink-secondary">{t.body}</span>
-                <span className="t-step--2 mt-s3 block text-ink-tertiary">{t.meta}</span>
+                <span className="t-slug block text-ink-tertiary">{t.label}</span>
+                <span className="t-body mt-s2 block text-ink-secondary">{t.body}</span>
+                <span className="t-slug mt-s3 block text-ink-tertiary">{t.meta}</span>
               </span>
             </a>
           ))}

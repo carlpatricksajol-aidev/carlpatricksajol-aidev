@@ -47,9 +47,9 @@ const Work = () => {
     <Page>
       <div className="w-shell gutter pt-s9 md:pt-s10">
         <div className="w-text">
-          <p className="t-eyebrow text-brand-600">Archive</p>
-          <h1 className="t-step-4 mt-s4 max-w-[18ch]">Every system, in one list</h1>
-          <p className="t-step-1 mt-s5 max-w-[52ch] text-ink-secondary">
+          <p className="t-slug text-brand-600">Archive</p>
+          <h1 className="t-display mt-s4 max-w-[18ch]">Every system, in one list</h1>
+          <p className="t-lead mt-s5 max-w-[52ch] text-ink-secondary">
             Twelve builds across two tracks. The five with case studies are linked; the rest are
             listed for completeness.
           </p>
@@ -85,20 +85,20 @@ const Work = () => {
                 <span className="min-w-0">
                   {/* a real h2 so the page has a heading outline a screen reader
                       (and the headings-only scan test) can actually use */}
-                  <h2 className="t-step-2 text-ink">{r.title}</h2>
-                  <span className="t-step-0 mt-1 block max-w-[62ch] text-ink-secondary">{r.note}</span>
+                  <h2 className="t-sub text-ink">{r.title}</h2>
+                  <span className="t-body mt-1 block max-w-[62ch] text-ink-secondary">{r.note}</span>
                   <span className="mt-s3 flex flex-wrap items-center gap-x-s3 gap-y-1">
                     {r.status && (
                       <span className="inline-flex items-center gap-s2">
                         <StatusDot live={r.status === "Live in production"} />
-                        <span className="t-step--2 text-ink-tertiary">{r.status}</span>
+                        <span className="t-slug text-ink-tertiary">{r.status}</span>
                       </span>
                     )}
-                    <span className="t-step--2 text-ink-tertiary">{r.stack.join(" · ")}</span>
+                    <span className="t-slug text-ink-tertiary">{r.stack.join(" · ")}</span>
                   </span>
                 </span>
                 <span className="flex items-center gap-s4 justify-self-end">
-                  <span className="t-mono t-step--2 hidden text-ink-tertiary sm:block">{r.year}</span>
+                  <span className="t-mono t-slug hidden text-ink-tertiary sm:block">{r.year}</span>
                   {r.to && (
                     <span className="text-brand-600 transition-transform duration-[160ms] group-hover:translate-x-1">
                       <ArrowRight />

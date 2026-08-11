@@ -116,8 +116,8 @@ const VideoWall = () => {
                     <PlayGlyph className="ml-0.5" />
                   </span>
                   <span className="pointer-events-none absolute inset-x-0 bottom-0 p-s3">
-                    <span className="t-step--1 block font-medium text-ink">{v.title}</span>
-                    <span className="t-step--2 mt-1 block text-ink-secondary">
+                    <span className="t-small block font-medium text-ink">{v.title}</span>
+                    <span className="t-slug mt-1 block text-ink-secondary">
                       {v.format} · {v.duration}
                     </span>
                   </span>
@@ -165,7 +165,7 @@ const StaticWall = () => {
                   className="h-full w-full object-contain"
                 />
               </span>
-              <span className="t-step--2 mt-s3 block text-ink-tertiary transition-colors duration-120 group-hover:text-ink-secondary">
+              <span className="t-slug mt-s3 block text-ink-tertiary transition-colors duration-120 group-hover:text-ink-secondary">
                 {a.title}
               </span>
             </button>
@@ -186,8 +186,8 @@ const StaticWall = () => {
             <>
               <img src={ad.src} alt={`Static ad: ${ad.title}`} className="w-full" />
               <div className="p-s5">
-                <DialogTitle className="t-step-2 text-ink">{ad.title}</DialogTitle>
-                <DialogDescription className="t-step--1 mt-s2 text-ink-tertiary">{ad.concept}</DialogDescription>
+                <DialogTitle className="t-sub text-ink">{ad.title}</DialogTitle>
+                <DialogDescription className="t-small mt-s2 text-ink-tertiary">{ad.concept}</DialogDescription>
               </div>
             </>
           )}
@@ -212,6 +212,8 @@ const InkBand = () => {
           <div className={logo.className}>
             <SectionHeader
               split
+              level="chapter"
+              tone="oxide"
               eyebrow={sectionCopy["creative-logos"].eyebrow}
               title={sectionCopy["creative-logos"].title}
               deck={sectionCopy["creative-logos"].deck}
@@ -224,6 +226,7 @@ const InkBand = () => {
           <div className={video.className}>
             <SectionHeader
               split
+              tone="oxide"
               eyebrow={sectionCopy["creative-video"].eyebrow}
               title={sectionCopy["creative-video"].title}
               deck={sectionCopy["creative-video"].deck}
@@ -236,6 +239,7 @@ const InkBand = () => {
           <div className={statics.className}>
             <SectionHeader
               split
+              tone="oxide"
               eyebrow={sectionCopy["creative-static"].eyebrow}
               title={sectionCopy["creative-static"].title}
               deck={sectionCopy["creative-static"].deck}

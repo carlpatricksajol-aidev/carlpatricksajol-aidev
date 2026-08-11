@@ -33,7 +33,7 @@ const Workflows = () => {
               <button
                 type="button"
                 onClick={() => setOpen(i)}
-                className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-surface-raised text-left transition-[transform,box-shadow,border-color] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(16,24,40,.04),0_10px_24px_-8px_rgba(16,24,40,.10)]"
+                className="group flex h-full w-full flex-col overflow-hidden surface surface-hover text-left transition-[transform,box-shadow,border-color] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[0_1px_2px_rgba(16,24,40,.04),0_10px_24px_-8px_rgba(16,24,40,.10)]"
                 aria-label={`View workflow graph: ${f.title}`}
               >
                 {/* these graphs run up to 8:1, so the thumbnail fits the whole
@@ -48,8 +48,8 @@ const Workflows = () => {
                   />
                 </span>
                 <span className="flex flex-1 flex-col p-s5">
-                  <span className="t-step-2 text-ink">{f.title}</span>
-                  <span className="t-step-0 mt-s2 text-ink-secondary">{f.note}</span>
+                  <span className="t-sub text-ink">{f.title}</span>
+                  <span className="t-body mt-s2 text-ink-secondary">{f.note}</span>
                 </span>
               </button>
             </li>
@@ -65,9 +65,9 @@ const Workflows = () => {
                 <img src={current.src} alt={`Workflow graph: ${current.title}`} className="min-w-[900px] max-w-none" />
               </div>
               <div className="border-t border-line p-s5">
-                <DialogTitle className="t-step-2">{current.title}</DialogTitle>
-                <DialogDescription className="t-step-0 mt-s2 text-ink-secondary">{current.note}</DialogDescription>
-                <p className="t-step--2 mt-s3 text-ink-tertiary">Scroll to pan · drawn from the live workflow graph</p>
+                <DialogTitle className="t-sub">{current.title}</DialogTitle>
+                <DialogDescription className="t-body mt-s2 text-ink-secondary">{current.note}</DialogDescription>
+                <p className="t-slug mt-s3 text-ink-tertiary">Scroll to pan · drawn from the live workflow graph</p>
               </div>
             </>
           )}

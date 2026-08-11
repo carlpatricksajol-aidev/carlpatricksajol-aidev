@@ -1,4 +1,5 @@
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/inter/opsz.css";
+@import "@fontsource/instrument-serif/400.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
@@ -7,102 +8,132 @@
 @tailwind utilities;
 
 /* ============================================================================
-   Design system — light, enterprise. ONE theme, no dark mode toggle.
-   Colors are HSL triplets so Tailwind/shadcn can compose them with opacity.
-   Contrast ratios in comments are measured against --surface-base.
+   A technical monograph printed on warm stock.
+
+   Every neutral on this page is generated from ONE hue (OKLCH h=64, warm
+   uncoated paper) at real chroma — the previous palette was near-neutral, which
+   is why restraint read as absence rather than as a choice. Ink is never #000,
+   ground is never #fff, and every shadow is hue-locked to the ink so the page
+   has one light source.
+
+   Two accents, each with a job: blue is track 01 and interaction, oxide is
+   track 02 (ad creative). Neither is ever chrome.
    ========================================================================= */
 
 @layer base {
   :root {
-    /* --- surfaces --- */
-    --surface-base: 240 20% 99%;      /* #FCFCFD  off-white: keeps hairlines visible */
-    --surface-raised: 0 0% 100%;      /* #FFFFFF  cards, sticky bar */
-    --surface-sunken: 220 16% 96%;    /* #F3F4F6  mats, wells, pull-outs */
-    --surface-ink: 220 18% 7%;        /* #0E1014  the one dark band */
-    --surface-ink-raised: 223 14% 10%;/* #16181D  tiles + phone bezels on ink */
+    /* ---- surfaces: three that are genuinely three (ΔE > 4 apart) ---- */
+    --card: 32 43% 98%;          /* #FEFCFA  raised: cards, sticky bar, popovers */
+    --paper: 30 43% 95%;         /* #F8F2EC  the page ground */
+    --well: 27 30% 90%;          /* #EEE5DE  sunken: mats, washes, the ledger */
 
-    /* --- borders --- */
-    --border-subtle: 225 12% 93%;     /* #ECEDF0  decorative only */
-    --border-default: 220 12% 90%;    /* #E3E5E9  panels, hairline grids */
-    --border-strong: 218 11% 81%;     /* #C9CDD4  hover */
-    --border-interactive: 216 6% 49%; /* #767C85  4.10:1 — control boundaries (WCAG 1.4.11) */
+    /* ---- the plate: the one dark region, same hue, lights off ---- */
+    --plate-0: 30 29% 5%;        /* #0E0B08 */
+    --plate-1: 27 19% 9%;        /* #1B1612 */
+    --plate-2: 25 16% 14%;       /* #29231E */
 
-    /* --- text --- */
-    --text-primary: 223 14% 10%;      /* #16181D  17.3:1 */
-    --text-secondary: 219 9% 32%;     /* #4A4F58   8.1:1 — default reading colour */
-    /* Darkened from 46%: at 46% this cleared 4.5:1 on --surface-base but fell to
-       4.39:1 on --surface-sunken, where it is also used. Sized for the worse ground. */
-    --text-tertiary: 220 9% 41%;      /* #5E6472   >=4.5:1 on base AND sunken */
-    --text-on-ink: 220 11% 94%;       /* #EDEFF2  ~15:1 on ink */
-    --text-on-ink-secondary: 218 11% 69%; /* #A8AEB8 ~8:1 */
-    --text-on-ink-tertiary: 217 8% 55%;   /* #868D97 ~5.2:1 floor */
+    /* ---- rules and edges ---- */
+    --rule: 27 25% 85%;          /* #E2D8D0  decorative hairlines */
+    --rule-2: 26 20% 78%;        /* #D0C5BC  panel edges */
+    --edge: 27 14% 64%;          /* #AFA499  crop marks, dividers */
 
-    /* --- accent: one hue --- */
-    --accent-50: 231 87% 97%;
-    --accent-100: 227 84% 94%;
-    --accent-200: 227 84% 87%;
-    --accent-400: 227 71% 67%;        /* #6C86E8  5.67:1 on ink — only accent allowed on ink */
-    --accent-600: 230 70% 52%;        /* #2E4BDA  6.70:1 — PRIMARY */
-    --accent-700: 230 65% 41%;
-    --accent-900: 231 62% 23%;
+    /* ---- ink: five steps, all warm ---- */
+    --ink-0: 30 24% 8%;          /* #1A1510  display headings, button fill   16.3:1 */
+    --ink-1: 27 16% 16%;         /* #312A23  H3, card titles                 12.7:1 */
+    --ink-2: 25 14% 27%;         /* #50463D  DEFAULT READING COLOUR           8.3:1 */
+    --ink-3: 25 11% 38%;         /* #6C6157  captions, meta                   5.4:1 */
+    --ink-4: 24 10% 49%;         /* #887C72  control boundaries ONLY, never text */
 
-    /* --- signal: factual status only --- */
-    --signal-emerald: 162 76% 25%;    /* #0F6E4E  6.25:1 */
+    /* ---- accent A: blue. track 01, links, focus. never a button fill. ---- */
+    --blue-700: 211 100% 30%;
+    --blue-600: 209 100% 36%;    /* #0058B8  6.12:1 on paper */
+    --blue-500: 211 68% 50%;
+    --blue-400: 213 79% 67%;     /* plate only */
+    --blue-200: 212 80% 87%;
 
-    /* --- radius --- */
-    --r-xs: 4px;
-    --r-sm: 6px;
-    --r-md: 10px;
-    --r-lg: 14px;
-    --r-xl: 20px;
+    /* ---- accent B: oxide. track 02 (ad creative) only. ---- */
+    --ox-700: 24 79% 27%;
+    --ox-600: 24 79% 34%;        /* #9D4613  5.70:1 on paper */
+    --ox-500: 22 65% 46%;
+    --ox-400: 19 71% 63%;        /* plate only */
+    --ox-200: 21 72% 86%;
 
-    /* --- shadcn compatibility: map its token names onto the palette --- */
-    --background: var(--surface-base);
-    --foreground: var(--text-primary);
-    --card: var(--surface-raised);
-    --card-foreground: var(--text-primary);
-    --popover: var(--surface-raised);
-    --popover-foreground: var(--text-primary);
-    --primary: var(--accent-600);
-    --primary-foreground: 0 0% 100%;
-    --secondary: var(--surface-sunken);
-    --secondary-foreground: var(--text-primary);
-    --muted: var(--surface-sunken);
-    --muted-foreground: var(--text-tertiary);
-    --accent: var(--surface-sunken);
-    --accent-foreground: var(--text-primary);
-    --destructive: 0 72% 45%;
+    --signal: 156 58% 28%;       /* #1E7049  factual status only */
+    --signal-plate: 152 42% 54%;
+
+    /* ---- one sun: every shadow is the ink, never rgba(0,0,0,x) ---- */
+    --sh: 30 24% 8%;
+    --e1: 0 1px 1px hsl(var(--sh) / 0.05), 0 2px 4px -1px hsl(var(--sh) / 0.05);
+    --e2: 0 1px 2px -1px hsl(var(--sh) / 0.08), 0 3px 8px -3px hsl(var(--sh) / 0.08),
+          0 12px 28px -12px hsl(var(--sh) / 0.1);
+    --e3: 0 2px 4px -2px hsl(var(--sh) / 0.07), 0 8px 18px -6px hsl(var(--sh) / 0.09),
+          0 28px 56px -20px hsl(var(--sh) / 0.14);
+    --e4: 0 4px 8px -4px hsl(var(--sh) / 0.06), 0 20px 40px -12px hsl(var(--sh) / 0.12),
+          0 56px 96px -32px hsl(var(--sh) / 0.2);
+    --spec: inset 0 1px 0 #ffffff;
+    --spec-plate: inset 0 1px 0 rgb(255 255 255 / 0.055);
+
+    /* ---- radius: concentric. media inset 6px inside a 16px card = 10px. ---- */
+    --r-chip: 8px;
+    --r-control: 10px;
+    --r-media: 10px;
+    --r-card: 16px;
+    --r-panel: 20px;
+
+    /* ---- weights: 700 is deliberately absent ---- */
+    --w-body: 400;
+    --w-read: 450;
+    --w-medium: 510;
+    --w-strong: 560;
+
+    /* ---- shadcn compatibility, repointed at the warm ramp ---- */
+    --background: var(--paper);
+    --foreground: var(--ink-0);
+    --card-foreground: var(--ink-0);
+    --popover: var(--card);
+    --popover-foreground: var(--ink-0);
+    --primary: var(--ink-0);
+    --primary-foreground: var(--card);
+    --secondary: var(--well);
+    --secondary-foreground: var(--ink-0);
+    --muted: var(--well);
+    --muted-foreground: var(--ink-3);
+    --accent: var(--well);
+    --accent-foreground: var(--ink-0);
+    --destructive: 8 62% 42%;
     --destructive-foreground: 0 0% 100%;
-    --border: var(--border-default);
-    --input: var(--border-interactive);
-    --ring: var(--accent-600);
-    --radius: 10px;
+    --border: var(--rule);
+    --input: var(--ink-4);
+    --ring: var(--blue-600);
+    --radius: var(--r-card);
   }
 
-  /*  Scoped token override for the gallery band. Not a theme, no toggle:
-      components inside render correctly with zero per-component special-casing. */
-  [data-tone="ink"] {
-    --surface-base: var(--surface-ink);
-    --surface-raised: var(--surface-ink-raised);
-    --surface-sunken: var(--surface-ink-raised);
-    --text-primary: var(--text-on-ink);
-    --text-secondary: var(--text-on-ink-secondary);
-    --text-tertiary: var(--text-on-ink-tertiary);
-    --border-subtle: 0 0% 100%;
-    --border-default: 0 0% 100%;
-    --border-strong: 0 0% 100%;
-    --accent-600: var(--accent-400);
-    --background: var(--surface-ink);
-    --foreground: var(--text-on-ink);
-    --border: 0 0% 100%;
-    /* shadcn tokens must follow the override too, or controls rendered inside
-       the band keep the light-ground accent and their focus rings fail contrast. */
-    --ring: var(--accent-400);
-    --primary: var(--accent-400);
-    --primary-foreground: var(--surface-ink);
-    --muted-foreground: var(--text-on-ink-tertiary);
-    --popover: var(--surface-ink-raised);
-    --popover-foreground: var(--text-on-ink);
+  /* The plate. Same room, lights off — not a second site. */
+  [data-tone="plate"] {
+    --paper: var(--plate-0);
+    --card: var(--plate-1);
+    --well: var(--plate-2);
+    --ink-0: 30 43% 95%;
+    --ink-1: 27 25% 85%;
+    --ink-2: 26 20% 78%;
+    --ink-3: 27 14% 64%;
+    --ink-4: 24 10% 49%;
+    --rule: 30 12% 22%;
+    --rule-2: 28 12% 28%;
+    --edge: 27 12% 38%;
+    --blue-600: var(--blue-400);
+    --ox-600: var(--ox-400);
+    --signal: var(--signal-plate);
+    --background: var(--plate-0);
+    --foreground: 30 43% 95%;
+    --border: 30 12% 22%;
+    --ring: var(--blue-400);
+    --primary: 30 43% 95%;
+    --primary-foreground: var(--plate-0);
+    --muted-foreground: 27 14% 64%;
+    --popover: var(--plate-1);
+    --popover-foreground: 30 43% 95%;
+    --spec: var(--spec-plate);
   }
 
   * {
@@ -111,168 +142,248 @@
 
   html {
     -webkit-text-size-adjust: 100%;
-    /* the sticky header is 56px; without this every in-page anchor lands its
-       target underneath it and clips the section eyebrow */
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 5.5rem;
   }
 
   [id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 5.5rem;
   }
 
   body {
-    background-color: hsl(var(--surface-base));
-    color: hsl(var(--text-secondary));
+    background-color: hsl(var(--paper));
+    color: hsl(var(--ink-2));
     font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-    font-synthesis-weight: none;
-    text-rendering: optimizeLegibility;
+    /* the opsz axis was on disk and never loaded until now */
+    font-optical-sizing: auto;
+    /* the browser may never smear a weight the file doesn't contain */
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Headings own the content BELOW them: margin-top >= 3x margin-bottom.
-     This single rule is what produces the layer-cake scan pattern. */
   h1, h2, h3, h4 {
-    color: hsl(var(--text-primary));
+    color: hsl(var(--ink-0));
     text-wrap: balance;
+    font-weight: var(--w-body);
   }
 
   p, li {
     text-wrap: pretty;
   }
 
-  /* Focus is never removed. 2px ring + 2px offset, >=3:1 on both grounds. */
   :focus-visible {
-    outline: 2px solid hsl(var(--accent-600));
+    outline: 2px solid hsl(var(--blue-600));
     outline-offset: 2px;
     border-radius: inherit;
   }
-  [data-tone="ink"] :focus-visible {
-    outline-color: #a8b6f5;
-  }
-  :focus:not(:focus-visible) {
-    outline: none;
-  }
+  :focus:not(:focus-visible) { outline: none; }
 
   ::selection {
-    background: hsl(var(--accent-100));
-    color: hsl(var(--accent-900));
+    background: hsl(var(--blue-200));
+    color: hsl(var(--ink-0));
   }
 }
 
 @layer components {
-  /* ---------- type scale ----------
-     Scaled up across the board: the previous scale read small and timid on a
-     large screen. Only three "loud" tiers (step-3/4/5) so hierarchy holds. */
-  .t-step--2 { font-family: "Geist Mono", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; line-height: 1.45; letter-spacing: 0.07em; text-transform: uppercase; }
-  .t-step--1 { font-size: 0.9375rem; font-weight: 500; line-height: 1.5; }
-  .t-eyebrow { font-size: 0.875rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.09em; text-transform: uppercase; }
-  .t-step-0  { font-size: 1.0625rem; line-height: 1.6; }
-  .t-step-1  { font-size: clamp(1.1875rem, 0.6vw + 1.05rem, 1.375rem); line-height: 1.6; }
-  .t-step-2  { font-size: clamp(1.375rem, 0.7vw + 1.2rem, 1.625rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.014em; }
-  .t-step-3  { font-size: clamp(2.125rem, 2.6vw + 1.25rem, 3.25rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.022em; }
-  .t-step-4  { font-size: clamp(3rem, 5.2vw + 1rem, 5.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.028em; }
-  .t-step-5  { font-size: clamp(2.5rem, 3.6vw + 1.2rem, 3.75rem); font-weight: 500; line-height: 1.02; letter-spacing: -0.022em; font-variant-numeric: tabular-nums; }
+  /* ================= type ==================
+     Tracking ramps negative as size grows and crosses zero near 13.5px;
+     leading inverts against it. Positive tracking exists only for mono caps. */
 
+  .t-display {
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-size: clamp(3.25rem, 3.38vw + 2.458rem, 5.5rem);
+    font-weight: 400;
+    letter-spacing: -0.028em;
+    line-height: 0.95;
+  }
+  .t-chapter {
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-size: clamp(2.5rem, 2.254vw + 1.972rem, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.024em;
+    line-height: 0.98;
+  }
+  .t-section {
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-size: clamp(2rem, 1.127vw + 1.736rem, 2.75rem);
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    line-height: 1.06;
+  }
+  .t-numeral {
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-size: clamp(2.5rem, 3.38vw + 1.708rem, 4.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+  .t-sub {
+    font-size: clamp(1.3125rem, 0.282vw + 1.246rem, 1.5rem);
+    font-weight: var(--w-strong);
+    letter-spacing: -0.012em;
+    line-height: 1.25;
+  }
+  .t-lead {
+    font-size: clamp(1.1875rem, 0.188vw + 1.144rem, 1.3125rem);
+    font-weight: var(--w-body);
+    letter-spacing: -0.008em;
+    line-height: 1.5;
+  }
+  .t-body { font-size: 1.0625rem; letter-spacing: -0.004em; line-height: 1.6; }
+  .t-small { font-size: 0.9375rem; font-weight: var(--w-read); letter-spacing: -0.002em; line-height: 1.55; }
+  .t-caption { font-size: 0.84375rem; line-height: 1.45; }
+  .t-slug {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+  .t-micro {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.78125rem;
+    letter-spacing: 0.01em;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
   .t-mono { font-family: "Geist Mono", ui-monospace, monospace; }
 
-  /* ---------- containers: every block declares one rung ----------
-     Only the shell centres. Narrower rungs are left-aligned INSIDE it so every
-     block shares one x-origin — that left rail is the page's scan path, and
-     centring a narrower rung would silently break it. */
+  /* strips the last of the default-Inter signature at no byte cost */
+  .t-sub, .t-lead, .t-body, .t-small, nav, button {
+    font-feature-settings: "ss03" 1, "cv05" 1, "cv11" 1;
+  }
+  .tnum { font-variant-numeric: tabular-nums lining-nums; }
+
+  /* ================= containers ================= */
   .w-shell { max-width: 86rem; margin-inline: auto; }
-  .w-wide  { max-width: 70rem; }
-  .w-text  { max-width: 52rem; }
+  .w-wide { max-width: 70rem; }
+  .w-text { max-width: 52rem; }
   .w-prose { max-width: 42rem; }
 
   .gutter { padding-inline: 20px; }
-  @media (min-width: 640px)  { .gutter { padding-inline: 32px; } }
+  @media (min-width: 640px) { .gutter { padding-inline: 32px; } }
   @media (min-width: 1024px) { .gutter { padding-inline: 48px; } }
-  @media (min-width: 1440px) { .gutter { padding-inline: 64px; } }
+  @media (min-width: 1440px) { .gutter { padding-inline: 72px; } }
 
-  /* ---------- section rhythm ---------- */
   .section-sm { padding-block: clamp(4rem, 6vw, 5.5rem); }
-  .section    { padding-block: clamp(7rem, 11vw, 11rem); }
-  .chapter    { padding-block: clamp(10rem, 16vw, 16rem); }
+  .section { padding-block: clamp(7rem, 11vw, 11rem); }
+  .chapter { padding-block: clamp(10rem, 16vw, 16rem); }
 
-  /* ---------- elevation: exactly three levels ---------- */
-  .e0 { border: 1px solid hsl(var(--border-default)); }
-  .e1 { border: 1px solid hsl(var(--border-strong));
-        box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 4px 12px -4px rgba(16,24,40,.06); }
-  .e2 { box-shadow: 0 12px 32px -8px rgba(16,24,40,.12), 0 2px 6px rgba(16,24,40,.06); }
-
-  /* ---------- framing dark creative on light ground ---------- */
-  /* (b) phone frame — makes darkness read as a screen, not a hole */
-  .phone-frame {
-    background: hsl(var(--surface-ink-raised));
-    border-radius: var(--r-xl);
-    padding: 10px;
-    border: 1px solid hsl(var(--border-default));
+  /* ================= material =================
+     Cards carry a resting shadow, a specular top edge and a 1.6% gradient.
+     The previous build shipped exactly one box-shadow across the whole page. */
+  .surface {
+    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card) / 0.984));
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--ink-0) / 0.09);
+    border-radius: var(--r-card);
+    box-shadow: var(--e2), var(--spec);
   }
-  .phone-frame > * {
-    border-radius: var(--r-md);
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
-    display: block;
+  .surface-hover {
+    transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1),
+                box-shadow 240ms cubic-bezier(0.32, 0.72, 0, 1),
+                border-color 240ms ease-out;
   }
-  /* (c) neutral mat — a graded mid-tone step between page and creative */
-  .mat {
-    background: hsl(var(--surface-sunken));
-    border: 1px solid hsl(var(--border-default));
-    border-radius: var(--r-lg);
-    padding: 20px;
+  .surface-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--e3), var(--spec);
+    border-color: hsl(var(--ink-0) / 0.14);
   }
-  .mat img, .mat video {
-    border-radius: var(--r-md);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-  }
-  /* tiles inside the ink band sit directly on the ground */
-  .ink-tile {
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+  .well {
+    background: hsl(var(--well));
+    border: 1px solid hsl(var(--ink-0) / 0.07);
+    border-radius: var(--r-card);
   }
 
-  /* ---------- hairline grid: survives wrapping where divide-x does not ---------- */
-  .rule-grid { background: hsl(var(--border-default)); gap: 1px; }
-  .rule-grid > * { background: hsl(var(--surface-base)); }
+  /* hairline rule that spans only the text column, never the container */
+  .rule-top { border-top: 1px solid hsl(var(--rule)); }
 
-  /* ---------- link ---------- */
+  /* ================= links ================= */
   .link {
-    color: hsl(var(--accent-600));
+    color: hsl(var(--blue-600));
     text-decoration: underline;
-    text-decoration-color: hsl(var(--accent-200));
+    text-decoration-color: hsl(var(--blue-600) / 0.32);
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
-    transition: color 120ms ease-out, text-decoration-color 120ms ease-out;
+    transition: text-decoration-color 160ms ease-out;
   }
-  .link:hover { color: hsl(var(--accent-700)); text-decoration-color: currentColor; }
+  .link:hover { text-decoration-color: currentColor; }
 
-  /* arrow affordance — the site has exactly three icon glyphs */
-  .arrow-link { display: inline-flex; align-items: center; gap: 0.5rem; color: hsl(var(--accent-600)); font-weight: 500; }
-  .arrow-link svg { transition: transform 160ms cubic-bezier(.32,.72,0,1); }
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--blue-600));
+    font-weight: var(--w-medium);
+  }
+  .arrow-link svg { transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1); }
   .arrow-link:hover svg { transform: translateX(4px); }
 
   .sr-only-heading {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
   }
+
+  /* ================= framing dark creative on warm paper ================= */
+  .phone-frame {
+    background: hsl(var(--plate-1));
+    border-radius: var(--r-panel);
+    padding: 10px;
+    border: 1px solid hsl(var(--ink-0) / 0.1);
+    box-shadow: var(--e3);
+  }
+  .phone-frame > * {
+    border-radius: var(--r-media);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+    display: block;
+  }
+  .mat {
+    background: hsl(var(--well));
+    border: 1px solid hsl(var(--ink-0) / 0.07);
+    border-radius: var(--r-card);
+    padding: 20px;
+    box-shadow: var(--e1);
+  }
+  .mat img, .mat video { border-radius: var(--r-media); box-shadow: inset 0 0 0 1px hsl(var(--ink-0) / 0.08); }
+  .ink-tile {
+    border-radius: var(--r-media);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  }
+
+  .rule-grid { background: hsl(var(--rule)); gap: 1px; }
+  .rule-grid > * { background: hsl(var(--paper)); }
 }
 
 @layer utilities {
-  /* ---------- entrance: one per section, once, never scroll-coupled ---------- */
+  /* the lens, not the page: fixed so it never scrolls with content */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.028;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (max-width: 767px) {
+    .grain::after { display: none; }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
-    .enter { opacity: 0; transform: translateY(8px); }
+    .enter { opacity: 0; transform: translateY(10px); }
     .enter.is-in {
-      opacity: 1; transform: none;
-      transition: opacity 240ms cubic-bezier(.32,.72,0,1), transform 240ms cubic-bezier(.32,.72,0,1);
+      opacity: 1;
+      transform: none;
+      transition: opacity 520ms cubic-bezier(0.32, 0.72, 0, 1),
+                  transform 520ms cubic-bezier(0.32, 0.72, 0, 1);
     }
   }
 
-  /* ---------- logo rails ----------
-     Two rails drifting in opposite directions. One transform per rail, so this
-     composites on the GPU and costs nothing per frame regardless of card count.
-     The track is duplicated once and moved exactly -50%, which is what makes the
-     loop seamless — any other distance visibly jumps at the wrap. */
+  /* ---------- logo rails ---------- */
   .logo-field { contain: layout paint; }
   .logo-rail-mask {
     overflow: hidden;
@@ -281,155 +392,104 @@
   }
   @keyframes rail {
     from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
   @media (prefers-reduced-motion: no-preference) {
-    .logo-field.is-live .logo-rail {
-      animation: rail var(--dur, 56s) linear infinite;
-      will-change: transform;
-    }
+    .logo-field.is-live .logo-rail { animation: rail var(--dur, 56s) linear infinite; will-change: transform; }
     .logo-field.is-live .logo-rail--reverse { animation-direction: reverse; }
     .logo-field:hover .logo-rail { animation-play-state: paused; }
   }
-  /* Reduced motion: rails hold still and simply wrap as a legible grid. */
   @media (prefers-reduced-motion: reduce) {
     .logo-rail-mask { -webkit-mask-image: none; mask-image: none; }
     .logo-rail { flex-wrap: wrap; width: 100% !important; justify-content: center; }
   }
 
-  /* ---------- system map ----------
-     Every flash below is on the SAME 12s clock as the SVG packets, with its
-     bright window placed at the moment a packet lands. That coincidence is the
-     whole effect: arrival + state change within ~150ms reads as causation. */
+  /* ---------- system map ---------- */
   .system-map { position: relative; width: 100%; }
-  .sm-core {
-    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px -8px rgba(16, 24, 40, 0.1);
-    transition: border-color 200ms ease-out;
-  }
-  .sm-packet { filter: drop-shadow(0 0 5px hsl(var(--accent-600) / 0.55)); }
-
+  .sm-core { box-shadow: var(--e2), var(--spec); transition: border-color 200ms ease-out; }
   @media (prefers-reduced-motion: no-preference) {
     .system-map .sm-packet { opacity: 0; }
     .system-map.is-live .sm-node--src { animation: node-land 12s linear infinite; }
-    .system-map.is-live .sm-core     { animation: core-land 12s linear infinite; }
+    .system-map.is-live .sm-core { animation: core-land 12s linear infinite; }
     .system-map.is-live .sm-node--out { animation: out-land 12s linear infinite; }
   }
-
-  /* sources fire at the top of the cycle */
   @keyframes node-land {
-    0%, 3%   { border-color: hsl(var(--border-default)); }
-    5%       { border-color: hsl(var(--accent-400)); }
-    11%      { border-color: hsl(var(--border-default)); }
-    100%     { border-color: hsl(var(--border-default)); }
+    0%, 3% { border-color: hsl(var(--rule-2)); }
+    5% { border-color: hsl(var(--blue-500)); }
+    11%, 100% { border-color: hsl(var(--rule-2)); }
   }
-  /* the core lights as the inbound packets arrive (~0.20 of the cycle) */
   @keyframes core-land {
-    0%, 18%  { border-color: hsl(var(--border-strong)); }
-    21%      { border-color: hsl(var(--accent-600)); }
-    28%      { border-color: hsl(var(--border-strong)); }
-    100%     { border-color: hsl(var(--border-strong)); }
+    0%, 18% { border-color: hsl(var(--rule-2)); }
+    21% { border-color: hsl(var(--blue-600)); }
+    28%, 100% { border-color: hsl(var(--rule-2)); }
   }
-  /* outputs light as the outbound packets land (~0.38) */
   @keyframes out-land {
-    0%, 36%  { border-color: hsl(var(--border-default)); }
-    39%      { border-color: hsl(var(--accent-400)); }
-    46%      { border-color: hsl(var(--border-default)); }
-    100%     { border-color: hsl(var(--border-default)); }
+    0%, 36% { border-color: hsl(var(--rule-2)); }
+    39% { border-color: hsl(var(--blue-500)); }
+    46%, 100% { border-color: hsl(var(--rule-2)); }
   }
-
-  /* Resolved frame, not a dead one: packets park mid-edge as direction markers
-     and every node renders lit. */
   @media (prefers-reduced-motion: reduce) {
     .system-map .sm-packet { opacity: 0.65 !important; }
-    .system-map .sm-node, .system-map .sm-core { border-color: hsl(var(--accent-200)) !important; }
+    .system-map .sm-node, .system-map .sm-core { border-color: hsl(var(--blue-200)) !important; }
   }
 
   /* ---------- pipeline diagram ---------- */
-  .pipeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .pipeline { display: flex; flex-direction: column; gap: 0; }
   .pipeline-stage { display: flex; flex-direction: column; }
   .pipeline-node {
     display: flex; align-items: center; gap: 10px;
-    border: 1px solid hsl(var(--border-default));
-    background: hsl(var(--surface-raised));
-    border-radius: var(--r-sm);
-    padding: 10px 14px;
-    transition: border-color 240ms cubic-bezier(.32,.72,0,1), transform 240ms cubic-bezier(.32,.72,0,1);
+    border: 1px solid hsl(var(--ink-0) / 0.09);
+    background: hsl(var(--card));
+    border-radius: var(--r-control);
+    padding: 12px 16px;
+    box-shadow: var(--e1), var(--spec);
+    transition: border-color 240ms cubic-bezier(0.32, 0.72, 0, 1);
   }
   .pipeline-link {
-    position: relative;
-    display: block;
-    width: 1px; height: 22px;
-    margin-inline-start: 22px;
-    background: hsl(var(--border-default));
-    overflow: hidden;
+    position: relative; display: block; width: 1px; height: 22px;
+    margin-inline-start: 22px; background: hsl(var(--rule-2)); overflow: hidden;
   }
   .pipeline-pulse {
     position: absolute; inset-inline-start: -1px; top: -22px;
-    width: 3px; height: 22px;
-    background: hsl(var(--accent-600));
-    border-radius: 2px;
-    opacity: 0;
+    width: 3px; height: 22px; background: hsl(var(--blue-600));
+    border-radius: 2px; opacity: 0;
   }
-
   @media (min-width: 768px) {
     .pipeline { flex-direction: row; align-items: stretch; }
     .pipeline-stage { flex-direction: row; align-items: center; flex: 1 1 0; min-width: 0; }
-    /* labels wrap rather than truncate — a stage name the reader can't finish
-       is worse than a taller row */
     .pipeline-node { flex: 1 1 auto; min-width: 0; align-items: flex-start; }
     .pipeline-node span:last-child { line-height: 1.35; }
     .pipeline-link { width: 100%; max-width: 28px; height: 1px; margin: 0 6px; flex: 0 1 28px; }
     .pipeline-pulse { top: -1px; inset-inline-start: -28px; width: 28px; height: 3px; }
   }
-  @media (min-width: 768px) {
-    @keyframes pulse-run {
-      0%   { transform: translateX(0); opacity: 0; }
-      12%  { opacity: 1; }
-      88%  { opacity: 1; }
-      100% { transform: translateX(56px); opacity: 0; }
-    }
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     .pipeline.is-live .pipeline-node {
-      animation: stage-in 420ms cubic-bezier(.32,.72,0,1) calc(var(--i) * 90ms) both;
+      animation: stage-in 480ms cubic-bezier(0.32, 0.72, 0, 1) calc(var(--i) * 90ms) both;
     }
     .pipeline.is-live .pipeline-pulse {
       animation: pulse-run 2.6s linear calc(var(--i) * 200ms) infinite;
     }
   }
   @keyframes stage-in {
-    from { opacity: 0; transform: translateY(6px); border-color: hsl(var(--border-subtle)); }
-    to   { opacity: 1; transform: none; border-color: hsl(var(--border-default)); }
-  }
-  @keyframes pulse-run {
-    0%       { transform: translate(0, 0); opacity: 0; }
-    10%      { opacity: 1; }
-    60%, 100%{ opacity: 0; }
-    /* vertical on mobile, horizontal from 768px — both handled by the offsets below */
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
   }
   @media (min-width: 768px) {
     @keyframes pulse-run {
-      0%        { transform: translateX(0); opacity: 0; }
-      12%       { opacity: 1; }
-      88%       { opacity: 1; }
-      100%      { transform: translateX(80px); opacity: 0; }
+      0% { transform: translateX(0); opacity: 0; }
+      12%, 88% { opacity: 1; }
+      100% { transform: translateX(56px); opacity: 0; }
     }
   }
   @media (max-width: 767px) {
     @keyframes pulse-run {
-      0%        { transform: translateY(0); opacity: 0; }
-      12%       { opacity: 1; }
-      88%       { opacity: 1; }
-      100%      { transform: translateY(44px); opacity: 0; }
+      0% { transform: translateY(0); opacity: 0; }
+      12%, 88% { opacity: 1; }
+      100% { transform: translateY(44px); opacity: 0; }
     }
   }
 
-  .gallery-contain { content-visibility: auto; contain-intrinsic-size: 0 480px; }
+  .gallery-contain { contain-intrinsic-size: 0 480px; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -438,7 +498,6 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-    /* opacity crossfades carry meaning (poster -> video handoff), so they survive */
     .crossfade { transition-duration: 120ms !important; }
     ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
   }

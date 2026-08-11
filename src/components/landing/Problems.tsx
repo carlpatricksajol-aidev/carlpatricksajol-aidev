@@ -25,11 +25,11 @@ export const Problems = () => {
           {problems.map((p) => (
             <li
               key={p.symptom}
-              className="flex flex-col rounded-lg border border-line bg-surface-raised p-s6"
+              className="flex flex-col surface surface-hover p-s6"
             >
-              <p className="t-step-2 text-ink">&ldquo;{p.symptom}&rdquo;</p>
-              <p className="t-step-0 mt-s4 flex-1 text-ink-secondary">{p.detail}</p>
-              <p className="t-step--2 mt-s5 border-t border-line-subtle pt-s4 text-ink-tertiary">
+              <p className="t-sub text-ink">&ldquo;{p.symptom}&rdquo;</p>
+              <p className="t-body mt-s4 flex-1 text-ink-secondary">{p.detail}</p>
+              <p className="t-slug mt-s5 border-t border-line-subtle pt-s4 text-ink-tertiary">
                 {p.cost}
               </p>
             </li>
@@ -49,6 +49,7 @@ export const Solutions = () => {
         <SectionHeader
           split
           id="solutions-h"
+          level="chapter"
           eyebrow={solutionsSection.eyebrow}
           title={solutionsSection.title}
           deck={solutionsSection.deck}
@@ -59,18 +60,18 @@ export const Solutions = () => {
             const body = (
               <>
                 <div className="flex items-baseline gap-s5">
-                  <span className="t-mono t-step--2 shrink-0 text-ink-tertiary">
+                  <span className="t-mono t-slug shrink-0 text-ink-tertiary">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="t-step-3 max-w-[24ch] text-ink">{s.headline}</h3>
-                    <p className="t-step-1 mt-s4 max-w-[62ch] text-ink-secondary">{s.body}</p>
-                    <p className="t-step--1 mt-s5 flex flex-wrap items-center gap-x-s3 gap-y-s2 text-ink-tertiary">
+                    <h3 className="t-section max-w-[24ch] text-ink">{s.headline}</h3>
+                    <p className="t-lead mt-s4 max-w-[62ch] text-ink-secondary">{s.body}</p>
+                    <p className="t-small mt-s5 flex flex-wrap items-center gap-x-s3 gap-y-s2 text-ink-tertiary">
                       <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
                       {s.proof}
                     </p>
                     {s.caseSlug && (
-                      <span className="arrow-link t-step-0 mt-s5 inline-flex">
+                      <span className="arrow-link t-body mt-s5 inline-flex">
                         See the system <ArrowRight />
                       </span>
                     )}

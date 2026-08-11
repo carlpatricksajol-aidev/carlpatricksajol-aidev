@@ -98,7 +98,7 @@ const SystemMap = () => {
         </desc>
 
         {[...inEdges, ...outEdges].map((d, i) => (
-          <path key={`e${i}`} id={`sm-e${i}`} d={d} fill="none" stroke="hsl(var(--border-strong))" strokeWidth={1.25} />
+          <path key={`e${i}`} id={`sm-e${i}`} d={d} fill="none" stroke="hsl(var(--rule-2))" strokeWidth={1.25} />
         ))}
 
         {[...inEdges, ...outEdges].map((_, i) => {
@@ -106,7 +106,7 @@ const SystemMap = () => {
           const idx = leg === "in" ? i : i - inEdges.length;
           const { start, end } = packetTimes(leg, idx);
           return (
-            <circle key={`p${i}`} className="sm-packet" r={3.4} fill="hsl(var(--accent-600))">
+            <circle key={`p${i}`} className="sm-packet" r={3.4} fill="hsl(var(--blue-600))">
               <animateMotion
                 dur={CYCLE}
                 repeatCount="indefinite"
@@ -142,9 +142,9 @@ const SystemMap = () => {
         <div className="sm-core rounded-md border border-line-strong bg-surface-raised px-s4 py-s3 text-center">
           <div className="flex items-center justify-center gap-s2">
             <BrandIcon name="claude" size={16} className="text-ink" />
-            <span className="t-step--1 font-medium text-ink">MCP server</span>
+            <span className="t-small font-medium text-ink">MCP server</span>
           </div>
-          <span className="t-step--2 mt-1 block text-ink-tertiary">+ agents</span>
+          <span className="t-slug mt-1 block text-ink-tertiary">+ agents</span>
         </div>
       </div>
     </div>
@@ -174,7 +174,7 @@ const Node = ({
   >
     <div className={`sm-node sm-node--${phase} flex items-center gap-s2 whitespace-nowrap rounded-sm border border-line bg-surface-raised px-s3 py-1.5`}>
       <BrandIcon name={icon} size={13} className="text-ink-secondary" />
-      <span className="t-step--1 text-ink-secondary">{label}</span>
+      <span className="t-small text-ink-secondary">{label}</span>
     </div>
   </div>
 );

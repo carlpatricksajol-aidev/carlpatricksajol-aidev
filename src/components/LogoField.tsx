@@ -13,7 +13,7 @@ import { platformField } from "@/data/site";
  */
 
 const CARD =
-  "flex shrink-0 items-center gap-s3 rounded-lg border border-line bg-surface-raised px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong";
+  "flex shrink-0 items-center gap-s3 surface surface-hover px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong";
 
 const Mark = ({ item }: { item: (typeof platformField)[number] }) => (
   <div className={CARD}>
@@ -24,7 +24,7 @@ const Mark = ({ item }: { item: (typeof platformField)[number] }) => (
         {item.name.slice(0, 1)}
       </span>
     )}
-    <span className="t-step-0 whitespace-nowrap font-medium text-ink">{item.name}</span>
+    <span className="t-body whitespace-nowrap font-medium text-ink">{item.name}</span>
   </div>
 );
 

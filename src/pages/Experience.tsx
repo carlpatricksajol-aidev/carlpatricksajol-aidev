@@ -63,15 +63,15 @@ const Experience = () => (
     <div className="w-shell gutter section grid gap-s8 lg:grid-cols-[20rem_1fr] lg:gap-s10">
       {/* sticky bio rail */}
       <div className="lg:sticky lg:top-[5.5rem] lg:self-start">
-        <p className="t-eyebrow text-brand-600">Experience</p>
-        <h1 className="t-step-3 mt-s3">{profile.name}</h1>
-        <p className="t-step-0 mt-s3 text-ink-secondary">{profile.role}</p>
-        <p className="t-step--1 mt-s2 text-ink-tertiary">{profile.location}</p>
+        <p className="t-slug text-brand-600">Experience</p>
+        <h1 className="t-section mt-s3">{profile.name}</h1>
+        <p className="t-body mt-s3 text-ink-secondary">{profile.role}</p>
+        <p className="t-small mt-s2 text-ink-tertiary">{profile.location}</p>
         <div className="mt-s6">
           <PrimaryButton href={profile.calendly}>Book a call</PrimaryButton>
         </div>
         <p className="mt-s4">
-          <a href={`mailto:${profile.email}`} className="link t-step--1">{profile.email}</a>
+          <a href={`mailto:${profile.email}`} className="link t-small">{profile.email}</a>
         </p>
       </div>
 
@@ -81,17 +81,17 @@ const Experience = () => (
           {experience.map((r) => (
             <li key={`${r.company}-${r.period}`} className="border-b border-line py-s6">
               <div className="flex flex-wrap items-baseline justify-between gap-s3">
-                <h2 className="t-step-2 text-ink">{r.title}</h2>
-                <span className="t-mono t-step--2 text-ink-tertiary">{r.period}</span>
+                <h2 className="t-sub text-ink">{r.title}</h2>
+                <span className="t-mono t-slug text-ink-tertiary">{r.period}</span>
               </div>
-              <p className="t-step-0 mt-s2 font-medium text-brand-600">{r.company}</p>
-              <p className="t-step-0 mt-s3 max-w-[62ch] text-ink-secondary">{r.summary}</p>
+              <p className="t-body mt-s2 font-medium text-brand-600">{r.company}</p>
+              <p className="t-body mt-s3 max-w-[62ch] text-ink-secondary">{r.summary}</p>
               {r.points.length > 0 && (
                 <ul className="mt-s4 space-y-s3">
                   {r.points.map((p) => (
                     <li key={p} className="grid grid-cols-[16px_1fr] gap-s3">
                       <span className="mt-2.5 h-px w-2 bg-line-interactive" aria-hidden="true" />
-                      <span className="t-step-0 max-w-[62ch] text-ink-secondary">{p}</span>
+                      <span className="t-body max-w-[62ch] text-ink-secondary">{p}</span>
                     </li>
                   ))}
                 </ul>
@@ -101,11 +101,11 @@ const Experience = () => (
         </ol>
 
         <section className="mt-s9" aria-labelledby="stack-h">
-          <h2 id="stack-h" className="t-step-3">Stack</h2>
+          <h2 id="stack-h" className="t-section">Stack</h2>
           <div className="mt-s6 grid gap-s6 sm:grid-cols-2">
             {stack.map((g) => (
               <div key={g.group}>
-                <h3 className="t-step--2 text-ink-tertiary">{g.group}</h3>
+                <h3 className="t-slug text-ink-tertiary">{g.group}</h3>
                 <ul className="mt-s3 flex flex-wrap gap-s2">
                   {g.items.map((it) => (
                     <li
@@ -113,7 +113,7 @@ const Experience = () => (
                       className="inline-flex items-center gap-s2 rounded-xs border border-line bg-surface-raised px-s3 py-1.5"
                     >
                       {it.key && <BrandIcon name={it.key} size={13} className="text-ink-tertiary" />}
-                      <span className="t-step--1 text-ink-secondary">{it.label}</span>
+                      <span className="t-small text-ink-secondary">{it.label}</span>
                     </li>
                   ))}
                 </ul>

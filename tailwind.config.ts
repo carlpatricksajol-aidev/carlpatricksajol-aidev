@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
 
-// ONE theme. darkMode is deliberately absent — the site's single dark region is
-// the gallery band, handled by the [data-tone="ink"] token override in index.css.
+// ONE theme. The single dark region is the plate band, handled by the
+// [data-tone="plate"] token override in index.css.
+//
+// Key names are deliberately unchanged from the previous palette so components
+// did not all need rewriting — the VALUES now point at the warm ramp.
 export default {
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
@@ -10,39 +13,48 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Inter Variable"', "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ['"Instrument Serif"', "ui-serif", "Georgia", "serif"],
         mono: ['"Geist Mono"', "ui-monospace", "monospace"],
       },
       colors: {
         surface: {
-          DEFAULT: "hsl(var(--surface-base))",
-          raised: "hsl(var(--surface-raised))",
-          sunken: "hsl(var(--surface-sunken))",
-          ink: "hsl(var(--surface-ink))",
-          "ink-raised": "hsl(var(--surface-ink-raised))",
+          DEFAULT: "hsl(var(--paper))",
+          raised: "hsl(var(--card))",
+          sunken: "hsl(var(--well))",
+          ink: "hsl(var(--plate-0))",
+          "ink-raised": "hsl(var(--plate-1))",
         },
         ink: {
-          DEFAULT: "hsl(var(--text-primary))",
-          secondary: "hsl(var(--text-secondary))",
-          tertiary: "hsl(var(--text-tertiary))",
+          DEFAULT: "hsl(var(--ink-0))",
+          strong: "hsl(var(--ink-1))",
+          secondary: "hsl(var(--ink-2))",
+          tertiary: "hsl(var(--ink-3))",
         },
         line: {
-          subtle: "hsl(var(--border-subtle))",
-          DEFAULT: "hsl(var(--border-default))",
-          strong: "hsl(var(--border-strong))",
-          interactive: "hsl(var(--border-interactive))",
+          subtle: "hsl(var(--rule))",
+          DEFAULT: "hsl(var(--rule))",
+          strong: "hsl(var(--rule-2))",
+          interactive: "hsl(var(--ink-4))",
+          edge: "hsl(var(--edge))",
         },
+        // blue: track 01, links, focus. never a button fill.
         brand: {
-          50: "hsl(var(--accent-50))",
-          100: "hsl(var(--accent-100))",
-          200: "hsl(var(--accent-200))",
-          400: "hsl(var(--accent-400))",
-          600: "hsl(var(--accent-600))",
-          700: "hsl(var(--accent-700))",
-          900: "hsl(var(--accent-900))",
+          200: "hsl(var(--blue-200))",
+          400: "hsl(var(--blue-400))",
+          500: "hsl(var(--blue-500))",
+          600: "hsl(var(--blue-600))",
+          700: "hsl(var(--blue-700))",
         },
-        signal: "hsl(var(--signal-emerald))",
+        // oxide: track 02, ad creative only.
+        oxide: {
+          200: "hsl(var(--ox-200))",
+          400: "hsl(var(--ox-400))",
+          500: "hsl(var(--ox-500))",
+          600: "hsl(var(--ox-600))",
+          700: "hsl(var(--ox-700))",
+        },
+        signal: "hsl(var(--signal))",
 
-        // shadcn compatibility
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,37 +69,37 @@ export default {
         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
       },
       borderRadius: {
-        xs: "var(--r-xs)",
-        sm: "var(--r-sm)",
-        md: "var(--r-md)",
-        lg: "var(--r-lg)",
-        xl: "var(--r-xl)",
+        xs: "var(--r-chip)",
+        sm: "var(--r-control)",
+        md: "var(--r-media)",
+        lg: "var(--r-card)",
+        xl: "var(--r-panel)",
+      },
+      boxShadow: {
+        e1: "var(--e1)",
+        e2: "var(--e2)",
+        e3: "var(--e3)",
+        e4: "var(--e4)",
       },
       spacing: {
-        // 8pt rhythm
-        s1: "4px", s2: "8px", s3: "12px", s4: "16px", s5: "24px",
-        s6: "32px", s7: "48px", s8: "64px", s9: "96px", s10: "128px",
+        // ~1.6 ratio rather than a linear 8pt list: an even scale reads as a
+        // grid, a ratio reads as composition.
+        s1: "4px",
+        s2: "6px",
+        s3: "10px",
+        s4: "16px",
+        s5: "26px",
+        s6: "42px",
+        s7: "68px",
+        s8: "110px",
+        s9: "176px",
+        s10: "232px",
       },
-      maxWidth: {
-        shell: "79rem",
-        wide: "64rem",
-        text: "48rem",
-        prose: "40rem",
-      },
-      transitionTimingFunction: {
-        entrance: "cubic-bezier(.32,.72,0,1)",
-      },
-      transitionDuration: {
-        120: "120ms",
-        180: "180ms",
-        240: "240ms",
-      },
-      keyframes: {
-        "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } },
-      },
-      animation: {
-        "fade-in": "fade-in 180ms cubic-bezier(.32,.72,0,1)",
-      },
+      maxWidth: { shell: "86rem", wide: "70rem", text: "52rem", prose: "42rem" },
+      transitionTimingFunction: { entrance: "cubic-bezier(.32,.72,0,1)" },
+      transitionDuration: { 120: "120ms", 180: "180ms", 240: "240ms", 380: "380ms" },
+      keyframes: { "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } } },
+      animation: { "fade-in": "fade-in 180ms cubic-bezier(.32,.72,0,1)" },
     },
   },
   plugins: [require("tailwindcss-animate")],

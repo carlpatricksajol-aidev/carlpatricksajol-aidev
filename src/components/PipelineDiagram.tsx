@@ -33,8 +33,8 @@ const PipelineDiagram = ({ stages, className = "" }: { stages: string[]; classNa
       {stages.map((s, i) => (
         <div key={s} className="pipeline-stage" role="listitem" style={{ "--i": i } as React.CSSProperties}>
           <div className="pipeline-node">
-            <span className="t-mono t-step--2 shrink-0 pt-0.5 text-ink-tertiary">{String(i + 1).padStart(2, "0")}</span>
-            <span className="t-step--1 text-ink">{s}</span>
+            <span className="t-mono t-slug shrink-0 pt-0.5 text-ink-tertiary">{String(i + 1).padStart(2, "0")}</span>
+            <span className="t-small text-ink">{s}</span>
           </div>
           {i < stages.length - 1 && (
             <span className="pipeline-link" aria-hidden="true">
