@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { ArrowRight, MetricRow, PrimaryButton, PhoneFrame, StatusDot } from "@/components/primitives";
+import PipelineDiagram from "@/components/PipelineDiagram";
 import { caseStudies, profile } from "@/data/site";
 
 /**
@@ -112,6 +113,13 @@ const CaseStudy = () => {
         <section className="w-shell gutter pb-s9" aria-labelledby="built">
           <div className="w-prose">
             <h2 id="built" className="t-step-3">What I built</h2>
+          </div>
+          {study.pipeline && study.pipeline.length > 0 && (
+            <div className="w-wide mt-s6">
+              <PipelineDiagram stages={study.pipeline} />
+            </div>
+          )}
+          <div className="w-prose">
             <ol className="mt-s6 grid grid-cols-[auto_1fr] gap-x-s5">
               {study.build.map((step, i) => (
                 <li key={step.title} className="col-span-2 grid grid-cols-subgrid">

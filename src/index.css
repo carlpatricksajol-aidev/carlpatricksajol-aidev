@@ -282,6 +282,138 @@
   }
   .logo-field { contain: layout paint; }
 
+  /* ---------- system map ----------
+     Every flash below is on the SAME 12s clock as the SVG packets, with its
+     bright window placed at the moment a packet lands. That coincidence is the
+     whole effect: arrival + state change within ~150ms reads as causation. */
+  .system-map { position: relative; width: 100%; }
+  .sm-core {
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px -8px rgba(16, 24, 40, 0.1);
+    transition: border-color 200ms ease-out;
+  }
+  .sm-packet { filter: drop-shadow(0 0 5px hsl(var(--accent-600) / 0.55)); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .system-map .sm-packet { opacity: 0; }
+    .system-map.is-live .sm-node--src { animation: node-land 12s linear infinite; }
+    .system-map.is-live .sm-core     { animation: core-land 12s linear infinite; }
+    .system-map.is-live .sm-node--out { animation: out-land 12s linear infinite; }
+  }
+
+  /* sources fire at the top of the cycle */
+  @keyframes node-land {
+    0%, 3%   { border-color: hsl(var(--border-default)); }
+    5%       { border-color: hsl(var(--accent-400)); }
+    11%      { border-color: hsl(var(--border-default)); }
+    100%     { border-color: hsl(var(--border-default)); }
+  }
+  /* the core lights as the inbound packets arrive (~0.20 of the cycle) */
+  @keyframes core-land {
+    0%, 18%  { border-color: hsl(var(--border-strong)); }
+    21%      { border-color: hsl(var(--accent-600)); }
+    28%      { border-color: hsl(var(--border-strong)); }
+    100%     { border-color: hsl(var(--border-strong)); }
+  }
+  /* outputs light as the outbound packets land (~0.38) */
+  @keyframes out-land {
+    0%, 36%  { border-color: hsl(var(--border-default)); }
+    39%      { border-color: hsl(var(--accent-400)); }
+    46%      { border-color: hsl(var(--border-default)); }
+    100%     { border-color: hsl(var(--border-default)); }
+  }
+
+  /* Resolved frame, not a dead one: packets park mid-edge as direction markers
+     and every node renders lit. */
+  @media (prefers-reduced-motion: reduce) {
+    .system-map .sm-packet { opacity: 0.65 !important; }
+    .system-map .sm-node, .system-map .sm-core { border-color: hsl(var(--accent-200)) !important; }
+  }
+
+  /* ---------- pipeline diagram ---------- */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pipeline-stage { display: flex; flex-direction: column; }
+  .pipeline-node {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid hsl(var(--border-default));
+    background: hsl(var(--surface-raised));
+    border-radius: var(--r-sm);
+    padding: 10px 14px;
+    transition: border-color 240ms cubic-bezier(.32,.72,0,1), transform 240ms cubic-bezier(.32,.72,0,1);
+  }
+  .pipeline-link {
+    position: relative;
+    display: block;
+    width: 1px; height: 22px;
+    margin-inline-start: 22px;
+    background: hsl(var(--border-default));
+    overflow: hidden;
+  }
+  .pipeline-pulse {
+    position: absolute; inset-inline-start: -1px; top: -22px;
+    width: 3px; height: 22px;
+    background: hsl(var(--accent-600));
+    border-radius: 2px;
+    opacity: 0;
+  }
+
+  @media (min-width: 768px) {
+    .pipeline { flex-direction: row; align-items: stretch; }
+    .pipeline-stage { flex-direction: row; align-items: center; flex: 1 1 0; min-width: 0; }
+    /* labels wrap rather than truncate — a stage name the reader can't finish
+       is worse than a taller row */
+    .pipeline-node { flex: 1 1 auto; min-width: 0; align-items: flex-start; }
+    .pipeline-node span:last-child { line-height: 1.35; }
+    .pipeline-link { width: 100%; max-width: 28px; height: 1px; margin: 0 6px; flex: 0 1 28px; }
+    .pipeline-pulse { top: -1px; inset-inline-start: -28px; width: 28px; height: 3px; }
+  }
+  @media (min-width: 768px) {
+    @keyframes pulse-run {
+      0%   { transform: translateX(0); opacity: 0; }
+      12%  { opacity: 1; }
+      88%  { opacity: 1; }
+      100% { transform: translateX(56px); opacity: 0; }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pipeline.is-live .pipeline-node {
+      animation: stage-in 420ms cubic-bezier(.32,.72,0,1) calc(var(--i) * 90ms) both;
+    }
+    .pipeline.is-live .pipeline-pulse {
+      animation: pulse-run 2.6s linear calc(var(--i) * 200ms) infinite;
+    }
+  }
+  @keyframes stage-in {
+    from { opacity: 0; transform: translateY(6px); border-color: hsl(var(--border-subtle)); }
+    to   { opacity: 1; transform: none; border-color: hsl(var(--border-default)); }
+  }
+  @keyframes pulse-run {
+    0%       { transform: translate(0, 0); opacity: 0; }
+    10%      { opacity: 1; }
+    60%, 100%{ opacity: 0; }
+    /* vertical on mobile, horizontal from 768px — both handled by the offsets below */
+  }
+  @media (min-width: 768px) {
+    @keyframes pulse-run {
+      0%        { transform: translateX(0); opacity: 0; }
+      12%       { opacity: 1; }
+      88%       { opacity: 1; }
+      100%      { transform: translateX(80px); opacity: 0; }
+    }
+  }
+  @media (max-width: 767px) {
+    @keyframes pulse-run {
+      0%        { transform: translateY(0); opacity: 0; }
+      12%       { opacity: 1; }
+      88%       { opacity: 1; }
+      100%      { transform: translateY(44px); opacity: 0; }
+    }
+  }
+
   .gallery-contain { content-visibility: auto; contain-intrinsic-size: 0 480px; }
 
   @media (prefers-reduced-motion: reduce) {

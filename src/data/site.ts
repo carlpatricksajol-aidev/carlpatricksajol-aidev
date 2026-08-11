@@ -1,3 +1,5 @@
+import { automationCases } from "./automationCases";
+
 /**
  * Single source of truth for every fact on the site.
  *
@@ -156,10 +158,13 @@ export interface CaseStudy {
   result: string[];
   limits: string[];
   stack: string[];
+  /** 4-6 short stage labels, rendered as an animated flow diagram */
+  pipeline?: string[];
   hero?: { type: "video" | "image" | "mat"; src: string; poster?: string; caption: string };
 }
 
-export const caseStudies: CaseStudy[] = [
+/** The creative-AI track. Automation cases live in ./automationCases and lead. */
+export const creativeCases: CaseStudy[] = [
   {
     slug: "ai-video-editor",
     track: "creative",
@@ -203,6 +208,7 @@ export const caseStudies: CaseStudy[] = [
       "It is live but piloted — not yet the standard production workflow.",
     ],
     stack: ["Python", "ffmpeg", "faster-whisper", "Claude via OpenRouter", "FCP7 / XMEML", "Docker", "Traefik", "Dropbox API", "n8n"],
+    pipeline: ["Storyboard in", "Transcribe takes", "Match lines", "Snap to waveform", "Burn captions", "Premiere timeline"],
     hero: { type: "video", src: "/showcase/videos/video-01-same-person-skit.mp4", poster: "/showcase/posters/video-01-same-person-skit.jpg", caption: "A delivered ad in the format the pipeline was built to cut" },
   },
   {
@@ -244,6 +250,7 @@ export const caseStudies: CaseStudy[] = [
       "Premium and hero creative still wants a human in the loop.",
     ],
     stack: ["Node", "puppeteer-core", "headless Chrome", "Claude via OpenRouter", "Supabase", "KIE.ai", "HTML/CSS render engine"],
+    pipeline: ["Brief in", "Creative direction", "Render text as code", "Paint imagery", "Vision-QA score", "Ship or drop"],
     hero: { type: "mat", src: "/showcase/ads/static-01-napkin-math.webp", caption: "A delivered static in one of the high-signal formats" },
   },
   {
@@ -284,94 +291,31 @@ export const caseStudies: CaseStudy[] = [
       "Private beta, not open to the public.",
     ],
     stack: ["n8n", "Claude via OpenRouter", "KIE.ai", "Whisper via Groq", "ffmpeg", "Vercel"],
+    pipeline: ["Photo + 5 fields", "Describe product", "Script + timing", "Generate video", "Transcribe", "Burn captions"],
     hero: { type: "video", src: "/showcase/videos/video-07-animated-concept.mp4", poster: "/showcase/posters/video-07-animated-concept.jpg", caption: "A generated product ad concept" },
   },
-  {
-    slug: "mcp-and-agents",
-    track: "automation",
-    trackLabel: "Business & ops automation",
-    title: "Putting a company's own data inside Claude",
-    oneLiner: "Custom MCP servers that make internal systems first-class Claude tools.",
-    deck: "Model Context Protocol servers and Claude Code agents that let a team ask questions in natural language and get answers joined across systems that never talked to each other.",
-    year: "2025 – 2026",
-    role: "Architect and builder",
-    client: "Mobile app company · ad agency",
-    status: "Live in production",
-    metrics: [
-      { value: "10", caption: "MCP tools over an undocumented REST API" },
-      { value: "34", caption: "vendor flows retrievable with prompts intact" },
-      { value: "3", caption: "specialist agents deployed in Slack" },
-    ],
-    situation: [
-      "Answering a question about users, product behaviour and paid-acquisition performance meant a human joining three systems by hand every time — an internal SDK, a proprietary database, and an attribution platform. The data existed; the access path did not.",
-      "Separately, at the agency, a team's tuned master prompts and proven ad concepts were locked inside a third-party visual flow tool whose engine only runs while a browser tab is open. Nothing could be inspected, chained or iterated from outside its UI.",
-    ],
-    constraintIntro:
-      "Both problems have the same shape: the value is not the model, it is the plumbing. So the work was building access paths, not assistants.",
-    constraint: "The leverage is not the model — it is wiring AI into the systems the business already runs on.",
-    build: [
-      { title: "Expose internal systems as tools", body: "A production MCP server makes an internal SDK, a proprietary database and attribution data first-class Claude tools, with the agent infrastructure to use them unattended." },
-      { title: "Reverse-engineer what has no API docs", body: "For the creative platform, the undocumented REST API was mapped and wrapped as ten MCP tools — list flows, extract every master prompt, upload assets, generate, poll, and create pre-wired flows." },
-      { title: "Document the sharp edges in place", body: "Where the platform ignores reference images server-side, that is written down next to the tool that hits it, so the next person does not rediscover it." },
-      { title: "Scope agents to one job each", body: "Three specialist Slack agents — a user strategist, an acquisition-performance agent and a creative concept agent — rather than one general assistant nobody trusts." },
-    ],
-    result: [
-      "Analysts and marketers ask questions in natural language and get answers joined across all three systems, with weekly digests delivered on a schedule instead of assembled by hand.",
-      "Registered in Claude Code and Claude Desktop, the creative-platform server lets Claude chain upload → extract prompts → generate → wait → critique → regenerate in a single session. That iteration loop is the real unlock over one-shot pipelines.",
-    ],
-    limits: [
-      "The employer-side impact figures are internal and are not published here without sign-off.",
-      "The extracted master prompts are reusable assets, but they belong to the platform's account, not to the server.",
-    ],
-    stack: ["Claude MCP", "MCP SDK", "Claude Code", "Node", "PostgreSQL", "Slack API", "Singular API"],
-  },
-  {
-    slug: "concept-pipeline",
-    track: "automation",
-    trackLabel: "Business & ops automation",
-    title: "From an intake form to fifteen scripted concepts",
-    oneLiner: "Intake form to fifteen scripted concept variants and slides.",
-    deck: "The concept bottleneck in front of every ad batch, rebuilt as an n8n chain that writes the angles, the scripts and the deck.",
-    year: "2026",
-    role: "Sole architect and builder",
-    client: "Ad agency, in-house",
-    status: "Built, not yet run end to end",
-    metrics: [
-      { value: "15", caption: "scripted variants per batch (5 concepts x 3 angles)" },
-      { value: "15", caption: "slides auto-built per batch" },
-    ],
-    situation: [
-      "Concept generation was the bottleneck in front of every ad. Getting from a client brief to a reviewable set of angles with scripts meant a strategist mining inspiration by hand, writing concepts, then rebuilding the same deck layout every batch.",
-    ],
-    constraintIntro:
-      "The interesting part of this build is what got removed. An inspiration source that looked productive turned out to be returning the same evergreen ads every day.",
-    constraint: "A source that returns the same answer daily is not a source — it is a habit.",
-    build: [
-      { title: "Take the brief from the live form", body: "The intake form's payload feeds straight in, pulling the client's brand record so the concepts start grounded in the actual brand." },
-      { title: "Fan every concept into three angles", body: "Pain-point first, product first, and a bold pattern-interrupt hook — so a batch covers the spread rather than five versions of one idea." },
-      { title: "Write a script per variant", body: "Each of the fifteen variants gets its own script, not a shared outline." },
-      { title: "Build the review surface automatically", body: "Every variant becomes one review record and one auto-built slide, with a checkbox triggering the downstream thumbnail generation." },
-    ],
-    result: [
-      "Five concepts by three angles gives fifteen review records and fifteen slides per batch, with every node built and individually working.",
-      "It also carries a real negative result: the original inspiration source was removed once it was diagnosed as returning identical evergreen ads daily, and replaced with a curated deck.",
-    ],
-    limits: [
-      "A confirmed full end-to-end run has not been recorded.",
-      "Slack notification is still pending.",
-      "Two platform inspiration APIs remain blocked on approvals.",
-    ],
-    stack: ["n8n", "Airtable", "Claude via OpenRouter", "Google Slides API", "Google Drive API", "GoHighLevel", "Supabase"],
-  },
+];
+
+/** Real n8n canvases from production work — evidence, not decoration. */
+export const workflowEvidence = [
+  { src: "/workflows/wf-2.webp", title: "Campaign scaling", note: "Webhook decides CBO or ABO, calls the ads API, logs the change." },
+  { src: "/workflows/wf-8.webp", title: "Metrics harvester", note: "One schedule fans into seven reporting presets and writes each to a sheet." },
+  { src: "/workflows/wf-5.webp", title: "Creative upload pipeline", note: "Bulk creative upload with per-market ad creation and Slack success/failure paths." },
+  { src: "/workflows/wf-7.webp", title: "Ad appeal automation", note: "Rejection mail in, ad IDs parsed, appeals filed, outcome logged to Slack." },
+  { src: "/workflows/wf-10.webp", title: "Project sync", note: "Project tasks synced out to eight custom fields across systems." },
+  { src: "/workflows/wf-6.webp", title: "Budget-type reporting", note: "Branches on budget type, pulls the right insights, upserts one row." },
+  { src: "/workflows/wf-3.webp", title: "Ad inventory check", note: "Pulls every ad, upserts to a sheet, then walks it rate-limited." },
+  { src: "/workflows/wf-4.webp", title: "Bulk deletion", note: "Filtered bulk delete with a wait between iterations to respect rate limits." },
 ];
 
 /** Everything else, for the /work archive. */
 export const otherSystems = [
-  { title: "Footage Renamer", track: "automation" as const, year: "2026", note: "A creator's messy Dropbox uploads, renamed to the storyboard.", stack: ["n8n", "Notion API", "Gemini Flash", "ffmpeg"] },
-  { title: "Figma Comment Digest", track: "automation" as const, year: "2026", note: "Client Figma comments become a live designer revision brief.", stack: ["Node", "Figma API", "Supabase", "cron"] },
-  { title: "Meta advertising automation suite", track: "automation" as const, year: "2025", note: "Bulk upload, auto-pruning and reporting across Meta and TikTok.", stack: ["Meta Ads API", "TikTok Ads API", "Airtable", "n8n"] },
-  { title: "Creator sourcing pipeline", track: "automation" as const, year: "2025", note: "Scrape to signed creator: sourcing, proposal, payment, CRM.", stack: ["Claude Code", "Supabase", "HubSpot", "Stripe"] },
-  { title: "Hermes — AI SDR agent", track: "automation" as const, year: "2024", note: "An SDR agent that qualifies and books, so humans don't.", stack: ["n8n", "OpenAI", "Calendar API"] },
+  { title: "SA-1 to SA-2 concept pipeline", track: "automation" as const, year: "2026", note: "Intake form to fifteen scripted concept variants and slides.", stack: ["n8n", "Airtable", "Claude", "Slides API"] },
+  { title: "MaxFusion MCP server", track: "automation" as const, year: "2026", note: "Ten MCP tools built over an undocumented REST API.", stack: ["Node", "MCP SDK", "Claude Code"] },
+  { title: "Client operations platform", track: "automation" as const, year: "2024", note: "Notion, GoHighLevel and HubSpot running a consultancy's client base.", stack: ["Notion", "GoHighLevel", "HubSpot", "Supabase"] },
+  { title: "RAG knowledge agent", track: "automation" as const, year: "2024", note: "Document-aware answers over a team's Drive, with citations.", stack: ["n8n", "Supabase pgvector", "OpenAI"] },
+  { title: "Lead qualification and enrichment", track: "automation" as const, year: "2024", note: "Inbound leads enriched and routed the moment they arrive.", stack: ["n8n", "Enrichment APIs", "HubSpot"] },
+  { title: "Ad comment moderation", track: "automation" as const, year: "2025", note: "Webhook-triggered triage of ad comments across two platforms.", stack: ["Meta Graph API", "LLM classification", "Sheets"] },
   { title: "Two-tier AI video stack", track: "creative" as const, year: "2026", note: "Ten Claude Code skills route each script to the right model.", stack: ["Claude Code", "Higgsfield", "KIE.ai", "Nano Banana Pro"] },
   { title: "SongReels", track: "creative" as const, year: "2026", note: "Photos and clips become a personalised AI music video.", stack: ["Gemini", "Claude", "Suno", "Creatomate", "Stripe"] },
 ];
@@ -450,3 +394,6 @@ export const processSteps = [
   { n: "04", title: "Hand back something editable", body: "The deliverable is a timeline, a draft, a review record — something a person can correct. Not a black box." },
   { n: "05", title: "Write down what it can't do", body: "Every system ships with its open gaps listed. It is the fastest way to know whether it fits your problem." },
 ];
+
+/** Automation leads. Creative is real proof but it is the second track, not the thesis. */
+export const caseStudies: CaseStudy[] = [...automationCases, ...creativeCases];

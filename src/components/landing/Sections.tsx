@@ -77,7 +77,7 @@ export const Systems = () => {
   const { ref, className } = useEnter<HTMLElement>();
   const [lead, ...rest] = caseStudies;
   const mid = rest.slice(0, 2);
-  const tail = rest.slice(2);
+  const tail = rest.slice(2, 6);
 
   return (
     <section id="systems" ref={ref} className={`${className} section`} aria-labelledby="systems-h">
@@ -86,8 +86,8 @@ export const Systems = () => {
           split
           id="systems-h"
           eyebrow="Selected systems"
-          title="Five builds, in order of what they prove"
-          deck="Each one ships with its constraint and its open gaps written down. Read any of them end to end."
+          title="Nine builds, in order of what they prove"
+          deck="Each ships with its one hard constraint and its open gaps written down. Read any of them end to end."
         />
 
         {/* rank 1 */}
@@ -173,7 +173,7 @@ export const Systems = () => {
         </ul>
 
         <p className="mt-s6">
-          <ArrowLink to="/work">See every system</ArrowLink>
+          <ArrowLink to="/work">See all {caseStudies.length + 8} systems</ArrowLink>
         </p>
       </div>
     </section>

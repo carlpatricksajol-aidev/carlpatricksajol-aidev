@@ -1,12 +1,12 @@
 import { PrimaryButton, useEnter } from "@/components/primitives";
-import { profile, tracks, staticAds } from "@/data/site";
+import SystemMap from "@/components/SystemMap";
+import { profile, tracks } from "@/data/site";
 
 /** Capped at 72vh (not 100vh) so the next section's eyebrow peeks above the
  *  fold — the evidenced fix for the "false floor" that costs a full-height
  *  hero most of its viewing time. */
 const Hero = () => {
   const { ref, className } = useEnter<HTMLElement>();
-  const proofAds = staticAds.slice(0, 3);
 
   return (
     <section ref={ref} className={`${className} relative`}>
@@ -25,43 +25,28 @@ const Hero = () => {
           </h1>
 
           <p className="t-step-1 mt-s5 max-w-[52ch] text-ink-secondary">
-            Ad creative that clears a quality gate before it ships, and business operations wired
-            into the tools your team already runs.
+            Two years wiring Claude, MCP servers and n8n into the tools teams already run —
+            and ad creative that has to clear a quality gate before it ships.
           </p>
 
           <div className="mt-s7 flex flex-wrap items-center gap-x-s6 gap-y-s4">
             <PrimaryButton href={profile.calendly} large>
               Book a 30-minute call
             </PrimaryButton>
-            <a href="#video-wall" className="t-step-0 font-medium text-brand-600 hover:text-brand-700">
-              Watch real client ads ↓
+            <a href="#systems" className="t-step-0 font-medium text-brand-600 hover:text-brand-700">
+              See what I've built ↓
             </a>
           </div>
         </div>
 
-        {/* proof object: cols 9-12, hidden below lg. A neutral mat grades the
-            jump from off-white page to dark creative instead of punching a hole. */}
+        {/* The proof object is a diagram of the work itself: existing tools on
+            the left, the agent layer in the middle, where output lands on the
+            right, and real traffic moving between them. */}
         <div className="hidden lg:col-span-5 lg:block">
-          <div className="mat">
-            <div className="grid grid-cols-3 gap-s3">
-              {proofAds.map((ad) => (
-                <img
-                  key={ad.src}
-                  src={ad.src}
-                  alt={`Static ad concept: ${ad.title}`}
-                  width={900}
-                  height={1600}
-                  className="aspect-[9/16] w-full object-cover"
-                  style={{ objectPosition: "top" }}
-                  loading="eager"
-                  decoding="async"
-                />
-              ))}
-            </div>
-            <p className="t-step--2 mt-s4 text-ink-tertiary">
-              Generated and QA-scored by the pipeline
-            </p>
-          </div>
+          <SystemMap />
+          <p className="t-step--1 mt-s5 text-ink-tertiary">
+            The usual shape: your tools in, an agent layer, work back out.
+          </p>
         </div>
       </div>
 

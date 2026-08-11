@@ -1,10 +1,14 @@
 [
   "/",
   "/work",
+  "/experience",
+  "/work/claude-mcp-server-slack-agents",
+  "/work/meta-tiktok-ads-automation-suite",
+  "/work/creator-sourcing-to-payment-pipeline",
+  "/work/footage-renamer",
+  "/work/figma-comment-digest",
+  "/work/ai-sdr-and-crm-bridge",
   "/work/ai-video-editor",
   "/work/static-ads-service",
-  "/work/creative-os",
-  "/work/mcp-and-agents",
-  "/work/concept-pipeline",
-  "/experience"
+  "/work/creative-os"
 ]
