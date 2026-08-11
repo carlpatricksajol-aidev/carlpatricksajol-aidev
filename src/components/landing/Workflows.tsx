@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { SectionHeader, useEnter } from "@/components/primitives";
 import { flows } from "@/data/flows";
+import { sectionCopy } from "@/data/copy";
 
 /**
  * The automation counterpart to the ad gallery: real production workflow graphs,
@@ -21,9 +22,9 @@ const Workflows = () => {
         <SectionHeader
           split
           id="wf-h"
-          eyebrow="Evidence"
-          title="The graphs behind the systems"
-          deck={`Live production workflows, drawn from their own node graphs. ${flows.length} are running right now — these are eight of them.`}
+          eyebrow={sectionCopy.workflows.eyebrow}
+          title={sectionCopy.workflows.title}
+          deck={sectionCopy.workflows.deck}
         />
 
         <ul className="mt-s9 grid gap-s5 md:grid-cols-2">

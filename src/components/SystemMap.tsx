@@ -141,7 +141,7 @@ const SystemMap = () => {
       >
         <div className="sm-core rounded-md border border-line-strong bg-surface-raised px-s4 py-s3 text-center">
           <div className="flex items-center justify-center gap-s2">
-            <BrandIcon name="anthropic" size={14} className="text-ink" />
+            <BrandIcon name="claude" size={16} className="text-ink" />
             <span className="t-step--1 font-medium text-ink">MCP server</span>
           </div>
           <span className="t-step--2 mt-1 block text-ink-tertiary">+ agents</span>

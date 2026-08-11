@@ -1,6 +1,7 @@
 import { PrimaryButton, useEnter } from "@/components/primitives";
 import SystemMap from "@/components/SystemMap";
 import { profile, tracks } from "@/data/site";
+import { hero } from "@/data/copy";
 
 /** Capped at 72vh (not 100vh) so the next section's eyebrow peeks above the
  *  fold — the evidenced fix for the "false floor" that costs a full-height
@@ -20,21 +21,20 @@ const Hero = () => {
             </p>
           )}
 
-          <h1 className="t-step-4 mt-s5 max-w-[18ch]">
-            Automation that ships finished work — not just workflows.
+          <h1 className="t-step-4 mt-s5 max-w-[21ch]">
+            {hero.h1}
           </h1>
 
           <p className="t-step-1 mt-s5 max-w-[52ch] text-ink-secondary">
-            Two years wiring Claude, MCP servers and n8n into the tools teams already run —
-            and ad creative that has to clear a quality gate before it ships.
+            {hero.deck}
           </p>
 
           <div className="mt-s7 flex flex-wrap items-center gap-x-s6 gap-y-s4">
             <PrimaryButton href={profile.calendly} large>
-              Book a 30-minute call
+              {hero.primaryCta}
             </PrimaryButton>
-            <a href="#systems" className="t-step-0 font-medium text-brand-600 hover:text-brand-700">
-              See what I've built ↓
+            <a href="#problems" className="t-step-0 font-medium text-brand-600 hover:text-brand-700">
+              {hero.secondaryCta} ↓
             </a>
           </div>
         </div>

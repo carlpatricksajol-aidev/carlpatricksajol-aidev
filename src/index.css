@@ -161,16 +161,17 @@
 
 @layer components {
   /* ---------- type scale ----------
-     Only three "loud" tiers (step-3/4/5) so hierarchy stays perceptible. */
-  .t-step--2 { font-family: "Geist Mono", ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; }
-  .t-step--1 { font-size: 0.8125rem; font-weight: 500; line-height: 1.5; }
-  .t-eyebrow { font-size: 0.8125rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.08em; text-transform: uppercase; }
-  .t-step-0  { font-size: 1rem; line-height: 1.55; }
-  .t-step-1  { font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.125rem); line-height: 1.65; }
-  .t-step-2  { font-size: 1.25rem; font-weight: 500; line-height: 1.35; letter-spacing: -0.012em; }
-  .t-step-3  { font-size: clamp(1.75rem, 2.2vw + 1.1rem, 2.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-  .t-step-4  { font-size: clamp(2.5rem, 4.4vw + 1rem, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.024em; }
-  .t-step-5  { font-size: clamp(2rem, 3vw + 1rem, 3rem); font-weight: 500; line-height: 1.03; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+     Scaled up across the board: the previous scale read small and timid on a
+     large screen. Only three "loud" tiers (step-3/4/5) so hierarchy holds. */
+  .t-step--2 { font-family: "Geist Mono", ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; line-height: 1.45; letter-spacing: 0.07em; text-transform: uppercase; }
+  .t-step--1 { font-size: 0.9375rem; font-weight: 500; line-height: 1.5; }
+  .t-eyebrow { font-size: 0.875rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.09em; text-transform: uppercase; }
+  .t-step-0  { font-size: 1.0625rem; line-height: 1.6; }
+  .t-step-1  { font-size: clamp(1.1875rem, 0.6vw + 1.05rem, 1.375rem); line-height: 1.6; }
+  .t-step-2  { font-size: clamp(1.375rem, 0.7vw + 1.2rem, 1.625rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.014em; }
+  .t-step-3  { font-size: clamp(2.125rem, 2.6vw + 1.25rem, 3.25rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.022em; }
+  .t-step-4  { font-size: clamp(3rem, 5.2vw + 1rem, 5.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.028em; }
+  .t-step-5  { font-size: clamp(2.5rem, 3.6vw + 1.2rem, 3.75rem); font-weight: 500; line-height: 1.02; letter-spacing: -0.022em; font-variant-numeric: tabular-nums; }
 
   .t-mono { font-family: "Geist Mono", ui-monospace, monospace; }
 
@@ -178,10 +179,10 @@
      Only the shell centres. Narrower rungs are left-aligned INSIDE it so every
      block shares one x-origin — that left rail is the page's scan path, and
      centring a narrower rung would silently break it. */
-  .w-shell { max-width: 79rem; margin-inline: auto; }
-  .w-wide  { max-width: 64rem; }
-  .w-text  { max-width: 48rem; }
-  .w-prose { max-width: 40rem; }
+  .w-shell { max-width: 86rem; margin-inline: auto; }
+  .w-wide  { max-width: 70rem; }
+  .w-text  { max-width: 52rem; }
+  .w-prose { max-width: 42rem; }
 
   .gutter { padding-inline: 20px; }
   @media (min-width: 640px)  { .gutter { padding-inline: 32px; } }
@@ -189,9 +190,9 @@
   @media (min-width: 1440px) { .gutter { padding-inline: 64px; } }
 
   /* ---------- section rhythm ---------- */
-  .section-sm { padding-block: 4rem; }
-  .section    { padding-block: clamp(6rem, 10vw, 8rem); }
-  .chapter    { padding-block: clamp(9rem, 15vw, 14rem); }
+  .section-sm { padding-block: clamp(4rem, 6vw, 5.5rem); }
+  .section    { padding-block: clamp(7rem, 11vw, 11rem); }
+  .chapter    { padding-block: clamp(10rem, 16vw, 16rem); }
 
   /* ---------- elevation: exactly three levels ---------- */
   .e0 { border: 1px solid hsl(var(--border-default)); }
@@ -267,20 +268,34 @@
     }
   }
 
-  /* ---------- logo field drift: the site's ONLY perpetual animation ----------
-     Amplitude <=6px and period >=9s sit below the threshold that triggers an
-     involuntary saccade — alive, but it never asks to be looked at. */
-  @keyframes drift {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50%      { transform: translate3d(var(--dx, 0), var(--dy, 0), 0); }
+  /* ---------- logo rails ----------
+     Two rails drifting in opposite directions. One transform per rail, so this
+     composites on the GPU and costs nothing per frame regardless of card count.
+     The track is duplicated once and moved exactly -50%, which is what makes the
+     loop seamless — any other distance visibly jumps at the wrap. */
+  .logo-field { contain: layout paint; }
+  .logo-rail-mask {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
   }
-  @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
-    .logo-field.is-live .drift-cell {
-      animation: drift var(--dur, 11s) ease-in-out var(--delay, 0s) infinite;
+  @keyframes rail {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-field.is-live .logo-rail {
+      animation: rail var(--dur, 56s) linear infinite;
       will-change: transform;
     }
+    .logo-field.is-live .logo-rail--reverse { animation-direction: reverse; }
+    .logo-field:hover .logo-rail { animation-play-state: paused; }
   }
-  .logo-field { contain: layout paint; }
+  /* Reduced motion: rails hold still and simply wrap as a legible grid. */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-rail-mask { -webkit-mask-image: none; mask-image: none; }
+    .logo-rail { flex-wrap: wrap; width: 100% !important; justify-content: center; }
+  }
 
   /* ---------- system map ----------
      Every flash below is on the SAME 12s clock as the SVG packets, with its

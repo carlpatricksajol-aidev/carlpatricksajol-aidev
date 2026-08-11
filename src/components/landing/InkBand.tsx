@@ -2,61 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BrandIcon } from "@/components/BrandIcons";
 import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
-import { platformField, staticAds, videoAds } from "@/data/site";
-
-/* Non-harmonic periods so the field never visibly re-synchronises. */
-const DUR = [9.1, 10.3, 11.7, 12.9, 13.3, 14.1];
-
-const LogoField = () => {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [live, setLive] = useState(false);
-
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-    const obs = new IntersectionObserver(([e]) => setLive(e.isIntersecting), { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  return (
-    <div ref={wrapRef} className={`logo-field mt-s8 ${live ? "is-live" : ""}`}>
-      <h3 className="sr-only-heading">Platforms in the production line</h3>
-      <ul className="grid grid-cols-3 gap-x-6 gap-y-8 sm:gap-y-10 lg:grid-cols-6 lg:gap-x-10 lg:gap-y-12">
-        {platformField.map((p, i) => (
-          <li
-            key={p.name}
-            className="drift-cell grid h-7 place-items-center"
-            style={
-              {
-                "--dx": `${(i % 3) - 1}px`,
-                "--dy": `${((i % 4) - 1.5) * 3}px`,
-                "--dur": `${DUR[i % DUR.length]}s`,
-                "--delay": `${(i % 5) * 0.8}s`,
-              } as React.CSSProperties
-            }
-          >
-            <span className="sr-only-heading">{p.name}</span>
-            {p.key ? (
-              <BrandIcon
-                name={p.key}
-                size={22}
-                className="text-ink-secondary transition-colors duration-[160ms] hover:text-ink"
-              />
-            ) : (
-              <span
-                className="whitespace-nowrap rounded-full px-3 py-1 text-[13px] font-medium text-ink-secondary transition-colors duration-[160ms] hover:text-ink"
-                style={{ border: "1px solid rgba(255,255,255,.16)", letterSpacing: "0.01em" }}
-              >
-                {p.word}
-              </span>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import { staticAds, videoAds } from "@/data/site";
+import { sectionCopy } from "@/data/copy";
+import LogoField from "@/components/LogoField";
 
 /* Exactly one <video> is mounted at a time. Posters are hand-picked mid-clip
    frames, so the poster is crossfaded out on `playing` rather than hard-swapped. */
@@ -264,9 +212,9 @@ const InkBand = () => {
           <div className={logo.className}>
             <SectionHeader
               split
-              eyebrow="Creative AI production"
-              title="One production line, wired end to end"
-              deck="Models, automation and channels connected into a single pipeline that concepts, generates, quality-gates and delivers finished ad creative."
+              eyebrow={sectionCopy["creative-logos"].eyebrow}
+              title={sectionCopy["creative-logos"].title}
+              deck={sectionCopy["creative-logos"].deck}
             />
             <LogoField />
           </div>
@@ -276,9 +224,9 @@ const InkBand = () => {
           <div className={video.className}>
             <SectionHeader
               split
-              eyebrow="Video"
-              title="Ad creative from the production line"
-              deck="Delivered client work in the formats these systems were built around. Press play — nothing loads until you do."
+              eyebrow={sectionCopy["creative-video"].eyebrow}
+              title={sectionCopy["creative-video"].title}
+              deck={sectionCopy["creative-video"].deck}
             />
             <VideoWall />
           </div>
@@ -288,9 +236,9 @@ const InkBand = () => {
           <div className={statics.className}>
             <SectionHeader
               split
-              eyebrow="Static"
-              title="One batch, eleven concepts"
-              deck="A single delivered batch, one concept per ad. The generator behind this work drops anything that can't clear 7/10 rather than shipping it."
+              eyebrow={sectionCopy["creative-static"].eyebrow}
+              title={sectionCopy["creative-static"].title}
+              deck={sectionCopy["creative-static"].deck}
             />
             <StaticWall />
           </div>

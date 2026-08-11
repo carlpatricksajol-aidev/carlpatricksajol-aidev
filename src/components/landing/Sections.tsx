@@ -9,6 +9,7 @@ import {
   useEnter,
 } from "@/components/primitives";
 import { caseStudies, experience, processSteps, profile, proofMetrics, tracks } from "@/data/site";
+import { sectionCopy } from "@/data/copy";
 
 /* ---------- 2. Four production numbers ---------- */
 export const Proof = () => {
@@ -18,7 +19,7 @@ export const Proof = () => {
       <div className="w-shell gutter py-s8">
         <h2 id="proof-h" className="sr-only-heading">Production results</h2>
         <p className="t-step-0 mb-s6 text-ink-secondary">
-          Four numbers from systems currently running on client work.
+          {sectionCopy.proof.deck}
         </p>
         <div className="w-wide">
           <MetricRow items={proofMetrics.map((m) => ({ value: m.value, caption: m.caption }))} />
@@ -40,9 +41,9 @@ export const Tracks = () => {
         <SectionHeader
           split
           id="tracks-h"
-          eyebrow="What I build"
+          eyebrow="Two ways I help"
           title="Two tracks, one discipline"
-          deck="The plumbing is the leverage — systems that read a company's real data and write back where the work already happens."
+          deck="One is the work behind the scenes. The other is the work your customers actually see."
         />
         <div className="mt-s9 grid gap-s8 md:grid-cols-2 md:gap-0">
           {tracks.map((t, i) => (
@@ -85,9 +86,9 @@ export const Systems = () => {
         <SectionHeader
           split
           id="systems-h"
-          eyebrow="Selected systems"
-          title="Nine builds, in order of what they prove"
-          deck="Each ships with its one hard constraint and its open gaps written down. Read any of them end to end."
+          eyebrow={sectionCopy.systems.eyebrow}
+          title={sectionCopy.systems.title}
+          deck={sectionCopy.systems.deck}
         />
 
         {/* rank 1 */}
@@ -189,9 +190,9 @@ export const Process = () => {
         <SectionHeader
           split
           id="process-h"
-          eyebrow="How the work happens"
-          title="The same five moves, every time"
-          deck="This is the method behind every system on this page — and what the first two weeks of an engagement look like."
+          eyebrow={sectionCopy.process.eyebrow}
+          title={sectionCopy.process.title}
+          deck={sectionCopy.process.deck}
         />
         <ol className="mt-s9 grid gap-s6 md:grid-cols-2 lg:grid-cols-3">
           {processSteps.map((s) => (
@@ -216,9 +217,9 @@ export const Credentials = () => {
         <SectionHeader
           split
           id="cred-h"
-          eyebrow="On the record"
-          title="Where this was built"
-          deck="Two years across an app company, an ad agency and a marketing consultancy."
+          eyebrow={sectionCopy.credentials.eyebrow}
+          title={sectionCopy.credentials.title}
+          deck={sectionCopy.credentials.deck}
         />
         <ul className="mt-s8 border-t border-line">
           {experience.slice(0, 3).map((r) => (
@@ -249,11 +250,10 @@ export const CTA = () => {
     <section ref={ref} className={`${className} chapter border-t border-line`} aria-labelledby="cta-h">
       <div className="w-text gutter mx-auto text-center">
         <h2 id="cta-h" className="t-step-3 mx-auto max-w-[20ch]">
-          Tell me the step that eats your week
+          {sectionCopy.cta.title}
         </h2>
         <p className="t-step-1 mx-auto mt-s4 max-w-[46ch] text-ink-secondary">
-          Thirty minutes, no deck. If it isn't worth automating yet, I'll say so — that answer is
-          free and it saves us both a project.
+          {sectionCopy.cta.deck}
         </p>
         <div className="mt-s7 flex flex-col items-center gap-s4">
           <PrimaryButton href={profile.calendly} large>
