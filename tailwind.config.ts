@@ -12,8 +12,8 @@ export default {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        sans: ['"Inter Variable"', "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ['"Instrument Serif"', "ui-serif", "Georgia", "serif"],
+        sans: ['"Instrument Sans Variable"', "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ['"Newsreader Variable"', "ui-serif", "Georgia", "serif"],
         mono: ['"Geist Mono"', "ui-monospace", "monospace"],
       },
       colors: {

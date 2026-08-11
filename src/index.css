@@ -1,5 +1,5 @@
-@import "@fontsource-variable/inter/opsz.css";
-@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/instrument-sans/standard.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
@@ -168,8 +168,10 @@
   body {
     background-color: hsl(var(--paper));
     color: hsl(var(--ink-2));
-    font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-    /* the opsz axis was on disk and never loaded until now */
+    /* Instrument Sans, not Inter: Inter has become the read-as-default choice.
+       Its x-height (0.510) is within 1% of Newsreader's (0.515), so serif and
+       sans pair at identical pixel sizes with no compensation. */
+    font-family: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
     font-optical-sizing: auto;
     /* the browser may never smear a weight the file doesn't contain */
     font-synthesis: none;
@@ -206,32 +208,33 @@
      leading inverts against it. Positive tracking exists only for mono caps. */
 
   .t-display {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
     font-size: clamp(3.25rem, 3.38vw + 2.458rem, 5.5rem);
-    font-weight: 400;
-    letter-spacing: -0.028em;
-    line-height: 0.95;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 0.94;
   }
   .t-chapter {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
     font-size: clamp(2.5rem, 2.254vw + 1.972rem, 4rem);
-    font-weight: 400;
-    letter-spacing: -0.024em;
+    font-weight: 300;
+    letter-spacing: -0.025em;
     line-height: 0.98;
   }
   .t-section {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
     font-size: clamp(2rem, 1.127vw + 1.736rem, 2.75rem);
     font-weight: 400;
     letter-spacing: -0.018em;
     line-height: 1.06;
   }
   .t-numeral {
-    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
     font-size: clamp(2.5rem, 3.38vw + 1.708rem, 4.75rem);
-    font-weight: 400;
+    font-weight: 200;
     letter-spacing: -0.02em;
     line-height: 0.9;
+    /* Newsreader ships tabular figures by default — the ledger aligns for free */
   }
   .t-sub {
     font-size: clamp(1.3125rem, 0.282vw + 1.246rem, 1.5rem);
@@ -265,10 +268,6 @@
   }
   .t-mono { font-family: "Geist Mono", ui-monospace, monospace; }
 
-  /* strips the last of the default-Inter signature at no byte cost */
-  .t-sub, .t-lead, .t-body, .t-small, nav, button {
-    font-feature-settings: "ss03" 1, "cv05" 1, "cv11" 1;
-  }
   .tnum { font-variant-numeric: tabular-nums lining-nums; }
 
   /* ================= the grid =================
@@ -529,6 +528,51 @@
   }
 
   .gallery-contain { contain-intrinsic-size: 0 480px; }
+
+  /* ---------- video snap rail: a manual carousel ---------- */
+  .video-rail {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--rule-2)) transparent;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+  }
+
+  /* ---------- scroll-driven effects ----------
+     Pure progressive enhancement: browsers without animation-timeline get the
+     resting state, reduced-motion turns everything off, and only transform and
+     opacity ever animate. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .sv-rise {
+        animation: sv-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+      .sv-draw {
+        transform-origin: left center;
+        animation: sv-draw linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 80%;
+      }
+      .sv-parallax {
+        animation: sv-parallax linear both;
+        animation-timeline: view();
+        animation-range: entry 0% exit 100%;
+      }
+    }
+  }
+  @keyframes sv-rise {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes sv-draw {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @keyframes sv-parallax {
+    from { transform: translateY(26px); }
+    to   { transform: translateY(-26px); }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

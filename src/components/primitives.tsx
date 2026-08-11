@@ -75,7 +75,7 @@ export const SectionHeader = ({
     return (
       <div className="grid items-start gap-s5 lg:grid-cols-2 lg:gap-s8">
         <div>
-          <span className={`mb-s4 block h-px w-6 ${rule}`} aria-hidden="true" />
+          <span className={`sv-draw mb-s4 block h-px w-6 ${rule}`} aria-hidden="true" />
           <p className={`t-slug ${accent}`}>{eyebrow}</p>
           <h2 id={id} className={`${h} mt-s4 max-w-[22ch]`}>{title}</h2>
         </div>
@@ -85,7 +85,7 @@ export const SectionHeader = ({
   }
   return (
     <div className="w-text">
-      <span className={`mb-s4 block h-px w-6 ${rule}`} aria-hidden="true" />
+      <span className={`sv-draw mb-s4 block h-px w-6 ${rule}`} aria-hidden="true" />
       <p className={`t-slug ${accent}`}>{eyebrow}</p>
       <h2 id={id} className={`${h} mt-s4 max-w-[22ch]`}>{title}</h2>
       {deck && <p className="t-lead mt-s4 max-w-[52ch] text-ink-secondary">{deck}</p>}

@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BrandIcon } from "@/components/BrandIcons";
 import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
-import { staticAds, videoAds } from "@/data/site";
+import { Link } from "react-router-dom";
+import { caseStudies, staticAds, videoAds } from "@/data/site";
+import { ArrowRight, StatusDot } from "@/components/primitives";
 import { sectionCopy } from "@/data/copy";
 import LogoField from "@/components/LogoField";
 
@@ -50,11 +52,11 @@ const VideoWall = () => {
   }, [playing]);
 
   return (
-    <ul className="mt-s7 grid grid-cols-2 gap-s4 sm:grid-cols-3 lg:gap-s5">
+    <ul className="video-rail mt-s7 flex snap-x snap-mandatory gap-s4 overflow-x-auto pb-s3">
       {videoAds.map((v, i) => {
         const isPlaying = playing === i;
         return (
-          <li key={v.src} ref={isPlaying ? cardRef : undefined} className="relative">
+          <li key={v.src} ref={isPlaying ? cardRef : undefined} className="relative w-[240px] shrink-0 snap-start sm:w-[280px]">
             <div className="ink-tile relative aspect-[9/16] bg-surface-ink-raised">
               {isPlaying ? (
                 <>
@@ -131,47 +133,72 @@ const VideoWall = () => {
   );
 };
 
+/**
+ * ARCHETYPE: the drifting carousel. Two counter-drifting rows of real client
+ * ads — the same GPU-composited rail mechanics as the logo field (one transform
+ * per row), pausing on hover, clickable mid-drift, wrapping to a plain grid
+ * under reduced motion. 11 ads split 6/5 so the rows never sync.
+ */
 const StaticWall = () => {
   const [open, setOpen] = useState<number | null>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+  const [live, setLive] = useState(false);
   // The dialog is controlled and opened from a plain button rather than a
   // DialogTrigger, so Radix's triggerRef is null and its own focus-restore
   // no-ops. Focus has to be handed back explicitly or it lands on <body>.
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const ad = open === null ? null : staticAds[open];
 
+  useEffect(() => {
+    const el = railRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const obs = new IntersectionObserver(([e]) => setLive(e.isIntersecting), { threshold: 0.05 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const rows = [staticAds.slice(0, 6), staticAds.slice(6)];
+
+  const tile = (a: (typeof staticAds)[number], i: number, keySuffix: string) => (
+    <button
+      key={`${a.src}-${keySuffix}`}
+      type="button"
+      onClick={(e) => {
+        triggerRef.current = e.currentTarget;
+        setOpen(i);
+      }}
+      className="group w-[200px] shrink-0 text-left sm:w-[240px]"
+      aria-label={`View static ad: ${a.title}`}
+      tabIndex={keySuffix.endsWith("b") ? -1 : 0}
+    >
+      {/* object-contain: two creatives are ~1:1 and letterbox invisibly
+          against the dark tile rather than being side-cropped */}
+      <span className="ink-tile block aspect-[9/16] bg-surface-ink-raised">
+        <img src={a.src} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+      </span>
+      <span className="t-slug mt-s3 block text-ink-tertiary transition-colors duration-120 group-hover:text-ink-secondary">
+        {a.title}
+      </span>
+    </button>
+  );
+
   return (
     <>
-      <ul className="mt-s7 grid grid-cols-2 gap-s3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-s4">
-        {staticAds.map((a, i) => (
-          <li key={a.src}>
-            <button
-              type="button"
-              onClick={(e) => {
-                triggerRef.current = e.currentTarget;
-                setOpen(i);
-              }}
-              className="group block w-full text-left"
-              aria-label={`View static ad: ${a.title}`}
+      <div ref={railRef} className={`logo-field mt-s7 space-y-s4 ${live ? "is-live" : ""}`}>
+        {rows.map((row, r) => (
+          <div key={r} className="logo-rail-mask" aria-hidden={false}>
+            <div
+              className={`logo-rail flex w-max gap-s4 ${r === 1 ? "logo-rail--reverse" : ""}`}
+              style={{ "--dur": `${r === 1 ? 96 : 82}s` } as React.CSSProperties}
             >
-              {/* object-contain, not cover: two of these creatives are ~1:1 and
-                  letterbox invisibly against the dark tile rather than being
-                  side-cropped or padded with white. */}
-              <span className="ink-tile block aspect-[9/16] bg-surface-ink-raised">
-                <img
-                  src={a.src}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-contain"
-                />
-              </span>
-              <span className="t-slug mt-s3 block text-ink-tertiary transition-colors duration-120 group-hover:text-ink-secondary">
-                {a.title}
-              </span>
-            </button>
-          </li>
+              {/* duplicated once and translated exactly -50% for a seamless loop;
+                  the duplicate set is aria-hidden and untabbable */}
+              {row.map((a) => tile(a, staticAds.indexOf(a), `${r}a`))}
+              {row.map((a) => tile(a, staticAds.indexOf(a), `${r}b`))}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent
@@ -205,7 +232,7 @@ const InkBand = () => {
   const statics = useEnter<HTMLDivElement>();
 
   return (
-    <div data-tone="plate" className="gallery-contain bg-surface-ink text-ink">
+    <div id="chapter-creative" data-tone="plate" className="gallery-contain bg-surface-ink text-ink">
       <div className="w-shell gutter">
         {/* chapter opener */}
         <section id="logo-field" className="section" ref={logo.ref}>
@@ -235,7 +262,7 @@ const InkBand = () => {
           </div>
         </section>
 
-        <section id="static-wall" className="pb-s10" ref={statics.ref}>
+        <section id="static-wall" className="pb-s8" ref={statics.ref}>
           <div className={statics.className}>
             <SectionHeader
               split
@@ -246,6 +273,32 @@ const InkBand = () => {
             />
             <StaticWall />
           </div>
+        </section>
+
+        {/* the chapter's case studies live in the room with the work */}
+        <section className="pb-s9" aria-label="Creative systems">
+          <ul className="grid gap-s4 md:grid-cols-3">
+            {caseStudies
+              .filter((c) => c.track === "creative")
+              .map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to={`/work/${c.slug}`}
+                    className="group flex h-full flex-col surface surface-hover p-s5"
+                  >
+                    <span className="flex flex-wrap items-center gap-s3">
+                      <StatusDot live={c.status === "Live in production"} />
+                      <span className="t-slug text-ink-tertiary">{c.status}</span>
+                    </span>
+                    <span className="t-sub mt-s3 block text-ink">{c.title}</span>
+                    <span className="t-small mt-s2 block text-ink-secondary">{c.oneLiner}</span>
+                    <span className="arrow-link t-small mt-auto pt-s4 !text-oxide-600">
+                      How it was built <ArrowRight />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </section>
       </div>
     </div>

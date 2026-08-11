@@ -14,7 +14,7 @@ import { n8nCases } from "./n8nCases";
 
 export const profile = {
   name: "Carl Patrick Sajol",
-  role: "AI Automation & Platform Manager",
+  role: "Automation Specialist · AI Creative Architect",
   email: "carlpatricksajol@gmail.com",
   calendly: "https://calendly.com/carlpatricksajol/30min",
   location: "Remote · Philippines",

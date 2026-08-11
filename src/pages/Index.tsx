@@ -1,17 +1,23 @@
 import { Page } from "@/components/SiteChrome";
 import Hero from "@/components/landing/Hero";
+import ChapterOpener from "@/components/landing/ChapterOpener";
 import { Problems, Solutions } from "@/components/landing/Problems";
 import InkBand from "@/components/landing/InkBand";
 import Workflows from "@/components/landing/Workflows";
 import { CTA, Credentials, Process, Proof, Systems, Tracks } from "@/components/landing/Sections";
+import { chapters } from "@/data/copy";
 
 /**
- * The page argues in the order a buyer actually thinks:
- *   what is this → is that my problem → can he fix it → prove it → who is he → talk.
+ * A dual-practice portfolio, argued in two explicit chapters:
  *
- * Problems come before anything built. The previous version opened with what he
- * had made and never named the visitor's situation, which is why it read as a
- * list of projects rather than an offer. Density alternates so the page breathes.
+ *   what is this → is that my problem → can he fix it →
+ *   CHAPTER 01 · AUTOMATION  (the larger half: domain index, systems, plates)
+ *   CHAPTER 02 · AI CREATIVE (the dark room: rails, reel, carousel, cases)
+ *   → how he works → who he is → talk.
+ *
+ * The automation chapter opens with the page's one sticky-pair section — the
+ * left column pins while a six-domain index scrolls past it — because breadth
+ * is exactly what a list is for.
  */
 const Index = () => (
   <Page>
@@ -20,6 +26,15 @@ const Index = () => (
     <Problems />
     <Solutions />
     <Tracks />
+    <ChapterOpener
+      id="chapter-automation"
+      number={chapters.automation.number}
+      eyebrow={chapters.automation.eyebrow}
+      title={chapters.automation.title}
+      deck={chapters.automation.deck}
+      domains={chapters.automation.domains}
+      tone="brand"
+    />
     <Systems />
     <Workflows />
     <InkBand />

@@ -114,7 +114,10 @@ export const Tracks = () => {
 /* ---------- 7. Selected systems — ranked 1 : 2 : rest, never a grid of equals ---------- */
 export const Systems = () => {
   const { ref, className } = useEnter<HTMLElement>();
-  const [lead, ...rest] = caseStudies;
+  // this section is the automation chapter's body — creative case studies
+  // live inside the plate room, in their own chapter
+  const automation = caseStudies.filter((c) => c.track === "automation");
+  const [lead, ...rest] = automation;
   const mid = rest.slice(0, 2);
   const tail = rest.slice(2);
 
