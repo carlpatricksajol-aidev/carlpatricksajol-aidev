@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      The share card, rendered from the real design system rather than mocked up.
+
+      It is built by scripts/gen-og.mjs with headless Chrome at 1200x630, using
+      the same variable fonts and the same warm palette the site ships, so the
+      card and the page it links to cannot drift apart in typeface, colour or
+      wording. An image model was the wrong tool here: this is typography on a
+      flat ground, and a generated facsimile would carry approximate letterforms
+      and invented text.
+    -->
+    <style>
+      @font-face {
+        font-family: "Newsreader Variable";
+        src: url("../node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2") format("woff2");
+        font-weight: 200 800;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Instrument Sans Variable";
+        src: url("../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-normal.woff2") format("woff2");
+        font-weight: 400 700;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("../node_modules/@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-display: block;
+      }
+
+      /* the site's own tokens, copied rather than imported so this file renders
+         standalone without pulling in the whole build */
+      :root {
+        --paper: #f8f2ec;
+        --card: #fefcfa;
+        --ink-0: #1a1510;
+        --ink-2: #50463d;
+        --ink-3: #6c6157;
+        --rule: #e2d8d0;
+        --blue-600: #0058b8;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html, body { width: 1200px; height: 630px; }
+
+      body {
+        background: var(--paper);
+        color: var(--ink-2);
+        font-family: "Instrument Sans Variable", sans-serif;
+        font-synthesis: none;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 64px 72px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* the same grain the page carries, so the card feels like the same stock */
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+      }
+
+      .slug {
+        font-family: "Geist Mono", monospace;
+        font-size: 15px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      h1 {
+        font-family: "Newsreader Variable", serif;
+        font-weight: 300;
+        font-size: 68px;
+        line-height: 1.03;
+        letter-spacing: -0.025em;
+        color: var(--ink-0);
+        max-width: 21ch;
+        margin-top: 26px;
+      }
+
+      .deck {
+        font-size: 22px;
+        line-height: 1.5;
+        letter-spacing: -0.004em;
+        color: var(--ink-2);
+        max-width: 54ch;
+        margin-top: 26px;
+      }
+
+      footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-top: 1px solid var(--rule);
+        padding-top: 22px;
+      }
+
+      .name {
+        font-size: 20px;
+        font-weight: 510;
+        color: var(--ink-0);
+      }
+
+      .role {
+        font-family: "Geist Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+      }
+
+      /* the counted numbers, set as the ledger the page uses */
+      .ledger {
+        display: flex;
+        gap: 44px;
+      }
+      .ledger div { text-align: left; }
+      .ledger dt {
+        font-family: "Newsreader Variable", serif;
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 1;
+        color: var(--ink-0);
+        font-variant-numeric: tabular-nums lining-nums;
+      }
+      .ledger dd {
+        font-family: "Geist Mono", monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-top: 8px;
+        max-width: 16ch;
+        line-height: 1.4;
+      }
+
+      /* display:block is load-bearing — a span is inline, so width and height
+         are ignored and the accent silently does not render */
+      .rule {
+        display: block;
+        width: 44px;
+        height: 2px;
+        background: var(--blue-600);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="rule"></span>
+      <p class="slug" style="margin-top: 18px">Automation Specialist · AI Creative Architect</p>
+      <h1>I wire the tools you already pay for, so nobody has to move work between them.</h1>
+      <p class="deck">
+        Zapier, Make and n8n on top of the HubSpot, Airtable, Notion and Google Sheets accounts you
+        already have.
+      </p>
+    </div>
+
+    <footer>
+      <div>
+        <p class="name">Carl Patrick Sajol</p>
+        <p class="role" style="margin-top: 6px">carlpatricksajol-aidev.onrender.com</p>
+      </div>
+      <dl class="ledger">
+        <div>
+          <dt>26</dt>
+          <dd>automations live</dd>
+        </div>
+        <div>
+          <dt>11</dt>
+          <dd>start themselves</dd>
+        </div>
+        <div>
+          <dt>2 yrs</dt>
+          <dd>three roles at once</dd>
+        </div>
+      </dl>
+    </footer>
+  </body>
+</html>
