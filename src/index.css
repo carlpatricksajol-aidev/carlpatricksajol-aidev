@@ -430,6 +430,16 @@
     }
   }
 
+  /* Brand lockups render to ink rather than in brand colour. Full-colour logos
+     would be the only saturated thing on the page and would turn a capability
+     statement into a sponsor wall. brightness(0) flattens any source — SVG or
+     PNG, one colour or five — to solid black, and the opacity lands it on the
+     ink ramp rather than pure black, which is not a colour used anywhere here. */
+  .tool-lockup {
+    filter: brightness(0) saturate(0);
+    opacity: 0.88;
+  }
+
   /* ---------- logo rails ---------- */
   .logo-field { contain: layout paint; }
   .logo-rail-mask {

@@ -51,10 +51,24 @@ export const proofMetrics = [
  * `iconKey` must be a real key in BrandIcons.tsx or an empty string. Tracing or
  * generating a brand's mark would be legally worse than showing a letterform.
  */
+export interface ToolItem {
+  label: string;
+  /** a key in BrandIcons.tsx: a square, single-path, monochrome mark */
+  iconKey: string;
+  /**
+   * A horizontal brand lockup under /public/logos, for the brands that have no
+   * square mark anywhere. These are ~4:1 to 6:1 wordmark lockups, so they
+   * replace the icon AND the label rather than sitting beside it, and they are
+   * rendered to ink rather than in brand colour: full-colour logos would be the
+   * only saturated thing on the page and would read as a sponsor wall.
+   */
+  logo?: string;
+}
+
 export interface ToolGroup {
   group: string;
   blurb: string;
-  items: { label: string; iconKey: string }[];
+  items: ToolItem[];
 }
 
 export const toolGroups: ToolGroup[] = [
@@ -73,10 +87,10 @@ export const toolGroups: ToolGroup[] = [
     blurb: "Where your customer records, deal stages and follow-up sequences already live.",
     items: [
       { label: "HubSpot", iconKey: "hubspot" },
-      { label: "GoHighLevel", iconKey: "" },
+      { label: "GoHighLevel", iconKey: "", logo: "/logos/gohighlevel.png" },
       { label: "ActiveCampaign", iconKey: "" },
       { label: "Klaviyo", iconKey: "" },
-      { label: "ManyChat", iconKey: "" },
+      { label: "Manychat", iconKey: "", logo: "/logos/manychat.svg" },
     ],
   },
   {

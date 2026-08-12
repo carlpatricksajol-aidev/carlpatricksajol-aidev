@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BrandIcon } from "@/components/BrandIcons";
 import { SectionHeader, useEnter } from "@/components/primitives";
-import { toolGroups } from "@/data/site";
+import { toolGroups, type ToolItem } from "@/data/site";
 import { toolBandSection } from "@/data/copy";
 
 /**
@@ -23,36 +23,53 @@ import { toolBandSection } from "@/data/copy";
  * otherwise a screen reader reads every tool twice.
  */
 
-const flat = toolGroups.flatMap((g) => g.items);
+const flat: ToolItem[] = toolGroups.flatMap((g) => g.items);
 
 /**
- * Two chip variants, not one chip plus a placeholder.
+ * Three chip variants.
  *
- * GoHighLevel, ActiveCampaign, Klaviyo and ManyChat have no mark in simple-icons
- * and never have, so there is nothing correct to draw. The old fallback put a
- * circled first letter where a logo should be, which reads as a broken image
- * rather than a design decision. A wordmark set in the site's own type is what
- * a real logo wall does with brands that ship as wordmarks — it is honest, and
- * it does not fabricate somebody's trademark.
+ *  1. Square mark plus label, for anything simple-icons carries.
+ *  2. The brand's own horizontal lockup, for brands that have no square mark
+ *     anywhere. A lockup already contains the name, so it replaces the label
+ *     rather than sitting beside it. Rendered to ink, not brand colour: these
+ *     would otherwise be the only saturated things on the page.
+ *  3. A plain wordmark in the site's own type, for brands where neither exists
+ *     yet. The old fallback drew a circled first letter, which reads as a
+ *     broken image rather than a decision.
+ *
+ * Nothing here is hand-traced. A logo drawn from memory is both wrong and a
+ * worse trademark position than not drawing it.
  */
-const Mark = ({ item }: { item: { label: string; iconKey: string } }) => (
-  <div className="flex shrink-0 items-center gap-s3 surface px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong">
-    {item.iconKey ? (
-      <BrandIcon name={item.iconKey} size={24} className="shrink-0 text-ink" />
-    ) : (
-      // the wordmark carries its own weight, so it takes the mark's optical slot
-      // instead of sitting next to an empty one
-      <span className="h-[24px] w-px shrink-0 bg-line-strong" aria-hidden="true" />
-    )}
-    <span
-      className={`whitespace-nowrap text-ink ${
-        item.iconKey ? "t-body font-medium" : "t-body font-medium tracking-[-0.01em]"
-      }`}
-    >
-      {item.label}
-    </span>
-  </div>
-);
+const CHIP =
+  "flex shrink-0 items-center gap-s3 surface px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong";
+
+const Mark = ({ item }: { item: ToolItem }) => {
+  if (item.logo) {
+    return (
+      <div className={CHIP}>
+        <img
+          src={item.logo}
+          alt={item.label}
+          loading="lazy"
+          decoding="async"
+          className="tool-lockup h-[22px] w-auto shrink-0"
+        />
+      </div>
+    );
+  }
+  return (
+    <div className={CHIP}>
+      {item.iconKey ? (
+        <BrandIcon name={item.iconKey} size={24} className="shrink-0 text-ink" />
+      ) : (
+        // the wordmark carries its own weight, so it takes the mark's optical
+        // slot instead of sitting next to an empty one
+        <span className="h-[24px] w-px shrink-0 bg-line-strong" aria-hidden="true" />
+      )}
+      <span className="t-body whitespace-nowrap font-medium text-ink">{item.label}</span>
+    </div>
+  );
+};
 
 const Rail = ({
   items,
