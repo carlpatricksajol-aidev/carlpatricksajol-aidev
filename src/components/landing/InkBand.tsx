@@ -5,7 +5,7 @@ import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
 import { Link } from "react-router-dom";
 import { caseStudies, staticAds, videoAds } from "@/data/site";
 import { ArrowRight, StatusDot } from "@/components/primitives";
-import { sectionCopy } from "@/data/copy";
+import { chapters, sectionCopy } from "@/data/copy";
 import LogoField from "@/components/LogoField";
 
 /* Exactly one <video> is mounted at a time. Posters are hand-picked mid-clip
@@ -237,6 +237,14 @@ const InkBand = () => {
         {/* chapter opener */}
         <section id="logo-field" className="section" ref={logo.ref}>
           <div className={logo.className}>
+            {/* the chapter marker its counterpart carries too — so the room
+                reads as the second half of the argument, not the whole of it */}
+            <div className="mb-s6 flex items-baseline gap-s3 border-b border-line pb-s4">
+              <span className="t-mono tnum text-[0.9375rem] text-oxide-600">{chapters.creative.number}</span>
+              <span className="t-slug text-ink-tertiary">{chapters.creative.eyebrow}</span>
+              <span className="t-slug text-ink-tertiary" aria-hidden="true">/</span>
+              <span className="t-slug text-ink">{chapters.creative.title}</span>
+            </div>
             <SectionHeader
               split
               level="chapter"

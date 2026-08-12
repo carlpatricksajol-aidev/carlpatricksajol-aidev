@@ -105,53 +105,22 @@ export const solutions: Solution[] = [
 ];
 
 /**
- * The two chapters. Every domain line below maps to named systems that exist on
- * this site — the counts are the systems we can actually show, not estimates.
+ * The two chapters. The automation chapter's body is organised by service line —
+ * see src/data/serviceLines.ts for the spine and serviceLineCopy.ts for the
+ * words; the old abstract "domains" index it replaced is gone with it.
  */
 export const chapters = {
   automation: {
     number: "01",
     eyebrow: "Chapter one",
     title: "Automation",
-    deck: "The larger half of the practice: systems that run a business's routine work unattended. Two years of it, across six domains.",
-    domains: [
-      {
-        name: "AI wired into internal tools",
-        note: "MCP servers and agents that let a team ask their own database, SDK and attribution platform questions in plain English.",
-        systems: "Production MCP server · 3 Slack agents · 10-tool MCP over an undocumented API",
-      },
-      {
-        name: "Paid-social operations",
-        note: "Publishing, budget scaling, appeals and pre-review handled by machines across Meta and TikTok.",
-        systems: "170-node publisher · budget scaling endpoint · TikTok appeals + pre-review · bulk deletion",
-      },
-      {
-        name: "Reporting & data warehouses",
-        note: "Ad numbers pulled, cleaned and written into queryable tables every night, before anyone opens a laptop.",
-        systems: "11-workflow nightly rebuild · performance DB sync · insights-to-sheets · activity logs",
-      },
-      {
-        name: "CRM & revenue operations",
-        note: "Two CRMs kept in step, replies answered at the hour they arrive, leads enriched the moment they land.",
-        systems: "AI SDR agent · two-way CRM bridge · creator sourcing to payment · lead enrichment",
-      },
-      {
-        name: "Content & production ops",
-        note: "The unglamorous middle of creative work — renaming, briefing, routing — done by systems instead of evenings.",
-        systems: "Footage renamer · Figma comment digest · concept pipeline",
-      },
-      {
-        name: "Moderation & compliance",
-        note: "Comments triaged with a cost-capped AI pass, activity logged, policy checked before spend.",
-        systems: "AI comment moderator · Meta + TikTok activity logging",
-      },
-    ],
+    deck: "The main practice. Two years of building systems that run a business's routine work unattended — grouped here the way you'd actually buy them.",
   },
   creative: {
     number: "02",
     eyebrow: "Chapter two",
     title: "AI Creative",
-    deck: "The second half: pipelines that produce the ads themselves — scored before delivery, cut from real footage.",
+    deck: "One line of the practice taken all the way to its own product: pipelines that produce the ads themselves — scored before delivery, cut from real footage.",
   },
 };
 
@@ -163,14 +132,14 @@ export const sectionCopy: Record<string, { eyebrow: string; title: string; deck:
     deck: "Not estimates. Counted from work running in production right now — twenty-six automations and the jobs they finish every day.",
   },
   systems: {
-    eyebrow: "The automation record",
-    title: "Ten systems, hardest problem first",
-    deck: "Each is a real system with a job to do, written up honestly - its one hard constraint, and what it does not do yet.",
+    eyebrow: "In depth",
+    title: "The three hardest builds, written up",
+    deck: "Behind every line above is a real system with a job to do. These three are the ones worth reading — each written up honestly: its one hard constraint, and what it does not do yet.",
   },
   workflows: {
     eyebrow: "Under the hood",
-    title: "What the systems look like inside",
-    deck: "Maps of the steps each system runs, start to finish. You don't need to read them — they're here so you can see the work is real.",
+    title: "Twenty-six systems, running now",
+    deck: "A map of every step each system runs, start to finish, drawn from the live workflows themselves. Filter by practice, or open any one of them full size.",
   },
   "creative-logos": {
     eyebrow: "How ads get made",
@@ -195,7 +164,7 @@ export const sectionCopy: Record<string, { eyebrow: string; title: string; deck:
   credentials: {
     eyebrow: "Background",
     title: "Where this work was built",
-    deck: "Two years inside a working ad agency and a mobile app company — on live ad accounts, with real work depending on it.",
+    deck: "Two years inside a mobile app company, a working ad agency and a marketing consultancy — on live ad accounts and live client systems, with real work depending on it.",
   },
   cta: {
     eyebrow: "Start here",

@@ -33,6 +33,11 @@ export function useEnter<T extends HTMLElement = HTMLDivElement>() {
       setIsIn(true);
       return;
     }
+    // threshold must be 0, not a ratio: a section taller than ~6x the viewport
+    // can never expose 15% of itself, so a ratio threshold leaves it stuck at
+    // opacity 0 forever. The service-line chapter and the 26-plate wall are both
+    // past that height on a phone. rootMargin does the "wait until it's properly
+    // on screen" job instead, and does it independent of section height.
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -40,7 +45,7 @@ export function useEnter<T extends HTMLElement = HTMLDivElement>() {
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();

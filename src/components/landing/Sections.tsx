@@ -111,7 +111,10 @@ export const Tracks = () => {
   );
 };
 
-/* ---------- 7. Selected systems — ranked 1 : 2 : rest, never a grid of equals ---------- */
+/* ---------- 7. The three hardest builds — ranked 1 : 2, never a grid of equals ----------
+   Depth, not breadth. The service lines above already link every case study by
+   name; repeating all ten here as rows would read as filler. This section only
+   has to prove that behind the list there is real engineering. */
 export const Systems = () => {
   const { ref, className } = useEnter<HTMLElement>();
   // this section is the automation chapter's body — creative case studies
@@ -119,7 +122,6 @@ export const Systems = () => {
   const automation = caseStudies.filter((c) => c.track === "automation");
   const [lead, ...rest] = automation;
   const mid = rest.slice(0, 2);
-  const tail = rest.slice(2);
 
   return (
     <section id="systems" ref={ref} className={`${className} section`} aria-labelledby="systems-h">
@@ -191,28 +193,6 @@ export const Systems = () => {
             </Link>
           ))}
         </div>
-
-        {/* rank 3 — rows outscan cards at a fraction of the height */}
-        <ul className="mt-s5 border-t border-line">
-          {tail.map((c) => (
-            <li key={c.slug} className="border-b border-line">
-              <Link
-                to={`/work/${c.slug}`}
-                className="group grid grid-cols-[1fr_auto] items-center gap-s4 py-s5 transition-colors duration-120 hover:bg-surface-sunken"
-              >
-                <span className="min-w-0">
-                  <span className="t-sub block text-ink">{c.title}</span>
-                  <span className="t-small mt-1 block text-ink-tertiary">
-                    {c.trackLabel} · {c.status}
-                  </span>
-                </span>
-                <span className="text-brand-600 transition-transform duration-[160ms] group-hover:translate-x-1">
-                  <ArrowRight />
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
 
         <p className="mt-s6">
           <ArrowLink to="/work">See all {caseStudies.length + otherSystems.length} systems</ArrowLink>
