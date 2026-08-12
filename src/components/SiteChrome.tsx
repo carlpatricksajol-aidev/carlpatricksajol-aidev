@@ -137,9 +137,27 @@ export const SiteHeader = ({
   );
 };
 
-/** Closes the page. No second CTA — the CTA section directly above owns that job. */
+/**
+ * Closes the page. No second CTA — the CTA section directly above owns that job.
+ *
+ * THE TERMINUS. The header carries a wire that fills as you read; this is where
+ * that run lands. The rail arrives from the left, reaches a node, and the node
+ * closes — so the page is one run from the first pixel to the last, and the two
+ * persistent elements on the site are the two ends of the same thing rather
+ * than two unrelated ornaments.
+ *
+ * It draws on arrival rather than on a loop: a thing that terminates should
+ * terminate once, and a footer that animates forever is a footer nobody leaves.
+ */
 export const SiteFooter = () => (
-  <footer className="border-t border-line">
+  <footer className="terminus border-t border-line">
+    <div className="w-shell gutter">
+      <div className="terminus-run" aria-hidden="true">
+        <span className="terminus-rail" />
+        <span className="terminus-node" />
+        <span className="t-mono terminus-label">run complete</span>
+      </div>
+    </div>
     <div className="w-shell gutter grid gap-s6 py-s8 sm:grid-cols-[1fr_auto]">
       <div>
         <p className="t-body font-medium text-ink">{profile.name}</p>
