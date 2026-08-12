@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, useEnter } from "@/components/primitives";
 import { caseStudies } from "@/data/site";
@@ -18,6 +19,35 @@ const ServiceLines = () => {
   const { ref, className } = useEnter<HTMLElement>();
   const ch = chapters.automation;
 
+  // The roadmap. One observer for all eight rows, so the active index changes
+  // a handful of times per chapter rather than on every frame — the spine and
+  // the numerals animate in CSS off a single class change.
+  const rowRefs = useRef<(HTMLElement | null)[]>([]);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const seen = new Map<number, number>();
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const i = Number((e.target as HTMLElement).dataset.i);
+          seen.set(i, e.isIntersecting ? e.intersectionRatio : 0);
+        }
+        // the row occupying the most of the reading band wins, so the marker
+        // never flickers between two rows meeting at a boundary
+        let best = -1;
+        let bestRatio = 0;
+        for (const [i, r] of seen) if (r > bestRatio) { best = i; bestRatio = r; }
+        if (best >= 0) setActive(best);
+      },
+      // a band across the middle of the viewport: what the reader is reading
+      { rootMargin: "-35% 0px -45% 0px", threshold: [0, 0.5, 1] }
+    );
+    rowRefs.current.forEach((el) => el && obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   const casesFor = (id: LineId) =>
     caseStudies.filter((c) => caseLine[c.slug] === id);
 
@@ -32,22 +62,31 @@ const ServiceLines = () => {
           <h2 id="auto-h" className="t-chapter mt-s4 max-w-[12ch]">{ch.title}</h2>
           <p className="t-lead mt-s5 max-w-[34ch] text-ink-secondary">{ch.deck}</p>
 
-          {/* an index of the eight, so the breadth is legible before you scroll it */}
-          <ul className="mt-s6 hidden border-t border-line lg:block">
-            {lineOrder.map((id, i) => (
-              <li key={id}>
-                <a
-                  href={`#line-${id}`}
-                  className="flex items-baseline gap-s3 border-b border-line py-s3 transition-colors duration-120 hover:text-ink"
-                >
-                  <span className="t-mono tnum text-[0.75rem] text-ink-tertiary">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="t-small text-ink-secondary">{lineCopy[id].name}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* THE ROADMAP. The index of eight is also a progress spine: a rail
+              that fills to wherever you have read to, a node per line that
+              lights as its row reaches the middle of the screen, and the
+              current name pulled to full ink. It answers "where am I in this"
+              without the reader having to count. */}
+          <div className="roadmap mt-s6 hidden lg:block" style={{ ["--road" as string]: `${(active + 1) / lineOrder.length}` }}>
+            <div className="roadmap-rail" aria-hidden="true">
+              <span className="roadmap-fill" />
+            </div>
+            <ul>
+              {lineOrder.map((id, i) => (
+                <li key={id} className={i <= active ? "is-done" : ""} aria-current={i === active ? "true" : undefined}>
+                  <a href={`#line-${id}`} className="roadmap-item">
+                    <span className="roadmap-node" aria-hidden="true" />
+                    <span className="t-mono tnum roadmap-num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="t-small roadmap-name">{lineCopy[id].name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="t-micro mt-s4 text-ink-tertiary">
+              <span className="tnum text-ink">{String(active + 1).padStart(2, "0")}</span> of{" "}
+              <span className="tnum">{String(lineOrder.length).padStart(2, "0")}</span> service lines
+            </p>
+          </div>
         </div>
 
         {/* the scrolling half */}
@@ -60,7 +99,11 @@ const ServiceLines = () => {
               <article
                 key={id}
                 id={`line-${id}`}
-                className="sv-rise scroll-mt-28 border-t border-line py-s6 last:border-b"
+                data-i={i}
+                ref={(el) => (rowRefs.current[i] = el)}
+                className={`sv-rise line-row scroll-mt-28 border-t border-line py-s6 last:border-b ${
+                  i === active ? "is-reading" : ""
+                }`}
               >
                 <div className="flex items-baseline justify-between gap-s4">
                   <h3 className="t-sub text-ink">{c.name}</h3>

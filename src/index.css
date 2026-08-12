@@ -556,6 +556,156 @@
     mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
+  /* ---------- the roadmap: where am I in the eight ----------
+     The automation chapter's index is also a progress spine. A rail fills to
+     however far the reader has got, a node per service line lights as its row
+     reaches the middle of the screen, and the current name pulls to full ink
+     while the rest sit back. --road is a 0-1 fraction set from React off ONE
+     IntersectionObserver, so the whole thing animates in CSS off a handful of
+     class changes per chapter rather than anything per-frame.
+
+     Deliberately not scroll-driven CSS: the reader's position also has to drive
+     the numeral and the name, which needs the value in JS anyway, and a single
+     source beats two mechanisms disagreeing at a section boundary. */
+  .roadmap { position: relative; padding-left: 22px; }
+  .roadmap-rail {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    bottom: 34px;
+    width: 2px;
+    background: hsl(var(--rule));
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .roadmap-fill {
+    position: absolute;
+    inset: 0 0 auto 0;
+    display: block;
+    height: 100%;
+    background: hsl(var(--blue-600));
+    transform-origin: top center;
+    transform: scaleY(var(--road, 0));
+    transition: transform 420ms cubic-bezier(.32,.72,0,1);
+  }
+  .roadmap-item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: var(--gutter);
+    padding-block: 10px;
+    border-bottom: 1px solid hsl(var(--rule));
+  }
+  .roadmap li:last-child .roadmap-item { border-bottom: 0; }
+  .roadmap-node {
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: hsl(var(--paper));
+    box-shadow: inset 0 0 0 2px hsl(var(--rule-2));
+    transition: box-shadow 240ms ease, transform 240ms cubic-bezier(.32,.72,0,1);
+  }
+  .roadmap li.is-done .roadmap-node { box-shadow: inset 0 0 0 6px hsl(var(--blue-600)); }
+  .roadmap li[aria-current="true"] .roadmap-node {
+    transform: scale(1.34);
+    box-shadow: inset 0 0 0 4px hsl(var(--blue-600)), 0 0 0 4px hsl(var(--blue-600) / 0.16);
+  }
+  .roadmap-num { font-size: 0.75rem; color: hsl(var(--ink-3)); transition: color 240ms ease; }
+  .roadmap-name { color: hsl(var(--ink-2)); transition: color 240ms ease; }
+  .roadmap li.is-done .roadmap-num { color: hsl(var(--blue-600)); }
+  .roadmap li[aria-current="true"] .roadmap-name { color: hsl(var(--ink-0)); font-weight: var(--w-medium); }
+  .roadmap-item:hover .roadmap-name { color: hsl(var(--ink-0)); }
+
+  /* the row being read leans into the rail and lights its own numeral, so the
+     left spine and the right column are visibly the same pointer */
+  .line-row { transition: border-color 240ms ease; }
+  .line-row.is-reading { border-top-color: hsl(var(--blue-600)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .roadmap-fill, .roadmap-node, .roadmap-num, .roadmap-name, .line-row { transition: none !important; }
+  }
+
+  /* ---------- orbit field: the platform marks actually fly ----------
+     The dark chapter's ground treatment. Six travellers built from three brand
+     marks, each crossing the FULL width of the room on its own arc, rotating as
+     it goes, at its own size, depth and speed.
+
+     This replaces a blind emboss that was theoretically correct at 1.2:1 and
+     practically invisible. These sit between 0.09 and 0.20 alpha of the warm
+     light ink over the plate, which is a mark you can actually see and still
+     nowhere near a sponsor wall.
+
+     Legibility is safe by direction, not by measurement: everything here is
+     BEHIND the copy, and lightening a near-black ground can only raise the
+     contrast of light text sitting on it. The worst case is text over a mark at
+     peak alpha, which is still around 11:1.
+
+     One transform per mark, nothing else, so the field composites on the GPU.
+     It runs only while the chapter is on screen and the tab is visible. Under
+     reduced motion the marks park at staggered points along their own paths,
+     which is a composed still rather than a freeze. */
+  .orbit-field {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    contain: layout paint;
+  }
+  .orbit-flyer {
+    position: absolute;
+    left: 0;
+    display: block;
+    color: hsl(var(--ink-0));
+    /* the resting frame: parked mid-crossing, so a browser that never runs the
+       animation still shows a populated field rather than a stack at the left edge */
+    transform: translate3d(38vw, 0, 0) rotate(24deg);
+    animation-name: orbit-a;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    will-change: transform;
+  }
+  .orbit-flyer > svg { width: 100%; height: 100%; display: block; }
+  .orbit-field.is-live .orbit-flyer { animation-play-state: running; }
+
+  .orbit-p1 { animation-name: orbit-a; }
+  .orbit-p2 { animation-name: orbit-b; }
+  .orbit-p3 { animation-name: orbit-c; }
+
+  /* Three arcs, all crossing the full width. -30vw to 130vw guarantees each
+     mark is fully off both edges at the loop seam, so there is no pop. The mid
+     keyframes bend the path and the rotation makes the travel legible as
+     travel rather than as a slide. */
+  @keyframes orbit-a {
+    0%   { transform: translate3d(-30vw, 0, 0) rotate(0deg); }
+    50%  { transform: translate3d(50vw, -70px, 0) rotate(180deg); }
+    100% { transform: translate3d(130vw, 0, 0) rotate(360deg); }
+  }
+  @keyframes orbit-b {
+    0%   { transform: translate3d(130vw, 0, 0) rotate(0deg); }
+    50%  { transform: translate3d(50vw, 84px, 0) rotate(-200deg); }
+    100% { transform: translate3d(-30vw, 0, 0) rotate(-360deg); }
+  }
+  @keyframes orbit-c {
+    0%   { transform: translate3d(-30vw, 40px, 0) rotate(-18deg); }
+    35%  { transform: translate3d(28vw, -56px, 0) rotate(90deg); }
+    70%  { transform: translate3d(88vw, 48px, 0) rotate(220deg); }
+    100% { transform: translate3d(130vw, -20px, 0) rotate(342deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* staggered resting positions so the still frame is composed, not stacked */
+    .orbit-flyer { animation: none !important; }
+    .orbit-p1 { transform: translate3d(14vw, -30px, 0) rotate(12deg); }
+    .orbit-p2 { transform: translate3d(62vw, 36px, 0) rotate(-24deg); }
+    .orbit-p3 { transform: translate3d(88vw, -14px, 0) rotate(38deg); }
+  }
+
   /* ---------- raking light: one lamp, fixed at 315 degrees ----------
      Three layers, one idea: the page is a sheet of stock under a lamp, and the
      reader tilts the sheet by scrolling. The sheen crosses the ground, each

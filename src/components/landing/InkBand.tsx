@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BrandIcon } from "@/components/BrandIcons";
-import Deboss from "@/components/Deboss";
+import OrbitField from "@/components/OrbitField";
 import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
 import { Link } from "react-router-dom";
 import { adPlacements, caseStudies, staticAds, videoAds } from "@/data/site";
@@ -233,12 +233,12 @@ const InkBand = () => {
   const statics = useEnter<HTMLDivElement>();
 
   return (
-    <div id="chapter-creative" data-tone="plate" className="gallery-contain bg-surface-ink text-ink">
-      <div className="w-shell gutter">
+    <div id="chapter-creative" data-tone="plate" className="gallery-contain relative isolate overflow-hidden bg-surface-ink text-ink">
+      <OrbitField />
+      <div className="relative z-10 w-shell gutter">
         {/* chapter opener */}
-        <section id="logo-field" className="section relative isolate" ref={logo.ref}>
-          <Deboss />
-          <div className={`${logo.className} relative z-10`}>
+        <section id="logo-field" className="section" ref={logo.ref}>
+          <div className={logo.className}>
             {/* the chapter marker its counterpart carries too — so the room
                 reads as the second half of the argument, not the whole of it */}
             <div className="mb-s6 flex items-baseline gap-s3 border-b border-line pb-s4">
