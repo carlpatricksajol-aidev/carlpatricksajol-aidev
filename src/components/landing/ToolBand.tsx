@@ -25,17 +25,32 @@ import { toolBandSection } from "@/data/copy";
 
 const flat = toolGroups.flatMap((g) => g.items);
 
+/**
+ * Two chip variants, not one chip plus a placeholder.
+ *
+ * GoHighLevel, ActiveCampaign, Klaviyo and ManyChat have no mark in simple-icons
+ * and never have, so there is nothing correct to draw. The old fallback put a
+ * circled first letter where a logo should be, which reads as a broken image
+ * rather than a design decision. A wordmark set in the site's own type is what
+ * a real logo wall does with brands that ship as wordmarks — it is honest, and
+ * it does not fabricate somebody's trademark.
+ */
 const Mark = ({ item }: { item: { label: string; iconKey: string } }) => (
   <div className="flex shrink-0 items-center gap-s3 surface px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong">
     {item.iconKey ? (
       <BrandIcon name={item.iconKey} size={24} className="shrink-0 text-ink" />
     ) : (
-      // no traced marks: a letterform is honest, a hand-drawn logo is not
-      <span className="grid h-[24px] w-[24px] shrink-0 place-items-center rounded-sm border border-line-interactive text-[11px] font-semibold text-ink-secondary">
-        {item.label.slice(0, 1)}
-      </span>
+      // the wordmark carries its own weight, so it takes the mark's optical slot
+      // instead of sitting next to an empty one
+      <span className="h-[24px] w-px shrink-0 bg-line-strong" aria-hidden="true" />
     )}
-    <span className="t-body whitespace-nowrap font-medium text-ink">{item.label}</span>
+    <span
+      className={`whitespace-nowrap text-ink ${
+        item.iconKey ? "t-body font-medium" : "t-body font-medium tracking-[-0.01em]"
+      }`}
+    >
+      {item.label}
+    </span>
   </div>
 );
 

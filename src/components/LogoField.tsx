@@ -15,14 +15,16 @@ import { platformField } from "@/data/site";
 const CARD =
   "flex shrink-0 items-center gap-s3 surface surface-hover px-s5 py-s4 transition-[border-color,transform] duration-[180ms] hover:-translate-y-0.5 hover:border-line-strong";
 
+// Same two-variant rule as the tool band: a mark where one exists, a wordmark
+// where none does. Higgsfield, KIE.ai, Seedance, Veo, Nano Banana Pro and
+// Whisper have no mark in simple-icons, and a circled first letter reads as a
+// failed image rather than a decision.
 const Mark = ({ item }: { item: (typeof platformField)[number] }) => (
   <div className={CARD}>
     {item.key ? (
       <BrandIcon name={item.key} size={26} className="shrink-0 text-ink" />
     ) : (
-      <span className="grid h-[26px] w-[26px] shrink-0 place-items-center rounded-sm border border-line-interactive text-[11px] font-semibold text-ink-secondary">
-        {item.name.slice(0, 1)}
-      </span>
+      <span className="h-[26px] w-px shrink-0 bg-line-strong" aria-hidden="true" />
     )}
     <span className="t-body whitespace-nowrap font-medium text-ink">{item.name}</span>
   </div>
