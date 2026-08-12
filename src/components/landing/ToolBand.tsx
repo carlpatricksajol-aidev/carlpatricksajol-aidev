@@ -140,14 +140,19 @@ const ToolBand = () => {
         </div>
       </div>
 
-      {/* the reading half */}
+      {/* the reading half. Two rows of three rather than one row of six: at six
+          columns the blurbs set to about four words a line and stop being
+          readable. The left rule is suppressed at the start of each row, or the
+          second row opens with a hanging divider. */}
       <div className="w-shell gutter">
-        <ul className="mt-s7 grid gap-px border-t border-line md:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-s7 grid gap-x-px gap-y-s5 border-t border-line sm:grid-cols-2 lg:grid-cols-3">
           {toolGroups.map((g, i) => (
             <li
               key={g.group}
-              className={`border-b border-line py-s5 lg:border-b-0 lg:pr-s4 ${
-                i > 0 ? "lg:border-l lg:border-line lg:pl-s4" : ""
+              className={`border-b border-line py-s5 pr-s4 sm:border-b-0 ${
+                i % 2 !== 0 ? "sm:border-l sm:border-line sm:pl-s4" : ""
+              } ${
+                i % 3 === 0 ? "lg:border-l-0 lg:pl-0" : "lg:border-l lg:border-line lg:pl-s4"
               }`}
             >
               <p className="t-slug text-ink">{g.group}</p>

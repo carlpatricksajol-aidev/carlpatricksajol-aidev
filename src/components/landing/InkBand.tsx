@@ -285,7 +285,9 @@ const InkBand = () => {
 
         {/* the chapter's case studies live in the room with the work */}
         <section className="pb-s9" aria-label="Creative systems">
-          <ul className="grid gap-s4 md:grid-cols-3">
+          {/* four now that SongReels has its own case study — a 3-col grid
+              would strand the fourth card alone on a second row */}
+          <ul className="grid gap-s4 sm:grid-cols-2 lg:grid-cols-4">
             {caseStudies
               .filter((c) => c.track === "creative")
               .map((c) => (
