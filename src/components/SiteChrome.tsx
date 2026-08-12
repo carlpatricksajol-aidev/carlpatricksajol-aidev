@@ -2,14 +2,19 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowLeft, PrimaryButton } from "@/components/primitives";
 import { profile } from "@/data/site";
+import { useRunSwitch } from "@/components/schematic/useSchematic";
 
 /** The one sticky element on the site. <=56px, hairline appears only after scroll. */
 export const SiteHeader = ({
   backTo,
   centerLabel,
+  stops = 1,
 }: {
   backTo?: { to: string; label: string };
   centerLabel?: string;
+  /** section ports along the wire. 13 on the landing page, 1 everywhere else —
+   *  the port count is a landing-page fact and must not leak onto /work. */
+  stops?: number;
 }) => {
   const [scrolled, setScrolled] = useState(false);
   // The header must adopt the tone of whatever is behind it. Left light over the
@@ -76,16 +81,29 @@ export const SiteHeader = ({
         color: overInk ? "hsl(var(--text-on-ink))" : undefined,
       }}
     >
-      {/* THE LIVE WIRE. The header's own component, and the only one on the site
-          that is present on every screen — so it says the one thing true of the
-          whole page: this is a wire with work moving along it. The rail fills
-          with reading progress, and a packet runs the filled length on the same
-          12s clock the hero diagram uses, so the two read as one system.
-          Scroll-driven, so it costs nothing and needs no JavaScript. */}
+      {/* THE RUN, END TO END. The header is the only element holding both ends of
+          the site's one action — the wordmark it leaves and the button it
+          arrives at — so it carries the whole run: a source port at the mark,
+          one port per section along the wire, dashes travelling it, and a
+          terminal node welded to the button.
+
+          Three things fixed here from the first attempt: the strip was 2px with
+          overflow:hidden so the packet inside it rendered as a clipped smear;
+          .wire-fill declared scaleX(0) unconditionally and only animated inside
+          @supports, so in Firefox the header's only component was a zero-width
+          element; and the ports must NOT ride the fill, or they squeeze with it
+          instead of lighting. Rest state is now the FINISHED state. */}
       <span className="wire" aria-hidden="true">
-        <span className="wire-fill">
-          <span className="wire-packet" />
+        <span className="wire-track" />
+        <span className="wire-fill" />
+        <span className="wire-ports">
+          {Array.from({ length: stops }, (_, i) => (
+            <i key={i} style={{ "--p": `${(((i + 1) / stops) * 100).toFixed(3)}%` } as React.CSSProperties} />
+          ))}
         </span>
+        <i className="wire-dash" style={{ "--d": "0s" } as React.CSSProperties} />
+        <i className="wire-dash" style={{ "--d": "-6s" } as React.CSSProperties} />
+        <i className="wire-dash" style={{ "--d": "-12s" } as React.CSSProperties} />
       </span>
 
       <div className="w-shell gutter flex h-14 items-center justify-between gap-s4">
@@ -97,7 +115,7 @@ export const SiteHeader = ({
         ) : (
           <Link to="/" className="t-body font-medium text-ink">
             {profile.name.split(" ")[0]} {profile.name.split(" ").slice(-1)}
-            <span className="text-ink-tertiary">.dev</span>
+            <span className="wire-source text-ink-tertiary">.dev</span>
           </Link>
         )}
 
@@ -123,14 +141,17 @@ export const SiteHeader = ({
           )}
           {/* outlined, not filled: the page's focal budget allows one saturated
               accent fill per viewport, and the hero / final CTA own it */}
-          <a
-            href={profile.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-9 items-center rounded-sm border border-line-interactive px-s4 text-[0.8125rem] font-medium text-ink transition-colors duration-120 ease-out hover:bg-surface-sunken"
-          >
-            Book a call
-          </a>
+          <span className="wire-dock">
+            <span className="wire-terminus" aria-hidden="true" />
+            <a
+              href={profile.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-9 items-center rounded-sm border border-line-interactive px-s4 text-[0.8125rem] font-medium text-ink transition-colors duration-120 ease-out hover:bg-surface-sunken"
+            >
+              Book a call
+            </a>
+          </span>
         </div>
       </div>
     </header>
@@ -181,21 +202,19 @@ export const SiteFooter = () => (
   </footer>
 );
 
-export const Page = ({ children, header }: { children: ReactNode; header?: ReactNode }) => (
-  <div className="grain min-h-screen bg-surface">
-    {/* The lamp. One page-scoped field, not a per-section ornament. It is
-        position:fixed at z-0, and a positioned element paints above all
-        non-positioned in-flow content — so main and the footer must take a
-        stacking position of their own or the sheen paints over the page. The
-        sticky header at z-50 already carries its own. */}
-    <div className="rake" aria-hidden="true" />
-    {header ?? <SiteHeader />}
-    {/* tabIndex=-1 so the skip link actually moves focus, not just the hash */}
-    <main id="main" tabIndex={-1} className="relative z-[1] outline-none">
-      {children}
-    </main>
-    <div className="relative z-[1]">
-      <SiteFooter />
+export const Page = ({ children, header }: { children: ReactNode; header?: ReactNode }) => {
+  // one switch, set before any apparatus mounts, so no loop ever runs unseen
+  useRunSwitch();
+  return (
+    <div className="grain min-h-screen bg-surface">
+      {header ?? <SiteHeader />}
+      {/* tabIndex=-1 so the skip link actually moves focus, not just the hash */}
+      <main id="main" tabIndex={-1} className="relative z-[1] outline-none">
+        {children}
+      </main>
+      <div className="relative z-[1]">
+        <SiteFooter />
+      </div>
     </div>
-  </div>
-);
+  );
+};

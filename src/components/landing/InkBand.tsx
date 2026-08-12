@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BrandIcon } from "@/components/BrandIcons";
 import OrbitField from "@/components/OrbitField";
+import ScoreGate from "@/components/schematic/ScoreGate";
 import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
 import { Link } from "react-router-dom";
 import { adPlacements, caseStudies, staticAds, videoAds } from "@/data/site";
@@ -142,35 +143,22 @@ const VideoWall = () => {
  */
 const StaticWall = () => {
   const [open, setOpen] = useState<number | null>(null);
-  const railRef = useRef<HTMLDivElement>(null);
-  const [live, setLive] = useState(false);
   // The dialog is controlled and opened from a plain button rather than a
   // DialogTrigger, so Radix's triggerRef is null and its own focus-restore
   // no-ops. Focus has to be handed back explicitly or it lands on <body>.
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const ad = open === null ? null : staticAds[open];
 
-  useEffect(() => {
-    const el = railRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-    const obs = new IntersectionObserver(([e]) => setLive(e.isIntersecting), { threshold: 0.05 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const rows = [staticAds.slice(0, 6), staticAds.slice(6)];
-
-  const tile = (a: (typeof staticAds)[number], i: number, keySuffix: string) => (
+  const tile = (a: (typeof staticAds)[number], i: number) => (
     <button
-      key={`${a.src}-${keySuffix}`}
+      key={a.src}
       type="button"
       onClick={(e) => {
         triggerRef.current = e.currentTarget;
         setOpen(i);
       }}
-      className="group w-[200px] shrink-0 text-left sm:w-[240px]"
+      className="group w-full text-left"
       aria-label={`View static ad: ${a.title}`}
-      tabIndex={keySuffix.endsWith("b") ? -1 : 0}
     >
       {/* object-contain: two creatives are ~1:1 and letterbox invisibly
           against the dark tile rather than being side-cropped */}
@@ -185,21 +173,16 @@ const StaticWall = () => {
 
   return (
     <>
-      <div ref={railRef} className={`logo-field mt-s7 space-y-s4 ${live ? "is-live" : ""}`}>
-        {rows.map((row, r) => (
-          <div key={r} className="logo-rail-mask" aria-hidden={false}>
-            <div
-              className={`logo-rail flex w-max gap-s4 ${r === 1 ? "logo-rail--reverse" : ""}`}
-              style={{ "--dur": `${r === 1 ? 96 : 82}s` } as React.CSSProperties}
-            >
-              {/* duplicated once and translated exactly -50% for a seamless loop;
-                  the duplicate set is aria-hidden and untabbable */}
-              {row.map((a) => tile(a, staticAds.indexOf(a), `${r}a`))}
-              {row.map((a) => tile(a, staticAds.indexOf(a), `${r}b`))}
-            </div>
-          </div>
+      {/* The two counter-drifting rails are gone. The same marquee mechanic ran
+          six times across this page; two survive, both in this room, and this is
+          not one of them. Every ad now appears exactly once, tabbable once, and
+          the grid lets a reader actually compare eleven concepts instead of
+          chasing them past a mask. */}
+      <ul className="mt-s7 grid grid-cols-2 gap-s4 sm:grid-cols-3 lg:grid-cols-6">
+        {staticAds.map((a, i) => (
+          <li key={a.src}>{tile(a, i)}</li>
         ))}
-      </div>
+      </ul>
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent
@@ -304,6 +287,7 @@ const InkBand = () => {
               title={sectionCopy["creative-static"].title}
               deck={sectionCopy["creative-static"].deck}
             />
+            <ScoreGate />
             <StaticWall />
           </div>
         </section>

@@ -52,12 +52,12 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* The proof object is a diagram of the work itself. Drifts slightly
-            against the scroll (scroll-driven, transform-only, reduced-motion off). */}
-        <div className="col-span-12 hidden lg:col-span-5 lg:block lg:pl-s7">
-          <div className="sv-parallax">
-            <SystemMap />
-          </div>
+        {/* The proof object is a literal diagram of the work, drawn in the same
+            notation as the 26 plates further down. It now runs on phones too:
+            hiding the hero's only component below 1024px left the first screen
+            with nothing on it. */}
+        <div className="col-span-12 lg:col-span-5 lg:pl-s7">
+          <SystemMap />
           <p className="t-small mt-s5 max-w-[38ch] text-ink-tertiary">{hero.mapCaption}</p>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { caseStudies } from "@/data/site";
 import { caseLine, lineHeroFlow, lineOrder, type LineId } from "@/data/serviceLines";
 import { lineCopy } from "@/data/serviceLineCopy";
 import { chapters } from "@/data/copy";
+import RoadmapBar from "@/components/schematic/RoadmapBar";
 
 /**
  * ARCHETYPE: sticky-left / scrolling-right pair — the page's one use of it.
@@ -90,7 +91,11 @@ const ServiceLines = () => {
         </div>
 
         {/* the scrolling half */}
+        {/* the scrolling half. RoadmapBar is the roadmap's phone form and MUST
+            live here, not in the index column — a taller sibling in
+            grid12 items-start stops the desktop index sticking. */}
         <div className="col-span-12 mt-s6 lg:col-span-7 lg:col-start-6 lg:mt-0">
+          <RoadmapBar active={active} />
           {lineOrder.map((id, i) => {
             const c = lineCopy[id];
             const plate = lineHeroFlow[id];
@@ -101,7 +106,7 @@ const ServiceLines = () => {
                 id={`line-${id}`}
                 data-i={i}
                 ref={(el) => (rowRefs.current[i] = el)}
-                className={`sv-rise line-row scroll-mt-28 border-t border-line py-s6 last:border-b ${
+                className={`line-row scroll-mt-28 border-t border-line py-s6 last:border-b ${
                   i === active ? "is-reading" : ""
                 }`}
               >

@@ -1,5 +1,6 @@
 import { ArrowLink, SectionHeader, useEnter } from "@/components/primitives";
 import { industries, industriesSection, saasLine } from "@/data/copy";
+import Harness from "@/components/schematic/Harness";
 
 /**
  * ARCHETYPE: ruled list, five rows.
@@ -27,10 +28,15 @@ const Industries = () => {
 
         <ul className="mt-s7 border-t border-line">
           {industries.map((item, i) => (
-            <li key={item.industry} className="border-b border-line py-s6">
+            <li key={item.industry} className="relative border-b border-line py-s6">
               <div className="grid12">
-                <span className="t-mono tnum col-span-2 hidden self-start pt-1 text-[0.8125rem] text-ink-tertiary lg:block">
-                  {String(i + 1).padStart(2, "0")}
+                {/* the numeral gutter, not column 7: column 7 is about 60-85px
+                    of the shell, too narrow for a real object */}
+                <span className="col-span-12 mb-s4 block lg:col-span-2 lg:col-start-1 lg:mb-0 lg:self-center">
+                  <span className="t-mono tnum mb-s2 hidden text-[0.8125rem] text-ink-tertiary lg:block">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Harness i={i} last={i === industries.length - 1} />
                 </span>
 
                 <div className="col-span-12 lg:col-span-4">

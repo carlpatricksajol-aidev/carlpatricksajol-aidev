@@ -438,6 +438,10 @@ export const otherSystems = [
 ];
 
 export interface Role {
+  /** "YYYY-MM". Parsed by the credentials lanes; the free-text `period` stays
+   *  the display string and is never regex-parsed. */
+  start?: string;
+  end?: string | null;
   title: string;
   company: string;
   period: string;
@@ -449,6 +453,8 @@ export const experience: Role[] = [
   {
     title: "AI Automation & Platform Manager",
     company: "Bumpy App",
+    start: "2025-11",
+    end: null,
     period: "Nov 2025 — Present",
     summary: "A dating app. Production Claude MCP infrastructure and the paid-social automation suite around it.",
     points: [
@@ -461,6 +467,8 @@ export const experience: Role[] = [
   {
     title: "AI Automation Specialist",
     company: "Creative Abundance",
+    start: "2025-08",
+    end: null,
     period: "Aug 2025 — Present",
     summary: "The creative production line: static ads, video assembly, and the self-serve generator.",
     points: [
@@ -473,6 +481,8 @@ export const experience: Role[] = [
   {
     title: "Business Consultant — AI Automation",
     company: "White Key Marketing",
+    start: "2024-08",
+    end: null,
     period: "Aug 2024 — Present",
     summary: "CRM architecture and internal platform for a marketing agency's client base.",
     points: [

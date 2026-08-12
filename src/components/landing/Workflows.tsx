@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { SectionHeader, useEnter } from "@/components/primitives";
 import { flows, type Flow } from "@/data/flows";
@@ -40,6 +40,28 @@ const Workflows = () => {
     [filter]
   );
 
+  // ONE plate runs at a time, and its bar's duration is that system's real step
+  // count — so the 170-step pipeline takes 17.3s against a 4-step job's 2.4s,
+  // and the wall shows you the difference rather than telling you. Twenty-six
+  // continuous bars immediately before the page's one tone flip is the biggest
+  // frame-budget risk in this pass, so it is not shipped.
+  const wallRef = useRef<HTMLUListElement>(null);
+  const [running, setRunning] = useState(0);
+  const [onScreen, setOnScreen] = useState(false);
+  useEffect(() => {
+    const el = wallRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const obs = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting), { threshold: 0 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!onScreen || shown.length === 0) return;
+    const dur = (2 + (shown[running % shown.length]?.steps ?? 8) * 0.09) * 1000;
+    const id = window.setTimeout(() => setRunning((r) => (r + 1) % shown.length), dur);
+    return () => window.clearTimeout(id);
+  }, [onScreen, running, shown]);
+
   return (
     <section id="workflows" ref={ref} className={`${className} section bg-surface-sunken`} aria-labelledby="wf-h">
       <div className="w-shell gutter">
@@ -75,16 +97,22 @@ const Workflows = () => {
         </div>
 
         {/* the wall */}
-        <ul className="mt-s6 grid gap-s5 md:grid-cols-2">
-          {shown.map((f) => (
-            <li key={f.src}>
+        <ul ref={wallRef} className="mt-s6 grid gap-s5 md:grid-cols-2">
+          {shown.map((f, i) => (
+            <li key={f.src} style={{ "--i": i } as React.CSSProperties} className="plate-in">
               <button
                 type="button"
                 onClick={() => setOpen(f)}
                 className="group block h-full w-full overflow-hidden rounded-md border border-line bg-surface-raised text-left transition-[border-color,box-shadow] duration-180 hover:border-line-strong hover:shadow-e2"
                 aria-label={`View workflow graph: ${f.title}`}
               >
-                <span className="block overflow-hidden border-b border-line bg-surface-sunken">
+                <span className="relative block overflow-hidden border-b border-line bg-surface-sunken">
+                  {i === running % Math.max(1, shown.length) && onScreen && (
+                    <span
+                      className="plate-bar"
+                      style={{ "--dur": `${(2 + f.steps * 0.09).toFixed(1)}s` } as React.CSSProperties}
+                    />
+                  )}
                   <img
                     src={f.src.replace("/flows/", "/flows/detail/")}
                     alt=""
@@ -94,7 +122,11 @@ const Workflows = () => {
                   />
                 </span>
                 <span className="block p-s5">
-                  <span className="t-sub block text-ink">{f.title}</span>
+                  <span className="flex items-baseline justify-between gap-s4">
+                    <span className="t-sub text-ink">{f.title}</span>
+                    {/* the real node count, so the ledger's 500 is checkable */}
+                    <span className="t-mono tnum shrink-0 text-[0.75rem] text-ink-tertiary">{f.steps} steps</span>
+                  </span>
                   <span className="t-small mt-s2 block text-ink-secondary">{f.note}</span>
                 </span>
               </button>

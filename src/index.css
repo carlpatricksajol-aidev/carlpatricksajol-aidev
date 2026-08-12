@@ -660,24 +660,6 @@
     transform-origin: left center;
     transform: scaleX(0);
   }
-  .wire-packet {
-    position: absolute;
-    top: -2px;
-    right: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: hsl(var(--blue-600));
-    box-shadow: 0 0 0 3px hsl(var(--blue-600) / 0.22);
-    /* the head of the wire: it sits at the leading edge of however far you have
-       read, and pulses rather than travels, because a packet racing a progress
-       bar reads as two competing readouts */
-    animation: wire-pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes wire-pulse {
-    0%, 100% { transform: scale(0.72); opacity: 0.55; }
-    50%      { transform: scale(1.15); opacity: 1; }
-  }
   @keyframes wire-fill {
     from { transform: scaleX(0); }
     to   { transform: scaleX(1); }
@@ -689,7 +671,6 @@
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .wire-packet { animation: none !important; transform: scale(1); opacity: 1; }
   }
 
   /* ---------- the roadmap: where am I in the eight ----------
@@ -842,199 +823,6 @@
     .orbit-p3 { transform: translate3d(88vw, -14px, 0) rotate(38deg); }
   }
 
-  /* ---------- raking light: one lamp, fixed at 315 degrees ----------
-     Three layers, one idea: the page is a sheet of stock under a lamp, and the
-     reader tilts the sheet by scrolling. The sheen crosses the ground, each
-     rank-2 Systems card casts a pool as it passes beneath the lamp, and in the
-     dark room the platform marks are blind-embossed into the plate — invisible
-     until the light reaches them. Nothing floats, because on a monograph
-     nothing floats: the only thing that moves across a material is light.
-
-     The rule that keeps it inside "effects are good but not too much": every
-     animation here is scroll-linked and ONLY scroll-linked. Zero autonomous
-     motion is added to a page already running six marquees and a 12s SMIL
-     clock. Stop scrolling and the whole system is dead still, so idle cost is
-     exactly zero. Second rule, written down so it survives the next edit: no
-     layer here may have a live range while the hero is on screen — the
-     SystemMap's engineered causation read is the only motion allowed there.
-     Transform and opacity only; soft shapes are gradients, so there is no blur
-     to animate and no filter anywhere in the system. No will-change is added:
-     scroll-driven animations promote themselves while active and release
-     afterwards, which is the point.
-
-     Every keyframe pair below is authored symmetrically around its element's
-     own static transform, so an unanimated element sits at the exact midpoint
-     of its travel. Under reduce these rules are never declared at all, and the
-     animation-duration: 0.01ms sledgehammer at the end of this file has
-     nothing to freeze at a wrong coordinate. Firefox, which still has no
-     animation-timeline, gets the same composed still page. */
-
-  /* The sheen. One very large soft ellipse of the palette's own raised tone
-     (--card) over the ground (--paper) — a real 3.5% lift that already exists
-     in the system, feathered to nothing, elongated on the 315-degree axis. It
-     only ever LIGHTENS the cream, so it raises contrast for ink-on-paper text
-     rather than lowering it: safe by construction, not by measurement.
-
-     The noise layer on top is a dither, not a texture. A 3.5% lift across a
-     very wide soft gradient over a flat warm cream bands visibly on 8-bit
-     panels, and the page grain at opacity 0.028 is far too faint to break it
-     up. Baked into this layer's own background at 5.5% so it costs one tiled
-     raster and never touches mix-blend-mode. */
-  .rake {
-    position: fixed;
-    inset: -20vh -25vw;
-    z-index: 0;
-    pointer-events: none;
-    contain: layout paint;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)' opacity='0.055'/%3E%3C/svg%3E"),
-      radial-gradient(ellipse 62% 34% at 46% 34%,
-        hsl(var(--card) / 0.95), hsl(var(--card) / 0.45) 42%, transparent 70%);
-    background-repeat: repeat, no-repeat;
-    background-size: 170px 170px, 100% 100%;
-  }
-  /* Matches the grain breakpoint exactly (see .grain::after above). Below
-     768px there is no full-viewport blend layer already re-drawing every
-     scroll frame, so this would be new cost rather than free cost — and mobile
-     already runs six continuous rails whose only pause is :hover, which does
-     not exist on touch. */
-  @media (max-width: 767px) {
-    .rake { display: none; }
-  }
-  @keyframes rake-swing {
-    from { transform: translate3d(-18px, 60px, 0); }
-    to   { transform: translate3d(18px, -60px, 0); }
-  }
-
-  /* The cast: proof the lamp is real. One pre-painted gradient pool per rank-2
-     Systems card, swinging out from under the card as it passes beneath the
-     lamp — never an animated box-shadow, never a filter. The card itself never
-     moves, so .surface-hover lifting it 2px lifts it off its own shadow.
-     Restricted to the two equal rank-2 cards: the rank-1 lead is full-width
-     and a 12px swing under it is imperceptible. The ellipse is narrower than
-     the ply, so nothing escapes sideways — it cannot collide with the 26px
-     grid gap or reach past the 20px minimum gutter into horizontal overflow. */
-  .cast-wrap { position: relative; }
-  .cast-wrap > a { position: relative; z-index: 1; }
-  .cast {
-    position: absolute;
-    inset: 14px -10px -34px -10px;
-    z-index: 0;
-    pointer-events: none;
-    background: radial-gradient(ellipse 88% 62% at 50% 78%,
-      hsl(var(--sh) / 0.1), hsl(var(--sh) / 0.045) 46%, transparent 72%);
-    /* the exact midpoint of the swing below, so with no timeline and under
-       reduce it reads as a deliberate directional shadow agreeing with --e2 */
-    transform: translate3d(1px, 1px, 0);
-  }
-  @keyframes cast-swing {
-    from { transform: translate3d(7px, 4px, 0); }
-    to   { transform: translate3d(-5px, -2px, 0); }
-  }
-
-  /* Blind emboss: the ad platforms pressed into the plate. Two plies and
-     nothing printed between them — light offset up-left, dark offset
-     down-right — masked with the exact BrandIcons path data, so there is one
-     source of truth and no duplicated geometry (built once at module scope in
-     Deboss.tsx, never at render). They are impressions, not logos: no colour,
-     no wordmark, cropped by the section box, behind the rails, aria-hidden,
-     and never brighter than about 1.7:1 against the plate even with the light
-     crossing them. The visible, accessible statement about these three
-     platforms is the placements row above them, in real text.
-
-     They never move. What moves is the same lamp, crossing the room: one
-     masked band on the section's own view timeline. That is ONE new animated
-     element in the busiest region of the page, and it is scroll-linked, so the
-     number of self-running animations in that viewport stays exactly two — the
-     rails that were always there. Same static-mask-plus-translating-child
-     construction as .logo-rail-mask above, which already ships twice here.
-
-     NOTE: #logo-field is the <section>; .logo-field is the rails wrapper, and
-     that class is reused by the static-ad rails. These rules stay on the id. */
-  .deboss {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    contain: layout paint;
-
-    /* one declaration site; all three plies read these */
-    --deboss-img: var(--dm-meta), var(--dm-tiktok), var(--dm-ig);
-    --deboss-pos: -110px 60%, 58% calc(100% + 96px), calc(100% + 84px) 44%;
-    --deboss-size: 300px 300px, 320px 320px, 250px 250px;
-  }
-  .deboss > * {
-    position: absolute;
-    inset: 0;
-    -webkit-mask-image: var(--deboss-img);
-    mask-image: var(--deboss-img);
-    -webkit-mask-position: var(--deboss-pos);
-    mask-position: var(--deboss-pos);
-    -webkit-mask-size: var(--deboss-size);
-    mask-size: var(--deboss-size);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }
-  /* --sh is not redefined on the plate, so it resolves LIGHTER than --plate-0
-     and cannot be the dark ply. This is the same warm ramp, two steps below
-     the plate — not rgba(0,0,0,x). */
-  .deboss-lo { background: hsl(30 30% 2.5%); transform: translate3d(1px, 1px, 0); }
-  .deboss-hi { background: hsl(var(--ink-0) / 0.06); transform: translate3d(-1px, -1px, 0); }
-  .deboss-rake { overflow: hidden; }
-  .deboss-rake > span {
-    position: absolute;
-    inset: 0 -60%;
-    display: block;
-    background: linear-gradient(100deg, transparent 34%, hsl(var(--ink-0) / 0.14) 50%, transparent 66%);
-  }
-  /* Below 1024px the split header stacks and its deck runs deep enough to sit
-     over a mark, so the field drops to the one impression that lives entirely
-     under the rails. Legibility by geometry, not by measurement. */
-  @media (max-width: 1023px) {
-    .deboss {
-      --deboss-img: var(--dm-tiktok);
-      --deboss-pos: 58% calc(100% + 88px);
-      --deboss-size: 260px 260px;
-    }
-  }
-  @keyframes deboss-rake {
-    from { transform: translate3d(-26%, 0, 0); }
-    to   { transform: translate3d(26%, 0, 0); }
-  }
-
-  /* scroll() is a different feature test from view(). The scroll-driven block
-     above gates on view(); reusing that query for a scroll(root) layer would
-     rest the fallback on a coincidence rather than on the thing being tested. */
-  @supports (animation-timeline: scroll()) {
-    @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
-      .rake {
-        animation: rake-swing linear both;
-        animation-timeline: scroll(root block);
-        /* the hero carve-out, as a number: 12% of document scroll is well past
-           one viewport on this page, so nothing here is live while the
-           SystemMap is on screen */
-        animation-range: 12% 100%;
-      }
-    }
-  }
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .cast {
-        animation: cast-swing linear both;
-        animation-timeline: view();
-        animation-range: entry 15% exit 85%;
-      }
-      /* named rather than bare view() on the band itself: the band is clipped
-         by two ancestors, and naming the section removes the question */
-      #logo-field { view-timeline-name: --logo-field; view-timeline-axis: block; }
-      .deboss-rake > span {
-        animation: deboss-rake linear both;
-        animation-timeline: --logo-field;
-        animation-range: entry 0% exit 100%;
-      }
-    }
-  }
-
   /* ---------- scroll-driven effects ----------
      Pure progressive enhancement: browsers without animation-timeline get the
      resting state, reduced-motion turns everything off, and only transform and
@@ -1081,5 +869,1056 @@
     }
     .crossfade { transition-duration: 120ms !important; }
     ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  }
+}
+
+/* ============================================================================
+   THE LIVE SCHEMATIC — one drawing, fourteen sheets
+
+   The 26 workflow plates at the bottom of this page are already drawn in a
+   complete, shipped notation. Verified byte-for-byte in
+   public/flows/detail/*.svg: rx="10" node rects, #FCFAF8 fill on #E2D8D0
+   stroke at 1px, the trigger node at #EAF1FB on #0058B8 at 1.5px, 1.5px
+   #C9BDB2 connectors, stroke-dasharray="3 4" at opacity .75 for the branch
+   not taken, and a lowercase mono type-slug under every node name. Nobody
+   used it above the fold. Now every section is drawn in it.
+
+   EIGHT RULES, all reviewable:
+   1. ONE STROKE — 1.5px, and ONLY inside .sch-*. Type rules, card borders and
+      the existing hairline system are untouched: this is a kit, not a reskin.
+   2. ONE NODE — rx-10 rect, --sch-node fill, --sch-edge stroke. The live
+      variant is --sch-live-fill on a 1.5px --sch-live stroke.
+   3. ONE PORT — a 5px square. Hollow = not connected. Solid = connected.
+   4. ONE PACKET — r=3.4, the packet SystemMap already runs.
+   5. TWO ROUTES — solid = the run that happens; dasharray 3 4 at .75 = the
+      branch that is conditional, returning, retried or REFUSED.
+   6. ONE VOICE — lowercase Geist Mono type-slug under every node.
+   7. ONE COLOUR LAW — blue is connected-or-running. OXIDE NEVER LEAVES THE
+      CREATIVE CHAPTER. Refusal everywhere else is drawn as solid ink leaving
+      the frame on a dashed return, never as a second accent. Written down here
+      because the alternative quietly becomes two colour systems.
+   8. ONE MONO READOUT per apparatus — `26 of 53`, `owner: you`, `×3 quiet ·
+      1 loud`, `one week · 30 minutes`. Instruments have labels; decoration
+      does not. This is the single detail that stops fourteen drawings reading
+      as motion graphics. The header is the one declared exception (56px).
+
+   PER-FRAME LAW: transform and opacity only. Explicitly banned everywhere in
+   this system — stroke-dashoffset, stroke-width, r, d, fill-opacity, filter,
+   box-shadow, width/height, top/left, background-position. Every "draws
+   itself" is a scaleX/scaleY on a clipped child. Every "lights up" is a
+   pre-painted element whose opacity animates; nothing interpolates colour.
+
+   GATING: one shared useSchematic() observer + one module-scope
+   visibilitychange listener set html[data-run]. Every loop is declared
+   animation-play-state: paused and runs only under
+   html[data-run="live"] .is-live, so phases never desync from being added and
+   removed. will-change appears only inside .is-live.
+
+   REDUCED MOTION: the rest frame is always the RESOLVED frame. Every
+   apparatus ships its own block at the end of this file. Specificity, not
+   source order, beats the global animation-duration:0.01ms sledgehammer — a
+   .sch-* selector is 0,1,0 against the universal 0,0,0, so these win wherever
+   they sit. Do not "fix" that by moving them.
+   ========================================================================= */
+
+@layer base {
+  :root {
+    /* aliases, so the plate flip is automatic and no component ever names a
+       literal colour */
+    --sch-stroke: var(--rule-2);
+    --sch-edge: var(--rule);
+    --sch-node: var(--card);
+    --sch-live: var(--blue-600);
+    --sch-live-fill: 212 80% 93%;
+    /* used by SiteHeader's inline style and never defined until now: the
+       header's text colour over the plate resolved to nothing */
+    --text-on-ink: 30 43% 95%;
+  }
+  [data-tone="plate"] {
+    /* --blue-200 is not remapped for the plate and would read as a lamp.
+       A dark blue fill under a blue-400 stroke is the same node, lights off. */
+    --sch-live-fill: 212 62% 18%;
+  }
+}
+
+@layer utilities {
+  /* ---------- the parts bin ----------
+     Declared once, read by all fourteen. Colour lives here; geometry lives in
+     the components. */
+  .sch {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    contain: layout paint;
+  }
+  /* display and overflow only. This rule used to set width:100%;height:100% on
+     every descendant svg, which caught the nested BrandIcon marks in the port
+     board and blew them up over their own labels. Each apparatus carries its
+     own sizing; a kit rule has no business overriding it. */
+  .sch svg { display: block; overflow: visible; }
+  .sch-in { position: relative; }
+
+  .sch .ln { fill: none; stroke: hsl(var(--sch-stroke)); stroke-width: 1.5; }
+  .sch .ln--dash { stroke-dasharray: 3 4; opacity: 0.75; }
+  .sch .ln--live { stroke: hsl(var(--sch-live)); }
+
+  .sch .sch-n > rect {
+    fill: hsl(var(--sch-node));
+    stroke: hsl(var(--sch-edge));
+    stroke-width: 1;
+  }
+  .sch .sch-n.is-live > rect {
+    fill: hsl(var(--sch-live-fill));
+    stroke: hsl(var(--sch-live));
+    stroke-width: 1.5;
+  }
+  .sch .sch-n.is-off > rect { stroke-dasharray: 3 4; opacity: 0.75; }
+
+  .sch .sch-name {
+    font-family: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: var(--w-medium);
+    fill: hsl(var(--ink-0));
+  }
+  .sch .sch-slug {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: hsl(var(--ink-3));
+  }
+  .sch .sch-read {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.01em;
+    fill: hsl(var(--ink-3));
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .sch .sch-p { fill: none; stroke: hsl(var(--sch-stroke)); stroke-width: 1.5; }
+  .sch .sch-p.is-on { fill: hsl(var(--sch-live)); stroke: hsl(var(--sch-live)); }
+  .sch .sch-k { fill: hsl(var(--sch-live)); }
+  .sch .sch-k--ink { fill: hsl(var(--ink-0)); }
+
+  /* the one global switch. One listener in Page, read by every loop below. */
+  .sch [class*="run-"] { animation-play-state: paused; }
+  html[data-run="live"] .sch.is-live [class*="run-"] {
+    animation-play-state: running;
+    will-change: transform;
+  }
+
+  /* ================= 00 · HEADER — the run, end to end =================
+     The header is the only element containing BOTH ends of the site's one
+     action: the wordmark (.dev, the live host) and Book a call. So it carries
+     the whole run: a source port at the mark, thirteen section ports along the
+     wire, and a terminal node welded to the left edge of the button.
+
+     THREE FIXES SHIPPED HERE.
+     (a) .wire was height:2px with overflow:hidden, so the 6px .wire-packet
+         inside it rendered as a 6x2 smear with its shadow clipped. The strip
+         is now 10px tall with the 2px rail painted as a child; the rail sits
+         at the identical optical position (-1px to 1px of the header edge).
+     (b) .wire-fill declared transform:scaleX(0) unconditionally and only
+         animated inside @supports (animation-timeline: scroll()). Firefox has
+         no scroll timelines, so the header's ONLY component was a zero-width
+         element there — and .wire-packet, nested inside it, inherited the
+         scale and vanished too. The resting state is now the FINISHED state,
+         and @supports sets scaleX(0) and animates. Every new object is a
+         SIBLING of the fill, so nothing inherits its scale again.
+     (c) The ports do not ride the fill. A gradient painted on a scaling
+         element squeezes with it — the ports would stretch, not light. They
+         are thirteen real 5px squares on their own unscaled layer, each with
+         its own 2%-wide scroll range, so crossing a section produces a hard
+         discrete TICK rather than a smooth reveal nobody registers. */
+  .wire {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -9px;
+    height: 10px;
+    overflow: hidden;
+    pointer-events: none;
+    contain: layout paint;
+  }
+  .wire-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8px;
+    height: 2px;
+    background: hsl(var(--sch-stroke));
+  }
+  .wire-fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8px;
+    height: 2px;
+    display: block;
+    background: linear-gradient(90deg, hsl(var(--blue-600) / 0.35), hsl(var(--blue-600)));
+    transform-origin: left center;
+    /* THE RESTING STATE IS THE FINISHED STATE. Never scaleX(0) here. */
+    transform: scaleX(1);
+  }
+  .wire-ports { position: absolute; inset: 0; }
+  .wire-ports > i {
+    position: absolute;
+    top: 5.5px;
+    left: var(--p);
+    width: 5px;
+    height: 5px;
+    margin-left: -2.5px;
+    display: block;
+    background: hsl(var(--blue-600));
+    opacity: 1;
+  }
+  .wire-dash {
+    position: absolute;
+    top: 8.25px;
+    left: 0;
+    width: 10px;
+    height: 1.5px;
+    display: block;
+    background: hsl(var(--ink-0) / 0.62);
+    transform: translate3d(-14px, 0, 0);
+    animation: wire-run 18s linear var(--d, 0s) infinite;
+  }
+  /* the terminal node: an input and no output, the only one on the page */
+  .wire-dock { position: relative; display: inline-flex; align-items: center; gap: 8px; }
+  .wire-terminus {
+    width: 7px;
+    height: 7px;
+    flex: none;
+    display: block;
+    background: hsl(var(--blue-600));
+    opacity: 0.32;
+    animation: wire-land 18s linear infinite;
+  }
+  /* the source port: the mark is visibly where the run leaves from */
+  .wire-source::after {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-left: 6px;
+    vertical-align: 0.12em;
+    background: hsl(var(--blue-600));
+  }
+  @keyframes wire-run {
+    0%   { transform: translate3d(-14px, 0, 0); opacity: 0; }
+    3%   { opacity: 1; }
+    24%  { transform: translate3d(calc(100% - 10px), 0, 0); opacity: 1; }
+    26%, 100% { transform: translate3d(calc(100% - 10px), 0, 0); opacity: 0; }
+  }
+  /* hard plateaus phase-locked to the three arrivals at 24% + delays 0/-6/-12 */
+  @keyframes wire-land {
+    0%, 23.9%   { opacity: 0.32; }
+    24%, 25.3%  { opacity: 1; }
+    25.4%, 57.2% { opacity: 0.32; }
+    57.3%, 58.6% { opacity: 1; }
+    58.7%, 90.5% { opacity: 0.32; }
+    90.6%, 91.9% { opacity: 1; }
+    92%, 100%   { opacity: 0.32; }
+  }
+  @keyframes wire-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes wire-port {
+    0%, 44%  { opacity: 0.16; transform: scale(1); }
+    46%      { opacity: 1; transform: scale(1.9); }
+    62%,100% { opacity: 1; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-run="live"] .wire-dash,
+    html[data-run="live"] .wire-terminus { animation-play-state: running; }
+    .wire-dash, .wire-terminus { animation-play-state: paused; }
+  }
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .wire-fill {
+        animation: wire-fill linear both;
+        animation-timeline: scroll(root block);
+      }
+      .wire-ports > i {
+        opacity: 0.16;
+        animation: wire-port linear both;
+        animation-timeline: scroll(root block);
+        animation-range: calc(var(--p) - 1.6%) calc(var(--p) + 0.6%);
+      }
+    }
+  }
+
+  /* ================= 01 · HERO — off-sheet leads =================
+     SystemMap is rebuilt in the kit's own notation and stops being a widget
+     floating in column 8. The out-leads run PAST the right crop edge, which is
+     the oldest schematic convention for "this system continues past the paper"
+     — and the map itself now bleeds one gutter past the shell so the crop is
+     real rather than drawn. One 12s SMIL clock, unchanged. The four
+     consignments named in the deck's last sentence ride the out-edges as
+     labelled tags, one per cycle, 48s for the round: four unlike jobs, one
+     wiring, which is that sentence executed. .sv-parallax is deleted from the
+     wrapper — a 26px drift on an object with its own engineered clock reads as
+     nothing and was the only thing standing between the hero and its own layer. */
+  .sm-bleed { margin-right: calc(-1 * var(--side)); }
+  .sm-crop { -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent 100%);
+             mask-image: linear-gradient(90deg, #000 92%, transparent 100%); }
+  .sm-tag > rect {
+    fill: hsl(var(--sch-node));
+    stroke: hsl(var(--sch-stroke));
+    stroke-width: 1;
+  }
+  .sm-tag > text {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: hsl(var(--ink-2));
+  }
+  .sm-phase, .sm-job { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .sm-phase, .sm-job { opacity: 0 !important; }
+    .sm-phase--rest, .sm-job--rest { opacity: 1 !important; }
+    .sm-tag { opacity: 1 !important; }
+  }
+
+  /* ================= 02 · PROBLEMS — six broken graphs =================
+     The one section where the apparatus changes per row, because the copy
+     hands over six different literal nouns — four tabs, two disagreeing
+     records, the report somebody assembles, nine places, the person who is
+     away, six o'clock. Drawn in the SAME grammar as the working systems, so
+     the section is the page's before-picture in the after-picture's notation.
+     Every one of them FAILS, and none of them completes. Exactly one runs at a
+     time; the other five are paused, which is why all six survive on a phone. */
+  .fault { position: relative; width: 100%; max-width: 176px; }
+  @media (max-width: 1023px) { .fault { max-width: 220px; margin-bottom: 18px; } }
+
+  /* 01 carried, not wired: a hard step, because there is no connector */
+  @keyframes f1-hop {
+    0%,   22%  { transform: translate3d(0, 0, 0); }
+    25%,  47%  { transform: translate3d(44px, 0, 0); }
+    50%,  72%  { transform: translate3d(88px, 0, 0); }
+    75%,  97%  { transform: translate3d(132px, 0, 0); }
+    100%       { transform: translate3d(0, 0, 0); }
+  }
+  .run-f1 { animation: f1-hop 6s steps(1, end) infinite; }
+  /* 02 two authorities, trading, forever, with no arbiter */
+  @keyframes f2-flip { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  .run-f2a { animation: f2-flip 3.8s steps(1, end) infinite; }
+  .run-f2b { animation: f2-flip 3.8s steps(1, end) -1.9s infinite; }
+  /* 03 three leads into a merge with no output port */
+  @keyframes f3-drag {
+    0%       { transform: translate3d(0, 0, 0); opacity: 0; }
+    6%       { opacity: 1; }
+    26%      { transform: translate3d(var(--dx), var(--dy), 0); opacity: 1; }
+    30%,100% { transform: translate3d(var(--dx), var(--dy), 0); opacity: 0; }
+  }
+  .run-f3 { animation: f3-drag 12s linear var(--d) infinite; }
+  /* 04 one lane, re-routed nine times by hand */
+  @keyframes f4-route {
+    0%,10%   { transform: translate3d(0, -30px, 0); }
+    11%,21%  { transform: translate3d(0, -20px, 0); }
+    22%,32%  { transform: translate3d(0, -10px, 0); }
+    33%,43%  { transform: translate3d(0, 0, 0); }
+    44%,54%  { transform: translate3d(0, 10px, 0); }
+    55%,65%  { transform: translate3d(0, 20px, 0); }
+    66%,76%  { transform: translate3d(0, 30px, 0); }
+    77%,87%  { transform: translate3d(0, 40px, 0); }
+    88%,100% { transform: translate3d(0, 50px, 0); }
+  }
+  .run-f4 { animation: f4-route 12s steps(1, end) infinite; }
+  /* 05 the queue nudges the gate and the gate never opens */
+  @keyframes f5-nudge {
+    0%, 70%, 100% { transform: translate3d(0, 0, 0); }
+    82%           { transform: translate3d(3px, 0, 0); }
+  }
+  .run-f5 { animation: f5-nudge 2.4s cubic-bezier(.4,0,.6,1) var(--d) infinite; }
+  /* 06 past six o'clock, everything parks until nine */
+  @keyframes f6-hand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes f6-hold {
+    0%, 46%  { opacity: 0; transform: translate3d(0, -6px, 0); }
+    50%,92%  { opacity: 1; transform: translate3d(0, 0, 0); }
+    96%,100% { opacity: 0; transform: translate3d(0, 0, 0); }
+  }
+  .run-f6h { transform-box: fill-box; transform-origin: center; animation: f6-hand 18s linear infinite; }
+  .run-f6p { animation: f6-hold 18s linear var(--d) infinite; }
+
+  /* ================= 03 · PROOF — the audit head =================
+     The deck's promise is "every one of them can be checked", and this is the
+     only block on the page with four footnote markers to check. So the check
+     is PERFORMED: a reading head walks the dashed audit tape — the plates'
+     own convention for a branch being inspected — and stops for 1.2s under
+     each numeral while that column's instrument resolves.
+
+     Four DIFFERENT instruments, never four counters counting up. And the
+     numerals are never touched by any mechanism, so "2 years" cannot break and
+     no reader can ever land on 0. Only two things run continuously: the head,
+     and the 24-hour hand. */
+  /* absolute, not relative: as a relative child of the ledger's grid it took a
+     cell of its own and pushed the fourth number onto a second row. The tape
+     belongs ON the dl's top rule, not in the flow. */
+  .audit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 8px;
+    pointer-events: none;
+  }
+  .audit-tape {
+    position: absolute; left: 0; right: 0; top: 0; height: 1.5px;
+    background-image: repeating-linear-gradient(90deg,
+      hsl(var(--sch-stroke)) 0 3px, transparent 3px 7px);
+    opacity: 0.75;
+  }
+  .audit-head {
+    position: absolute; top: -3px; left: 0;
+    width: 7px; height: 7px; display: block;
+    background: hsl(var(--sch-live));
+    transform: translate3d(0, 0, 0);
+  }
+  @keyframes audit-walk {
+    0%,   7%  { transform: translate3d(12.5%, 0, 0); }
+    16%, 32%  { transform: translate3d(37.5%, 0, 0); }
+    41%, 57%  { transform: translate3d(62.5%, 0, 0); }
+    66%, 82%  { transform: translate3d(87.5%, 0, 0); }
+    91%,100%  { transform: translate3d(12.5%, 0, 0); }
+  }
+  .run-audit { animation: audit-walk 16s cubic-bezier(.4,0,.2,1) infinite; }
+  /* one-shot fills, off the section's existing .enter observer — no new JS */
+  .tally-fill { transform: scaleX(0); transform-origin: left center; }
+  .tally-col { transform: scaleY(0); transform-origin: bottom center; }
+  @keyframes tally-x { to { transform: scaleX(1); } }
+  @keyframes tally-y { to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .tally-fill { animation: tally-x 1.3s cubic-bezier(.32,.72,0,1) both; }
+    .enter.is-in .tally-col {
+      animation: tally-y 1.6s cubic-bezier(.32,.72,0,1) calc(var(--i) * 26ms) both;
+    }
+  }
+  @keyframes dial-hand { from { transform: rotate(-90deg); } to { transform: rotate(270deg); } }
+  .run-dial { transform-box: fill-box; transform-origin: center; animation: dial-hand 12s linear infinite; }
+
+  /* ================= 04 · SOLUTIONS — one job, five operations =================
+     "The same five moves, whatever the tools are." So it is one unchanging
+     object put through five different operations, not five different objects.
+     The same 88px job card appears in every row; only the operation changes,
+     and recognising it on the second row is the section's thesis delivered
+     without a word.
+
+     EXPLICITLY NOT A SPINE. Nothing connects the five cells, nothing tracks
+     scroll position, there is no fill, no current-item state and no counter —
+     the roadmap two sections down keeps sole ownership of that idiom, and this
+     sits close enough that the distinction has to be visible, not intended.
+     Capped at 88px because column 9 is ~80px at shell width. */
+  .move { position: relative; width: 100%; max-width: 88px; }
+  @media (max-width: 1023px) { .move { max-width: 88px; margin-bottom: 14px; } }
+  @keyframes mv-trace {
+    0%      { transform: scaleX(0); }
+    22%,74% { transform: scaleX(1); }
+    78%,100%{ transform: scaleX(0); }
+  }
+  .run-m1 { transform-box: fill-box; transform-origin: left center; animation: mv-trace 12s linear infinite; }
+  /* 02 the connector that seats, and the socket that has to be built first */
+  @keyframes mv-seat {
+    0%      { transform: translate3d(-14px, 0, 0); opacity: 0; }
+    6%      { opacity: 1; }
+    18%,100%{ transform: translate3d(0, 0, 0); opacity: 1; }
+  }
+  @keyframes mv-build {
+    0%, 24%  { transform: scaleX(0); }
+    32%,100% { transform: scaleX(1); }
+  }
+  .run-m2a { animation: mv-seat 12s cubic-bezier(.32,.72,0,1) -2.4s infinite; }
+  .run-m2b { transform-box: fill-box; transform-origin: left center;
+             animation: mv-build 12s cubic-bezier(.32,.72,0,1) -2.4s infinite; }
+  /* 03 three copies drain into one named source */
+  @keyframes mv-drain {
+    0%, 14%  { opacity: 1; transform: translate3d(0, 0, 0); }
+    30%,100% { opacity: 0; transform: translate3d(var(--dx), var(--dy), 0); }
+  }
+  .run-m3 { animation: mv-drain 12s cubic-bezier(.32,.72,0,1) -4.8s infinite; }
+  /* 04 five ways to start; one fires every 2.4s, in the order the copy names */
+  @keyframes mv-fire {
+    0%, 6%   { opacity: 1; }
+    8%, 100% { opacity: 0; }
+  }
+  .run-m4 { animation: mv-fire 12s steps(1, end) calc(-7.2s + var(--i) * 2.4s) infinite; }
+  /* 05 three quiet laps, then one loud exit to a named person */
+  @keyframes mv-loud {
+    0%, 62%  { opacity: 0; transform: translate3d(0, 0, 0); }
+    66%      { opacity: 1; transform: translate3d(0, 0, 0); }
+    82%,100% { opacity: 1; transform: translate3d(26px, -16px, 0); }
+  }
+  .run-m5 { animation: mv-loud 12s cubic-bezier(.32,.72,0,1) -9.6s infinite; }
+
+  /* ================= 05 · OUTPUT — five terminals =================
+     Five terminal nodes, each with a filled INPUT port and NO OUTPUT PORT,
+     which is the graph's own notation for "the run ends here". They never
+     connect to each other, because the section's archetype rule forbids
+     anything shaped like a flow. They are cropped by the shell's outer margin
+     — the one altitude nothing else in the system uses.
+
+     `notify` is dark two cycles in three and fires for 900ms once every 48
+     seconds. A component most readers will never see fire is the strongest
+     possible rendering of "Nothing arrives when the job went out clean, which
+     is what makes the quiet worth trusting." */
+  .term {
+    position: absolute;
+    top: var(--s6, 42px);
+    right: calc(-1 * var(--side));
+    width: 132px;
+    pointer-events: none;
+    contain: layout paint;
+  }
+  @media (max-width: 1023px) {
+    .term { position: static; width: 108px; margin-left: auto; margin-bottom: 10px; }
+  }
+  .term-draw { transform: scaleY(0); transform-origin: top center; }
+  @keyframes term-in { to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .term-draw {
+      animation: term-in 900ms cubic-bezier(.32,.72,0,1) calc(var(--i) * 90ms) both;
+    }
+  }
+  /* the queue drains to zero and STAYS zero — the payoff is an absence */
+  @keyframes term-drain {
+    0%, 18%  { opacity: 1; transform: translate3d(0, 0, 0); }
+    38%,100% { opacity: 0; transform: translate3d(0, 14px, 0); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .term-pip {
+      animation: term-drain 2.2s cubic-bezier(.32,.72,0,1) calc(600ms + var(--i) * 70ms) both;
+    }
+  }
+  /* the slowest clock on the cream half: it keeps running on your login */
+  @keyframes term-circuit {
+    0%   { transform: translate3d(0, 0, 0); }
+    25%  { transform: translate3d(30px, 0, 0); }
+    50%  { transform: translate3d(30px, 18px, 0); }
+    75%  { transform: translate3d(0, 18px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+  .run-login { animation: term-circuit 24s linear infinite; }
+  /* once every 48 seconds, for 900ms */
+  @keyframes term-bell { 0%, 97.9% { opacity: 0; } 98%, 99.8% { opacity: 1; } 100% { opacity: 0; } }
+  .run-bell { animation: term-bell 48s steps(1, end) infinite; }
+
+  /* ================= 06 · TOOLS — the port board =================
+     Both marquee rails are DELETED. This is the single most important removal
+     in the pass: the identical .logo-rail mechanic ran SIX times across this
+     page (2 here, 2 in LogoField, 2 in StaticWall), which is precisely the
+     "we don't want to do that to every section" failure named verbatim. After
+     this and the StaticWall demotion it runs twice, inside the creative
+     chapter, where the flying-marks room can carry them.
+
+     The deck states three counts nothing has ever drawn — Supabase 18, Google
+     Sheets 14, Notion 10. A drifting rail is structurally incapable of
+     expressing a tally. A board is. And the title, "Nothing here gets
+     replaced", is drawn as the negative rule: this is the one field on a page
+     full of flying objects where nothing ever leaves the frame.
+
+     The ~28 tools with no honest count get one filled `in use` port and no
+     number. No count is invented for any of them. */
+  .board { position: relative; contain: layout paint; }
+  .board-bus {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+    background: hsl(var(--sch-stroke));
+  }
+  .board-k {
+    position: absolute; bottom: -2.5px; left: 0;
+    width: 6px; height: 6px; display: block;
+    background: hsl(var(--sch-live));
+  }
+  @keyframes board-step {
+    0%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    4%      { opacity: 1; }
+    46%     { transform: translate3d(var(--tx), 0, 0); }
+    52%     { transform: translate3d(var(--tx), -22px, 0); opacity: 1; }
+    58%,100%{ transform: translate3d(var(--tx), -22px, 0); opacity: 0; }
+  }
+  .run-b1 { animation: board-step 13s cubic-bezier(.4,0,.2,1) infinite; }
+  .run-b2 { animation: board-step 17s cubic-bezier(.4,0,.2,1) -5s infinite; }
+  .run-b3 { animation: board-step 19s cubic-bezier(.4,0,.2,1) -11s infinite; }
+  .board-tick { transform: scaleX(0); transform-origin: left center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .board-tick {
+      animation: tally-x 900ms cubic-bezier(.32,.72,0,1) calc(var(--i) * 42ms) both;
+    }
+  }
+
+  /* ================= 07 · CHAPTER-AUTOMATION — three changes only =================
+     The roadmap is approved and is not rebuilt. THREE changes.
+     (1) It was hidden lg:block, so on every phone the page's flagship
+         component did not exist and the tallest section on the site was plain
+         stacked text — the same "too plain" complaint, on the device most
+         people will use. A 40px horizontal form of the SAME widget, driven by
+         the SAME --road value and the SAME single observer, now sticks under
+         the header. It must live in the SCROLLING column: a taller sibling
+         inside lg:sticky lg:top-24 in grid12 items-start stops the desktop
+         index sticking.
+     (2) The unread portion of the rail becomes the plates' dashed 3 4 at .75 —
+         the branch that has not run yet. The spine now visibly belongs to the
+         same drawing as everything else.
+     (3) .sv-rise comes off .line-row. With a component in every section, a
+         per-row scroll fade in the busiest chapter is a second motion on the
+         same element. */
+  .roadmap-rail { background-image: repeating-linear-gradient(180deg,
+      hsl(var(--sch-stroke)) 0 3px, transparent 3px 7px); background-color: transparent; }
+  .roadmap-bar {
+    position: sticky;
+    top: 56px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: var(--gutter);
+    height: 40px;
+    padding-inline: var(--side);
+    margin-inline: calc(-1 * var(--side));
+    background: hsl(var(--paper) / 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid hsl(var(--rule));
+  }
+  .roadmap-bar-rail {
+    position: relative; flex: 1; height: 2px; overflow: hidden;
+    background-image: repeating-linear-gradient(90deg,
+      hsl(var(--sch-stroke)) 0 3px, transparent 3px 7px);
+  }
+  .roadmap-bar-fill {
+    position: absolute; inset: 0; display: block;
+    background: hsl(var(--blue-600));
+    transform-origin: left center;
+    transform: scaleX(var(--road, 0));
+    transition: transform 420ms cubic-bezier(.32,.72,0,1);
+  }
+  .roadmap-bar-node {
+    position: absolute; top: -1.5px; left: var(--p);
+    width: 5px; height: 5px; margin-left: -2.5px; display: block;
+    background: hsl(var(--sch-stroke));
+    transition: background-color 240ms ease;
+  }
+  .roadmap-bar-node.is-done { background: hsl(var(--blue-600)); }
+  @media (min-width: 1024px) { .roadmap-bar { display: none; } }
+
+  /* ================= 08 · INDUSTRIES — one harness, five plugs =================
+     "Five industries, one set of wiring" is a claim about a harness, so this is
+     the one section whose component must show SAMENESS across difference. Five
+     different objects here would contradict the headline.
+
+     All five plugs are pixel-identical and all five FIRE IN THE SAME FRAME.
+     Synchronisation costs nothing: the animation is declared only inside
+     .enter.is-in, so all five elements receive the class in one frame from the
+     section's single existing observer and stay phase-locked for the life of
+     the page. Zero new JavaScript. Simultaneity is used nowhere else in the
+     system — everything else is deliberately staggered — so it cannot be
+     confused with the roadmap directly above it.
+
+     The run is a PERCENTAGE of its own column, never a hardcoded px: column 7
+     is ~1/12 of the shell and swings between about 60px and 85px. The harness
+     therefore lives in the numeral gutter, which is two columns wide, and the
+     sockets sit at its inner edge.
+
+     Row 05 alone runs BACKWARDS and takes four short return arrows from
+     sockets 1-4, because its own copy says it is "not a fifth client industry
+     — it is the practice the other four bought". */
+  .harness { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; pointer-events: none; }
+  .harness-run { position: relative; height: 12px; }
+  .harness-k {
+    position: absolute; top: 3px; left: 0;
+    width: 6px; height: 6px; display: block;
+    background: hsl(var(--sch-live));
+    opacity: 0;
+  }
+  @keyframes harness-fire {
+    0%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    4%      { opacity: 1; }
+    15%     { transform: translate3d(calc(100% - 6px), 0, 0); opacity: 1; }
+    17%,100%{ transform: translate3d(calc(100% - 6px), 0, 0); opacity: 0; }
+  }
+  @keyframes harness-seat { 0%, 14% { opacity: 0.3; } 15%, 24% { opacity: 1; } 25%, 100% { opacity: 0.3; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .harness-k { animation: harness-fire 6s linear infinite; }
+    .enter.is-in .harness-socket { animation: harness-seat 6s linear infinite; }
+    .enter.is-in .harness-run--rev .harness-k { animation-direction: reverse; }
+  }
+
+  /* ================= 09 · SYSTEMS — the guard =================
+     REBUILT OFF THE RIGHT DATA. Sections.tsx filters track === "automation"
+     and caseStudies is [...n8nCases, ...automationCases, ...creativeCases], so
+     the three cards that actually render are the n8n ones. Their constraints
+     are "never judge the same comment twice", "nothing stops a re-fired
+     webhook from duplicating spend", and "eight handoffs, eight Limits"
+     collapsing 400 items to one. Not one is a numeric threshold, and a 7/10
+     gauge here would be measuring a bar these builds do not have. All three
+     ARE refusal rules, so a guard that refuses is correct — but it reads the
+     constraint off the card that rendered, and the short label is a data
+     field, never regex-parsed out of 200 characters of prose.
+
+     The constraint sentence is REAL READABLE COPY at --ink-3 (5.4:1), not
+     decoration, so the meaning is never only in the drawing.
+
+     Roughly one run in four is refused, and the refused packet is EJECTED
+     SIDEWAYS off the card in solid ink. An object leaving the frame is far
+     more legible than one fading along a dashed path — and per rule 7 no oxide
+     is spent, because oxide never leaves the creative chapter.
+
+     .cast is deleted and this takes its slot. On the rank-1 card the 184px
+     phone poster goes too: no n8n case defines a `hero`, so `lead.hero?.poster`
+     is already falsy and the card's whole right half renders empty today. */
+  .guard { position: relative; height: 34px; pointer-events: none; }
+  .guard-rail {
+    position: absolute; left: 0; right: 34px; top: 16px; height: 1.5px;
+    background: hsl(var(--sch-stroke));
+  }
+  .guard-return {
+    position: absolute; right: 0; top: 16px; width: 34px; height: 1.5px;
+    background-image: repeating-linear-gradient(90deg,
+      hsl(var(--sch-stroke)) 0 3px, transparent 3px 7px);
+    opacity: 0.75;
+  }
+  .guard-node {
+    position: absolute; right: 30px; top: 9px;
+    width: 16px; height: 16px; display: block;
+    border: 1.5px solid hsl(var(--sch-edge));
+    border-radius: 4px;
+    background: hsl(var(--sch-node));
+  }
+  .guard-k {
+    position: absolute; left: 0; top: 13.5px;
+    width: 7px; height: 7px; display: block;
+    background: hsl(var(--sch-live));
+  }
+  /* three passes, then one refusal thrown sideways out of the frame */
+  @keyframes guard-run {
+    0%       { transform: translate3d(0, 0, 0); opacity: 0; }
+    2%       { opacity: 1; }
+    18%      { transform: translate3d(calc(100% - 48px), 0, 0); opacity: 1; }
+    22%,24%  { transform: translate3d(calc(100% - 20px), 0, 0); opacity: 1; }
+    25%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    27%      { opacity: 1; }
+    43%      { transform: translate3d(calc(100% - 48px), 0, 0); opacity: 1; }
+    47%,49%  { transform: translate3d(calc(100% - 20px), 0, 0); opacity: 1; }
+    50%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    52%      { opacity: 1; }
+    68%      { transform: translate3d(calc(100% - 48px), 0, 0); opacity: 1; }
+    72%,74%  { transform: translate3d(calc(100% - 20px), 0, 0); opacity: 1; }
+    75%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    77%      { opacity: 1; }
+    /* the fourth is refused: it stops dead at the guard and is thrown out */
+    92%      { transform: translate3d(calc(100% - 48px), 0, 0); opacity: 1; }
+    94%      { transform: translate3d(calc(100% - 48px), 0, 0); opacity: 1; }
+    100%     { transform: translate3d(calc(100% + 40px), 26px, 0); opacity: 0; }
+  }
+  @keyframes guard-refuse {
+    0%, 91%   { opacity: 0; }
+    92%, 99%  { opacity: 1; }
+    100%      { opacity: 0; }
+  }
+  @keyframes guard-ink {
+    0%, 91%  { background-color: hsl(var(--sch-live)); }
+    92%,100% { background-color: hsl(var(--ink-0)); }
+  }
+  .run-guard { animation: guard-run 12s cubic-bezier(.22,1,.36,1) var(--d) infinite,
+                          guard-ink 12s steps(1, end) var(--d) infinite; }
+  .run-guard-say { animation: guard-refuse 12s steps(1, end) var(--d) infinite; }
+
+  /* ================= 10 · WORKFLOWS — one of the twenty-six is running =================
+     REAL STEP COUNTS OR NO BARS. src/data/flows.ts carries no step count today,
+     so it gains one, counted off the plates themselves — `rx="7"` node rects in
+     public/flows/*.svg. Verified: they sum to exactly 500 and the largest is
+     exactly 170, which is the ledger's own claim, from the ledger's own source.
+     If a plate cannot produce a real count it gets no bar rather than a guess.
+
+     And the wall does NOT get 26 continuous animations. Twenty-six composited
+     bars immediately before the page's single tone flip is the biggest perf
+     risk in the pass and the noisiest thing that could sit there. Instead:
+     EXACTLY ONE plate is running at any moment, its bar filling over a duration
+     derived from that system's true step count — the 170-step pipeline takes
+     17.3s against a 4-step job's 2.4s — and the marker then hops to another
+     on-screen plate. One animation on the whole wall, and the title's claim is
+     literally true on screen. Every plate carries its real count as a static
+     mono readout, which is information rather than motion and makes the 500
+     checkable. */
+  .plate-bar {
+    position: absolute; left: 0; right: 0; top: 0; height: 1.5px;
+    background: hsl(var(--sch-live));
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  @keyframes plate-run { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .is-running .plate-bar { animation: plate-run var(--dur, 6s) linear forwards; }
+  }
+  .odo { display: inline-block; height: 1em; overflow: hidden; vertical-align: -0.14em; }
+  .odo > span { display: block; transition: transform 240ms cubic-bezier(.32,.72,0,1); }
+  @keyframes plate-out { to { opacity: 0; transform: translate3d(0, 8px, 0) scale(.97); } }
+  @media (prefers-reduced-motion: no-preference) {
+    ul[data-swapping="true"] > li {
+      animation: plate-out 180ms cubic-bezier(.32,.72,0,1) calc(var(--i) * 12ms) forwards;
+    }
+  }
+
+  /* ================= 11 · CHAPTER-CREATIVE — subtract, then one gate =================
+     The flying marks are approved and are NOT rebuilt, and this room gets no
+     new ambient motion at z-0: it already runs six autonomous flyers, four
+     marquee rails and a snap video rail. StaticWall's two rails are demoted to
+     a static grid, which with the ToolBand conversion takes the page's
+     most-repeated mechanic from six instances to two.
+
+     Then the chapter's one un-mined literal: "Every one scored before it ships
+     — anything under 7 out of 10 is dropped, not sent to you to fix." Drawn as
+     a GATE at z-10 inside the content column, one-shot per view.
+
+     HONESTY NOTE, and it changes the design: the eleven ads on screen are the
+     ones that SHIPPED. Marking two of them as failures would be a fabrication,
+     and the copy never says how many were dropped. So eleven tokens pass the
+     gate and light their tile's port, and then ONE more token is refused and
+     ejected on the dashed return — the reject you never received, unnumbered.
+     Readout: `11 shipped · below 7 dropped`. Oxide is spent here and only here,
+     because this is the creative chapter. */
+  .gate { position: relative; height: 26px; }
+  .gate-rail { position: absolute; left: 0; right: 26px; top: 12px; height: 1.5px; background: hsl(var(--sch-stroke)); }
+  .gate-node {
+    position: absolute; right: 22px; top: 5px; width: 16px; height: 16px;
+    border: 1.5px solid hsl(var(--sch-live)); border-radius: 4px;
+  }
+  .gate-k {
+    position: absolute; left: 0; top: 9.5px; width: 7px; height: 7px; display: block;
+    background: hsl(var(--sch-live)); opacity: 0;
+  }
+  .gate-k--drop { background: hsl(var(--ox-600)); }
+  @keyframes gate-pass {
+    0%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    8%      { opacity: 1; }
+    70%     { transform: translate3d(calc(100% - 30px), 0, 0); opacity: 1; }
+    100%    { transform: translate3d(calc(100% - 30px), 0, 0); opacity: 0; }
+  }
+  @keyframes gate-drop {
+    0%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    8%      { opacity: 1; }
+    58%     { transform: translate3d(calc(100% - 46px), 0, 0); opacity: 1; }
+    66%     { transform: translate3d(calc(100% - 46px), 0, 0); opacity: 1; }
+    100%    { transform: translate3d(calc(100% - 46px), 22px, 0); opacity: 0; }
+  }
+  @keyframes gate-lit { to { opacity: 1; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .enter.is-in .gate-k { animation: gate-pass 1.1s cubic-bezier(.32,.72,0,1) calc(var(--i) * 150ms) both; }
+    .enter.is-in .gate-k--drop { animation: gate-drop 1.4s cubic-bezier(.32,.72,0,1) 1.75s both; }
+    .enter.is-in .gate-port { opacity: 0; animation: gate-lit 1ms linear calc(770ms + var(--i) * 150ms) forwards; }
+  }
+
+  /* ================= 12 · CREDENTIALS — three lanes to now =================
+     All three periods end in "Present" and their starts overlap (Aug 2024, Aug
+     2025, Nov 2025), and the ledger's own counted fact is "three roles held at
+     the same time". The current three sequential ruled rows actively hide the
+     one thing the section exists to show.
+
+     The three bars are different lengths and they DRAW SIMULTANEOUSLY, landing
+     on the shared NOW rule in the same frame — so they cannot be misread as
+     sequential. Then three packets run the lanes at 11s, 13s and 17s: co-prime,
+     never in step, all three in flight at once, which is what the sentence
+     means. Horizontal at every breakpoint so the md stack cannot force a
+     reflow to vertical.
+
+     `period` is free text, so site.ts gains explicit start/end fields. Nothing
+     here parses a display string, and nothing surfaces a client brand from
+     role `points` — company, title and dates only. */
+  .conc { position: relative; }
+  .conc-axis { position: absolute; left: 0; right: 0; bottom: 22px; height: 1.5px; background: hsl(var(--sch-stroke)); }
+  .conc-bar {
+    position: absolute;
+    left: var(--x0);
+    width: calc(var(--x1) - var(--x0));
+    height: 10px;
+    background: hsl(var(--ink-0) / 0.16);
+    border-left: 1.5px solid hsl(var(--ink-0));
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .conc-now { position: absolute; right: 0; top: 0; bottom: 16px; width: 1.5px; background: hsl(var(--sch-live)); }
+  .conc-k { position: absolute; top: 2px; left: var(--x0); width: 6px; height: 6px; display: block; background: hsl(var(--sch-live)); }
+  @keyframes conc-draw { to { transform: scaleX(1); } }
+  @keyframes conc-now-pulse { 0%, 92%, 100% { opacity: 1; } 96% { opacity: 0.28; } }
+  @keyframes conc-emit {
+    0%      { transform: translate3d(0, 0, 0); opacity: 0; }
+    6%      { opacity: 1; }
+    88%     { transform: translate3d(var(--reach), 0, 0); opacity: 1; }
+    100%    { transform: translate3d(var(--reach), 0, 0); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* all three share one duration, so different distances become different
+       speeds and one shared arrival */
+    .enter.is-in .conc-bar { animation: conc-draw 900ms cubic-bezier(.32,.72,0,1) both; }
+    .enter.is-in .conc-now { animation: conc-now-pulse 12s linear infinite; }
+    .enter.is-in .conc-k { animation: conc-emit var(--dur) linear infinite; }
+  }
+
+  /* ================= 13 · CTA — the week, and the thirty minutes =================
+     NOT A WASH. The two rejected passes were rejected for exactly this, and
+     this is the last thing anyone sees. Every rule here is a real 1.5px kit
+     hairline at --sch-stroke — the same weight and colour as every other
+     drawing on the page — and the eaten cells are SOLID INK, not 12% of it.
+
+     The h2, deck and button sit inside a rectangular VOID cut out of the week
+     by omitting cells, not by masking, so the dashed edge is a real border and
+     nothing is ever drawn behind the copy. Legibility is safe by geometry.
+
+     18s: the same slot fills solid Monday through Friday, one block roughly
+     every second, until the week is eaten. Hold. Then one blue half-height
+     30-minute cell appears at the void's edge and every ink block FLIPS from
+     solid to hairline outline in a 700ms cascade — the same work, still there,
+     now running unattended. Nothing is deleted, which is the honest version.
+
+     FOCAL BUDGET: the only saturated FILL in the viewport is still the
+     PrimaryButton. The one blue element here is 8px and reads as the button's
+     cause, not its competitor. */
+  .week { position: absolute; inset: 0; z-index: 0; pointer-events: none; contain: layout paint; }
+  .week-cell {
+    position: absolute;
+    border: 1.5px solid hsl(var(--sch-stroke));
+  }
+  .week-ink {
+    position: absolute; inset: 0;
+    background: hsl(var(--ink-0));
+    opacity: 0;
+  }
+  .week-void { position: absolute; border: 1.5px dashed hsl(var(--sch-stroke)); }
+  .week-trade {
+    position: absolute;
+    width: 8px; height: 8px;
+    background: hsl(var(--sch-live));
+    opacity: 0;
+  }
+  @keyframes week-eat {
+    0%              { opacity: 0; }
+    /* five columns fill 1.1s apart across the first 5.5s of 18s */
+    6%              { opacity: 1; }
+    58%             { opacity: 1; }
+    /* the release: solid drops away and the outline is all that is left */
+    62%, 100%       { opacity: 0; }
+  }
+  @keyframes week-offer { 0%, 55% { opacity: 0; } 58%, 78% { opacity: 1; } 82%, 100% { opacity: 0; } }
+  .run-week { animation: week-eat 18s linear calc(var(--i) * 320ms) infinite; }
+  .run-week-offer { animation: week-offer 18s linear infinite; }
+
+  /* ============================================================================
+     THE FOURTEEN REST FRAMES
+
+     One rule, applied fourteen times: the still frame is the RESOLVED frame.
+     Not zero, not a freeze mid-flight, never a half-built layout. Problems is
+     the deliberate exception — its resolved state is failure, and its six
+     stills tell the story better than the motion does.
+
+     Each block sets animation: none !important and then writes the final
+     transform and opacity out as real CSS. Without this, the global
+     *{animation-duration:0.01ms !important} with fill:both lands every element
+     on its FINAL keyframe, which for any crossing is parked off-screen at
+     opacity 0 — an invisible component. This is the single most likely way the
+     pass ships broken, and it is a fourteen-item checklist, not a matter of
+     care.
+     ========================================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    /* 00 header: full blue rail, all thirteen ports lit, freight parked on it */
+    .wire-fill { animation: none !important; transform: scaleX(1) !important; }
+    .wire-ports > i { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .wire-dash { animation: none !important; opacity: 1 !important; }
+    .wire-dash:nth-of-type(1) { transform: translate3d(18vw, 0, 0) !important; }
+    .wire-dash:nth-of-type(2) { transform: translate3d(52vw, 0, 0) !important; }
+    .wire-dash:nth-of-type(3) { transform: translate3d(84vw, 0, 0) !important; }
+    .wire-terminus { animation: none !important; opacity: 1 !important; }
+
+    /* 01 hero: SystemMap parks itself at DONE via setCurrentTime; the
+       consignment tag stays visible on the out-edge as a direction marker */
+    .sm-tag { opacity: 1 !important; }
+
+    /* 02 problems: six composed FAILURES — the packet stranded on tab four,
+       both records flagged at once, the report half-assembled against the
+       `manual` node, one lane wired to port 5 of 9, the queue jammed at the
+       gate, the pile held under a hand pointing at six */
+    .run-f1 { animation: none !important; transform: translate3d(132px, 0, 0) !important; }
+    .run-f2a, .run-f2b { animation: none !important; opacity: 1 !important; }
+    .run-f3 { animation: none !important; opacity: 1 !important;
+              transform: translate3d(calc(var(--dx) * 0.55), calc(var(--dy) * 0.55), 0) !important; }
+    .run-f4 { animation: none !important; transform: translate3d(0, 10px, 0) !important; }
+    .run-f5 { animation: none !important; transform: translate3d(3px, 0, 0) !important; }
+    .run-f6h { animation: none !important; transform: rotate(180deg) !important; }
+    .run-f6p { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+    /* 03 proof: head parked under column four, every tally full — 26 of 53,
+       11 solid plus 6 hollow, 170 of 500, 24 of 24. The numerals are never
+       touched by any mechanism, so nobody can land on 0 and "2 years" is safe */
+    .run-audit { animation: none !important; transform: translate3d(87.5%, 0, 0) !important; }
+    .tally-fill { animation: none !important; transform: scaleX(1) !important; }
+    .tally-col { animation: none !important; transform: scaleY(1) !important; }
+    .run-dial { animation: none !important; transform: rotate(150deg) !important; }
+
+    /* 04 solutions: five completed poses — traced, seated with the built
+       socket still visible, one source and three readers, the third trigger
+       lit, the escape arrived at #alerts with ×3 showing */
+    .run-m1 { animation: none !important; transform: scaleX(1) !important; }
+    .run-m2a { animation: none !important; transform: none !important; opacity: 1 !important; }
+    .run-m2b { animation: none !important; transform: scaleX(1) !important; }
+    .run-m3 { animation: none !important; opacity: 0 !important;
+              transform: translate3d(var(--dx), var(--dy), 0) !important; }
+    .run-m4 { animation: none !important; opacity: 0 !important; }
+    .run-m4[style*="--i:2"] { opacity: 1 !important; }
+    .run-m5 { animation: none !important; opacity: 1 !important; transform: translate3d(26px, -16px, 0) !important; }
+
+    /* 05 output: all five in their after state — map printed, tray empty at 0,
+       owner: you with its circuit parked, bell EMPTY (dark is its resolved
+       state and the whole point of that row), document fully written */
+    .term-draw { animation: none !important; transform: scaleY(1) !important; }
+    .term-pip { animation: none !important; opacity: 0 !important; }
+    .run-login { animation: none !important; transform: translate3d(30px, 0, 0) !important; }
+    .run-bell { animation: none !important; opacity: 0 !important; }
+
+    /* 06 tools: the finished board — every count posted, no packet in flight */
+    .run-b1, .run-b2, .run-b3 { animation: none !important; opacity: 0 !important; }
+    .board-tick { animation: none !important; transform: scaleX(1) !important; }
+
+    /* 07 roadmap: unchanged, JS-driven, transitions already off */
+    .roadmap-bar-fill, .roadmap-bar-node { transition: none !important; }
+
+    /* 08 industries: five tokens seated in five sockets, all five lit */
+    .harness-k { animation: none !important; opacity: 1 !important;
+                 transform: translate3d(calc(100% - 6px), 0, 0) !important; }
+    .harness-socket { animation: none !important; opacity: 1 !important; }
+
+    /* 09 systems: the refusal, as a still — the packet stopped dead at the
+       guard, gone to ink, mid-ejection, with `refused` showing */
+    .run-guard { animation: none !important; background-color: hsl(var(--ink-0)) !important;
+                 transform: translate3d(calc(100% - 48px), 0, 0) !important; opacity: 1 !important; }
+    .run-guard-say { animation: none !important; opacity: 1 !important; }
+
+    /* 10 workflows: one plate statically marked running with its bar at 40%,
+       no hop, filter swaps instantly through the existing .crossfade rule */
+    .plate-bar { animation: none !important; transform: scaleX(0.4) !important; }
+    ul[data-swapping="true"] > li { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .odo > span { transition: none !important; }
+
+    /* 11 creative: eleven passed and lit, the twelfth already dropped */
+    .gate-k { animation: none !important; opacity: 0 !important; }
+    .gate-k--drop { opacity: 1 !important; transform: translate3d(calc(100% - 46px), 22px, 0) !important; }
+    .gate-port { animation: none !important; opacity: 1 !important; }
+
+    /* 12 credentials: three bars complete, three packets parked at three
+       DIFFERENT points, so the concurrency still reads with zero motion —
+       which is the honest test that the drawing carries the argument */
+    .conc-bar { animation: none !important; transform: scaleX(1) !important; }
+    .conc-now { animation: none !important; opacity: 1 !important; }
+    .conc-k { animation: none !important; opacity: 1 !important;
+              transform: translate3d(calc(var(--reach) * var(--rest, 0.7)), 0, 0) !important; }
+
+    /* 13 cta: deliberately the GIVEN-BACK week — every block outlined, the
+       30-minute cell present, the void and its label showing. That is the
+       right thing to leave a visitor looking at */
+    .run-week { animation: none !important; opacity: 0 !important; }
+    .run-week-offer { animation: none !important; opacity: 1 !important; }
+  }
+
+  /* ---------- Firefox, treated as a first-class target ----------
+     Thirteen of the fourteen are autonomous CSS or SMIL, which Firefox has had
+     for years, so Firefox gets the full system. Only the header's progress
+     fill and its thirteen port ticks are scroll-driven, and both are authored
+     resting-state-finished — their absence removes a READING, never produces a
+     half-built layout. @supports (animation-timeline: view()) is never used as
+     a proxy for scroll(), and vice versa. */
+  @supports not (animation-timeline: scroll()) {
+    .wire-fill { transform: scaleX(1); }
+    .wire-ports > i { opacity: 1; }
   }
 }

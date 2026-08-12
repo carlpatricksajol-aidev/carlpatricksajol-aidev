@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, useEnter } from "@/components/primitives";
+import { useEffect, useRef, useState } from "react";
 import { outputSection, outputs, problems, problemsSection, solutions, solutionsSection } from "@/data/copy";
+import { Faults } from "@/components/schematic/Faults";
+import { Move } from "@/components/schematic/Moves";
+import { Terminal } from "@/components/schematic/Terminals";
 
 /**
  * ARCHETYPE: marginalia with an alternating margin side.
@@ -15,7 +19,7 @@ export const Problems = () => {
   const { ref, className } = useEnter<HTMLElement>();
 
   return (
-    <section id="problems" ref={ref} className={`${className} section`} aria-labelledby="problems-h">
+    <section id="problems" ref={ref} className={`${className} section relative`} aria-labelledby="problems-h">
       <div className="grid12">
         {/* split header — one of only two on the page. The deck sits in the
             column the cost lines will later use, pre-declaring the margin. */}
@@ -43,10 +47,11 @@ export const Problems = () => {
               aria-hidden="true"
             >
               {String(i + 1).padStart(2, "0")}
+              <Faults i={i} />
             </p>
           );
           return (
-            <li key={p.title} className="border-t border-line last:border-b">
+            <li key={p.title} className="relative border-t border-line last:border-b">
               <div className="grid12 py-s6">
                 {!right && numeral}
 
@@ -55,6 +60,11 @@ export const Problems = () => {
                     right ? "lg:col-span-6 lg:col-start-2" : "lg:order-2 lg:col-span-6 lg:col-start-4"
                   }`}
                 >
+                  {/* the numeral column is hidden below lg, so the fragment is
+                      rendered again here — all six must exist on a phone */}
+                  <span className="mb-s4 block lg:hidden">
+                    <Faults i={i} />
+                  </span>
                   {/* hanging quotation mark keeps the measure optically straight */}
                   <p className="t-section text-ink" style={{ textIndent: "-0.42em" }}>
                     &ldquo;{p.title}&rdquo;
@@ -81,9 +91,31 @@ export const Problems = () => {
  */
 export const Solutions = () => {
   const { ref, className } = useEnter<HTMLElement>();
+  // one observer over the five rows; the operation only runs while its own step
+  // is being read, so five machines never animate at once
+  const rows = useRef<(HTMLLIElement | null)[]>([]);
+  const [liveRows, setLiveRows] = useState<boolean[]>(() => solutions.map(() => false));
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      setLiveRows(solutions.map(() => true));
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        setLiveRows((prev) => {
+          const next = [...prev];
+          for (const e of entries) next[Number((e.target as HTMLElement).dataset.i)] = e.isIntersecting;
+          return next;
+        });
+      },
+      { rootMargin: "-20% 0px -20% 0px" }
+    );
+    rows.current.forEach((el) => el && obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="solutions" ref={ref} className={`${className} section`} aria-labelledby="solutions-h">
+    <section id="solutions" ref={ref} className={`${className} section relative`} aria-labelledby="solutions-h">
       <div className="grid12">
         {/* stacked at the measure with no deck to the right — a different
             attachment from either neighbour */}
@@ -109,6 +141,9 @@ export const Solutions = () => {
                 <h3 className="t-sub max-w-[24ch] text-ink">{s.headline}</h3>
                 <p className="t-body mt-s3 max-w-[54ch] text-ink-secondary">{s.body}</p>
               </div>
+              <span className="order-first col-span-12 mb-s4 block lg:order-none lg:col-span-1 lg:col-start-9 lg:mb-0 lg:self-center">
+                <Move i={i} live={liveRows[i]} />
+              </span>
               {/* the evidence rail: what used to be dead margin */}
               <div className="col-span-12 mt-s4 lg:col-span-3 lg:col-start-10 lg:mt-0">
                 <p className="t-micro text-ink-tertiary">
@@ -128,7 +163,12 @@ export const Solutions = () => {
           );
 
           return (
-            <li key={s.headline} className="border-t border-line last:border-b">
+            <li
+              key={s.headline}
+              data-i={i}
+              ref={(el) => (rows.current[i] = el)}
+              className="relative border-t border-line last:border-b"
+            >
               {s.caseSlug ? (
                 <Link
                   to={`/work/${s.caseSlug}`}
@@ -173,12 +213,13 @@ export const Output = () => {
       </div>
 
       <dl className="mt-s7 border-t border-line">
-        {outputs.map((o) => (
-          <div key={o.title} className="grid12 border-b border-line py-s6">
+        {outputs.map((o, i) => (
+          <div key={o.title} className="grid12 relative border-b border-line py-s6">
             <dt className="t-sub col-span-12 max-w-[26ch] text-ink lg:col-span-4 lg:col-start-2">{o.title}</dt>
             <dd className="t-body col-span-12 mt-s3 max-w-[58ch] text-ink-secondary lg:col-span-6 lg:col-start-6 lg:mt-0">
               {o.body}
             </dd>
+            <Terminal i={i} live />
           </div>
         ))}
       </dl>

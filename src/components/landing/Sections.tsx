@@ -10,6 +10,10 @@ import {
 } from "@/components/primitives";
 import { caseStudies, experience, otherSystems, profile, proofMetrics } from "@/data/site";
 import { sectionCopy } from "@/data/copy";
+import { INSTRUMENTS, Tape } from "@/components/schematic/Instruments";
+import Guard from "@/components/schematic/Guard";
+import Concurrency from "@/components/schematic/Concurrency";
+import WeekTrade from "@/components/schematic/WeekTrade";
 
 /* ---------- 2. Four production numbers ---------- */
 /**
@@ -30,7 +34,7 @@ export const Proof = () => {
     <section
       id="proof"
       ref={ref}
-      className={`${className} bleed border-y border-line-strong bg-surface-sunken`}
+      className={`${className} bleed relative border-y border-line-strong bg-surface-sunken`}
       aria-labelledby="proof-h"
     >
       <div className="grid12 py-s6">
@@ -41,7 +45,8 @@ export const Proof = () => {
           {sectionCopy.proof.deck}
         </p>
 
-        <dl className="col-span-12 mt-s5 grid grid-cols-2 gap-y-s6 border-t border-line-strong pt-s5 lg:grid-cols-4 lg:gap-0">
+        <dl className="col-span-12 relative mt-s5 grid grid-cols-2 gap-y-s6 border-t border-line-strong pt-s5 lg:grid-cols-4 lg:gap-0">
+          <Tape />
           {proofMetrics.map((m, i) => (
             <div
               key={m.caption}
@@ -58,6 +63,10 @@ export const Proof = () => {
                 <span className="mr-1 align-super">{i + 1}</span>
                 {m.note}
               </p>
+              {(() => {
+                const Instrument = INSTRUMENTS[i];
+                return Instrument ? <Instrument /> : null;
+              })()}
             </div>
           ))}
         </dl>
@@ -92,7 +101,7 @@ export const Systems = () => {
         {/* rank 1 */}
         <Link
           to={`/work/${lead.slug}`}
-          className="group mt-s9 grid gap-s6 surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms]  md:grid-cols-[1fr_auto] md:items-center md:p-s7"
+          className="group relative mt-s9 grid gap-s6 surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms] md:grid-cols-[1fr_320px] md:items-center md:p-s7"
         >
           <div>
             <div className="flex flex-wrap items-center gap-s3">
@@ -116,25 +125,19 @@ export const Systems = () => {
               Read the case study <ArrowRight />
             </p>
           </div>
-          {lead.hero?.poster && (
-            <div className="phone-frame w-[184px] shrink-0 justify-self-start md:justify-self-end">
-              <div className="aspect-[9/16] bg-surface-ink">
-                <img src={lead.hero.poster} alt="" width={720} height={1280} loading="lazy" className="h-full w-full object-cover" />
-              </div>
-            </div>
-          )}
+          {/* the right column was empty: no n8n case defines a hero poster, so
+              this half of the lead card rendered nothing. It now holds the one
+              rule the system was built never to break. */}
+          <Guard sentence={lead.constraint} delay={0} live />
         </Link>
 
         {/* rank 2 */}
         <div className="mt-s5 grid gap-s5 md:grid-cols-2">
-          {mid.map((c) => (
-            // the wrapper becomes the grid item, so the Link needs h-full or the
-            // row loses the equal heights it gets from stretch + mt-auto
-            <div key={c.slug} className="cast-wrap">
-              <span className="cast" aria-hidden="true" />
+          {mid.map((c, i) => (
             <Link
+              key={c.slug}
               to={`/work/${c.slug}`}
-              className="group flex h-full flex-col surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms] "
+              className="group relative flex h-full flex-col surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms]"
             >
               <div className="flex flex-wrap items-center gap-s3">
                 <span className="t-slug text-ink-tertiary">{c.trackLabel}</span>
@@ -148,8 +151,8 @@ export const Systems = () => {
               <p className="arrow-link t-body mt-auto pt-s5">
                 Read the case study <ArrowRight />
               </p>
+              <Guard sentence={c.constraint} delay={-(i + 1) * 4} live />
             </Link>
-            </div>
           ))}
         </div>
 
@@ -165,7 +168,7 @@ export const Systems = () => {
 export const Credentials = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
-    <section id="credentials" ref={ref} className={`${className} section`} aria-labelledby="cred-h">
+    <section id="credentials" ref={ref} className={`${className} section relative`} aria-labelledby="cred-h">
       <div className="w-shell gutter">
         <SectionHeader
           split
@@ -188,6 +191,7 @@ export const Credentials = () => {
             </li>
           ))}
         </ul>
+        <Concurrency />
         <p className="mt-s6">
           <ArrowLink to="/experience">Full experience and stack</ArrowLink>
         </p>
@@ -200,8 +204,9 @@ export const Credentials = () => {
 export const CTA = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
-    <section ref={ref} className={`${className} chapter border-t border-line`} aria-labelledby="cta-h">
-      <div className="w-text gutter mx-auto text-center">
+    <section ref={ref} className={`${className} chapter relative overflow-hidden border-t border-line`} aria-labelledby="cta-h">
+      <WeekTrade />
+      <div className="w-text gutter relative z-10 mx-auto text-center">
         <h2 id="cta-h" className="t-section mx-auto max-w-[20ch]">
           {sectionCopy.cta.title}
         </h2>

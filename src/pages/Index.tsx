@@ -1,4 +1,4 @@
-import { Page } from "@/components/SiteChrome";
+import { Page, SiteHeader } from "@/components/SiteChrome";
 import Hero from "@/components/landing/Hero";
 import ServiceLines from "@/components/landing/ServiceLines";
 import Industries from "@/components/landing/Industries";
@@ -28,7 +28,7 @@ import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections"
  * a second five-step method list sitting a screen away from the first.
  */
 const Index = () => (
-  <Page>
+  <Page header={<SiteHeader stops={13} />}>
     <Hero />
     <Problems />
     <Proof />
