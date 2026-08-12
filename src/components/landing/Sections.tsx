@@ -128,10 +128,13 @@ export const Systems = () => {
         {/* rank 2 */}
         <div className="mt-s5 grid gap-s5 md:grid-cols-2">
           {mid.map((c) => (
+            // the wrapper becomes the grid item, so the Link needs h-full or the
+            // row loses the equal heights it gets from stretch + mt-auto
+            <div key={c.slug} className="cast-wrap">
+              <span className="cast" aria-hidden="true" />
             <Link
-              key={c.slug}
               to={`/work/${c.slug}`}
-              className="group flex flex-col surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms] "
+              className="group flex h-full flex-col surface surface-hover p-s6 transition-[border-color,box-shadow] duration-[160ms] "
             >
               <div className="flex flex-wrap items-center gap-s3">
                 <span className="t-slug text-ink-tertiary">{c.trackLabel}</span>
@@ -146,6 +149,7 @@ export const Systems = () => {
                 Read the case study <ArrowRight />
               </p>
             </Link>
+            </div>
           ))}
         </div>
 

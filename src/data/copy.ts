@@ -145,6 +145,91 @@ export const outputs: OutputItem[] = [
   },
 ];
 
+/* ------------------------------------------------------------------------- *
+ * Five industries, one set of wiring.
+ *
+ * Ordered by how much there is to show, not by how the list sounds. Notes for
+ * whoever edits this next:
+ *
+ *  - Online dating was rated thin and kept anyway, written as SCOPE, not as a
+ *    claim. The work behind it is the deepest on the site, but nothing built
+ *    there is dating-specific, so the entry says that out loud rather than
+ *    implying category expertise.
+ *  - That entry only lands if the reader knows what the first Credentials row
+ *    is. The fix is three words in the Bumpy App role summary in site.ts — see
+ *    the edit there. It is a resume fact and names no client.
+ *  - AI automation is last on purpose. It is the practice, not a vertical;
+ *    listed second it reads as a category error next to "marketing" and
+ *    "online dating", so the entry says plainly that it is what the other four
+ *    bought.
+ *  - The client said SaaS was done "many times". The evidence is two products,
+ *    so it is written as two, with private beta visible. "Twice, not once"
+ *    still makes the point without colliding with the rest of the page.
+ *  - No status was upgraded. site.ts marks the AI video editor "Piloted, not
+ *    scaled", so its entry claims no production status.
+ *  - Only approved counted numbers appear: 26 running, 500 steps, 170 steps.
+ *    The 170-step system's finishing lanes and markets are real but off-list,
+ *    so they are described by shape instead of counted.
+ *  - Clients are named nowhere. The two products are named because they are
+ *    his own. The phrase "a dating app" never appears here — only "online
+ *    dating" and "a consumer app in this category".
+ *  - The title deliberately echoes the solutions section. If that repetition
+ *    reads as too neat once both are on screen, the alternate is "The same
+ *    wiring, five different businesses."
+ * ------------------------------------------------------------------------- */
+
+export interface Industry {
+  industry: string;
+  work: string;
+  proof: string;
+  caseSlug: string;
+}
+
+export const industriesSection = {
+  eyebrow: "The industries",
+  title: "Five industries, one set of wiring",
+  deck: "The same five moves have been sold into a working ad agency, a marketing consultancy, two software products and a consumer app. Every entry here is on this page already — a live system, a build written up, or a product you can open. Ordered by how much there is to show, not by how the list sounds.",
+};
+
+/** The one line that answers the "we have done SaaS many times" ask directly.
+ *  Sits under the SaaS row, not in the deck, so it reads as evidence rather
+ *  than as a boast the section then has to support. */
+export const saasLine =
+  "SaaS twice, not once: a consumer gift product with published pricing, and a self-serve ad generator with no login at all. Both taken from an empty repo to a page a stranger can use without being taught how. Both are in private beta, and both case studies say so on their own pages.";
+
+export const industries: Industry[] = [
+  {
+    industry: "Creative ad agency",
+    work: "A working agency's whole production line: the concept written, the file made, the file scored before anyone sees it, the file delivered. Everything in the creative chapter below was built here.",
+    proof: "The AI video editor. Raw creator footage goes in, an editable Premiere timeline comes out — every cut snapped to the real speech boundary in the audio, and every source left in the bin at full length so any cut can be re-trimmed instead of re-shot.",
+    caseSlug: "ai-video-editor",
+  },
+  {
+    industry: "Marketing and consultancy",
+    work: "Two CRMs, an onboarding stack and one Notion workspace running a consultancy's client base — the contact record made to mean one thing before any agent was allowed near it.",
+    proof: "A bridge that syncs both CRMs in both directions, where every write made by the sync is tagged with where it came from. A synced change cannot echo back and start the loop again. The agent that spots a real reply, classifies it, follows up and books the call sits on top of that.",
+    caseSlug: "ai-sdr-and-crm-bridge",
+  },
+  {
+    industry: "SaaS",
+    work: "Two self-serve products taken from nothing to a page a stranger can use without being taught how — one consumer, one for ad teams. Both in private beta, and both case studies say so.",
+    proof: "Creative AdBundance OS. Type a product name and a website, add one photo, and a captioned fifteen-second vertical ad comes back on the same page. No account, no job ID: one request held open up to twelve minutes while the whole pipeline runs.",
+    caseSlug: "creative-os",
+  },
+  {
+    industry: "Online dating",
+    work: "Paid social and growth operations for a consumer app in this category — comment triage on a webhook, bulk creative upload, ads pruned on performance, reporting pulled across two platforms. None of it is dating-specific; the same wiring runs for any consumer app with an ad account.",
+    proof: "A production Claude MCP server sitting over the company's own SDK, database and attribution platform, with three specialist Slack agents on one shared tool layer. The growth team asks in Slack instead of pasting an export into a chat window.",
+    caseSlug: "claude-mcp-server-slack-agents",
+  },
+  {
+    industry: "AI automation",
+    work: "Not a fifth client industry — it is the practice the other four bought. 26 systems running in production, 500 steps between them, and every one of them was built inside somebody else's business.",
+    proof: "The largest single system on this site: 170 steps from one webhook to finished ads live on two platforms, each lane writing its own audit line before it posts to Slack.",
+    caseSlug: "webhook-to-post-ads",
+  },
+];
+
 export const toolBandSection = {
   eyebrow: "The tools",
   title: "Nothing here gets replaced",

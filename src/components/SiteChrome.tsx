@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowLeft, PrimaryButton } from "@/components/primitives";
 import { profile } from "@/data/site";
 
@@ -17,25 +17,47 @@ export const SiteHeader = ({
   // full-width edge — a seam parked on screen for the whole gallery chapter.
   const [overInk, setOverInk] = useState(false);
 
+  const { pathname } = useLocation();
+
+  // Two effects, because they cost completely different things.
+  //
+  // This one only reads window.scrollY, which forces no layout.
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 8);
-      const band = document.querySelector<HTMLElement>('[data-tone="plate"]');
-      if (!band) {
-        setOverInk(false);
-        return;
-      }
-      const r = band.getBoundingClientRect();
-      setOverInk(r.top <= 56 && r.bottom >= 0);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // This one used to live in the same handler, running querySelector plus
+  // getBoundingClientRect on every scroll event — a forced synchronous layout
+  // of the whole document per frame, and the most expensive persistent thing on
+  // the site. An IntersectionObserver reports the identical condition for free:
+  // shrinking the root to its top 56px makes "intersecting" mean exactly
+  // "top <= 56 && bottom >= 0".
+  //
+  // Scoped to main so the portaled data-tone="plate" dialog can never match.
+  useEffect(() => {
+    const band = document.querySelector<HTMLElement>('main [data-tone="plate"]');
+    if (!band || typeof IntersectionObserver === "undefined") {
+      setOverInk(false);
+      return;
+    }
+    let obs: IntersectionObserver | null = null;
+    const build = () => {
+      obs?.disconnect();
+      obs = new IntersectionObserver(([e]) => setOverInk(e.isIntersecting), {
+        rootMargin: `0px 0px -${Math.max(0, window.innerHeight - 56)}px 0px`,
+      });
+      obs.observe(band);
+    };
+    build();
+    window.addEventListener("resize", build);
+    return () => {
+      obs?.disconnect();
+      window.removeEventListener("resize", build);
+    };
+  }, [pathname]);
 
   const nav = [
     { to: "/work", label: "Work" },
@@ -131,11 +153,19 @@ export const SiteFooter = () => (
 
 export const Page = ({ children, header }: { children: ReactNode; header?: ReactNode }) => (
   <div className="grain min-h-screen bg-surface">
+    {/* The lamp. One page-scoped field, not a per-section ornament. It is
+        position:fixed at z-0, and a positioned element paints above all
+        non-positioned in-flow content — so main and the footer must take a
+        stacking position of their own or the sheen paints over the page. The
+        sticky header at z-50 already carries its own. */}
+    <div className="rake" aria-hidden="true" />
     {header ?? <SiteHeader />}
     {/* tabIndex=-1 so the skip link actually moves focus, not just the hash */}
-    <main id="main" tabIndex={-1} className="outline-none">
+    <main id="main" tabIndex={-1} className="relative z-[1] outline-none">
       {children}
     </main>
-    <SiteFooter />
+    <div className="relative z-[1]">
+      <SiteFooter />
+    </div>
   </div>
 );

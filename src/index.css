@@ -556,6 +556,199 @@
     mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
+  /* ---------- raking light: one lamp, fixed at 315 degrees ----------
+     Three layers, one idea: the page is a sheet of stock under a lamp, and the
+     reader tilts the sheet by scrolling. The sheen crosses the ground, each
+     rank-2 Systems card casts a pool as it passes beneath the lamp, and in the
+     dark room the platform marks are blind-embossed into the plate — invisible
+     until the light reaches them. Nothing floats, because on a monograph
+     nothing floats: the only thing that moves across a material is light.
+
+     The rule that keeps it inside "effects are good but not too much": every
+     animation here is scroll-linked and ONLY scroll-linked. Zero autonomous
+     motion is added to a page already running six marquees and a 12s SMIL
+     clock. Stop scrolling and the whole system is dead still, so idle cost is
+     exactly zero. Second rule, written down so it survives the next edit: no
+     layer here may have a live range while the hero is on screen — the
+     SystemMap's engineered causation read is the only motion allowed there.
+     Transform and opacity only; soft shapes are gradients, so there is no blur
+     to animate and no filter anywhere in the system. No will-change is added:
+     scroll-driven animations promote themselves while active and release
+     afterwards, which is the point.
+
+     Every keyframe pair below is authored symmetrically around its element's
+     own static transform, so an unanimated element sits at the exact midpoint
+     of its travel. Under reduce these rules are never declared at all, and the
+     animation-duration: 0.01ms sledgehammer at the end of this file has
+     nothing to freeze at a wrong coordinate. Firefox, which still has no
+     animation-timeline, gets the same composed still page. */
+
+  /* The sheen. One very large soft ellipse of the palette's own raised tone
+     (--card) over the ground (--paper) — a real 3.5% lift that already exists
+     in the system, feathered to nothing, elongated on the 315-degree axis. It
+     only ever LIGHTENS the cream, so it raises contrast for ink-on-paper text
+     rather than lowering it: safe by construction, not by measurement.
+
+     The noise layer on top is a dither, not a texture. A 3.5% lift across a
+     very wide soft gradient over a flat warm cream bands visibly on 8-bit
+     panels, and the page grain at opacity 0.028 is far too faint to break it
+     up. Baked into this layer's own background at 5.5% so it costs one tiled
+     raster and never touches mix-blend-mode. */
+  .rake {
+    position: fixed;
+    inset: -20vh -25vw;
+    z-index: 0;
+    pointer-events: none;
+    contain: layout paint;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)' opacity='0.055'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse 62% 34% at 46% 34%,
+        hsl(var(--card) / 0.95), hsl(var(--card) / 0.45) 42%, transparent 70%);
+    background-repeat: repeat, no-repeat;
+    background-size: 170px 170px, 100% 100%;
+  }
+  /* Matches the grain breakpoint exactly (see .grain::after above). Below
+     768px there is no full-viewport blend layer already re-drawing every
+     scroll frame, so this would be new cost rather than free cost — and mobile
+     already runs six continuous rails whose only pause is :hover, which does
+     not exist on touch. */
+  @media (max-width: 767px) {
+    .rake { display: none; }
+  }
+  @keyframes rake-swing {
+    from { transform: translate3d(-18px, 60px, 0); }
+    to   { transform: translate3d(18px, -60px, 0); }
+  }
+
+  /* The cast: proof the lamp is real. One pre-painted gradient pool per rank-2
+     Systems card, swinging out from under the card as it passes beneath the
+     lamp — never an animated box-shadow, never a filter. The card itself never
+     moves, so .surface-hover lifting it 2px lifts it off its own shadow.
+     Restricted to the two equal rank-2 cards: the rank-1 lead is full-width
+     and a 12px swing under it is imperceptible. The ellipse is narrower than
+     the ply, so nothing escapes sideways — it cannot collide with the 26px
+     grid gap or reach past the 20px minimum gutter into horizontal overflow. */
+  .cast-wrap { position: relative; }
+  .cast-wrap > a { position: relative; z-index: 1; }
+  .cast {
+    position: absolute;
+    inset: 14px -10px -34px -10px;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 88% 62% at 50% 78%,
+      hsl(var(--sh) / 0.1), hsl(var(--sh) / 0.045) 46%, transparent 72%);
+    /* the exact midpoint of the swing below, so with no timeline and under
+       reduce it reads as a deliberate directional shadow agreeing with --e2 */
+    transform: translate3d(1px, 1px, 0);
+  }
+  @keyframes cast-swing {
+    from { transform: translate3d(7px, 4px, 0); }
+    to   { transform: translate3d(-5px, -2px, 0); }
+  }
+
+  /* Blind emboss: the ad platforms pressed into the plate. Two plies and
+     nothing printed between them — light offset up-left, dark offset
+     down-right — masked with the exact BrandIcons path data, so there is one
+     source of truth and no duplicated geometry (built once at module scope in
+     Deboss.tsx, never at render). They are impressions, not logos: no colour,
+     no wordmark, cropped by the section box, behind the rails, aria-hidden,
+     and never brighter than about 1.7:1 against the plate even with the light
+     crossing them. The visible, accessible statement about these three
+     platforms is the placements row above them, in real text.
+
+     They never move. What moves is the same lamp, crossing the room: one
+     masked band on the section's own view timeline. That is ONE new animated
+     element in the busiest region of the page, and it is scroll-linked, so the
+     number of self-running animations in that viewport stays exactly two — the
+     rails that were always there. Same static-mask-plus-translating-child
+     construction as .logo-rail-mask above, which already ships twice here.
+
+     NOTE: #logo-field is the <section>; .logo-field is the rails wrapper, and
+     that class is reused by the static-ad rails. These rules stay on the id. */
+  .deboss {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    contain: layout paint;
+
+    /* one declaration site; all three plies read these */
+    --deboss-img: var(--dm-meta), var(--dm-tiktok), var(--dm-ig);
+    --deboss-pos: -110px 60%, 58% calc(100% + 96px), calc(100% + 84px) 44%;
+    --deboss-size: 300px 300px, 320px 320px, 250px 250px;
+  }
+  .deboss > * {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: var(--deboss-img);
+    mask-image: var(--deboss-img);
+    -webkit-mask-position: var(--deboss-pos);
+    mask-position: var(--deboss-pos);
+    -webkit-mask-size: var(--deboss-size);
+    mask-size: var(--deboss-size);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  /* --sh is not redefined on the plate, so it resolves LIGHTER than --plate-0
+     and cannot be the dark ply. This is the same warm ramp, two steps below
+     the plate — not rgba(0,0,0,x). */
+  .deboss-lo { background: hsl(30 30% 2.5%); transform: translate3d(1px, 1px, 0); }
+  .deboss-hi { background: hsl(var(--ink-0) / 0.06); transform: translate3d(-1px, -1px, 0); }
+  .deboss-rake { overflow: hidden; }
+  .deboss-rake > span {
+    position: absolute;
+    inset: 0 -60%;
+    display: block;
+    background: linear-gradient(100deg, transparent 34%, hsl(var(--ink-0) / 0.14) 50%, transparent 66%);
+  }
+  /* Below 1024px the split header stacks and its deck runs deep enough to sit
+     over a mark, so the field drops to the one impression that lives entirely
+     under the rails. Legibility by geometry, not by measurement. */
+  @media (max-width: 1023px) {
+    .deboss {
+      --deboss-img: var(--dm-tiktok);
+      --deboss-pos: 58% calc(100% + 88px);
+      --deboss-size: 260px 260px;
+    }
+  }
+  @keyframes deboss-rake {
+    from { transform: translate3d(-26%, 0, 0); }
+    to   { transform: translate3d(26%, 0, 0); }
+  }
+
+  /* scroll() is a different feature test from view(). The scroll-driven block
+     above gates on view(); reusing that query for a scroll(root) layer would
+     rest the fallback on a coincidence rather than on the thing being tested. */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+      .rake {
+        animation: rake-swing linear both;
+        animation-timeline: scroll(root block);
+        /* the hero carve-out, as a number: 12% of document scroll is well past
+           one viewport on this page, so nothing here is live while the
+           SystemMap is on screen */
+        animation-range: 12% 100%;
+      }
+    }
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .cast {
+        animation: cast-swing linear both;
+        animation-timeline: view();
+        animation-range: entry 15% exit 85%;
+      }
+      /* named rather than bare view() on the band itself: the band is clipped
+         by two ancestors, and naming the section removes the question */
+      #logo-field { view-timeline-name: --logo-field; view-timeline-axis: block; }
+      .deboss-rake > span {
+        animation: deboss-rake linear both;
+        animation-timeline: --logo-field;
+        animation-range: entry 0% exit 100%;
+      }
+    }
+  }
+
   /* ---------- scroll-driven effects ----------
      Pure progressive enhancement: browsers without animation-timeline get the
      resting state, reduced-motion turns everything off, and only transform and

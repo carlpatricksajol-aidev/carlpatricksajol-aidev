@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { BrandIcon } from "@/components/BrandIcons";
+import Deboss from "@/components/Deboss";
 import { PlayGlyph, SectionHeader, useEnter } from "@/components/primitives";
 import { Link } from "react-router-dom";
-import { caseStudies, staticAds, videoAds } from "@/data/site";
+import { adPlacements, caseStudies, staticAds, videoAds } from "@/data/site";
 import { ArrowRight, StatusDot } from "@/components/primitives";
 import { chapters, sectionCopy } from "@/data/copy";
 import LogoField from "@/components/LogoField";
@@ -235,8 +236,9 @@ const InkBand = () => {
     <div id="chapter-creative" data-tone="plate" className="gallery-contain bg-surface-ink text-ink">
       <div className="w-shell gutter">
         {/* chapter opener */}
-        <section id="logo-field" className="section" ref={logo.ref}>
-          <div className={logo.className}>
+        <section id="logo-field" className="section relative isolate" ref={logo.ref}>
+          <Deboss />
+          <div className={`${logo.className} relative z-10`}>
             {/* the chapter marker its counterpart carries too — so the room
                 reads as the second half of the argument, not the whole of it */}
             <div className="mb-s6 flex items-baseline gap-s3 border-b border-line pb-s4">
@@ -253,6 +255,29 @@ const InkBand = () => {
               title={sectionCopy["creative-logos"].title}
               deck={sectionCopy["creative-logos"].deck}
             />
+            {/* The visible statement. Three marks that are otherwise decoration
+                get one row of real text, and the verbs are not decorative:
+                Meta and TikTok are destinations the repos evidence, Instagram
+                appears only as a scrape source. No motion — this is the one
+                element here meant to be read. */}
+            <div className="mt-s7 border-t border-line pt-s5">
+              <p className="t-small max-w-[54ch] text-ink-secondary">
+                These ads were built for Meta and TikTok. Instagram is where the reference came from,
+                not where they ran.
+              </p>
+              <ul className="mt-s5 flex flex-wrap gap-x-s7 gap-y-s4">
+                {adPlacements.map((p) => (
+                  <li key={p.key} className="flex items-center gap-s3">
+                    <BrandIcon name={p.key} size={22} className="shrink-0 text-ink-tertiary" />
+                    <span>
+                      <span className="t-body block font-medium leading-tight text-ink">{p.name}</span>
+                      <span className="t-slug mt-1 block text-ink-tertiary">{p.relation}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <LogoField />
           </div>
         </section>

@@ -20,7 +20,7 @@ export const Problems = () => {
         {/* split header — one of only two on the page. The deck sits in the
             column the cost lines will later use, pre-declaring the margin. */}
         <div className="col-span-12 lg:col-span-5">
-          <span className="mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
+          <span className="sv-draw mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
           <p className="t-slug text-brand-600">{problemsSection.eyebrow}</p>
           <h2 id="problems-h" className="t-section mt-s4">{problemsSection.title}</h2>
         </div>
@@ -88,7 +88,7 @@ export const Solutions = () => {
         {/* stacked at the measure with no deck to the right — a different
             attachment from either neighbour */}
         <div className="col-span-12 lg:col-span-7 lg:col-start-2">
-          <span className="mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
+          <span className="sv-draw mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
           <p className="t-slug text-brand-600">{solutionsSection.eyebrow}</p>
           <h2 id="solutions-h" className="t-chapter mt-s4 max-w-[16ch]">{solutionsSection.title}</h2>
           <p className="t-lead mt-s5 max-w-[48ch] text-ink-secondary">{solutionsSection.deck}</p>

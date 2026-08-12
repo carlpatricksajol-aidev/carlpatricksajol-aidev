@@ -1,6 +1,7 @@
 import { Page } from "@/components/SiteChrome";
 import Hero from "@/components/landing/Hero";
 import ServiceLines from "@/components/landing/ServiceLines";
+import Industries from "@/components/landing/Industries";
 import ToolBand from "@/components/landing/ToolBand";
 import { Output, Problems, Solutions } from "@/components/landing/Problems";
 import InkBand from "@/components/landing/InkBand";
@@ -16,8 +17,10 @@ import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections"
  *   SOLUTION  the same five moves, whatever the tools are
  *   OUTPUT    what you are actually holding on Monday
  *   TOOLS     the stack it runs on and lands in
- *   → then the work: eight service lines, the three hardest builds, all
- *     twenty-six workflow maps, and the creative chapter.
+ *   → then the work: eight service lines, the five industries they have been
+ *     sold into, the three hardest builds, all twenty-six workflow maps, and
+ *     the creative chapter. Each industry's proof line names a system, so that
+ *     section hands straight into the next one.
  *   → then who he is, then one action.
  *
  * The two-track fork and the separate Process section are both gone. The fork
@@ -33,6 +36,7 @@ const Index = () => (
     <Output />
     <ToolBand />
     <ServiceLines />
+    <Industries />
     <Systems />
     <Workflows />
     <InkBand />

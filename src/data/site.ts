@@ -159,6 +159,28 @@ export const platformField: { key?: string; word?: string; name: string }[] = [
   { key: "dropbox", name: "Dropbox" },
 ];
 
+/**
+ * The one per-platform claim on the site, and the verbs are load-bearing.
+ *
+ * "Published to" is evidenced for Meta and TikTok: automated bulk creative
+ * upload and cross-platform reporting in the Bumpy App role below, and the
+ * webhook-to-post-ads case study, which ends with finished ads live on both.
+ *
+ * Instagram is labelled a SOURCE, not a destination, because that is all the
+ * repos evidence: it appears only in the competitor-research scrapers, never in
+ * anything that publishes. Quietly listing it beside the other two would imply
+ * a publishing capability that does not exist, and the asymmetry does more
+ * anti-sponsor-wall work than any amount of prose.
+ *
+ * Deliberately separate from `platformField` (the models and tools that MAKE an
+ * ad) and from the toolGroups "Where the work lands" chips (a stack listing).
+ */
+export const adPlacements: { key: string; name: string; relation: string }[] = [
+  { key: "meta", name: "Meta", relation: "Published to" },
+  { key: "tiktok", name: "TikTok", relation: "Published to" },
+  { key: "instagram", name: "Instagram", relation: "Pulled from" },
+];
+
 export interface VideoAd {
   src: string;
   poster: string;
@@ -428,7 +450,7 @@ export const experience: Role[] = [
     title: "AI Automation & Platform Manager",
     company: "Bumpy App",
     period: "Nov 2025 — Present",
-    summary: "Production Claude MCP infrastructure and the paid-social automation suite around it.",
+    summary: "A dating app. Production Claude MCP infrastructure and the paid-social automation suite around it.",
     points: [
       "Built and shipped a production Claude MCP server exposing the internal SDK, proprietary database and attribution platform to Claude as first-class tools",
       "Deployed Claude Code agent infrastructure plus three specialist Slack agents scoped to users, acquisition performance and creative concepts",
