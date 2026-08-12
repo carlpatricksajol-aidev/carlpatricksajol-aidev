@@ -1,6 +1,7 @@
 import { ArrowLink, SectionHeader, useEnter } from "@/components/primitives";
 import { industries, industriesSection, saasLine } from "@/data/copy";
 import Harness from "@/components/schematic/Harness";
+import { rich } from "@/components/Rich";
 
 /**
  * ARCHETYPE: ruled list, five rows.
@@ -57,7 +58,7 @@ const Industries = () => {
                   support */}
               {item.industry === "SaaS" && (
                 <p className="t-small mt-s5 max-w-[70ch] border-l-2 border-brand-600 pl-s4 text-ink-secondary lg:ml-[16.6667%]">
-                  {saasLine}
+                  {rich(saasLine)}
                 </p>
               )}
             </li>

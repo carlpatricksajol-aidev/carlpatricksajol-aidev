@@ -63,7 +63,7 @@ const Workflows = () => {
   }, [onScreen, running, shown]);
 
   return (
-    <section id="workflows" ref={ref} className={`${className} section bg-surface-sunken`} aria-labelledby="wf-h">
+    <section id="workflows" ref={ref} className={`${className} section stock-wove`} aria-labelledby="wf-h">
       <div className="w-shell gutter">
         <SectionHeader
           split

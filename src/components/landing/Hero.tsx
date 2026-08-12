@@ -3,6 +3,7 @@ import SystemMap from "@/components/SystemMap";
 import HeroBurst from "@/components/HeroBurst";
 import { profile } from "@/data/site";
 import { hero } from "@/data/copy";
+import { rich } from "@/components/Rich";
 
 /**
  * Capped under 100vh so the next section peeks above the fold.
@@ -32,7 +33,7 @@ const Hero = () => {
 
           <h1 className="t-display t-display--long mt-s5 max-w-[22ch]">{hero.h1}</h1>
 
-          <p className="t-lead mt-s5 max-w-[48ch] text-ink-secondary">{hero.deck}</p>
+          <p className="t-lead mt-s5 max-w-[48ch] text-ink-secondary">{rich(hero.deck)}</p>
 
           <div className="mt-s6 flex flex-wrap items-center gap-x-s6 gap-y-s4">
             <PrimaryButton href={profile.calendly} large>

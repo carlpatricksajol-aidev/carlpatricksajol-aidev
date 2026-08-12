@@ -6,6 +6,7 @@ import { caseLine, lineHeroFlow, lineOrder, type LineId } from "@/data/serviceLi
 import { lineCopy } from "@/data/serviceLineCopy";
 import { chapters } from "@/data/copy";
 import RoadmapBar from "@/components/schematic/RoadmapBar";
+import { rich } from "@/components/Rich";
 
 /**
  * ARCHETYPE: sticky-left / scrolling-right pair — the page's one use of it.
@@ -61,7 +62,7 @@ const ServiceLines = () => {
           <p className="t-mono tnum text-[0.9375rem] text-brand-600">{ch.number}</p>
           <p className="t-slug mt-s2 text-ink-tertiary">{ch.eyebrow}</p>
           <h2 id="auto-h" className="t-chapter mt-s4 max-w-[12ch]">{ch.title}</h2>
-          <p className="t-lead mt-s5 max-w-[34ch] text-ink-secondary">{ch.deck}</p>
+          <p className="t-lead--display mt-s5 max-w-[34ch] text-ink-secondary">{rich(ch.deck)}</p>
 
           {/* THE ROADMAP. The index of eight is also a progress spine: a rail
               that fills to wherever you have read to, a node per line that
@@ -117,7 +118,7 @@ const ServiceLines = () => {
                   </span>
                 </div>
 
-                <p className="t-lead mt-s3 max-w-[46ch] text-ink">{c.promise}</p>
+                <p className="t-lead--display mt-s3 max-w-[46ch] text-ink">{c.promise}</p>
                 <p className="t-body mt-s3 max-w-[56ch] text-ink-secondary">{c.detail}</p>
 
                 {/* what you receive — a fixed 3-up so every line answers the

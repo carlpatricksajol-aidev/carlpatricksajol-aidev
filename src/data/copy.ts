@@ -13,9 +13,22 @@
  * being the subject.
  */
 
+/**
+ * INLINE EMPHASIS SYNTAX, read by <Rich> in src/components/Rich.tsx.
+ *
+ *   [[lift:...]]   the highlight. ONE per section, nine words max, never in a band.
+ *   [[step:...]]   a phrase stepped to display ink. The workhorse.
+ *   [[fig:...]]    a COUNTED number. Never a self-reported percentage.
+ *   [[said:...]]   serif italic: names a term the first time it is defined.
+ *   [[aside:...]]  sans italic: an aside, quieter than the sentence around it.
+ *
+ * The audit found zero emphasis devices in 29,000 characters of prose on this
+ * site. These are deliberately sparse: if everything is emphasised, nothing is.
+ */
+
 export const hero = {
   h1: "I wire the tools you already pay for, so nobody has to move work between them.",
-  deck: "Zapier, Make and n8n do the moving, ChatGPT and Claude do the reading and sorting, and it all runs on the HubSpot, Airtable, Notion and Google Sheets accounts you already have. Nightly reporting, records kept in step, publishing, finished ad creative: same wiring.",
+  deck: "Zapier, Make and n8n do the moving, ChatGPT and Claude do the reading and sorting, and it all runs on the HubSpot, Airtable, Notion and Google Sheets accounts you already have. [[lift:Nightly reporting, records kept in step, publishing, finished ad creative: same wiring.]]",
   primaryCta: "Map what repeats in 30 minutes",
   secondaryCta: "See the 26 running now",
   /** sits beside the availability dot, so the first screen is not proof-free */
@@ -38,7 +51,7 @@ export interface Problem {
 export const problemsSection = {
   eyebrow: "The problem",
   title: "Your tools all work. A person is what connects them.",
-  deck: "Your records sit in one tool, your numbers in another, your files in a third, and someone spends every week carrying things between them. None of it is a crisis. That is why it never gets fixed.",
+  deck: "Your records sit in one tool, your numbers in another, your files in a third, and someone spends every week carrying things between them. [[lift:None of it is a crisis. That is why it never gets fixed.]]",
 };
 
 export const problems: Problem[] = [
@@ -78,7 +91,7 @@ export interface Solution {
 export const solutionsSection = {
   eyebrow: "The solution",
   title: "The same five moves, whatever the tools are",
-  deck: "The order never changes, and nothing you already own gets thrown away. The first two moves decide what a build costs. The last three decide whether anyone still has to watch it run.",
+  deck: "[[step:The order never changes, and nothing you already own gets thrown away.]] The first two moves decide what a build costs. The last three decide whether anyone still has to watch it run.",
 };
 
 export const solutions: Solution[] = [
@@ -90,7 +103,7 @@ export const solutions: Solution[] = [
   {
     headline: "Use the connection that already exists. Build the one that doesn't.",
     body: "Most tools already have a ready-made connection waiting in Zapier, Make or n8n, and where there is one, that is what gets used. Where there isn't, I build it against the tool's own controls. A tool nobody has connected before is a build, not a no.",
-    proof: "222 steps across the live systems go straight at another company's software rather than through a ready-made connection.",
+    proof: "[[fig:222]] steps across the live systems go straight at another company's software rather than through a ready-made connection.",
   },
   {
     headline: "Name the tool that is right, and stop copying",
@@ -100,13 +113,13 @@ export const solutions: Solution[] = [
   },
   {
     headline: "Find the moment it should start",
-    body: "Every repeating job already has one: a time on the clock, a form filled in, a row added, a file dropped in a folder, a message arriving. Finding that moment is most of the design. The rest is plumbing.",
+    body: "Every repeating job already has one: [[said:a time on the clock, a form filled in, a row added, a file dropped in a folder, a message arriving]]. Finding that moment is most of the design. The rest is plumbing.",
     proof: "Not every job should start itself. Some live systems still wait for a person on purpose, and the handover says which.",
   },
   {
     headline: "Retry quietly, escalate loudly",
     body: "Every run writes down what it touched. Most failures are a tool being briefly unavailable, so the run tries again on its own. What it still cannot finish goes to a named person in Slack, saying which step broke. A system nobody can see is a system nobody trusts, and an untrusted system gets checked by hand, which puts the work straight back where it started.",
-    proof: "Slack steps appear 22 times across the live systems. That is where the failures land.",
+    proof: "Slack steps appear [[fig:22]] times across the live systems. That is where the failures land.",
     caseSlug: "meta-comments-moderator",
   },
 ];
@@ -119,7 +132,7 @@ export interface OutputItem {
 export const outputSection = {
   eyebrow: "The output",
   title: "What you own on Monday",
-  deck: "Five things that exist once it is done. Each one sits in an account you already control.",
+  deck: "Five things that exist once it is done. [[lift:Each one sits in an account you already control.]]",
 };
 
 export const outputs: OutputItem[] = [
@@ -195,7 +208,7 @@ export const industriesSection = {
  *  Sits under the SaaS row, not in the deck, so it reads as evidence rather
  *  than as a boast the section then has to support. */
 export const saasLine =
-  "SaaS twice, not once: a consumer gift product with published pricing, and a self-serve ad generator with no login at all. Both taken from an empty repo to a page a stranger can use without being taught how. Both are in private beta, and both case studies say so on their own pages.";
+  "[[lift:SaaS twice, not once:]] a consumer gift product with published pricing, and a self-serve ad generator with no login at all. Both taken from an empty repo to a page a stranger can use without being taught how. Both are in private beta, and both case studies say so on their own pages.";
 
 export const industries: Industry[] = [
   {
@@ -239,7 +252,7 @@ export const testimonialsSection = {
 export const toolBandSection = {
   eyebrow: "The tools",
   title: "Nothing here gets replaced",
-  deck: "These are the accounts the work runs on and lands in. Whatever you already pay for stays where it is and keeps its own login. Nothing on this board gets swapped out to make a system work.",
+  deck: "These are the accounts the work runs on and lands in. Whatever you already pay for stays where it is and keeps its own login. [[lift:Nothing on this board gets swapped out to make a system work.]]",
 };
 
 

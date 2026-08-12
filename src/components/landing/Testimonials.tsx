@@ -23,7 +23,7 @@ const Testimonials = () => {
     <section
       id="testimonials"
       ref={ref}
-      className={`${className} section relative`}
+      className={`${className} section bleed relative border-y border-line stock-wove`}
       aria-labelledby="testimonials-h"
     >
       <div className="w-shell gutter">

@@ -30,7 +30,7 @@ import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections"
  * a second five-step method list sitting a screen away from the first.
  */
 const Index = () => (
-  <Page header={<SiteHeader stops={13} />}>
+  <Page header={<SiteHeader stops={14} />}>
     <Hero />
     <Problems />
     <Proof />

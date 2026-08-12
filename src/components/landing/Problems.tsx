@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, useEnter } from "@/components/primitives";
 import { useEffect, useRef, useState } from "react";
 import { outputSection, outputs, problems, problemsSection, solutions, solutionsSection } from "@/data/copy";
+import { rich } from "@/components/Rich";
 import { Faults } from "@/components/schematic/Faults";
 import { Move } from "@/components/schematic/Moves";
 import { Terminal } from "@/components/schematic/Terminals";
@@ -29,7 +30,7 @@ export const Problems = () => {
           <h2 id="problems-h" className="t-section mt-s4">{problemsSection.title}</h2>
         </div>
         <p className="t-body col-span-12 mt-s4 text-ink-secondary lg:col-span-3 lg:col-start-10 lg:mt-0 lg:self-end">
-          {problemsSection.deck}
+          {rich(problemsSection.deck)}
         </p>
       </div>
 
@@ -69,7 +70,7 @@ export const Problems = () => {
                   <p className="t-section text-ink" style={{ textIndent: "-0.42em" }}>
                     &ldquo;{p.title}&rdquo;
                   </p>
-                  <p className="t-body mt-s4 max-w-[52ch] text-ink-secondary">{p.body}</p>
+                  <p className="t-body mt-s4 max-w-[52ch] text-ink-secondary">{rich(p.body)}</p>
                 </div>
 
                 {right && numeral}
@@ -123,7 +124,7 @@ export const Solutions = () => {
           <span className="sv-draw mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
           <p className="t-slug text-brand-600">{solutionsSection.eyebrow}</p>
           <h2 id="solutions-h" className="t-chapter mt-s4 max-w-[16ch]">{solutionsSection.title}</h2>
-          <p className="t-lead mt-s5 max-w-[48ch] text-ink-secondary">{solutionsSection.deck}</p>
+          <p className="t-lead--display mt-s5 max-w-[48ch] text-ink-secondary">{rich(solutionsSection.deck)}</p>
         </div>
       </div>
 
@@ -139,7 +140,7 @@ export const Solutions = () => {
               </span>
               <div className="col-span-12 lg:col-span-6">
                 <h3 className="t-sub max-w-[24ch] text-ink">{s.headline}</h3>
-                <p className="t-body mt-s3 max-w-[54ch] text-ink-secondary">{s.body}</p>
+                <p className="t-body mt-s3 max-w-[54ch] text-ink-secondary">{rich(s.body)}</p>
               </div>
               <span className="order-first col-span-12 mb-s4 block lg:order-none lg:col-span-1 lg:col-start-9 lg:mb-0 lg:self-center">
                 <Move i={i} live={liveRows[i]} />
@@ -151,7 +152,7 @@ export const Solutions = () => {
                     className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-signal align-middle"
                     aria-hidden="true"
                   />
-                  {s.proof}
+                  {rich(s.proof)}
                 </p>
                 {s.caseSlug && (
                   <span className="arrow-link t-small mt-s3 inline-flex">
@@ -208,7 +209,7 @@ export const Output = () => {
           <span className="sv-draw mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
           <p className="t-slug text-brand-600">{outputSection.eyebrow}</p>
           <h2 id="output-h" className="t-chapter mt-s4 max-w-[16ch]">{outputSection.title}</h2>
-          <p className="t-lead mt-s5 max-w-[44ch] text-ink-secondary">{outputSection.deck}</p>
+          <p className="t-lead--display mt-s5 max-w-[44ch] text-ink-secondary">{rich(outputSection.deck)}</p>
         </div>
       </div>
 

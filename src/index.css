@@ -1,5 +1,10 @@
 @import "@fontsource-variable/newsreader/opsz.css";
+/* both italic files were already on disk and neither was imported, so every
+   italic on this site silently rendered upright — font-synthesis is none, so
+   the browser was not even allowed to fake one. */
+@import "@fontsource-variable/newsreader/opsz-italic.css";
 @import "@fontsource-variable/instrument-sans/standard.css";
+@import "@fontsource-variable/instrument-sans/standard-italic.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
@@ -22,9 +27,15 @@
 
 @layer base {
   :root {
-    /* ---- surfaces: three that are genuinely three (ΔE > 4 apart) ---- */
+    /* ---- surfaces ----
+       FIVE now, not three. Fourteen sections used to produce ONE visible ground
+       event, which is why twelve of them read as one long beige page. --wove and
+       --deep are the same warm hue at lower lightness: a cool sheet was designed
+       and cut, because one hue is the reason this page does not look generated. */
     --card: 32 43% 98%;          /* #FEFCFA  raised: cards, sticky bar, popovers */
     --paper: 30 43% 95%;         /* #F8F2EC  the page ground */
+    --wove: 29 34% 89%;          /* #ECE3D9  a deeper sheet: bands and signatures */
+    --deep: 28 30% 84%;          /* #E2D5CA  deepest light stock: the tipped-in plate */
     --well: 27 30% 90%;          /* #EEE5DE  sunken: mats, washes, the ledger */
 
     /* ---- the plate: the one dark region, same hue, lights off ---- */
@@ -43,6 +54,9 @@
     --ink-2: 25 14% 27%;         /* #50463D  DEFAULT READING COLOUR           8.3:1 */
     --ink-3: 25 11% 38%;         /* #6C6157  captions, meta                   5.4:1 */
     --ink-4: 24 10% 49%;         /* #887C72  control boundaries ONLY, never text */
+    /* ink-3 is 4.28:1 on --deep, which is a fail, not a near-miss. Any stock
+       darker than --wove overrides ink-3 to this. Measured, not estimated. */
+    --ink-3-deep: 26 13% 32%;    /* #5C5047  5.42:1 on --deep */
 
     /* ---- accent A: blue. track 01, links, focus. never a button fill. ---- */
     --blue-700: 211 100% 30%;
@@ -56,7 +70,13 @@
     --ox-600: 24 79% 34%;        /* #9D4613  5.70:1 on paper */
     --ox-500: 22 65% 46%;
     --ox-400: 19 71% 63%;        /* plate only */
-    --ox-200: 21 72% 86%;
+
+    /* THE LIFT — the highlight. Deliberately WARM and not blue: blue on this
+       page means interaction, and a blue panel under a phrase reads as a dead
+       link. This is the page's own hue at higher chroma, so it is a highlighter
+       that belongs to the family. ink-0 on it is 13.91:1. */
+    --lift: 42 74% 82%;          /* #F3DFAF */
+    --lift-rule: 38 52% 62%;     /* #D0AC6C  the seated edge */
 
     --signal: 156 58% 28%;       /* #1E7049  factual status only */
     --signal-plate: 152 42% 54%;
@@ -94,6 +114,11 @@
     --turn-major: clamp(120px, 13vw, 176px);
 
     /* ---- weights: 700 is deliberately absent ---- */
+    /* correct near opsz 24, which is where inline and sub-heading serif lives.
+       Do NOT apply it above ~44px: the opsz axis has already opened the face up
+       by then and the factor inverts. */
+    --serif-comp: 1.166;
+
     --w-body: 400;
     --w-read: 450;
     --w-medium: 510;
@@ -169,8 +194,15 @@
     background-color: hsl(var(--paper));
     color: hsl(var(--ink-2));
     /* Instrument Sans, not Inter: Inter has become the read-as-default choice.
-       Its x-height (0.510) is within 1% of Newsreader's (0.515), so serif and
-       sans pair at identical pixel sizes with no compensation. */
+       CORRECTION, measured two ways (OS/2 metrics out of the woff2, and the ink
+       box of a rendered glyph in Chrome): Newsreader's x-height is NOT within 1%
+       of Instrument Sans's. At reading sizes with optical sizing on it is 15-17%
+       SMALLER. The old comment claimed 0.515 vs 0.510 and that claim is false.
+       This is why the display face read as absent rather than merely rare: every
+       time it appeared it was undersized. Serif set inline or at small sizes
+       must be scaled by --serif-comp. The factor is a CURVE, not a constant —
+       the opsz axis opens the serif up as it grows — so it is only correct near
+       the size it is declared at, and headings above ~44px need none. */
     font-family: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
     font-optical-sizing: auto;
     /* the browser may never smear a weight the file doesn't contain */
@@ -196,6 +228,8 @@
   }
   :focus:not(:focus-visible) { outline: none; }
 
+  /* deliberately NOT the lift colour: a selected phrase and a lifted phrase
+     must never be indistinguishable */
   ::selection {
     background: hsl(var(--blue-200));
     color: hsl(var(--ink-0));
@@ -245,12 +279,34 @@
     line-height: 0.9;
     /* Newsreader ships tabular figures by default — the ledger aligns for free */
   }
+  /* THE SINGLE LARGEST TYPE CHANGE ON THE PAGE. .t-sub is the most common
+     heading on the site — 55 instances: every service-line h3, every output
+     row, every case card, every dialog title — and it was Instrument Sans. So
+     the serif/sans pairing chosen as the site's signature never appeared at the
+     altitude where reading actually happens: 3.2% of rendered characters. The
+     serif now carries it, scaled by --serif-comp so it does not read smaller
+     than the sans it sits above. */
   .t-sub {
-    font-size: clamp(1.3125rem, 0.282vw + 1.246rem, 1.5rem);
-    font-weight: var(--w-strong);
-    letter-spacing: -0.012em;
-    line-height: 1.25;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-size: calc(1.5rem * var(--serif-comp));
+    font-weight: 400;
+    letter-spacing: -0.014em;
+    line-height: 1.24;
+    font-optical-sizing: auto;
   }
+
+  /* the section deck, in the display face. The one typographic move already
+     working on this site is the ServiceLines two-step — a lead in ink-0 sitting
+     directly on a body line in ink-2. Setting the lead half in the serif turns a
+     size step into a step of face, size AND colour at once. */
+  .t-lead--display {
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-size: calc(1.3125rem * var(--serif-comp));
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    line-height: 1.38;
+  }
+
   .t-lead {
     font-size: clamp(1.1875rem, 0.188vw + 1.144rem, 1.3125rem);
     font-weight: var(--w-body);
@@ -556,6 +612,136 @@
     mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
+  /* ================= emphasis =================
+     The audit counted the in-paragraph emphasis devices on this entire site and
+     found ZERO. Not few — zero: no strong, no em, no mark, no italic, no small
+     caps, no drop cap, no coloured or lifted phrase anywhere in 29,000
+     characters of prose. Every paragraph was one weight in one colour, which is
+     exactly what makes a page feel machine-set however good the words are.
+
+     WEIGHT IS NOT AVAILABLE. Instrument Sans Variable ships 400-700, so 400 is
+     the floor with nothing beneath it, and 400 to 560 at 17px is under the
+     resolution of the eye. So emphasis here is never bold. It is INK: a second
+     impression laid under the phrase, or a change of face.
+
+     SIX RULES, and they are what keep this from becoming decoration:
+     1. One device per phrase. A lift is never also italic, never also a figure.
+     2. At most ONE lift per section, nine words maximum, never inside a band —
+        bands are ledgers, and a highlighter in a table is a spreadsheet.
+     3. No device ever enters a heading, a button or a schematic. Headings carry
+        face plus scale already.
+     4. The lift is WARM, never blue. Blue on this page means interaction, and a
+        blue panel under a phrase reads as a dead link.
+     5. Italic has exactly two jobs and never means "louder": the serif italic
+        NAMES a term the first time it is defined, the sans italic is an aside.
+     6. .fig obeys the data, not the designer. Only numbers that were actually
+        counted get it. Never a self-reported percentage. */
+
+  /* THE LIFT — the highlight, and the thing the client asked for by name. Sits
+     UNDER the type, extends past the words so it reads as a stroke rather than a
+     box, and breaks correctly across lines. */
+  .lift {
+    background: hsl(var(--lift));
+    color: hsl(var(--ink-0));
+    padding: 0.08em 0.28em;
+    margin-inline: -0.28em;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 hsl(var(--lift-rule) / 0.45);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* THE STEP — the workhorse, and the quietest thing here. A phrase moves from
+     the reading ink to the display ink and nothing else changes. */
+  .step { color: hsl(var(--ink-0)); }
+
+  /* THE FIGURE — a counted number set apart from the sentence carrying it.
+     Compensated, tabular, and it exists so the numbers this site's credibility
+     rests on stop being just more words in the line. */
+  .fig {
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-size: calc(1em * var(--serif-comp));
+    font-weight: 400;
+    letter-spacing: -0.008em;
+    font-variant-numeric: tabular-nums lining-nums;
+    color: hsl(var(--ink-0));
+  }
+
+  /* THE INCIPIT — the first few words of a section's opening paragraph, hand-cut
+     as caps. NOT font-variant-caps: none of the three shipped faces contains an
+     `smcp` feature and font-synthesis is none, so small-caps would render as
+     nothing at all — a silent failure of exactly the kind the missing italic
+     imports were. */
+  .incipit {
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-size: calc(0.84em * var(--serif-comp));
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    word-spacing: 0.04em;
+    color: hsl(var(--ink-0));
+  }
+
+  /* THE INITIAL — a real three-line drop cap, on exactly three paragraphs: the
+     three places a reader arrives at a new argument. Cap height is derived from
+     Newsreader's measured cap ratio, not eyeballed. */
+  .initial::first-letter {
+    float: left;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-weight: 300;
+    font-size: 4.6em;
+    line-height: 0.76;
+    padding-inline-end: 0.07em;
+    padding-block-start: 0.02em;
+    color: hsl(var(--blue-600));
+  }
+  /* a floated first-letter and a hanging quotation mark cannot share a line */
+  @media (max-width: 639px) {
+    .initial::first-letter { font-size: 3.4em; }
+  }
+
+  /* THE TWO ITALICS. Both faces ship an italic and NEITHER was imported, so
+     every italic on this site failed silently until now. */
+  .said {
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-style: italic;
+    font-size: calc(1em * var(--serif-comp));
+    letter-spacing: -0.004em;
+    color: hsl(var(--ink-0));
+  }
+  .aside {
+    font-style: italic;
+    color: hsl(var(--ink-3));
+  }
+
+  /* THE SHOULDER NOTE — a second voice, on the width axis the project already
+     pays for and had never used: font-stretch was 100% on all 696 rendered text
+     nodes. Provenance and caveats that would break a sentence if inline. */
+  .note {
+    font-size: 0.84375rem;
+    font-stretch: 88%;
+    font-weight: var(--w-read);
+    line-height: 1.5;
+    color: hsl(var(--ink-3));
+  }
+
+  /* ================= stocks =================
+     The page is bound in signatures. Every stock is the same warm hue at a
+     different lightness — a cool sheet was designed and cut, because one hue is
+     the reason this page does not look generated. A ground change never rests on
+     colour alone: every boundary carries a rule as well. */
+  .stock-wove { background-color: hsl(var(--wove)); }
+  .stock-deep {
+    background-color: hsl(var(--deep));
+    /* Two tokens step on this stock, both measured against the rendered pixels
+       rather than assumed: ink-3 is 4.28:1 here and the blue accent lands at
+       4.39:1, and both are fails rather than near-misses. A darker sheet has to
+       carry darker ink, and the override lives with the stock so no component
+       has to remember. */
+    --ink-3: var(--ink-3-deep);
+    --blue-600: var(--blue-700);
+  }
+
   /* ---------- the pull-quote mark ----------
      The only purely decorative glyph on the site, and it earns its place by
      being the testimonial section's whole component. Set at display scale in
@@ -751,26 +937,6 @@
     height: 2px;
     overflow: hidden;
     pointer-events: none;
-  }
-  .wire-fill {
-    position: absolute;
-    inset: 0;
-    display: block;
-    background: linear-gradient(90deg, hsl(var(--blue-600) / 0.35), hsl(var(--blue-600)));
-    transform-origin: left center;
-    transform: scaleX(0);
-  }
-  @keyframes wire-fill {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
-  @supports (animation-timeline: scroll()) {
-    .wire-fill {
-      animation: wire-fill linear both;
-      animation-timeline: scroll(root block);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
   }
 
   /* ---------- the roadmap: where am I in the eight ----------

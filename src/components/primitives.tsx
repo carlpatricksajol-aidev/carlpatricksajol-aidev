@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { rich } from "@/components/Rich";
 import { Link } from "react-router-dom";
 
 /* ---------- icons: the site has exactly three glyphs ---------- */
@@ -84,7 +85,7 @@ export const SectionHeader = ({
           <p className={`t-slug ${accent}`}>{eyebrow}</p>
           <h2 id={id} className={`${h} mt-s4 max-w-[22ch]`}>{title}</h2>
         </div>
-        {deck && <p className="t-lead max-w-[38ch] text-ink-secondary lg:pt-s7">{deck}</p>}
+        {deck && <p className="t-lead--display max-w-[38ch] text-ink-secondary lg:pt-s7">{rich(deck)}</p>}
       </div>
     );
   }
@@ -93,7 +94,7 @@ export const SectionHeader = ({
       <span className={`sv-draw mb-s4 block h-px w-6 ${rule}`} aria-hidden="true" />
       <p className={`t-slug ${accent}`}>{eyebrow}</p>
       <h2 id={id} className={`${h} mt-s4 max-w-[22ch]`}>{title}</h2>
-      {deck && <p className="t-lead mt-s4 max-w-[52ch] text-ink-secondary">{deck}</p>}
+      {deck && <p className="t-lead--display mt-s4 max-w-[52ch] text-ink-secondary">{rich(deck)}</p>}
     </div>
   );
 };

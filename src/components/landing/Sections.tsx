@@ -33,7 +33,7 @@ export const Proof = () => {
     <section
       id="proof"
       ref={ref}
-      className={`${className} bleed relative border-y border-line-strong bg-surface-sunken`}
+      className={`${className} bleed relative border-y border-line-strong stock-wove`}
       aria-labelledby="proof-h"
     >
       <div className="grid12 py-s6">
@@ -87,7 +87,7 @@ export const Systems = () => {
   const mid = rest.slice(0, 2);
 
   return (
-    <section id="systems" ref={ref} className={`${className} section`} aria-labelledby="systems-h">
+    <section id="systems" ref={ref} className={`${className} section bleed relative border-y border-line-strong stock-deep`} aria-labelledby="systems-h">
       <div className="w-shell gutter">
         <SectionHeader
           split

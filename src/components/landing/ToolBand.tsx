@@ -19,7 +19,7 @@ const ToolBand = () => {
     <section
       id="tools"
       ref={ref}
-      className={`${className} section bleed relative border-y border-line bg-surface-sunken`}
+      className={`${className} section bleed relative border-y border-line stock-wove`}
       aria-labelledby="tools-h"
     >
       <div className="w-shell gutter">
