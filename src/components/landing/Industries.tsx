@@ -29,7 +29,7 @@ const Industries = () => {
 
         <ul className="mt-s7 border-t border-line">
           {industries.map((item, i) => (
-            <li key={item.industry} className="relative border-b border-line py-s6">
+            <li key={item.industry} className="relative border-b border-line py-s5">
               <div className="grid12">
                 {/* the numeral gutter, not column 7: column 7 is about 60-85px
                     of the shell, too narrow for a real object */}

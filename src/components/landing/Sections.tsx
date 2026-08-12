@@ -178,7 +178,7 @@ export const Credentials = () => {
         />
         <ul className="mt-s8 border-t border-line">
           {experience.slice(0, 3).map((r) => (
-            <li key={r.company} className="grid gap-s3 border-b border-line py-s6 md:grid-cols-[1fr_2fr] md:gap-s6">
+            <li key={r.company} className="grid gap-s3 border-b border-line py-s5 md:grid-cols-[1fr_2fr] md:gap-s6">
               <div>
                 {/* the company is the thing a reader scans for, so it is set at
                     section size rather than as a caption above its own dates */}

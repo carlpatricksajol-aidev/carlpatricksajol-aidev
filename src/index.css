@@ -109,9 +109,13 @@
     --gutter: clamp(14px, 1.4vw, 24px);
     --bleed-r: calc(-1 * (var(--side) + max(0px, (100vw - min(100vw, 86rem)) / 2)));
     /* four turn sizes: the gap encodes how big the transition is */
-    --turn-minor: clamp(48px, 5vw, 68px);
-    --turn: clamp(72px, 8vw, 110px);
-    --turn-major: clamp(120px, 13vw, 176px);
+    /* tightened one step. Fourteen sections at the old --turn spent about 3,000px
+       of the page on nothing but air, and the brief was to stop making a reader
+       scroll to find the next thing. The ratio between the three is unchanged, so
+       the rhythm still encodes how big each transition is. */
+    --turn-minor: clamp(40px, 4vw, 54px);
+    --turn: clamp(56px, 5.6vw, 80px);
+    --turn-major: clamp(88px, 9vw, 124px);
 
     /* ---- weights: 700 is deliberately absent ---- */
     /* correct near opsz 24, which is where inline and sub-heading serif lives.
@@ -742,6 +746,26 @@
     --blue-600: var(--blue-700);
   }
 
+  /* ---------- the plate rail ----------
+     26 plates used to be a 13-row grid: about nine screens of vertical scroll to
+     see the work, which is a lot to ask of someone deciding whether to email you.
+     One rail at one height instead. Native overflow scroll, so the wheel, a
+     trackpad, a drag, the arrow keys and the two buttons all work and nothing is
+     trapped inside an animation. */
+  .plate-rail {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--rule-2)) transparent;
+    scroll-behavior: smooth;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent);
+  }
+  /* the plate is the tall part of the card, so it is capped: an unbounded 170-node
+     graph would make one card four times the height of its neighbours */
+  .plate-rail img { max-height: 190px; object-fit: cover; object-position: left top; }
+  @media (prefers-reduced-motion: reduce) {
+    .plate-rail { scroll-behavior: auto; }
+  }
+
   /* ---------- the pull-quote mark ----------
      The only purely decorative glyph on the site, and it earns its place by
      being the testimonial section's whole component. Set at display scale in
@@ -749,10 +773,11 @@
      starts flush on the column edge. */
   .quote-mark {
     position: absolute;
-    left: -0.14em;
-    top: -0.22em;
+    left: -0.06em;
+    top: -0.34em;
+    z-index: 0;
     font-family: "Newsreader Variable", ui-serif, Georgia, serif;
-    font-size: clamp(3.5rem, 5vw, 5.5rem);
+    font-size: 3.25rem;
     font-weight: 300;
     line-height: 1;
     color: hsl(var(--rule-2));

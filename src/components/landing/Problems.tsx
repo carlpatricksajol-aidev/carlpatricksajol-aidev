@@ -53,7 +53,7 @@ export const Problems = () => {
           );
           return (
             <li key={p.title} className="relative border-t border-line last:border-b">
-              <div className="grid12 py-s6">
+              <div className="grid12 py-s5">
                 {!right && numeral}
 
                 <div
@@ -131,7 +131,7 @@ export const Solutions = () => {
       <ol className="mt-s7">
         {solutions.map((s, i) => {
           const inner = (
-            <div className="grid12 py-s6">
+            <div className="grid12 py-s5">
               <span
                 className="t-mono tnum col-span-2 hidden text-[0.8125rem] text-ink-tertiary lg:block"
                 aria-hidden="true"
@@ -215,7 +215,7 @@ export const Output = () => {
 
       <dl className="mt-s7 border-t border-line">
         {outputs.map((o, i) => (
-          <div key={o.title} className="grid12 relative border-b border-line py-s6">
+          <div key={o.title} className="grid12 relative border-b border-line py-s5">
             <dt className="t-sub col-span-12 max-w-[26ch] text-ink lg:col-span-4 lg:col-start-2">{o.title}</dt>
             <dd className="t-body col-span-12 mt-s3 max-w-[58ch] text-ink-secondary lg:col-span-6 lg:col-start-6 lg:mt-0">
               {o.body}

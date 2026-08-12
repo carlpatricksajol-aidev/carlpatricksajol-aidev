@@ -173,14 +173,16 @@ const StaticWall = () => {
 
   return (
     <>
-      {/* The two counter-drifting rails are gone. The same marquee mechanic ran
-          six times across this page; two survive, both in this room, and this is
-          not one of them. Every ad now appears exactly once, tabbable once, and
-          the grid lets a reader actually compare eleven concepts instead of
-          chasing them past a mask. */}
-      <ul className="mt-s7 grid grid-cols-2 gap-s4 sm:grid-cols-3 lg:grid-cols-6">
+      {/* One rail, same as the video wall above it and the plate wall below, so
+          the three galleries behave identically instead of each inventing its own
+          interaction. As a six-column grid this was 1,200px of page for eleven
+          ads; sideways it is one card tall. Every ad appears exactly once and is
+          tabbable exactly once — no duplicated marquee set to skip past. */}
+      <ul className="video-rail mt-s7 flex snap-x snap-mandatory gap-s4 overflow-x-auto pb-s3">
         {staticAds.map((a, i) => (
-          <li key={a.src}>{tile(a, i)}</li>
+          <li key={a.src} className="w-[200px] shrink-0 snap-start sm:w-[240px]">
+            {tile(a, i)}
+          </li>
         ))}
       </ul>
 

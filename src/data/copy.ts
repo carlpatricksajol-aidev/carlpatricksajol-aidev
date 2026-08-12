@@ -249,10 +249,16 @@ export const testimonialsSection = {
   deck: "Colleagues at an automation studio, not buying clients, and it is worth saying which. They are the people who inherit a system when it lands and have to keep it running.",
 };
 
+/** the line under the board. It exists because a grid of 31 marks reads as a
+ *  closed inventory — "these are the tools he knows" — and a specialist who has
+ *  connected an undocumented REST API is not well served by that. */
+export const toolBandFooter =
+  "Thirty-one shown because they come up most. The list behind them is longer: anything with an API, a webhook or an export, and several things with none of the three. Two years of this is mostly the tools that were not on anybody's list.";
+
 export const toolBandSection = {
   eyebrow: "The tools",
   title: "Nothing here gets replaced",
-  deck: "These are the accounts the work runs on and lands in. Whatever you already pay for stays where it is and keeps its own login. [[lift:Nothing on this board gets swapped out to make a system work.]]",
+  deck: "A sample, not a list of limits. These are the accounts the work runs on and lands in, and whatever you already pay for stays where it is and keeps its own login. [[lift:If your tool is not on this board, that is a build, not a no.]]",
 };
 
 

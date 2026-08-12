@@ -35,24 +35,28 @@ const Testimonials = () => {
           deck={testimonialsSection.deck}
         />
 
-        <ul className="mt-s7 grid gap-px border-t border-line md:grid-cols-2">
-          {testimonials.map((t, i) => (
+        {/* Four across, not four stacked. As two tall columns each quote owned
+            about 500px of page and the section ran four screens for 90 words of
+            text. At this size all four are comparable in one glance, which is
+            the only reason to show four rather than one. */}
+        <ul className="mt-s7 grid gap-px border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+          {testimonials.map((q, i) => (
             <li
-              key={t.name}
-              className={`relative border-b border-line py-s6 md:pr-s6 ${
-                i % 2 === 1 ? "md:border-l md:border-line md:pl-s6" : ""
-              }`}
+              key={q.name}
+              className={`relative flex flex-col border-b border-line py-s5 pr-s5 ${
+                i % 2 === 1 ? "sm:border-l sm:border-line sm:pl-s5" : ""
+              } ${i % 4 !== 0 ? "lg:border-l lg:border-line lg:pl-s5" : "lg:border-l-0 lg:pl-0"}`}
             >
-              {/* the mark hangs outside the measure so the quote's first line
-                  still starts on the column edge */}
               <span className="quote-mark" aria-hidden="true">
                 &ldquo;
               </span>
-              <blockquote className="t-lead max-w-[46ch] text-ink">{t.quote}</blockquote>
-              <figcaption className="mt-s5 border-t border-line pt-s3">
-                <p className="t-body font-medium text-ink">{t.name}</p>
-                <p className="t-mono mt-1 text-[0.75rem] uppercase tracking-[0.07em] text-ink-tertiary">
-                  {t.role} · {t.org}
+              <blockquote className="t-body relative z-10 text-ink">{q.quote}</blockquote>
+              <figcaption className="mt-auto pt-s5">
+                <p className="t-small font-medium text-ink">{q.name}</p>
+                <p className="t-mono mt-1 text-[0.6875rem] uppercase leading-[1.45] tracking-[0.06em] text-ink-tertiary">
+                  {q.role}
+                  <br />
+                  {q.org}
                 </p>
               </figcaption>
             </li>

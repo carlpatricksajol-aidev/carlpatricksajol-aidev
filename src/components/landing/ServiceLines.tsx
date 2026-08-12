@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, useEnter } from "@/components/primitives";
 import { caseStudies } from "@/data/site";
-import { caseLine, lineHeroFlow, lineOrder, type LineId } from "@/data/serviceLines";
+import { caseLine, lineOrder, type LineId } from "@/data/serviceLines";
 import { lineCopy } from "@/data/serviceLineCopy";
 import { chapters } from "@/data/copy";
 import RoadmapBar from "@/components/schematic/RoadmapBar";
@@ -99,7 +99,6 @@ const ServiceLines = () => {
           <RoadmapBar active={active} />
           {lineOrder.map((id, i) => {
             const c = lineCopy[id];
-            const plate = lineHeroFlow[id];
             const cases = casesFor(id);
             return (
               <article
@@ -107,7 +106,7 @@ const ServiceLines = () => {
                 id={`line-${id}`}
                 data-i={i}
                 ref={(el) => (rowRefs.current[i] = el)}
-                className={`line-row scroll-mt-28 border-t border-line py-s6 last:border-b ${
+                className={`line-row scroll-mt-28 border-t border-line py-s5 last:border-b ${
                   i === active ? "is-reading" : ""
                 }`}
               >
@@ -119,29 +118,15 @@ const ServiceLines = () => {
                 </div>
 
                 <p className="t-lead--display mt-s3 max-w-[46ch] text-ink">{c.promise}</p>
-                <p className="t-body mt-s3 max-w-[56ch] text-ink-secondary">{c.detail}</p>
+                <p className="t-body mt-s3 max-w-[62ch] text-ink-secondary">{c.detail}</p>
 
-                {/* what you receive — a fixed 3-up so every line answers the
-                    same question in the same shape */}
-                <p className="t-slug mt-s5 text-ink-tertiary">What you get</p>
-                <ul className="mt-s3 grid gap-px border-t border-line sm:grid-cols-3">
-                  {c.deliverables.map((d, j) => (
-                    <li
-                      key={d}
-                      className={`t-small border-b border-line py-s3 text-ink-secondary sm:border-b-0 sm:pr-s4 ${
-                        j > 0 ? "sm:border-l sm:border-line sm:pl-s4" : ""
-                      }`}
-                    >
-                      {d}
-                    </li>
-                  ))}
-                </ul>
+                {/* one line, not a labelled three-column table. Eight of those
+                    tables was 700px of page for twenty-four short phrases. */}
+                <p className="t-small mt-s4 text-ink-secondary">
+                  <span className="t-slug mr-s3 text-ink-tertiary">You get</span>
+                  {c.deliverables.join(" · ")}
+                </p>
 
-                {plate && (
-                  <div className="mt-s5 overflow-hidden rounded-md border border-line bg-surface-sunken">
-                    <img src={plate} alt="" loading="lazy" decoding="async" className="w-full" />
-                  </div>
-                )}
 
                 <p className="t-micro mt-s4 flex items-start gap-s2 text-ink-tertiary">
                   <span

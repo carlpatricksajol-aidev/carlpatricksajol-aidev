@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { SectionHeader, useEnter } from "@/components/primitives";
+import { ArrowLeft, ArrowRight, SectionHeader, useEnter } from "@/components/primitives";
 import { flows, type Flow } from "@/data/flows";
 import { sectionCopy } from "@/data/copy";
 import { flowLine, lineOrder, type LineId } from "@/data/serviceLines";
@@ -48,6 +48,36 @@ const Workflows = () => {
   const wallRef = useRef<HTMLUListElement>(null);
   const [running, setRunning] = useState(0);
   const [onScreen, setOnScreen] = useState(false);
+  // the auto-advance yields permanently the first time a human touches the rail
+  const [driving, setDriving] = useState(true);
+  const stop = () => setDriving(false);
+
+  const nudge = (dir: 1 | -1) => {
+    setDriving(false);
+    const el = wallRef.current;
+    if (!el) return;
+    const card = el.querySelector("li");
+    const step = card ? card.getBoundingClientRect().width + 26 : 340;
+    el.scrollBy({ left: dir * step * 2, behavior: "smooth" });
+  };
+
+  // slow sideways drift, on an interval rather than per frame. It parks at the
+  // end instead of looping: a rail that silently jumps back to the start makes a
+  // reader lose their place.
+  useEffect(() => {
+    if (!driving || !onScreen) return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => {
+      const el = wallRef.current;
+      if (!el) return;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
+        setDriving(false);
+        return;
+      }
+      el.scrollBy({ left: 1, behavior: "auto" });
+    }, 28);
+    return () => window.clearInterval(id);
+  }, [driving, onScreen, filter]);
   useEffect(() => {
     const el = wallRef.current;
     if (!el || typeof IntersectionObserver === "undefined") return;
@@ -82,7 +112,7 @@ const Workflows = () => {
               <button
                 key={id}
                 type="button"
-                onClick={() => setFilter(id)}
+                onClick={() => { setFilter(id); wallRef.current?.scrollTo({ left: 0 }); }}
                 aria-pressed={filter === id}
                 className={`t-small rounded-xs px-s3 py-1.5 transition-colors duration-120 ${
                   filter === id
@@ -96,14 +126,55 @@ const Workflows = () => {
           )}
         </div>
 
-        {/* the wall */}
-        <ul ref={wallRef} className="mt-s6 grid gap-s5 md:grid-cols-2">
+        {/* THE RAIL. This was a two-column grid: 26 plates, thirteen rows, about
+            nine screens of vertical scroll to see the work. It is now one rail at
+            one height — every plate reachable sideways without the page growing.
+
+            It auto-advances slowly so it reads as running, and stops dead the
+            moment anyone touches it: native overflow scroll with snap points, so
+            trackpad, drag, wheel, arrow keys and the two buttons all work, and
+            nothing is trapped behind an animation. */}
+        <div className="mt-s6 flex items-center justify-between gap-s4">
+          <p className="t-micro text-ink-tertiary" aria-live="polite">
+            Showing {shown.length} of {flows.length}. Scroll sideways.
+          </p>
+          <div className="flex gap-s2">
+            <button
+              type="button"
+              onClick={() => nudge(-1)}
+              className="grid h-9 w-9 place-items-center rounded-sm border border-line bg-surface-raised text-ink transition-colors duration-120 hover:border-line-strong"
+              aria-label="Previous workflows"
+            >
+              <ArrowLeft />
+            </button>
+            <button
+              type="button"
+              onClick={() => nudge(1)}
+              className="grid h-9 w-9 place-items-center rounded-sm border border-line bg-surface-raised text-ink transition-colors duration-120 hover:border-line-strong"
+              aria-label="Next workflows"
+            >
+              <ArrowRight />
+            </button>
+          </div>
+        </div>
+
+        <ul
+          ref={wallRef}
+          className="plate-rail mt-s4 flex snap-x snap-mandatory gap-s5 overflow-x-auto pb-s4"
+          onPointerDown={stop}
+          onWheel={stop}
+          onKeyDown={stop}
+        >
           {shown.map((f, i) => (
-            <li key={f.src} style={{ "--i": i } as React.CSSProperties} className="plate-in">
+            <li
+              key={f.src}
+              style={{ "--i": i } as React.CSSProperties}
+              className="plate-in w-[300px] shrink-0 snap-start sm:w-[360px]"
+            >
               <button
                 type="button"
                 onClick={() => setOpen(f)}
-                className="group block h-full w-full overflow-hidden rounded-md border border-line bg-surface-raised text-left transition-[border-color,box-shadow] duration-180 hover:border-line-strong hover:shadow-e2"
+                className="group flex h-full w-full flex-col overflow-hidden rounded-md border border-line bg-surface-raised text-left transition-[border-color,box-shadow] duration-180 hover:border-line-strong hover:shadow-e2"
                 aria-label={`View workflow graph: ${f.title}`}
               >
                 <span className="relative block overflow-hidden border-b border-line bg-surface-sunken">
@@ -122,12 +193,11 @@ const Workflows = () => {
                   />
                 </span>
                 <span className="block p-s5">
-                  <span className="flex items-baseline justify-between gap-s4">
+                  <span className="flex items-baseline justify-between gap-s3">
                     <span className="t-sub text-ink">{f.title}</span>
-                    {/* the real node count, so the ledger's 500 is checkable */}
                     <span className="t-mono tnum shrink-0 text-[0.75rem] text-ink-tertiary">{f.steps} steps</span>
                   </span>
-                  <span className="t-small mt-s2 block text-ink-secondary">{f.note}</span>
+                  <span className="t-small mt-s2 line-clamp-3 block text-ink-secondary">{f.note}</span>
                 </span>
               </button>
             </li>

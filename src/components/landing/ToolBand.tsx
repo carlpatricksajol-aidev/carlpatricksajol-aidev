@@ -1,6 +1,7 @@
 import { SectionHeader, useEnter } from "@/components/primitives";
 import { toolGroups } from "@/data/site";
-import { toolBandSection } from "@/data/copy";
+import { toolBandFooter, toolBandSection } from "@/data/copy";
+import { rich } from "@/components/Rich";
 import PortBoard from "@/components/schematic/PortBoard";
 
 /**
@@ -32,6 +33,8 @@ const ToolBand = () => {
         />
 
         <PortBoard />
+
+        <p className="t-body mt-s6 max-w-[68ch] text-ink-secondary">{rich(toolBandFooter)}</p>
 
         {/* the reading half. Two rows of three rather than one row of six: at six
             columns the blurbs set to about four words a line. */}
