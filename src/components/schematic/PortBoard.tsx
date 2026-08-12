@@ -4,27 +4,19 @@ import { useSchematic } from "./useSchematic";
 import { toolGroups, type ToolItem } from "@/data/site";
 
 /**
- * The frequency board.
+ * The board. Every tool held still, on one grid, connected to one bus.
  *
- * The deck states three counts nothing on this page has ever drawn. A drifting
- * rail is structurally incapable of expressing a tally; a board is. The three
- * counted marks get a port lane that fills to their true value. The other ~28
- * get one `in use` port and no number.
+ * It replaced two drifting rails. It does NOT show per-tool usage counts: a
+ * number beside a tool invites a reader to grade it ("only ten?") when the
+ * point being made is coverage, not frequency. The board says these all
+ * connect; how often is a conversation, not a scoreboard.
  */
-
-/** the only counted appearances that exist in the copy */
-export const COUNTS: Record<string, number> = {
-  Supabase: 18,
-  "Google Sheets": 14,
-  Notion: 10,
-};
 
 const flat: ToolItem[] = toolGroups.flatMap((g) => g.items);
 
-const Chip = ({ item, i }: { item: ToolItem; i: number }) => {
-  const n = COUNTS[item.label];
+const Chip = ({ item }: { item: ToolItem }) => {
   return (
-    <li className="relative flex flex-col gap-s3 border-b border-line px-s4 py-s4">
+    <li className="relative flex items-center border-b border-line px-s4 py-s5">
       <span className="flex items-center gap-s3">
         {item.logo ? (
           <img src={item.logo} alt="" loading="lazy" decoding="async" className="tool-lockup h-[18px] w-auto shrink-0" />
@@ -34,25 +26,6 @@ const Chip = ({ item, i }: { item: ToolItem; i: number }) => {
           <span className="h-[20px] w-px shrink-0 bg-line-strong" aria-hidden="true" />
         )}
         {!item.logo && <span className="t-small whitespace-nowrap font-medium text-ink">{item.label}</span>}
-      </span>
-      <span className="flex items-center gap-s2">
-        <svg viewBox="0 0 80 8" className="h-2 w-[80px]" role="presentation" aria-hidden="true">
-          {n ? (
-            <>
-              {Array.from({ length: 18 }, (_, k) => (
-                <rect key={k} className="sch-p" x={k * 4.4} y={1.5} width={2} height={5} />
-              ))}
-              <g className="board-tick" style={{ ["--i" as string]: i, transformBox: "fill-box", transformOrigin: "left center" }}>
-                {Array.from({ length: n }, (_, k) => (
-                  <rect key={k} className="sch-p is-on" x={k * 4.4} y={1.5} width={2} height={5} />
-                ))}
-              </g>
-            </>
-          ) : (
-            <rect className="sch-p is-on" x={0} y={1.5} width={5} height={5} />
-          )}
-        </svg>
-        <span className="t-mono tnum text-[0.6875rem] text-ink-tertiary">{n ? `×${n}` : "in use"}</span>
       </span>
     </li>
   );
@@ -64,16 +37,14 @@ const PortBoard = () => {
     <div className="relative mt-s7">
       <ul className="sr-only-heading">
         {flat.map((t) => (
-          <li key={t.label}>
-            {COUNTS[t.label] ? `${t.label} — appears ${COUNTS[t.label]} times in the 26 live systems` : t.label}
-          </li>
+          <li key={t.label}>{t.label}</li>
         ))}
       </ul>
 
       <div ref={ref} className={`board ${className}`} aria-hidden="true">
         <ul className="grid grid-cols-3 gap-x-px border-t border-line sm:grid-cols-4 lg:grid-cols-8">
-          {flat.map((it, i) => (
-            <Chip key={it.label} item={it} i={i} />
+          {flat.map((it) => (
+            <Chip key={it.label} item={it} />
           ))}
         </ul>
         <div className="relative mt-s5 h-[26px]">
@@ -83,7 +54,7 @@ const PortBoard = () => {
           <span className="board-k run-b3" style={{ ["--tx" as string]: "81%" }} />
         </div>
         <svg viewBox="0 0 220 14" className="mt-s2 h-[14px] w-[220px]" role="presentation">
-          <Read x={0} y={10}>{`${flat.length} accounts · 3 counted`}</Read>
+          <Read x={0} y={10}>{`${flat.length} accounts · one bus`}</Read>
         </svg>
       </div>
     </div>

@@ -12,7 +12,6 @@ import { caseStudies, experience, otherSystems, profile, proofMetrics } from "@/
 import { sectionCopy } from "@/data/copy";
 import { INSTRUMENTS, Tape } from "@/components/schematic/Instruments";
 import Guard from "@/components/schematic/Guard";
-import Concurrency from "@/components/schematic/Concurrency";
 import WeekTrade from "@/components/schematic/WeekTrade";
 
 /* ---------- 2. Four production numbers ---------- */
@@ -179,19 +178,22 @@ export const Credentials = () => {
         />
         <ul className="mt-s8 border-t border-line">
           {experience.slice(0, 3).map((r) => (
-            <li key={r.company} className="grid gap-s2 border-b border-line py-s5 md:grid-cols-[1fr_2fr] md:gap-s6">
+            <li key={r.company} className="grid gap-s3 border-b border-line py-s6 md:grid-cols-[1fr_2fr] md:gap-s6">
               <div>
-                <p className="t-sub text-ink">{r.company}</p>
-                <p className="t-slug mt-1 text-ink-tertiary">{r.period}</p>
+                {/* the company is the thing a reader scans for, so it is set at
+                    section size rather than as a caption above its own dates */}
+                <p className="t-section text-ink">{r.company}</p>
+                <p className="t-mono mt-s2 text-[0.8125rem] uppercase tracking-[0.08em] text-ink-tertiary">
+                  {r.period}
+                </p>
               </div>
-              <div>
-                <p className="t-body font-medium text-ink">{r.title}</p>
-                <p className="t-body mt-1 max-w-[62ch] text-ink-secondary">{r.summary}</p>
+              <div className="md:pt-s2">
+                <p className="t-sub text-ink">{r.title}</p>
+                <p className="t-body mt-s2 max-w-[62ch] text-ink-secondary">{r.summary}</p>
               </div>
             </li>
           ))}
         </ul>
-        <Concurrency />
         <p className="mt-s6">
           <ArrowLink to="/experience">Full experience and stack</ArrowLink>
         </p>

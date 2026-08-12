@@ -27,16 +27,16 @@ const PHASES = [
 ];
 
 const WIDE = {
-  w: 640,
+  w: 520,
   h: 380,
-  srcX: 8,
-  coreX: 245,
-  outX: 482,
-  coreY: 128,
-  coreH: 64,
-  srcY: [20, 96, 172, 248],
-  outY: [58, 134, 210],
-  readY: 344,
+  srcX: 0,
+  coreX: 196,
+  outX: 372,
+  coreY: 132,
+  coreH: 72,
+  srcY: [8, 96, 184, 272],
+  outY: [56, 144, 232],
+  readY: 356,
   vertical: false,
 };
 
@@ -123,8 +123,8 @@ const SystemMap = () => {
   }, [compact]);
 
   const L = compact ? TALL : WIDE;
-  const nw = compact ? 180 : 150;
-  const nh = compact ? 48 : 52;
+  const nw = compact ? 180 : 148;
+  const nh = compact ? 48 : 60;
   const edge = L.vertical ? edgeV : edgeH;
 
   const inEdges = L.srcY.map((y) =>
@@ -141,7 +141,10 @@ const SystemMap = () => {
   return (
     <div
       ref={wrapRef}
-      className={`system-map sch-in ${live ? "is-live" : ""} ${compact ? "" : "sm-bleed sm-crop"}`}
+      /* the bleed and the right-edge fade were for a layout that ran off the
+         column. The map now fits inside it, and the fade was eating the last
+         42 units — which is where the three output nodes end. */
+      className={`system-map sch-in ${live ? "is-live" : ""}`}
       style={{ aspectRatio: `${L.w} / ${L.h}` }}
     >
       <svg
@@ -232,8 +235,8 @@ const SystemMap = () => {
                 attributeName="opacity"
                 dur={ROUND}
                 repeatCount="indefinite"
-                values="0;1;1;0;0"
-                keyTimes={`0;${(i * 0.25).toFixed(3)};${(i * 0.25 + 0.24).toFixed(3)};${(i * 0.25 + 0.245).toFixed(3)};1`}
+                values="0;0;1;1;0;0"
+                keyTimes={`0;${Math.max(0, i * 0.25 - 0.004).toFixed(3)};${(i * 0.25).toFixed(3)};${(i * 0.25 + 0.24).toFixed(3)};${(i * 0.25 + 0.245).toFixed(3)};1`}
               />
             </text>
           ))}
@@ -248,14 +251,22 @@ const SystemMap = () => {
               x={compact ? 10 : 8}
               y={L.readY}
               className={`sch-read sm-phase ${i === PHASES.length - 1 ? "sm-phase--rest" : ""}`}
+              /* all five sit at the same coordinates and take turns via
+                 <animate>. Without this they ALL paint on the first frame and
+                 render as one unreadable smear. */
+              opacity={0}
             >
               {p.text}
+              {/* SIX stops, not five. With `0;1;...` the first segment ramps
+                  linearly from zero across the label's whole lead-in, so three
+                  labels are partly visible at once and the readout renders as a
+                  smear. The extra stop holds it at zero until its own slot. */}
               <animate
                 attributeName="opacity"
                 dur={CYCLE}
                 repeatCount="indefinite"
-                values="0;1;1;0;0"
-                keyTimes={`0;${p.at.toFixed(3)};${Math.max(p.at + 0.001, next - 0.005).toFixed(3)};${next.toFixed(3)};1`}
+                values="0;0;1;1;0;0"
+                keyTimes={`0;${Math.max(0, p.at - 0.006).toFixed(3)};${p.at.toFixed(3)};${Math.max(p.at + 0.002, next - 0.008).toFixed(3)};${next.toFixed(3)};1`}
               />
             </text>
           );

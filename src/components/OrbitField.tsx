@@ -46,6 +46,13 @@ const FLYERS: Flyer[] = [
   { key: "instagram", path: 2, size: 54, dur: 19, delay: -6, top: "20%", opacity: 0.13 },
 ];
 
+/** same reason as HeroBurst: template-built class names get purged. */
+const PATH_CLASS: Record<number, string> = {
+  1: "orbit-p1",
+  2: "orbit-p2",
+  3: "orbit-p3",
+};
+
 const OrbitField = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [live, setLive] = useState(false);
@@ -81,7 +88,7 @@ const OrbitField = () => {
         return (
           <span
             key={`${f.key}-${i}`}
-            className={`orbit-flyer orbit-p${f.path}`}
+            className={`orbit-flyer ${PATH_CLASS[f.path]}`}
             style={{
               top: f.top,
               width: f.size,

@@ -233,7 +233,7 @@ export const industries: Industry[] = [
 export const toolBandSection = {
   eyebrow: "The tools",
   title: "Nothing here gets replaced",
-  deck: "These are the accounts the work runs on and lands in. Inside the 26 systems running now, Supabase appears 18 times, Google Sheets 14 and Notion 10.",
+  deck: "These are the accounts the work runs on and lands in. Whatever you already pay for stays where it is and keeps its own login. Nothing on this board gets swapped out to make a system work.",
 };
 
 

@@ -455,7 +455,7 @@ export const experience: Role[] = [
     company: "Bumpy App",
     start: "2025-11",
     end: null,
-    period: "Nov 2025 — Present",
+    period: "Since Nov 2025",
     summary: "A dating app. Production Claude MCP infrastructure and the paid-social automation suite around it.",
     points: [
       "Built and shipped a production Claude MCP server exposing the internal SDK, proprietary database and attribution platform to Claude as first-class tools",
@@ -469,7 +469,7 @@ export const experience: Role[] = [
     company: "Creative Abundance",
     start: "2025-08",
     end: null,
-    period: "Aug 2025 — Present",
+    period: "Since Aug 2025",
     summary: "The creative production line: static ads, video assembly, and the self-serve generator.",
     points: [
       "Built the concept-first static ad service with a vision-QA ship gate that drops sub-bar renders rather than delivering them",
@@ -483,7 +483,7 @@ export const experience: Role[] = [
     company: "White Key Marketing",
     start: "2024-08",
     end: null,
-    period: "Aug 2024 — Present",
+    period: "Since Aug 2024",
     summary: "CRM architecture and internal platform for a marketing agency's client base.",
     points: [
       "End-to-end HubSpot: lead flows, pipeline automation, sequences, landing pages and reporting dashboards",

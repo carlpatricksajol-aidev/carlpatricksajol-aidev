@@ -1,5 +1,6 @@
 import { PrimaryButton, useEnter } from "@/components/primitives";
 import SystemMap from "@/components/SystemMap";
+import HeroBurst from "@/components/HeroBurst";
 import { profile } from "@/data/site";
 import { hero } from "@/data/copy";
 
@@ -19,6 +20,7 @@ const Hero = () => {
 
   return (
     <section ref={ref} className={`${className} relative`}>
+      <HeroBurst />
       <div className="grid12 min-h-[560px] items-center gap-y-s6 pb-s8 pt-s8 lg:pb-s9 lg:pt-s9">
         {/* text block: cols 1-7 */}
         <div className="col-span-12 lg:col-span-7">
