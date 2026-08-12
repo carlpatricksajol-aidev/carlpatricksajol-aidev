@@ -556,6 +556,67 @@
     mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
+  /* ---------- the header's live wire ----------
+     The header is the one element present on every screen, so its component
+     says the one thing true of the whole page: this is a wire, and work is
+     moving along it. The rail sits on the header's bottom edge, fills with how
+     far you have read, and carries a packet that runs the filled length on the
+     same 12s clock as the hero diagram, so the two read as one system rather
+     than two ideas.
+
+     The fill is scroll-driven CSS with no JavaScript at all. Where
+     animation-timeline is missing (Firefox) the rail simply stays at rest and
+     the packet still runs, so the header never looks broken — it just loses the
+     progress reading. */
+  .wire {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .wire-fill {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: linear-gradient(90deg, hsl(var(--blue-600) / 0.35), hsl(var(--blue-600)));
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  .wire-packet {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(var(--blue-600));
+    box-shadow: 0 0 0 3px hsl(var(--blue-600) / 0.22);
+    /* the head of the wire: it sits at the leading edge of however far you have
+       read, and pulses rather than travels, because a packet racing a progress
+       bar reads as two competing readouts */
+    animation: wire-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes wire-pulse {
+    0%, 100% { transform: scale(0.72); opacity: 0.55; }
+    50%      { transform: scale(1.15); opacity: 1; }
+  }
+  @keyframes wire-fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @supports (animation-timeline: scroll()) {
+    .wire-fill {
+      animation: wire-fill linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wire-packet { animation: none !important; transform: scale(1); opacity: 1; }
+  }
+
   /* ---------- the roadmap: where am I in the eight ----------
      The automation chapter's index is also a progress spine. A rail fills to
      however far the reader has got, a node per service line lights as its row

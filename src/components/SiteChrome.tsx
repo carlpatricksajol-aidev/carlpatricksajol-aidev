@@ -76,6 +76,18 @@ export const SiteHeader = ({
         color: overInk ? "hsl(var(--text-on-ink))" : undefined,
       }}
     >
+      {/* THE LIVE WIRE. The header's own component, and the only one on the site
+          that is present on every screen — so it says the one thing true of the
+          whole page: this is a wire with work moving along it. The rail fills
+          with reading progress, and a packet runs the filled length on the same
+          12s clock the hero diagram uses, so the two read as one system.
+          Scroll-driven, so it costs nothing and needs no JavaScript. */}
+      <span className="wire" aria-hidden="true">
+        <span className="wire-fill">
+          <span className="wire-packet" />
+        </span>
+      </span>
+
       <div className="w-shell gutter flex h-14 items-center justify-between gap-s4">
         {backTo ? (
           <Link to={backTo.to} className="arrow-link t-small !text-ink-secondary hover:!text-ink">
