@@ -32,7 +32,7 @@ const sources = [
 const outputs = [
   { key: "supabase", label: "Supabase", y: 74 },
   { key: "airtable", label: "Airtable", y: 169 },
-  { key: "meta", label: "Meta Ads", y: 264 },
+  { key: "google", label: "Google Sheets", y: 264 },
 ];
 
 const SRC_X = 66;
@@ -66,7 +66,10 @@ const SystemMap = () => {
       setLive(on);
       // SMIL and CSS animations are separate clocks — both must be stopped, or
       // the packets freeze while the node flashes keep firing.
-      if (svg) on ? svg.unpauseAnimations() : svg.pauseAnimations();
+      if (svg) {
+        if (on) svg.unpauseAnimations();
+        else svg.pauseAnimations();
+      }
     };
 
     const obs = new IntersectionObserver(([e]) => setRunning(e.isIntersecting), { threshold: 0.15 });
@@ -93,8 +96,8 @@ const SystemMap = () => {
       >
         <title id="sysmap-title">How the systems fit together</title>
         <desc id="sysmap-desc">
-          Slack, Notion, HubSpot and Dropbox feed an MCP server and agent layer, which writes
-          results back out to Supabase, Airtable and Meta Ads.
+          Slack, Notion, HubSpot and Dropbox feed the wiring in the middle, which writes results
+          back out into Supabase, Airtable and Google Sheets.
         </desc>
 
         {[...inEdges, ...outEdges].map((d, i) => (
@@ -139,12 +142,14 @@ const SystemMap = () => {
         className="absolute -translate-x-1/2 -translate-y-1/2"
         style={{ left: `${(CORE_X / W) * 100}%`, top: `${(CORE_Y / H) * 100}%` }}
       >
-        <div className="sm-core rounded-md border border-line-strong bg-surface-raised px-s4 py-s3 text-center">
+        {/* width is capped, not content-driven: an unconstrained core box grows
+            until it collides with the middle output node */}
+        <div className="sm-core w-[148px] rounded-md border border-line-strong bg-surface-raised px-s4 py-s3 text-center">
           <div className="flex items-center justify-center gap-s2">
             <BrandIcon name="claude" size={16} className="text-ink" />
-            <span className="t-small font-medium text-ink">MCP server</span>
+            <span className="t-small font-medium text-ink">The wiring</span>
           </div>
-          <span className="t-slug mt-1 block text-ink-tertiary">+ agents</span>
+          <span className="t-slug mt-1 block text-ink-tertiary">+ AI for judgement calls</span>
         </div>
       </div>
     </div>

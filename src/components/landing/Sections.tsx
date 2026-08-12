@@ -8,7 +8,7 @@ import {
   StatusDot,
   useEnter,
 } from "@/components/primitives";
-import { caseStudies, experience, otherSystems, processSteps, profile, proofMetrics, tracks } from "@/data/site";
+import { caseStudies, experience, otherSystems, profile, proofMetrics } from "@/data/site";
 import { sectionCopy } from "@/data/copy";
 
 /* ---------- 2. Four production numbers ---------- */
@@ -28,6 +28,7 @@ export const Proof = () => {
   const { ref, className } = useEnter<HTMLElement>();
   return (
     <section
+      id="proof"
       ref={ref}
       className={`${className} bleed border-y border-line-strong bg-surface-sunken`}
       aria-labelledby="proof-h"
@@ -60,52 +61,6 @@ export const Proof = () => {
             </div>
           ))}
         </dl>
-      </div>
-    </section>
-  );
-};
-
-/* ---------- 3. Two tracks — ARCHETYPE: full-bleed two-up fork ----------
-   No header above; the two halves ARE the statement. A centre seam and two
-   different ground tones make the fork visible rather than described. */
-export const Tracks = () => {
-  const { ref, className } = useEnter<HTMLElement>();
-  return (
-    <section id="tracks" ref={ref} className={`${className} bleed border-y border-line`} aria-label="What I build">
-      <div className="grid12">
-        {tracks.map((t, i) => (
-          <div
-            key={t.id}
-            className={`col-span-12 py-s7 lg:col-span-6 ${
-              i === 1
-                ? "lg:col-start-7 lg:border-l lg:border-line lg:pl-s6"
-                : "lg:pr-s6"
-            }`}
-          >
-            <div className="flex items-baseline gap-s3">
-              <span className={`t-mono tnum text-[0.8125rem] ${i === 1 ? "text-oxide-600" : "text-brand-600"}`}>
-                {t.number}
-              </span>
-              <span className={`t-slug ${i === 1 ? "text-oxide-600" : "text-brand-600"}`}>{t.label}</span>
-            </div>
-            <h2 className="t-section mt-s4 max-w-[18ch]">{t.title}</h2>
-            <p className="t-body mt-s4 max-w-[44ch] text-ink-secondary">{t.body}</p>
-            <ul className="mt-s5 space-y-s3">
-              {t.capabilities.map((c) => (
-                <li key={c} className="grid grid-cols-[14px_1fr] gap-s3">
-                  <span
-                    className={`mt-2.5 h-px w-2.5 ${i === 1 ? "bg-oxide-600" : "bg-brand-600"}`}
-                    aria-hidden="true"
-                  />
-                  <span className="t-body max-w-[44ch] text-ink-secondary">{c}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-s5">
-              <ArrowLink to={t.href}>{t.linkLabel}</ArrowLink>
-            </p>
-          </div>
-        ))}
       </div>
     </section>
   );
@@ -198,40 +153,6 @@ export const Systems = () => {
           <ArrowLink to="/work">See all {caseStudies.length + otherSystems.length} systems</ArrowLink>
         </p>
       </div>
-    </section>
-  );
-};
-
-/* ---------- 8. Process — ARCHETYPE: five-column spine ----------
-   It is a sequence, so it reads once, left to right. As a 3-column card grid it
-   broke 3+2 across a row boundary and read as an unordered set of five things,
-   which is the opposite of "the same five steps, every time". */
-export const Process = () => {
-  const { ref, className } = useEnter<HTMLElement>();
-  return (
-    <section id="process" ref={ref} className={`${className} section bg-surface-sunken`} aria-labelledby="process-h">
-      <div className="grid12">
-        <div className="col-span-12 lg:col-span-6">
-          <span className="mb-s4 block h-px w-10 bg-line-edge" aria-hidden="true" />
-          <p className="t-slug text-ink-tertiary">{sectionCopy.process.eyebrow}</p>
-          <h2 id="process-h" className="t-section mt-s4 max-w-[18ch]">{sectionCopy.process.title}</h2>
-        </div>
-      </div>
-
-      <ol className="grid12 mt-s7">
-        {processSteps.map((st, i) => (
-          <li
-            key={st.n}
-            className={`col-span-12 border-t border-line-strong pt-s4 sm:col-span-6 lg:col-span-2 ${
-              i === 0 ? "" : "lg:border-l lg:pl-s4"
-            } ${i > 0 ? "mt-s5 lg:mt-0" : ""}`}
-          >
-            <span className="t-mono tnum text-[0.8125rem] text-ink-tertiary">{st.n}</span>
-            <h3 className="t-sub mt-s3 max-w-[16ch]">{st.title}</h3>
-            <p className="t-small mt-s3 text-ink-secondary">{st.body}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 };

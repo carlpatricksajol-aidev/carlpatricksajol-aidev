@@ -21,80 +21,116 @@ export const profile = {
   available: true,
 };
 
-/** Four numbers, each traceable to a system that is actually running. */
+/**
+ * Four numbers, every one of them general.
+ *
+ * The previous four were "~5 min" (a video rough cut), "7/10" (a static ad's QA
+ * gate), "$3.08" (a 15-second video ad) and "Jul 2026". All four were about one
+ * deliverable, and they sat in the page's second slot — so a buyer who came for
+ * a CRM, a report or a lead queue met four ad-production numbers and left.
+ * Those numbers were not wrong; they belong inside the creative case studies,
+ * where they still live.
+ *
+ * These four are counted from the live n8n instance via its API: 26 of 53
+ * workflows switched on, 500 non-note steps inside them, 11 schedule triggers,
+ * 6 webhooks, 222 HTTP steps, largest single graph 170 steps.
+ */
 export const proofMetrics = [
-  { value: "~5 min", caption: "end-to-end rough cut, first real client job", note: "7 scenes, 1.2 GB of footage" },
-  { value: "7 / 10", caption: "minimum QA score before a static ad ships", note: "sub-bar ads are dropped, not delivered" },
-  { value: "$3.08", caption: "cost of one finished 15-second video ad", note: "at 720p" },
-  { value: "Jul 2026", caption: "in production since — not a demo", note: "password-gated, queued, monitored" },
+  { value: "26", caption: "automations running in production right now", note: "53 built in total. These 26 are switched on today." },
+  { value: "11", caption: "start themselves on a clock, with nobody pressing go", note: "6 more wake up the moment another tool reaches them." },
+  { value: "500", caption: "steps of wiring sitting inside those 26 systems", note: "Counted from the live workflows, notes excluded. The largest single system is 170 of them." },
+  { value: "2 years", caption: "building these across three roles held at the same time", note: "On live accounts with real work depending on them, not demos." },
 ];
 
-export interface Track {
-  id: string;
-  number: string;
-  label: string;
-  title: string;
-  body: string;
-  meta: string;
-  capabilities: string[];
-  href: string;
-  linkLabel: string;
+/**
+ * The tool band. This is the argument the headline makes, so it is the general
+ * stack and it leads with the automation platforms a buyer names out loud.
+ * Creative-production tools have their own field inside the creative chapter;
+ * the two lists deliberately do not overlap.
+ *
+ * `iconKey` must be a real key in BrandIcons.tsx or an empty string. Tracing or
+ * generating a brand's mark would be legally worse than showing a letterform.
+ */
+export interface ToolGroup {
+  group: string;
+  blurb: string;
+  items: { label: string; iconKey: string }[];
 }
 
-export const tracks: Track[] = [
+export const toolGroups: ToolGroup[] = [
   {
-    id: "automation",
-    number: "01",
-    label: "Business automation",
-    title: "AI inside the tools your team already uses",
-    body: "Staff ask a question in plain English and get a real answer from your own data. Routine jobs — reports, updates, follow-ups — happen without anyone starting them.",
-    meta: "2+ years · running in production",
-    capabilities: [
-      "Ask a question in Slack, get an answer from your real data",
-      "Reports rebuilt every night, ready before the team logs in",
-      "Follow-ups, CRM syncing and spam cleanup handled without anyone watching",
+    group: "Automation platforms",
+    blurb: "The engines. These run a job on a clock, or the moment something happens, with nobody pressing go.",
+    items: [
+      { label: "n8n", iconKey: "n8n" },
+      { label: "Zapier", iconKey: "zapier" },
+      { label: "Make.com", iconKey: "make" },
+      { label: "Google Apps Script", iconKey: "google" },
     ],
-    href: "/work?track=automation",
-    linkLabel: "See these systems",
   },
   {
-    id: "creative",
-    number: "02",
-    label: "Ad creative",
-    title: "Ads that come back finished, ready to run",
-    body: "Idea, artwork, check, delivery in one run. Static ads must score seven out of ten or they get dropped. Video ads are cut from your own raw footage.",
-    meta: "Built at an ad agency · since Aug 2025",
-    capabilities: [
-      "Static ads scored before delivery — under 7 out of 10 never reaches you",
-      "Video ads cut from raw footage into a timeline you can edit",
-      "One product photo to a captioned 15-second video ad, about $3.08",
+    group: "CRM and marketing",
+    blurb: "Where your customer records, deal stages and follow-up sequences already live.",
+    items: [
+      { label: "HubSpot", iconKey: "hubspot" },
+      { label: "GoHighLevel", iconKey: "" },
+      { label: "ActiveCampaign", iconKey: "" },
+      { label: "Klaviyo", iconKey: "" },
+      { label: "ManyChat", iconKey: "" },
     ],
-    href: "/work?track=creative",
-    linkLabel: "See the ad work",
+  },
+  {
+    group: "Data and databases",
+    blurb: "Where the numbers get written down once, so a report is rebuilt instead of retyped.",
+    items: [
+      { label: "Airtable", iconKey: "airtable" },
+      { label: "Notion", iconKey: "notion" },
+      { label: "Supabase", iconKey: "supabase" },
+      { label: "Google Sheets", iconKey: "" },
+      { label: "PostgreSQL", iconKey: "" },
+      { label: "ClickUp", iconKey: "clickup" },
+    ],
+  },
+  {
+    group: "AI models and assistants",
+    blurb: "Used inside a run to read, sort, draft and flag the things a fixed rule cannot.",
+    items: [
+      { label: "ChatGPT", iconKey: "openai" },
+      { label: "Claude", iconKey: "claude" },
+      { label: "Claude Code", iconKey: "anthropic" },
+      { label: "Gemini", iconKey: "googlegemini" },
+    ],
+  },
+  {
+    group: "Where the work lands",
+    blurb: "Results arrive in the inbox, channel, drive or ad account your team already has open.",
+    items: [
+      { label: "Slack", iconKey: "slack" },
+      { label: "Gmail", iconKey: "gmail" },
+      { label: "Google Drive", iconKey: "googledrive" },
+      { label: "Dropbox", iconKey: "dropbox" },
+      { label: "Meta Ads", iconKey: "meta" },
+      { label: "TikTok Ads", iconKey: "tiktok" },
+    ],
   },
 ];
 
-/** 18 cells. Marks that exist in the icon set; wordmark chips for the rest —
- *  tracing or generating a brand's mark would be legally worse than naming it. */
+/** The creative chapter's own production line. Deliberately disjoint from
+ *  toolGroups above: these are the models and cutting tools that make an ad,
+ *  and they would mean nothing to a buyer reading the top of the page. */
 export const platformField: { key?: string; word?: string; name: string }[] = [
-  { key: "claude", name: "Claude" },
-  { key: "n8n", name: "n8n" },
-  { word: "Seedance 2", name: "Seedance 2" },
-  { key: "supabase", name: "Supabase" },
-  { key: "meta", name: "Meta" },
-  { key: "notion", name: "Notion" },
-  { key: "openai", name: "OpenAI" },
+  { word: "Nano Banana Pro", name: "Nano Banana Pro" },
   { word: "Higgsfield", name: "Higgsfield" },
-  { key: "airtable", name: "Airtable" },
-  { key: "tiktok", name: "TikTok" },
-  { key: "slack", name: "Slack" },
   { word: "KIE.ai", name: "KIE.ai" },
-  { key: "googlegemini", name: "Google Gemini" },
-  { key: "hubspot", name: "HubSpot" },
-  { key: "dropbox", name: "Dropbox" },
+  { word: "Seedance 2", name: "Seedance 2" },
+  { word: "Veo 3.1", name: "Veo 3.1" },
+  { key: "claude", name: "Claude" },
+  { key: "googlegemini", name: "Gemini" },
   { word: "Whisper", name: "Whisper" },
-  { key: "docker", name: "Docker" },
-  { key: "adobepremierepro", name: "Adobe Premiere Pro" },
+  { key: "ffmpeg", name: "FFmpeg" },
+  { key: "adobepremierepro", name: "Premiere / XMEML" },
+  { key: "figma", name: "Figma" },
+  { key: "dropbox", name: "Dropbox" },
 ];
 
 export interface VideoAd {
@@ -378,13 +414,6 @@ export const experience: Role[] = [
   },
 ];
 
-export const processSteps = [
-  { n: "01", title: "Find the step that eats the week", body: "Usually it is clerical, high-volume and judgement-light. That is the one worth automating first." },
-  { n: "02", title: "Decide what must never break", body: "Every system here has one non-negotiable constraint written down before anything is built. It shapes the architecture more than the tooling does." },
-  { n: "03", title: "Build the gate before the volume", body: "Generative output only becomes deliverable when something measurable decides what does not ship." },
-  { n: "04", title: "Hand back something editable", body: "The deliverable is a timeline, a draft, a review record — something a person can correct. Not a black box." },
-  { n: "05", title: "Write down what it can't do", body: "Every system ships with its open gaps listed. It is the fastest way to know whether it fits your problem." },
-];
 
 /**
  * Automation leads. The n8n cases come first because they are the best-evidenced

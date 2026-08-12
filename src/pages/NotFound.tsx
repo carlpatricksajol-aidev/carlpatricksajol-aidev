@@ -3,7 +3,7 @@ import { Page } from "@/components/SiteChrome";
 import { ArrowRight } from "@/components/primitives";
 
 const links = [
-  { to: "/", label: "Home", note: "The two tracks, the work, and how to get in touch" },
+  { to: "/", label: "Home", note: "The problem, the method, the work, and how to get in touch" },
   { to: "/work", label: "Work", note: "Every system, in one list" },
   { to: "/experience", label: "Experience", note: "Roles, stack and background" },
 ];

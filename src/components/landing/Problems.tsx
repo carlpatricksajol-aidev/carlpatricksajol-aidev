@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, useEnter } from "@/components/primitives";
-import { problems, problemsSection, solutions, solutionsSection } from "@/data/copy";
+import { outputSection, outputs, problems, problemsSection, solutions, solutionsSection } from "@/data/copy";
 
 /**
  * ARCHETYPE: marginalia with an alternating margin side.
@@ -32,15 +32,23 @@ export const Problems = () => {
       <ul className="mt-s7">
         {problems.map((p, i) => {
           const right = i % 2 === 0;
+          // the numeral hangs in whichever margin the prose is not using, so the
+          // alternating left/right rhythm survives — it is what stops six ruled
+          // rows from reading as one long left rail
+          const numeral = (
+            <p
+              className={`t-mono tnum order-2 col-span-12 mt-s4 hidden text-[0.8125rem] text-ink-tertiary lg:col-span-2 lg:mt-0 lg:block ${
+                right ? "lg:order-3 lg:col-start-11" : "lg:order-1 lg:text-right"
+              }`}
+              aria-hidden="true"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </p>
+          );
           return (
-            <li key={p.symptom} className="border-t border-line last:border-b">
+            <li key={p.title} className="border-t border-line last:border-b">
               <div className="grid12 py-s6">
-                {/* cost hangs left on even rows */}
-                {!right && (
-                  <p className="t-micro order-2 col-span-12 mt-s4 border-l border-line-edge pl-s3 text-ink-tertiary lg:order-1 lg:col-span-2 lg:mt-0 lg:border-l-0 lg:border-r lg:pl-0 lg:pr-s3 lg:text-right">
-                    {p.cost}
-                  </p>
-                )}
+                {!right && numeral}
 
                 <div
                   className={`order-1 col-span-12 ${
@@ -49,17 +57,12 @@ export const Problems = () => {
                 >
                   {/* hanging quotation mark keeps the measure optically straight */}
                   <p className="t-section text-ink" style={{ textIndent: "-0.42em" }}>
-                    &ldquo;{p.symptom}&rdquo;
+                    &ldquo;{p.title}&rdquo;
                   </p>
-                  <p className="t-body mt-s4 max-w-[52ch] text-ink-secondary">{p.detail}</p>
+                  <p className="t-body mt-s4 max-w-[52ch] text-ink-secondary">{p.body}</p>
                 </div>
 
-                {/* cost hangs right on odd rows */}
-                {right && (
-                  <p className="t-micro order-3 col-span-12 mt-s4 border-l border-line-edge pl-s3 text-ink-tertiary lg:col-span-2 lg:col-start-11 lg:mt-0">
-                    {p.cost}
-                  </p>
-                )}
+                {right && numeral}
               </div>
             </li>
           );
@@ -140,6 +143,45 @@ export const Solutions = () => {
           );
         })}
       </ol>
+    </section>
+  );
+};
+
+/**
+ * ARCHETYPE: delivery manifest.
+ *
+ * The third beat of the spine, and the one most at risk of being the second
+ * beat again in the past tense. So it is not shaped like the solution list: no
+ * numerals in the margin, no evidence rail, no links out. A strict two-column
+ * manifest — the thing on the left, what it is on the right — reads as an
+ * inventory of objects rather than a second list of activities, which is
+ * exactly the distinction the section has to earn.
+ */
+export const Output = () => {
+  const { ref, className } = useEnter<HTMLElement>();
+
+  return (
+    <section id="output" ref={ref} className={`${className} section`} aria-labelledby="output-h">
+      <div className="grid12">
+        {/* header hard right, against both neighbours' left-weighted headers */}
+        <div className="col-span-12 lg:col-span-6 lg:col-start-6">
+          <span className="sv-draw mb-s4 block h-px w-10 bg-brand-600" aria-hidden="true" />
+          <p className="t-slug text-brand-600">{outputSection.eyebrow}</p>
+          <h2 id="output-h" className="t-chapter mt-s4 max-w-[16ch]">{outputSection.title}</h2>
+          <p className="t-lead mt-s5 max-w-[44ch] text-ink-secondary">{outputSection.deck}</p>
+        </div>
+      </div>
+
+      <dl className="mt-s7 border-t border-line">
+        {outputs.map((o) => (
+          <div key={o.title} className="grid12 border-b border-line py-s6">
+            <dt className="t-sub col-span-12 max-w-[26ch] text-ink lg:col-span-4 lg:col-start-2">{o.title}</dt>
+            <dd className="t-body col-span-12 mt-s3 max-w-[58ch] text-ink-secondary lg:col-span-6 lg:col-start-6 lg:mt-0">
+              {o.body}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 };

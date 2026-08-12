@@ -50,8 +50,8 @@ const Work = () => {
           <p className="t-slug text-brand-600">Archive</p>
           <h1 className="t-display mt-s4 max-w-[18ch]">Every system, in one list</h1>
           <p className="t-lead mt-s5 max-w-[52ch] text-ink-secondary">
-            Twelve builds across two tracks. The five with case studies are linked; the rest are
-            listed for completeness.
+            Every build, across all eight service lines. The ones with case studies are linked; the
+            rest are listed for completeness.
           </p>
         </div>
 

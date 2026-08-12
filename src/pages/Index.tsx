@@ -1,38 +1,41 @@
 import { Page } from "@/components/SiteChrome";
 import Hero from "@/components/landing/Hero";
 import ServiceLines from "@/components/landing/ServiceLines";
-import { Problems, Solutions } from "@/components/landing/Problems";
+import ToolBand from "@/components/landing/ToolBand";
+import { Output, Problems, Solutions } from "@/components/landing/Problems";
 import InkBand from "@/components/landing/InkBand";
 import Workflows from "@/components/landing/Workflows";
-import { CTA, Credentials, Process, Proof, Systems, Tracks } from "@/components/landing/Sections";
+import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections";
 
 /**
- * A dual-practice portfolio, argued in two explicit chapters:
+ * One argument, in order, with nothing above the chapters specific to a single
+ * deliverable:
  *
- *   what is this → is that my problem → can he fix it →
- *   CHAPTER 01 · AUTOMATION — the larger half, and argued in three passes:
- *       breadth  (eight service lines, the way a buyer shops)
- *       depth    (the three hardest builds, written up)
- *       volume   (all twenty-six workflow maps, filterable by line)
- *   CHAPTER 02 · AI CREATIVE (the dark room: rails, reel, carousel, cases)
- *   → how he works → who he is → talk.
+ *   PROBLEM   what it costs to have a person connecting your tools
+ *   PROOF     four numbers, all general, all counted from live systems
+ *   SOLUTION  the same five moves, whatever the tools are
+ *   OUTPUT    what you are actually holding on Monday
+ *   TOOLS     the stack it runs on and lands in
+ *   → then the work: eight service lines, the three hardest builds, all
+ *     twenty-six workflow maps, and the creative chapter.
+ *   → then who he is, then one action.
  *
- * The automation chapter opens with the page's one sticky-pair section — the
- * chapter title pins while the eight service lines scroll past it — because
- * breadth is exactly what a list is for.
+ * The two-track fork and the separate Process section are both gone. The fork
+ * asserted through geometry that ad creative was half the practice; Process was
+ * a second five-step method list sitting a screen away from the first.
  */
 const Index = () => (
   <Page>
     <Hero />
-    <Proof />
     <Problems />
+    <Proof />
     <Solutions />
-    <Tracks />
+    <Output />
+    <ToolBand />
     <ServiceLines />
     <Systems />
     <Workflows />
     <InkBand />
-    <Process />
     <Credentials />
     <CTA />
   </Page>
