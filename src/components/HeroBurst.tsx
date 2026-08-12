@@ -63,7 +63,18 @@ const HeroBurst = () => {
       return;
     }
     timer.current = window.setTimeout(() => setGone(true), LIFETIME);
-    return () => window.clearTimeout(timer.current);
+
+    // The field is position:fixed, so a fast scroller would otherwise watch the
+    // marks fly across the problems section. Leaving the hero ends the arrival:
+    // it is an entrance to this page, not a layer over it.
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.35) setGone(true);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.clearTimeout(timer.current);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   if (gone) return null;

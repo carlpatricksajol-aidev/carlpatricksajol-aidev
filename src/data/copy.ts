@@ -230,6 +230,12 @@ export const industries: Industry[] = [
   },
 ];
 
+export const testimonialsSection = {
+  eyebrow: "What people say",
+  title: "Four people who have had to work with the output",
+  deck: "Colleagues at an automation studio, not buying clients, and it is worth saying which. They are the people who inherit a system when it lands and have to keep it running.",
+};
+
 export const toolBandSection = {
   eyebrow: "The tools",
   title: "Nothing here gets replaced",

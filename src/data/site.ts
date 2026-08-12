@@ -181,6 +181,55 @@ export const adPlacements: { key: string; name: string; relation: string }[] = [
   { key: "instagram", name: "Instagram", relation: "Pulled from" },
 ];
 
+/**
+ * The four testimonials already published on the live site, ported verbatim.
+ *
+ * Not written here. Every quote, name, title and company is copied exactly as it
+ * appears on carlpatricksajol-aidev.onrender.com — an invented endorsement
+ * attributed to a named person is a fabrication a visitor could check, and it
+ * would put the one thing this whole site trades on at risk.
+ *
+ * All four are colleagues at the same automation studio rather than buying
+ * clients, and the section says so rather than implying otherwise.
+ */
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  org: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Carl's expertise in automation workflows is exceptional. His ability to architect complex N8N systems and deliver scalable solutions has been invaluable to our team's success.",
+    name: "Rj Villamer",
+    role: "Lead Automation Specialist",
+    org: "Your Automation Crew",
+  },
+  {
+    quote:
+      "Working with Carl on CRM integrations has been a pleasure. His deep understanding of GoHighLevel and ability to create seamless automations consistently exceeds expectations.",
+    name: "Aldren Azarcon",
+    role: "GoHighLevel Specialist",
+    org: "Your Automation Crew",
+  },
+  {
+    quote:
+      "Carl brings innovation to every project. His work on AI agent systems and multi-platform integrations demonstrates both technical skill and creative problem-solving.",
+    name: "Mark Bahalla",
+    role: "Automation & Voice AI Specialist",
+    org: "Your Automation Crew",
+  },
+  {
+    quote:
+      "The quality of Carl's automation solutions is outstanding. He combines technical excellence with a strong understanding of business needs to deliver impactful results.",
+    name: "Markee Navarro",
+    role: "Automation & Voice AI Specialist",
+    org: "Your Automation Crew",
+  },
+];
+
 export interface VideoAd {
   src: string;
   poster: string;

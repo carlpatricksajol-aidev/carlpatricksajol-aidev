@@ -6,6 +6,7 @@ import ToolBand from "@/components/landing/ToolBand";
 import { Output, Problems, Solutions } from "@/components/landing/Problems";
 import InkBand from "@/components/landing/InkBand";
 import Workflows from "@/components/landing/Workflows";
+import Testimonials from "@/components/landing/Testimonials";
 import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections";
 
 /**
@@ -21,7 +22,8 @@ import { CTA, Credentials, Proof, Systems } from "@/components/landing/Sections"
  *     sold into, the three hardest builds, all twenty-six workflow maps, and
  *     the creative chapter. Each industry's proof line names a system, so that
  *     section hands straight into the next one.
- *   → then who he is, then one action.
+ *   → then what four people who inherited the systems say, then who he
+ *     is, then one action.
  *
  * The two-track fork and the separate Process section are both gone. The fork
  * asserted through geometry that ad creative was half the practice; Process was
@@ -40,6 +42,7 @@ const Index = () => (
     <Systems />
     <Workflows />
     <InkBand />
+    <Testimonials />
     <Credentials />
     <CTA />
   </Page>

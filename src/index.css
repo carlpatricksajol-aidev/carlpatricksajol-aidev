@@ -556,6 +556,24 @@
     mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
+  /* ---------- the pull-quote mark ----------
+     The only purely decorative glyph on the site, and it earns its place by
+     being the testimonial section's whole component. Set at display scale in
+     the display face, hung outside the measure so the quote's first line still
+     starts flush on the column edge. */
+  .quote-mark {
+    position: absolute;
+    left: -0.14em;
+    top: -0.22em;
+    font-family: "Newsreader Variable", ui-serif, Georgia, serif;
+    font-size: clamp(3.5rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1;
+    color: hsl(var(--rule-2));
+    pointer-events: none;
+    user-select: none;
+  }
+
   /* ---------- the arrival burst ----------
      Eight automation marks fly to the edges of the SCREEN, bounce back and
      forth, and are gone inside six seconds. It runs once and then unmounts, so
