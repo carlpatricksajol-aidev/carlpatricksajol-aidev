@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      LinkedIn cover, 1584x396, rendered from the site's own design system so the
+      banner and carlsajol.dev cannot drift apart in typeface, colour or wording.
+
+      TWO LAYOUT CONSTRAINTS THAT DECIDE EVERYTHING:
+
+      1. On desktop LinkedIn drops the circular profile photo over the LOWER LEFT
+         of the cover — roughly the first 260px across and the bottom 200px down.
+         Anything there is destroyed. So that corner is deliberately empty.
+      2. On mobile LinkedIn crops the cover HORIZONTALLY, keeping roughly the
+         middle 60%. So nothing that must be read is allowed near either edge.
+
+      The result: the headline sits centre-left but raised clear of the avatar,
+      the ledger sits centre-right inside the mobile-safe band, and the domain is
+      the only thing that risks the right edge — where losing it costs nothing,
+      because it is also the page it links to.
+    -->
+    <style>
+      @font-face {
+        font-family: "Newsreader Variable";
+        src: url("../node_modules/@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2") format("woff2");
+        font-weight: 200 800;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Instrument Sans Variable";
+        src: url("../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-normal.woff2") format("woff2");
+        font-weight: 400 700;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("../node_modules/@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2") format("woff2");
+        font-weight: 400;
+        font-display: block;
+      }
+
+      /* the site's tokens, copied so this renders standalone */
+      :root {
+        --paper: #f8f2ec;
+        --card: #fefcfa;
+        --ink-0: #1a1510;
+        --ink-2: #50463d;
+        --ink-3: #6c6157;
+        --rule: #e2d8d0;
+        --rule-2: #d0c5bc;
+        --blue-600: #0058b8;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1584px; height: 396px; }
+
+      body {
+        background: var(--paper);
+        color: var(--ink-2);
+        font-family: "Instrument Sans Variable", sans-serif;
+        font-synthesis: none;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* the same grain the site is printed on */
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      }
+
+      /* THE WIRE — the site's signature, and the one thing on the banner that is
+         not type. It runs the full width with a port per section, exactly as the
+         sticky header does, so the two read as the same object. */
+      .wire {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 92px;
+        height: 2px;
+        background: linear-gradient(90deg,
+          rgba(0,88,184,0) 0%, var(--blue-600) 18%, var(--blue-600) 66%, var(--rule-2) 66%, var(--rule-2) 100%);
+      }
+      .port {
+        position: absolute;
+        top: -2.5px;
+        width: 7px;
+        height: 7px;
+        background: var(--blue-600);
+      }
+      .port--off { background: var(--rule-2); }
+
+      .stage {
+        position: absolute;
+        inset: 0;
+        padding: 132px 72px 0 316px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 56px;
+      }
+
+      .slug {
+        font-family: "Geist Mono", monospace;
+        font-size: 15px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--blue-600);
+      }
+
+      h1 {
+        font-family: "Newsreader Variable", serif;
+        font-weight: 300;
+        font-size: 54px;
+        line-height: 1.04;
+        letter-spacing: -0.026em;
+        color: var(--ink-0);
+        max-width: 20ch;
+        margin-top: 16px;
+      }
+
+      /* the ledger, kept inside the mobile-safe middle band */
+      .ledger { display: flex; gap: 40px; padding-top: 6px; }
+      .ledger dt {
+        font-family: "Newsreader Variable", serif;
+        font-weight: 300;
+        font-size: 46px;
+        line-height: 1;
+        color: var(--ink-0);
+        font-variant-numeric: tabular-nums lining-nums;
+      }
+      .ledger dd {
+        font-family: "Geist Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin-top: 10px;
+        max-width: 15ch;
+        line-height: 1.45;
+      }
+
+      /* bottom right: the address. The only element near an edge, because it is
+         the one thing a reader can recover by clicking the profile anyway. */
+      .addr {
+        position: absolute;
+        right: 72px;
+        bottom: 34px;
+        font-family: "Geist Mono", monospace;
+        font-size: 16px;
+        letter-spacing: 0.07em;
+        color: var(--ink-0);
+      }
+      .addr .dot { color: var(--ink-3); }
+
+      /* the avatar keep-out, drawn only in the guide build */
+      .keepout {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 268px;
+        height: 208px;
+        display: none;
+      }
+      body.guide .keepout {
+        display: block;
+        background: rgba(200, 40, 40, 0.14);
+        outline: 1px dashed rgba(200, 40, 40, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wire">
+      <span class="port" style="left: 316px"></span>
+      <span class="port" style="left: 476px"></span>
+      <span class="port" style="left: 636px"></span>
+      <span class="port" style="left: 796px"></span>
+      <span class="port" style="left: 956px"></span>
+      <span class="port--off port" style="left: 1116px"></span>
+      <span class="port--off port" style="left: 1276px"></span>
+      <span class="port--off port" style="left: 1436px"></span>
+    </div>
+
+    <div class="stage">
+      <div>
+        <p class="slug">Automation Specialist · AI Creative Architect</p>
+        <h1>I wire the tools you already pay for.</h1>
+      </div>
+
+      <dl class="ledger">
+        <div>
+          <dt>26</dt>
+          <dd>automations live in production</dd>
+        </div>
+        <div>
+          <dt>11</dt>
+          <dd>start themselves, nobody presses go</dd>
+        </div>
+        <div>
+          <dt>2 yrs</dt>
+          <dd>three roles at the same time</dd>
+        </div>
+      </dl>
+    </div>
+
+    <p class="addr">carlsajol<span class="dot">.dev</span></p>
+    <div class="keepout"></div>
+  </body>
+</html>

@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "gen:icons": "node scripts/gen-icons.mjs",
     "gen:og": "node scripts/gen-og.mjs",
-    "watermark": "node scripts/watermark.mjs"
+    "watermark": "node scripts/watermark.mjs",
+    "gen:linkedin": "node scripts/gen-linkedin.mjs"
   },
   "dependencies": {
     "@fontsource-variable/instrument-sans": "^5.3.0",
