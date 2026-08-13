@@ -185,7 +185,7 @@ export const adPlacements: { key: string; name: string; relation: string }[] = [
  * The four testimonials already published on the live site, ported verbatim.
  *
  * Not written here. Every quote, name, title and company is copied exactly as it
- * appears on carlpatricksajol-aidev.onrender.com — an invented endorsement
+ * appears on carlsajol.dev — an invented endorsement
  * attributed to a named person is a fabrication a visitor could check, and it
  * would put the one thing this whole site trades on at risk.
  *

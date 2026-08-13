@@ -16,7 +16,7 @@ import path from "node:path";
 const ROOT = "public/showcase";
 const ORIG = path.join(ROOT, "_original");
 const FONT = "C\\:/Windows/Fonts/consola.ttf";
-const MARK = "carlpatricksajol-aidev.onrender.com";
+const MARK = "carlsajol.dev";
 
 const ff = (args) => execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args]);
 

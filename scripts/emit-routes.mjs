@@ -18,7 +18,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 const dataDir = join(root, "src", "data");
 
-const ORIGIN = "https://carlpatricksajol-aidev.onrender.com";
+const ORIGIN = "https://carlsajol.dev";
 const STATIC_ROUTES = ["/", "/work", "/experience"];
 
 const slugs = new Set();
