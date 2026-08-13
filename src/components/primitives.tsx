@@ -101,6 +101,15 @@ export const SectionHeader = ({
 
 /* ---------- buttons: exactly one filled button per viewport ---------- */
 
+/**
+ * The one action on the page, so it is the one object built like a control.
+ *
+ * Ink, not blue: the accent belongs to links, focus and the wire, and spending it
+ * on a button is what made it read as chrome. What earns its keep instead is
+ * material — a top specular edge, a real shadow on the ink's own hue, a lift on
+ * hover, a press on click, and an arrow that steps forward with it. All of it is
+ * transform, colour and shadow, so the whole thing composites.
+ */
 export const PrimaryButton = ({
   href,
   to,
@@ -112,18 +121,38 @@ export const PrimaryButton = ({
   children: ReactNode;
   large?: boolean;
 }) => {
-  // ink, not blue. the accent is reserved for links, focus and the track spine —
-  // spending it on buttons is what made it read as chrome.
-  const cls = `inline-flex items-center justify-center gap-s2 rounded-sm bg-ink text-[hsl(var(--card))] transition-[background-color,transform,box-shadow] duration-180 ease-out hover:bg-ink-strong active:translate-y-px ${
-    large ? "h-14 px-7 text-[1.0625rem]" : "h-12 px-6 text-[0.9375rem]"
-  }`;
-  if (to) return <Link to={to} className={cls}>{children}</Link>;
+  const cls = `btn-cta group ${large ? "btn-cta--lg" : ""}`;
+  const inner = (
+    <>
+      <span className="btn-cta-label">{children}</span>
+      <span className="btn-cta-arrow" aria-hidden="true">
+        <ArrowRight />
+      </span>
+    </>
+  );
+  if (to) return <Link to={to} className={cls}>{inner}</Link>;
   return (
-    <a href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined} className={cls}>
-      {children}
+    <a
+      href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      className={cls}
+    >
+      {inner}
     </a>
   );
 };
+
+/** the header's version: same object, one size down and outlined, because the
+ *  page's single filled button belongs to the hero and the closing CTA */
+export const HeaderCTA = ({ href }: { href: string }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="btn-cta btn-cta--ghost group">
+    <span className="btn-cta-label">Book a call</span>
+    <span className="btn-cta-arrow" aria-hidden="true">
+      <ArrowRight />
+    </span>
+  </a>
+);
 
 export const ArrowLink = ({ to, href, children }: { to?: string; href?: string; children: ReactNode }) => {
   const inner = (

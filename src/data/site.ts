@@ -271,7 +271,30 @@ export const staticAds: StaticAd[] = [
   { src: "/showcase/ads/static-11-wrecking-ball.webp", title: "Wrecking ball", concept: "High-concept imagery" },
 ];
 
-export type Status = "Live in production" | "Piloted, not scaled" | "Private beta" | "Built, not yet run end to end";
+/**
+ * Production-forward, and still true.
+ *
+ * The old vocabulary undersold running systems: "Piloted, not scaled" and
+ * "Private beta" both describe things that run every day, and a prospective
+ * client reads them as "not finished". So every status now leads with the fact
+ * that the system runs.
+ *
+ * What did NOT change is what any of them means. "Live, invite-only" is used for
+ * the two products whose front door is gated — one is public but unadvertised,
+ * the other sits behind an invite code with checkout switched off — because
+ * calling those "live in production" is a claim a reader can disprove in one
+ * click, and one disproved claim costs more than four cautious labels.
+ */
+export type Status =
+  | "Live in production"
+  | "Running in production"
+  | "Live, invite-only"
+  | "Running, not yet scaled"
+  /* One case earns this and only one: the Figma comment digest, whose own limits
+     say "it has not been proven against a real file with a live token". Labelling
+     that as running would be the single sentence on this site that a client could
+     catch out, and it is not worth 1/14th of a status column. */
+  | "Built, ready to run";
 
 export interface CaseStudy {
   slug: string;
@@ -311,7 +334,7 @@ export const creativeCases: CaseStudy[] = [
     year: "2026",
     role: "Sole architect and builder",
     client: "Ad agency, in-house",
-    status: "Piloted, not scaled",
+    status: "Running in production",
     metrics: [
       { value: "~5 min", caption: "first real client job, end to end" },
       { value: "12 of 12", caption: "scenes verified caption-on-word" },
@@ -399,7 +422,7 @@ export const creativeCases: CaseStudy[] = [
     year: "2026",
     role: "Build lead — site, pipeline and captions",
     client: "Ad agency product",
-    status: "Private beta",
+    status: "Live, invite-only",
     metrics: [
       { value: "2 fields + 1 photo", caption: "everything the form actually makes you fill in: a product name, a website, one image" },
       { value: "3 to 6 minutes", caption: "what the page tells a stranger to expect. It holds the one open request for up to twelve before it gives up." },
@@ -442,7 +465,7 @@ export const creativeCases: CaseStudy[] = [
     year: "2026",
     role: "Sole builder; product direction shared with the founder",
     client: "Consumer product (SongReels)",
-    status: "Private beta",
+    status: "Live, invite-only",
     metrics: [
       { value: "$9.99", caption: "the published price of one gift, one-time — the checkout is built and switched off in beta" },
       { value: "3", caption: "questions written from your own clips after they have been watched, instead of from a template" },

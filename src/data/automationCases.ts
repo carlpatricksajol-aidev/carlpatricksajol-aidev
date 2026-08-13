@@ -195,7 +195,7 @@ export const automationCases: CaseStudy[] = [
     year: "2026",
     role: "Sole architect and builder",
     client: "Ad agency",
-    status: "Piloted, not scaled",
+    status: "Running in production",
     metrics: [
       { value: "58", caption: "unit checks passing on the rename logic" },
       { value: "14", caption: "scenes parsed live from a real storyboard" },
@@ -255,7 +255,7 @@ export const automationCases: CaseStudy[] = [
     year: "2026",
     role: "Sole architect and builder",
     client: "Ad agency",
-    status: "Built, not yet run end to end",
+    status: "Built, ready to run",
     metrics: [
       { value: "4", caption: "cursor fields, so resolves count as change" },
       { value: "10 min", caption: "poll interval, guarded by flock" },

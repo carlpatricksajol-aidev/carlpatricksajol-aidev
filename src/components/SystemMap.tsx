@@ -221,15 +221,23 @@ const SystemMap = () => {
           );
         })}
 
-        {/* the consignment: one job per cycle, riding the middle out-edge */}
-        <g className="sm-tag">
-          <animateMotion dur={CYCLE} repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.52;0.80;1">
-            <mpath href={`#sm-e${inEdges.length + 1}`} />
-          </animateMotion>
-          <animate attributeName="opacity" dur={CYCLE} repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.52;0.55;0.77;0.80;1" />
-          <rect x={-52} y={-9} width={104} height={18} rx={4} />
+        {/* THE CONSIGNMENT — one of the deck's four jobs per cycle.
+            It used to ride the middle out-edge. It cannot: the tighter viewBox
+            leaves that edge 28 units long and the tag is 104 wide, so it parked
+            on an output node every cycle no matter how early it faded. Travel is
+            already carried by the packets, so the tag holds still under the core
+            and just changes its cargo. */}
+        <g className="sm-tag" transform={`translate(${L.coreX + nw / 2} ${L.coreY + L.coreH + 30})`}>
+          <animate
+            attributeName="opacity"
+            dur={CYCLE}
+            repeatCount="indefinite"
+            values="0;0;1;1;0;0"
+            keyTimes="0;0.50;0.56;0.86;0.94;1"
+          />
+          <rect x={-56} y={-11} width={112} height={22} rx={5} />
           {JOBS.map((j, i) => (
-            <text key={j} x={-44} y={4} opacity={0}>
+            <text key={j} x={0} y={4} textAnchor="middle" opacity={0}>
               {j}
               <animate
                 attributeName="opacity"

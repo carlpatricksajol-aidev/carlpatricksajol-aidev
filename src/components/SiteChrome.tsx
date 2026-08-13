@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { ArrowLeft, PrimaryButton } from "@/components/primitives";
+import { ArrowLeft, HeaderCTA } from "@/components/primitives";
 import { profile } from "@/data/site";
 import { useRunSwitch } from "@/components/schematic/useSchematic";
 
@@ -143,14 +143,7 @@ export const SiteHeader = ({
               accent fill per viewport, and the hero / final CTA own it */}
           <span className="wire-dock">
             <span className="wire-terminus" aria-hidden="true" />
-            <a
-              href={profile.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-9 items-center rounded-sm border border-line-interactive px-s4 text-[0.8125rem] font-medium text-ink transition-colors duration-120 ease-out hover:bg-surface-sunken"
-            >
-              Book a call
-            </a>
+            <HeaderCTA href={profile.calendly} />
           </span>
         </div>
       </div>

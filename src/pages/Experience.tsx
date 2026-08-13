@@ -146,6 +146,12 @@ const Experience = () => (
                       <span className="t-small text-ink-secondary">{it.label}</span>
                     </li>
                   ))}
+                  {/* Every one of these six groups is a sample. A grid of named
+                      tools reads as a complete inventory, and a reader who does
+                      not see their own tool concludes it cannot be done. */}
+                  <li className="inline-flex items-center rounded-xs border border-dashed border-line-interactive px-s3 py-1.5">
+                    <span className="t-small text-ink-tertiary">and more</span>
+                  </li>
                 </ul>
               </div>
             ))}

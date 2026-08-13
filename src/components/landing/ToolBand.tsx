@@ -50,7 +50,10 @@ const ToolBand = () => {
             >
               <p className="t-slug text-ink">{g.group}</p>
               <p className="t-micro mt-s3 text-ink-tertiary">{g.blurb}</p>
-              <p className="t-small mt-s4 text-ink-secondary">{g.items.map((it) => it.label).join(" · ")}</p>
+              <p className="t-small mt-s4 text-ink-secondary">
+                {g.items.map((it) => it.label).join(" · ")}
+                <span className="text-ink-tertiary"> · and more</span>
+              </p>
             </li>
           ))}
         </ul>

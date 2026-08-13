@@ -746,6 +746,85 @@
     --blue-600: var(--blue-700);
   }
 
+  /* ---------- the call-to-action ----------
+     The page has exactly one job and this is the object that does it, so it is
+     the one thing built like a physical control rather than a coloured rectangle.
+     Ink, never the accent — blue belongs to links, focus and the wire.
+
+     What makes it read as a control: a specular top edge, a shadow cast in the
+     ink's own hue so it shares the page's single light source, a lift on hover, a
+     real press on active, and an arrow that steps forward as the surface rises.
+     Transform, colour and shadow only. */
+  .btn-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    height: 3rem;
+    padding-inline: 1.5rem;
+    border-radius: var(--r-control);
+    background: hsl(var(--ink-0));
+    color: hsl(var(--card));
+    font-size: 0.9375rem;
+    font-weight: var(--w-medium);
+    letter-spacing: -0.004em;
+    white-space: nowrap;
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.14),
+      0 1px 2px -1px hsl(var(--sh) / 0.36),
+      0 6px 16px -6px hsl(var(--sh) / 0.34);
+    transition:
+      transform 180ms cubic-bezier(.32,.72,0,1),
+      box-shadow 180ms cubic-bezier(.32,.72,0,1),
+      background-color 140ms ease;
+  }
+  .btn-cta:hover {
+    background: hsl(var(--ink-1));
+    transform: translateY(-1.5px);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.18),
+      0 2px 4px -2px hsl(var(--sh) / 0.34),
+      0 14px 30px -10px hsl(var(--sh) / 0.4);
+  }
+  .btn-cta:active {
+    transform: translateY(0.5px);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.1),
+      0 1px 2px -1px hsl(var(--sh) / 0.4);
+  }
+  .btn-cta--lg { height: 3.5rem; padding-inline: 1.85rem; font-size: 1.0625rem; }
+
+  .btn-cta-arrow {
+    display: inline-flex;
+    transition: transform 200ms cubic-bezier(.32,.72,0,1);
+  }
+  .btn-cta:hover .btn-cta-arrow { transform: translateX(3px); }
+
+  /* the header's copy: outlined, because the page's single filled button belongs
+     to the hero and the closing CTA and a third one would flatten both */
+  .btn-cta--ghost {
+    height: 2.25rem;
+    padding-inline: 1rem;
+    font-size: 0.8125rem;
+    background: transparent;
+    color: hsl(var(--ink-0));
+    border: 1px solid hsl(var(--ink-4));
+    box-shadow: none;
+  }
+  .btn-cta--ghost:hover {
+    background: hsl(var(--ink-0));
+    color: hsl(var(--card));
+    border-color: hsl(var(--ink-0));
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px -6px hsl(var(--sh) / 0.34);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-cta, .btn-cta-arrow { transition: none !important; }
+    .btn-cta:hover, .btn-cta:active { transform: none !important; }
+  }
+
   /* ---------- the plate rail ----------
      26 plates used to be a 13-row grid: about nine screens of vertical scroll to
      see the work, which is a lot to ask of someone deciding whether to email you.
