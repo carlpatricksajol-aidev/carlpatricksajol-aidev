@@ -70,7 +70,18 @@ const CaseStudy = () => {
           </div>
         </section>
 
-        {/* 3 — hero artefact */}
+        {/* 3 — result, up top. A visitor deciding whether to read judges the
+            outcome first; the craft below is for the reader who stays. */}
+        <section className="w-shell gutter mt-s8" aria-labelledby="result">
+          <div className="w-prose">
+            <h2 id="result" className="t-section">The result</h2>
+            {study.result.map((p) => (
+              <p key={p} className="t-lead mt-s4 text-ink-secondary">{p}</p>
+            ))}
+          </div>
+        </section>
+
+        {/* 4 — hero artefact */}
         {study.hero && (
           <figure className="w-shell gutter mt-s8">
             {study.hero.type === "video" && study.hero.poster ? (
@@ -88,10 +99,10 @@ const CaseStudy = () => {
           </figure>
         )}
 
-        {/* 4 — situation */}
+        {/* 5 — the problem */}
         <section className="w-shell gutter section" aria-labelledby="situation">
           <div className="w-prose">
-            <h2 id="situation" className="t-section">The situation</h2>
+            <h2 id="situation" className="t-section">The problem</h2>
             {study.situation.map((p) => (
               <p key={p} className="t-lead mt-s4 text-ink-secondary">{p}</p>
             ))}
@@ -155,16 +166,6 @@ const CaseStudy = () => {
                 </li>
               ))}
             </ol>
-          </div>
-        </section>
-
-        {/* 7 — result */}
-        <section className="w-shell gutter pb-s9" aria-labelledby="result">
-          <div className="w-prose">
-            <h2 id="result" className="t-section">The result</h2>
-            {study.result.map((p) => (
-              <p key={p} className="t-lead mt-s4 text-ink-secondary">{p}</p>
-            ))}
           </div>
         </section>
 

@@ -28,7 +28,7 @@
 
 export const hero = {
   h1: "I wire the tools you already pay for, so nobody has to move work between them.",
-  deck: "Zapier, Make and n8n do the moving, ChatGPT and Claude do the reading and sorting, and it all runs on the HubSpot, Airtable, Notion and Google Sheets accounts you already have. [[lift:Nightly reporting, records kept in step, publishing, finished ad creative: same wiring.]]",
+  deck: "Two years building the automation layer inside a dating app, a working ad agency and a marketing consultancy: 53 systems, 26 of them running in production right now. [[lift:Every build below is written up the same way: the problem, what I built, and what changed.]]",
   primaryCta: "Map what repeats in 30 minutes",
   secondaryCta: "See the 26 running now",
   /** sits beside the availability dot, so the first screen is not proof-free */
@@ -288,7 +288,7 @@ export const sectionCopy: Record<string, { eyebrow: string; title: string; deck:
   proof: {
     eyebrow: "Proof",
     title: "Four numbers, all from live systems",
-    deck: "The fair question after that list is whether one person can actually cover it. These four are the answer, and every one of them can be checked.",
+    deck: "Counted from the live n8n instance through its own API, not self-reported. Every one of them can be checked.",
   },
   systems: {
     eyebrow: "In depth",

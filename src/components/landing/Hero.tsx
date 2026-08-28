@@ -26,9 +26,9 @@ const Hero = () => {
         {/* text block: cols 1-7 */}
         <div className="col-span-12 lg:col-span-7">
           <p className="t-slug text-ink-tertiary">
-            Automation Specialist
+            Carl Patrick Sajol
             <span className="mx-2" aria-hidden="true">·</span>
-            AI Creative Architect
+            AI Automation Engineer
           </p>
 
           <h1 className="t-display t-display--long mt-s5 max-w-[22ch]">{hero.h1}</h1>
