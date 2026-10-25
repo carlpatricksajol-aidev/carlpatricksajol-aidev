@@ -1,0 +1,9 @@
+{
+  "name": "carlsajol-ask",
+  "private": true,
+  "type": "module",
+  "description": "The portfolio assistant's server half. No dependencies.",
+  "scripts": {
+    "dev": "node dev.mjs"
+  }
+}

@@ -1,6 +1,7 @@
 [
   "/",
   "/work",
+  "/about",
   "/experience",
   "/work/claude-mcp-server-slack-agents",
   "/work/meta-tiktok-ads-automation-suite",
@@ -12,6 +13,8 @@
   "/work/webhook-to-post-ads",
   "/work/meta-reporting-warehouse",
   "/work/creative-analysis-automation",
+  "/work/concepts-and-scripts-engine",
+  "/work/creator-shoot-guides",
   "/work/ai-video-editor",
   "/work/static-ads-service",
   "/work/creative-os",

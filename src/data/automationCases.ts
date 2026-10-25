@@ -21,7 +21,7 @@ export const automationCases: CaseStudy[] = [
       { value: "Weekly", caption: "digests posted with no human trigger" },
     ],
     situation: [
-      "A mobile app company had its growth data spread across three systems it had built itself: an internal SDK, a proprietary database, and an in-house attribution platform. Answering an ordinary question — which creative drove installs on iOS last week, which cohort is retaining — meant someone who knew the schema writing a query and pasting the result into a chat.",
+      "A mobile app company had its growth data spread across three systems it had built itself: an internal SDK, a proprietary database, and an in-house attribution platform. Answering an ordinary question (which creative drove installs on iOS last week, which cohort is retaining) meant someone who knew the schema writing a query and pasting the result into a chat.",
       "The team already used Claude, but every conversation started from nothing. Context arrived as screenshots and CSV pastes, which meant answers were only as fresh as the last export, and nobody could check the working.",
       "The job was to give Claude a direct, typed path into those systems, and then to put the questions people actually ask where they already ask them: Slack.",
     ],
@@ -90,7 +90,7 @@ export const automationCases: CaseStudy[] = [
       { title: "An internal web app, not a folder of scripts", body: "The buyers get a front door: one internal app where the automations are visible, triggerable and inspectable. Scripts nobody can see are scripts nobody trusts with a budget." },
       { title: "Airtable as the launch sheet, n8n as the runner", body: "Creative rows live in Airtable with their campaign parameters. n8n batches them against the Meta API, so naming, targeting parameters and campaign structure come from the row instead of being typed per ad. This is the bulk lane that carries hundreds of ad launches a month." },
       { title: "Rules first, deletion second", body: "Performance-based ad deletion runs off thresholds the buyer writes, not off a model's opinion. The rule is the artifact; the automation only executes it." },
-      { title: "Comment moderation on webhooks", body: "Graph API webhooks push new comments as they land. A layered classifier handles them — cheap deterministic checks first, a model pass second — routing each comment to hide, reply or escalate. One pass was not accurate enough to act alone, so it is not asked to." },
+      { title: "Comment moderation on webhooks", body: "Graph API webhooks push new comments as they land. A layered classifier handles them, cheap deterministic checks first and a model pass second, routing each comment to hide, reply or escalate. One pass was not accurate enough to act alone, so it is not asked to." },
       { title: "TikTok: check before spend, appeal after", body: "Creative gets a pre-review pass against known rejection patterns before it goes live, and rejections that happen anyway are drafted into appeals automatically instead of being written from scratch each time." },
       { title: "Reporting and competitor reads", body: "Cross-platform creative reporting puts Meta and TikTok performance in one view, and a competitor-creative pass synthesises what other advertisers are publicly running into a readable brief." },
     ],
@@ -203,7 +203,7 @@ export const automationCases: CaseStudy[] = [
     ],
     situation: [
       "When a creator finishes a shoot they upload a folder of clips named DJI_0001.MOV, clip_take_a.mov, and worse. The agency's QA team then watched every clip, worked out which storyboard scene it belonged to, and renamed it by hand so the design and edit stages could find it.",
-      "The storyboard is the ground truth, and it already exists — as a table in the job's Notion page, in the format the strategists already write. Nothing was wrong with the storyboard; the work was matching footage to it.",
+      "The storyboard is the ground truth, and it already exists, as a table in the job's Notion page, in the format the strategists already write. Nothing was wrong with the storyboard; the work was matching footage to it.",
       "Worse, missing shots were only discovered later, mid-edit, when a scene had no footage. That is the most expensive moment to find out.",
     ],
     constraintIntro: "One line was not negotiable:",
@@ -213,14 +213,14 @@ export const automationCases: CaseStudy[] = [
       { title: "Parse the storyboard by header, not by column order", body: "The storyboard table is read by header name, so an added column or a reordered one cannot break it. Multi-shot cells split on ' + ' and commas. Talking-head versus b-roll is inferred from whether the Footage Name cell is filled, so strategists author nothing extra." },
       { title: "Shrink, then look", body: "Inline payloads to the vision model are size-capped, so ffmpeg reduces each clip to a low-res proxy or a handful of sampled frames first. One model call per clip, matched against the closed set of that storyboard's scenes, returning a scene, a shot slug and a confidence." },
       { title: "Deterministic rename in one tested module", body: "Slugging, multi-shot splitting, take grouping (_take1, _take2), version suffixes (_v2), the output folder layout and the missing-shot diff all live in one Node module with 58 passing unit checks. The same module is pasted into the n8n code node and runs headless on the server, so there is one source of truth for naming." },
-      { title: "Never destroy the original", body: "Output is a new Dropbox folder — aroll/, broll/ and a _report.md — built by copying from the creator's upload, never moving it. Every take is kept; the tool organises, it does not choose the keeper." },
+      { title: "Never destroy the original", body: "Output is a new Dropbox folder (aroll/, broll/ and a _report.md) built by copying from the creator's upload, never moving it. Every take is kept; the tool organises, it does not choose the keeper." },
       { title: "A confidence floor, then a human", body: "Below 0.6 confidence a clip keeps its original name and is listed in the report. The job row goes to 'Needs review' rather than 'Done', and QA gets a share link plus the report as a comment on the row." },
     ],
     result: [
       "The storyboard parser was validated live against a real job page: 14 scenes, 17 b-roll shots, multi-shot cells split correctly.",
       "Stage one runs inside the agency's own n8n instance, triggered from the Notion queue the strategists already use.",
       "QA receives a report naming the storyboard shots that no clip matched, at upload time rather than in the middle of an edit.",
-      "Naming is deterministic, so the downstream assembly editor — which matches b-roll by filename — locks on without a human re-checking.",
+      "Naming is deterministic, so the downstream assembly editor, which matches b-roll by filename, locks on without a human re-checking.",
     ],
     limits: [
       "The clip-matching stage has been validated on fixtures and one real storyboard, not across a full slate of creator uploads. Running a real creator's footage end to end is the next step, not a finished one.",
@@ -262,16 +262,16 @@ export const automationCases: CaseStudy[] = [
       { value: "1", caption: "API call on a no-change tick" },
     ],
     situation: [
-      "Clients review ad creative by leaving comments on a Figma board. On a board of thirty frames those comments end up scattered — some pinned to a node, some dropped on bare canvas, some buried three replies deep in a thread.",
+      "Clients review ad creative by leaving comments on a Figma board. On a board of thirty frames those comments end up scattered: some pinned to a node, some dropped on bare canvas, some buried three replies deep in a thread.",
       "A designer picking the work up scrolls the board and reconstructs the list by hand. Then a client resolves half of them and the reconstructed list is stale, and nobody can say what is still open without doing it again.",
       "The tool keeps that brief current on its own: every comment, resolved to the ad it belongs to, classified and routed, with the client's exact words preserved.",
     ],
     constraintIntro: "The cost problem came first:",
     constraint: "Image renders and model calls may only run when something has actually changed, including a resolve, which creates no new comment and moves no timestamp.",
     build: [
-      { title: "One cheap call decides whether anything runs", body: "A single GET of the file's comments returns every comment, every reply and each thread's resolved_at. From that the poller computes a four-field cursor — latest comment id, latest activity time, comment count, and resolved count. Identical to the stored cursor means skip; any field differing means regenerate. Most ticks are one HTTP call and nothing else." },
+      { title: "One cheap call decides whether anything runs", body: "A single GET of the file's comments returns every comment, every reply and each thread's resolved_at. From that the poller computes a four-field cursor: latest comment id, latest activity time, comment count, and resolved count. Identical to the stored cursor means skip; any field differing means regenerate. Most ticks are one HTTP call and nothing else." },
       { title: "Resolve a pin to the ad it belongs to", body: "Each comment is walked up the node tree to the top-level frame that is the ad. Bare-canvas pins are placed by x/y hit-test against frame bounds; anything that cannot be placed is listed as unplaced rather than silently dropped." },
-      { title: "Classify without editing the client", body: "A model pass adds a type, a route (designer, copywriter, strategist), a priority and a separate imperative restatement, then clusters themes across ads. The client's verbatim wording is never rewritten — the restatement sits beside it, not over it." },
+      { title: "Classify without editing the client", body: "A model pass adds a type, a route (designer, copywriter, strategist), a priority and a separate imperative restatement, then clusters themes across ads. The client's verbatim wording is never rewritten. The restatement sits beside it, not over it." },
       { title: "Thumbnails that survive the week", body: "Figma render URLs expire within hours. Each commented frame's PNG is downloaded and re-uploaded to object storage, keyed with the file's lastModified epoch, so the brief still shows the right image later and re-uploads only happen when the art actually changed." },
       { title: "Advance the watermark last", body: "The brief is inserted first and the cursor advanced only after that insert succeeds. A failed write leaves the watermark where it was, so the change is picked up on the next tick instead of being skipped forever." },
       { title: "n8n notifies, cron runs", body: "This n8n build has no Execute Command node, so it cannot run the engine. It polls the briefs table on a 15-minute schedule with a 20-minute lookback, dedupes to the newest brief per file, and posts to Slack. The engine itself runs from cron under flock so a slow pass never overlaps the next tick." },
@@ -285,7 +285,7 @@ export const automationCases: CaseStudy[] = [
     limits: [
       "It has not been proven against a real file with a live token. Whether a commented node reliably resolves to a top-level frame on a messy production board, and the exact shapes of region and bare-canvas pins, are still open.",
       "The section-label heuristic assumes the nearest text above a frame names the section. Real boards will break that, and the fallback is an unlabelled group rather than a wrong one.",
-      "Routing is a model call, so a copy note can be sent to the designer's lane. The verbatim comment is always attached, so the cost is a misfile rather than a lost comment — but no accuracy number has been measured.",
+      "Routing is a model call, so a copy note can be sent to the designer's lane. The verbatim comment is always attached, so the cost is a misfile rather than a lost comment, but no accuracy number has been measured.",
       "Notification latency is up to fifteen minutes by design. It is a digest, not an alerting system, and an urgent comment still needs someone to say so.",
     ],
     stack: [
@@ -346,7 +346,7 @@ export const automationCases: CaseStudy[] = [
       "Reply classification was never audited against a labelled set, so no accuracy figure is claimed. It handles the common intents; the unusual ones are meant to reach a human.",
       "The share of replies that gets routed to a person has not been tracked, so the honest description is 'agent-first with human fallback', not 'autonomous'.",
       "Bidirectional sync is only as safe as the field-ownership map. Add a field on one side without deciding who owns it and the two systems can overwrite each other.",
-      "None of this is a public artifact — it lives inside client accounts, so it can be demonstrated live but not linked to.",
+      "None of this is a public artifact. It lives inside client accounts, so it can be demonstrated live but not linked to.",
     ],
     stack: [
       "HubSpot",

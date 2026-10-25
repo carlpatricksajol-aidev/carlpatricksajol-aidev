@@ -1,0 +1,21 @@
+# Carl Patrick Sajol
+
+> AI Marketing Specialist based in the Philippines (UTC+8, Singapore time), open to roles. Runs marketing and builds the AI agents that do the repetitive half: content, creators, launches and reporting.
+
+- 26 automations shipped to production, with 500 workflow steps inside them (counted from the workflows, August 2026).
+- Current role: AI Automation Specialist at a performance creative agency (since Aug 2025).
+- Recent: Marketing & Automation Specialist at an ecommerce tracking and attribution platform (May to Aug 2026, three-month contract: ad generation automation, founder content for X, LinkedIn and Facebook, campaigns, blogs, website); AI Automation & Platform Manager at a mobile dating app (Nov 2025 to Jul 2026); Business Consultant, AI Automation, at a marketing consultancy (Aug 2024 to Jan 2026).
+- Earlier: social media marketing associate (Apr 2024 to Aug 2025), digital marketing specialist (Jan 2024 to Feb 2025), paid ads marketing assistant (Feb 2023 to Mar 2024).
+- Client names are deliberately left out of every case file.
+
+## Case files
+- [All case files](https://carlsajol.dev/work): 15 written-up systems, each opening with its result, then the problem, what was built and how it runs.
+- [AI video editor](https://carlsajol.dev/work/ai-video-editor): raw creator footage in, an editable Premiere timeline out, with a review that watches and listens.
+- [Ad scripts with a scorecard](https://carlsajol.dev/work/concepts-and-scripts-engine): ten-point direct-response grading and a compliance sweep.
+- [Creator shoot guides](https://carlsajol.dev/work/creator-shoot-guides): one guide per creator from the client's own deck; 30 in one run.
+- [SongReels](https://carlsajol.dev/work/songreels): a consumer gift product launched end to end.
+
+## Contact
+- Email: carlpatricksajol@gmail.com
+- Book a call: https://calendly.com/carlpatricksajol/30min
+- LinkedIn: https://www.linkedin.com/in/carl-patrick-sajol-/

@@ -1,5 +1,6 @@
 import { automationCases } from "./automationCases";
 import { n8nCases } from "./n8nCases";
+import { newCases } from "./newCases";
 
 /**
  * Single source of truth for every fact on the site.
@@ -14,11 +15,13 @@ import { n8nCases } from "./n8nCases";
 
 export const profile = {
   name: "Carl Patrick Sajol",
-  role: "Automation Specialist · AI Creative Architect",
+  role: "AI Marketing Specialist · Automation Builder",
   email: "carlpatricksajol@gmail.com",
   calendly: "https://calendly.com/carlpatricksajol/30min",
   location: "Remote · Philippines",
   available: true,
+  linkedin: "https://www.linkedin.com/in/carl-patrick-sajol-/",
+  timezone: "UTC+8, the same clock as Singapore",
 };
 
 /**
@@ -117,7 +120,7 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     group: "Code, when there is no connector",
-    blurb: "For the jobs no ready-made connection covers. The step gets written from scratch — a script inside the run, an API nobody has wrapped yet, or a page your customers actually use.",
+    blurb: "For the jobs no ready-made connection covers. The step gets written from scratch: a script inside the run, an API nobody has wrapped yet, or a page your customers actually use.",
     items: [
       { label: "JavaScript", iconKey: "javascript" },
       { label: "TypeScript", iconKey: "typescript" },
@@ -294,7 +297,12 @@ export type Status =
      say "it has not been proven against a real file with a live token". Labelling
      that as running would be the single sentence on this site that a client could
      catch out, and it is not worth 1/14th of a status column. */
-  | "Built, ready to run";
+  | "Built, ready to run"
+  /* A plan or an audit, not a running system: it was delivered, and saying
+     "running" would be false. */
+  | "Delivered to leadership"
+  /* Finished work handed over and used on live client batches. */
+  | "Delivered";
 
 export interface CaseStudy {
   slug: string;
@@ -337,12 +345,12 @@ export const creativeCases: CaseStudy[] = [
     status: "Running in production",
     metrics: [
       { value: "~5 min", caption: "first real client job, end to end" },
-      { value: "12 of 12", caption: "scenes verified caption-on-word" },
-      { value: "0.10s", caption: "caption lead-gap tolerance" },
+      { value: "every 0.25 s", caption: "a face check on camera, so a creator reading off the script gets caught before a client sees it" },
+      { value: "5 to 10¢", caption: "model cost of the review that watches and listens to each finished ad" },
     ],
     situation: [
       "Cutting a paid-social ad is mostly mechanical work. Someone watches every take, finds the usable one, trims the heads and tails, lays b-roll against the right line of script, then types and times the captions.",
-      "It is high-volume and judgement-light, and it consumes most of the clock. The internal estimate for a single ad was roughly seven hours of pre-production spread across five or six freelancers — an estimate, never measured.",
+      "It is high-volume and judgement-light, and it consumes most of the clock. The internal estimate for a single ad was roughly seven hours of pre-production spread across five or six freelancers. That was an estimate, never measured.",
     ],
     constraintIntro:
       "The obvious build is a pipeline that renders a finished video. That was rejected on day one, and the whole architecture follows from rejecting it.",
@@ -354,20 +362,24 @@ export const creativeCases: CaseStudy[] = [
       { title: "Cut on the waveform, not the transcript", body: "Every cut snaps to the real speech boundary in the audio and lead breath is trimmed by waveform, because transcript times are approximate and the drift accumulates." },
       { title: "Build captions from what was actually said", body: "Karaoke captions are generated from the transcript, so a caption can never show a word the talent did not say." },
       { title: "Write a timeline, not a video", body: "Outputs FCP7/XMEML plus a burned preview. Each source appears once in the bin at full length and is reused on the timeline, so any cut can be re-trimmed instead of re-shot." },
+      { title: "Editable all the way down", body: "October: the agency's editor asked for every cut and element to stay editable. The timeline now points at the original footage with its original audio at the right in-points, graphics arrive as stills with fades, captions as an SRT, and the file is written the way Premiere writes its own, learned from one of the editor's exports." },
+      { title: "A review that watches and listens", body: "Before an edit ships, a vision model watches the whole ad, a face check every quarter second flags eyes leaving the lens, and a speech model hears stray syllables and false starts. Every serious finding gets a second look on full-size frames before it counts, which dismisses the model's own false alarms." },
+      { title: "Voice-over and text-only ads too", body: "Producers said most of their ads are voice-over led or text on screen, so the same tool now cuts those from a recorded read and the storyboard, with every hook variant built and reviewed." },
     ],
     result: [
       "Live in production since 16 July 2026 behind HTTPS and a password gate, with a job queue, a jobs page with inline preview, disk cleanup and failure reporting.",
-      "The first real client job — seven scenes — finished in about five minutes including a 1.2 GB download. The motion designer imported and relinked the handoff on a second machine in one step and signed off on the format.",
+      "The first real client job, seven scenes long, finished in about five minutes including a 1.2 GB download. The motion designer imported and relinked the handoff on a second machine in one step and signed off on the format.",
       "Sync was hardened over several rounds of real review: WAV instead of MP3 segments to kill accumulated encoder delay, frame-aligned durations, waveform lead-trim. Verified on all twelve scenes of a client ad.",
+      "In October the agency's editor reviewed the rebuilt version and called it much better than the last, and it became the default way every AI edit is made. On a rejected earlier cut, the new review scored it 3 out of 10 and named the reading, the blooper and the false start.",
     ],
     limits: [
       "Colour grade is not built.",
-      "Hook variants are parsed, but only Hook 1 is produced.",
-      "The 20-ad volume test has not been run.",
-      "It is live but piloted — not yet the standard production workflow.",
+      "The first producer-run jobs in October scored 1 to 4 out of 10 on the review; the causes were fixed and deployed, and have not been re-measured at volume.",
+      "A fix verdict still needs a person: there is no automatic fix loop beyond one retry.",
+      "Overlays arrive as stills, not as live Premiere text; the supported text route is being tested with the editor.",
     ],
-    stack: ["Python", "ffmpeg", "faster-whisper", "Claude via OpenRouter", "FCP7 / XMEML", "Docker", "Traefik", "Dropbox API", "n8n"],
-    pipeline: ["Storyboard in", "Transcribe takes", "Match lines", "Snap to waveform", "Burn captions", "Premiere timeline"],
+    stack: ["Python", "ffmpeg", "faster-whisper", "ElevenLabs Scribe", "Gemini", "Claude via OpenRouter", "OpenTimelineIO", "FCP7 / XMEML", "Docker", "Dropbox API", "n8n"],
+    pipeline: ["Storyboard in", "Pick takes by eye and ear", "Cut on the waveform", "Design the finish", "Watch and listen", "Editable Premiere timeline"],
     hero: { type: "video", src: "/showcase/videos/video-01-same-person-skit.mp4", poster: "/showcase/posters/video-01-same-person-skit.jpg", caption: "A delivered ad in the format the pipeline was built to cut" },
   },
   {
@@ -376,7 +388,7 @@ export const creativeCases: CaseStudy[] = [
     trackLabel: "Creative AI production",
     title: "Static ads that have to earn their way out the door",
     oneLiner: "QA-gated static ads: only the passers ship, the rest drop.",
-    deck: "Concept-first generation with a vision-QA gate — so what reaches the client is the subset that scored, not everything the model produced.",
+    deck: "Concept-first generation with a vision-QA gate, so what reaches the client is the subset that scored, not everything the model produced.",
     year: "2026",
     role: "Sole architect and builder",
     client: "Ad agency, in-house",
@@ -387,7 +399,7 @@ export const creativeCases: CaseStudy[] = [
     ],
     situation: [
       "The original version asked a single image model to render layout, imagery and text in one shot.",
-      "It produced garbled brand text on billboards, uncanny faces that changed between frames, soft crooked headlines baked into the pixels — and no real concept. Whichever template got picked was the idea.",
+      "It produced garbled brand text on billboards, uncanny faces that changed between frames, soft crooked headlines baked into the pixels, and no real concept. Whichever template got picked was the idea.",
     ],
     constraintIntro:
       "The fix was not a better prompt. It was noticing that one model was being asked to do three different jobs, and it was only good at one of them.",
@@ -401,7 +413,7 @@ export const creativeCases: CaseStudy[] = [
     ],
     result: [
       "Runs headless as a Node service beside n8n, fed by the existing intake form and asset library. Local rendering makes retries free, so the gate is cheap to enforce.",
-      "It performs best on high-signal formats — big-question, notes-app, statistic, testimonial, comparison — and drops dense templates more often. That trade is stated in the README rather than hidden.",
+      "It performs best on high-signal formats (big-question, notes-app, statistic, testimonial, comparison) and drops dense templates more often. That trade is stated in the README rather than hidden.",
     ],
     limits: [
       "Dense templates drop more often than high-signal ones.",
@@ -418,9 +430,9 @@ export const creativeCases: CaseStudy[] = [
     trackLabel: "Creative AI production",
     title: "A name, a link and a photo in, a finished vertical ad out",
     oneLiner: "A stranger types a product name and a URL, adds a product photo, and gets a captioned fifteen-second ad back on the same page.",
-    deck: "A self-serve generator with no login and no brief call. The agency's ad-making process became a form, which meant every check a reviewer used to make had to be written into the pipeline as a rule — and the checks nobody wrote down do not happen.",
+    deck: "A self-serve generator with no login and no brief call. The agency's ad-making process became a form, which meant every check a reviewer used to make had to be written into the pipeline as a rule. The checks nobody wrote down do not happen.",
     year: "2026",
-    role: "Build lead — site, pipeline and captions",
+    role: "Build lead: site, pipeline and captions",
     client: "Ad agency product",
     status: "Live, invite-only",
     metrics: [
@@ -429,16 +441,16 @@ export const creativeCases: CaseStudy[] = [
     ],
     situation: [
       "The agency made ads the human way. Every ad needed a strategist to pick the angle, a shoot or an editor to make it, and rounds of back-and-forth to land it. The expertise was real and it did not scale, because every ad started with a meeting.",
-      "Turning that into a form changes the problem rather than shrinking it. An agency ad gets looked at by someone before the client does. A self-serve tool hands the finished file straight to a stranger, with nobody in between. Everything a reviewer used to catch — a word cut off at fifteen seconds, a garbled label, a caption sitting over the product — had to be handled inside the machine before the file was ever shown. The page is public and unadvertised: no login, no email capture, and the agency's own homepage does not link to it.",
+      "Turning that into a form changes the problem rather than shrinking it. An agency ad gets looked at by someone before the client does. A self-serve tool hands the finished file straight to a stranger, with nobody in between. Everything a reviewer used to catch (a word cut off at fifteen seconds, a garbled label, a caption sitting over the product) had to be handled inside the machine before the file was ever shown. The page is public and unadvertised: no login, no email capture, and the agency's own homepage does not link to it.",
     ],
-    constraintIntro: "The video model garbles text it renders, so captions are burned on afterwards. That splits a caption into two streams: the words come from the script, and their timing comes from a transcript of the finished voiceover. The two do not match, on purpose — the spoken line spells the brand name the way it sounds so the voice says it right, while the caption puts the real spelling back.",
-    constraint: "A caption may only ever show words the voice actually spoke, timed to the moment it said them — even though the spelling on screen is not the spelling that was read out.",
+    constraintIntro: "The video model garbles text it renders, so captions are burned on afterwards. That splits a caption into two streams: the words come from the script, and their timing comes from a transcript of the finished voiceover. The two do not match, on purpose: the spoken line spells the brand name the way it sounds so the voice says it right, while the caption puts the real spelling back.",
+    constraint: "A caption may only ever show words the voice actually spoke, timed to the moment it said them, even though the spelling on screen is not the spelling that was read out.",
     build: [
-      { title: "Ask for two things and a photo", body: "Product name and website are required, and so is at least one product photo. Target audience is optional, the concept dropdown comes pre-answered with \"Surprise me\", and once three characters of a product name are typed a \"how do you say it\" field unfolds — it exists only because the ad is voiced. The browser redraws each photo to a maximum of 1024 pixels on its longest side and re-encodes it as a JPEG before sending; the photo rides inside the same single request as the rest of the brief. The strategist is handed the website as text and told it cannot browse, so the brand spec is built from the URL string, the product name, the audience and the photo description." },
+      { title: "Ask for two things and a photo", body: "Product name and website are required, and so is at least one product photo. Target audience is optional, the concept dropdown comes pre-answered with \"Surprise me\", and once three characters of a product name are typed a \"how do you say it\" field unfolds. It exists only because the ad is voiced. The browser redraws each photo to a maximum of 1024 pixels on its longest side and re-encodes it as a JPEG before sending; the photo rides inside the same single request as the rest of the brief. The strategist is handed the website as text and told it cannot browse, so the brand spec is built from the URL string, the product name, the audience and the photo description." },
       { title: "Describe the product, then write to a stopwatch", body: "A vision pass writes down what is visible: colours, materials, the words on the label, the proportions. That transcript is what the writing steps read. The photo itself is uploaded once and handed to the video model as its one reference image, so the words and the pixels describe the same object. Then one prompt runs three roles: a creative director picks the format and writes a twelve-beat script, a timing auditor counts the words against a budget of two a second, adds the pause budget for the scene cuts, and loops with the director until the whole thing fits inside 13.5 seconds, and a story director assigns the shots. The ten plain-English options in the concept dropdown map onto a larger internal format library, sorted into three groups: creator on camera, b-roll with no faces, and animated." },
-      { title: "Generate on the tier that held the label, not the cheap one", body: "One reference image, vertical, 720p, audio on. The cheaper tier of the same model garbled labels, and a different provider ignored the product photo entirely — its video nodes were deleted rather than kept as an option, though the same provider's object storage still holds the photo and the finished file. The job is polled until it succeeds or fails, so the waiting page always gets a reply." },
-      { title: "Align two streams, then burn", body: "The finished clip is transcribed word by word. One self-contained piece of code, testable on its own away from the pipeline, anchors each script word to a heard word within a six-word window, and one- and two-letter words are barred from anchoring so \"a\" and \"to\" cannot match in the wrong place. Words between two anchors inherit the heard words in the gap — that is how a phonetic spelling takes the timing of what was actually said. Words with nothing heard behind them are dropped. What survives is cut into cards of at most three words and about sixteen characters, never spanning two lines of script, placed by a second vision pass that reads one frame per scene to keep captions off the product, and burned in with ffmpeg. If that vision call fails the run does not — captions fall back to the lower third." },
-      { title: "Hold one request open, and never claim done", body: "There is no account and no job ID. The page sends one request and holds it open for up to twelve minutes while the whole pipeline runs, so there is no real progress to report: the bar runs off a hardcoded clock, eases toward 95 per cent, and never says finished. If the wait runs out, the wording changes to say the request is still processing rather than showing an error. What comes back is the ad in a phone frame with a download button, and a storyboard card naming the format, the angle and the scene beats. The page walks the returned data for anything that looks like a media file, so a shape change on the pipeline side degrades to a message instead of a blank screen — it also means the uncaptioned version, which the reply carries for re-edits, turns up as a second, unlabelled \"Your Ad\" beside the finished one." },
+      { title: "Generate on the tier that held the label, not the cheap one", body: "One reference image, vertical, 720p, audio on. The cheaper tier of the same model garbled labels, and a different provider ignored the product photo entirely. Its video nodes were deleted rather than kept as an option, though the same provider's object storage still holds the photo and the finished file. The job is polled until it succeeds or fails, so the waiting page always gets a reply." },
+      { title: "Align two streams, then burn", body: "The finished clip is transcribed word by word. One self-contained piece of code, testable on its own away from the pipeline, anchors each script word to a heard word within a six-word window, and one- and two-letter words are barred from anchoring so \"a\" and \"to\" cannot match in the wrong place. Words between two anchors inherit the heard words in the gap. That is how a phonetic spelling takes the timing of what was actually said. Words with nothing heard behind them are dropped. What survives is cut into cards of at most three words and about sixteen characters, never spanning two lines of script, placed by a second vision pass that reads one frame per scene to keep captions off the product, and burned in with ffmpeg. If that vision call fails the run does not: captions fall back to the lower third." },
+      { title: "Hold one request open, and never claim done", body: "There is no account and no job ID. The page sends one request and holds it open for up to twelve minutes while the whole pipeline runs, so there is no real progress to report: the bar runs off a hardcoded clock, eases toward 95 per cent, and never says finished. If the wait runs out, the wording changes to say the request is still processing rather than showing an error. What comes back is the ad in a phone frame with a download button, and a storyboard card naming the format, the angle and the scene beats. The page walks the returned data for anything that looks like a media file, so a shape change on the pipeline side degrades to a message instead of a blank screen. It also means the uncaptioned version, which the reply carries for re-edits, turns up as a second, unlabelled \"Your Ad\" beside the finished one." },
     ],
     result: [
       "The full path runs end to end on the live page: brief in, hosted file back, storyboard card beside it.",
@@ -446,9 +458,9 @@ export const creativeCases: CaseStudy[] = [
       "The caption chain is the part that was hardened rather than assembled: the aligner is a self-contained function so it can be tested away from the pipeline, and the vision placement step fails soft, dropping captions to the lower third instead of killing the ad.",
     ],
     limits: [
-      "There is no automated quality gate. Nothing scores the finished ad before a stranger watches it — it was named as the next build and it is not in the workflow.",
+      "There is no automated quality gate. Nothing scores the finished ad before a stranger watches it. It was named as the next build and it is not in the workflow.",
       "A run can come back with nothing. Video generation fails on the provider's side often enough to have its own branch in the pipeline, and when that branch fires the page tells the visitor the ad will be sent shortly. There is no address to send it to, and no measured failure rate, because nothing counts runs.",
-      "There is no record of a run. No account, no job ID, no history on the page. The finished file is uploaded to object storage and keeps a working link, but that link is only ever shown in the tab that made it — close the tab and it is gone, and nobody can say how many ads the tool has made.",
+      "There is no record of a run. No account, no job ID, no history on the page. The finished file is uploaded to object storage and keeps a working link, but that link is only ever shown in the tab that made it. Close the tab and it is gone, and nobody can say how many ads the tool has made.",
       "The writing steps never see the website. The field is passed through as text and the strategist is told it cannot browse, so a product whose mechanic is not obvious from a photo can be described wrongly and confidently. The first line on the waiting screen still reads \"Reading your website...\".",
       "The form accepts up to five product photos. The pipeline reads the first one and ignores the rest.",
     ],
@@ -467,21 +479,21 @@ export const creativeCases: CaseStudy[] = [
     client: "Consumer product (SongReels)",
     status: "Live, invite-only",
     metrics: [
-      { value: "$9.99", caption: "the published price of one gift, one-time — the checkout is built and switched off in beta" },
+      { value: "$9.99", caption: "the published price of one gift, one-time (checkout built, switched off in beta)" },
       { value: "3", caption: "questions written from your own clips after they have been watched, instead of from a template" },
     ],
     situation: [
       "A personal gift video normally means one of two things. Either somebody spends an evening in an editor cutting a camera roll to a track that was written about somebody else's life, or they use a template that lays the same photos over the same stock music. Both end up as a slideshow, and both are obvious about it.",
-      "The other version is a song that is actually about the photos — the line about their kitchen playing while the kitchen is on screen. That is the version people ask for, and it puts the difficulty in a new place: the song and the pictures now have to agree with each other. It also matters that the person paying is not the person watching. The buyer wants something honest to send; the recipient gets a link, usually on a phone, from someone they love, and will not install anything to see it. That shapes the whole output: the product is a page that plays, not a file to email.",
+      "The other version is a song that is actually about the photos: the line about their kitchen playing while the kitchen is on screen. That is the version people ask for, and it puts the difficulty in a new place: the song and the pictures now have to agree with each other. It also matters that the person paying is not the person watching. The buyer wants something honest to send; the recipient gets a link, usually on a phone, from someone they love, and will not install anything to see it. That shapes the whole output: the product is a page that plays, not a file to email.",
     ],
-    constraintIntro: "The obvious build matches lyric words against clip descriptions at render time and drops each clip where its words are sung. That was built. Fuzzy matching missed the near misses — \"yellow wall\" against \"yellow building\" — clips scattered unevenly across the timeline, and the finished reel carried three to five second black gaps.",
+    constraintIntro: "The obvious build matches lyric words against clip descriptions at render time and drops each clip where its words are sung. That was built. Fuzzy matching missed the near misses (\"yellow wall\" against \"yellow building\"), clips scattered unevenly across the timeline, and the finished reel carried three to five second black gaps.",
     constraint: "The lyrics are written in the order the clips will play, so sync is a property of the writing rather than something the renderer has to go and find.",
     build: [
-      { title: "Watch the clips first, then ask about what is in them", body: "On leaving the upload step the browser pulls one frame from up to eight clips, evenly sampled across the upload, and posts those small JPEGs to a vision service along with the occasion the sender already picked. Back comes a one-line read of what the clips are about and exactly three questions grounded in what it saw, with a \"that's not quite it\" editor if the read is wrong. If the vision pass fails for any reason — no key, a model error, a timeout, unparseable output — generic occasion questions take over rather than the flow stopping." },
+      { title: "Watch the clips first, then ask about what is in them", body: "On leaving the upload step the browser pulls one frame from up to eight clips, evenly sampled across the upload, and posts those small JPEGs to a vision service along with the occasion the sender already picked. Back comes a one-line read of what the clips are about and exactly three questions grounded in what it saw, with a \"that's not quite it\" editor if the read is wrong. If the vision pass fails for any reason (no key, a model error, a timeout, unparseable output), generic occasion questions take over rather than the flow stopping." },
       { title: "Let the footage set the length of the song", body: "Gemini watches every full clip and returns the window worth showing. The spec allows a quiet four-second beat or a sixteen-second run, capped at twenty seconds a clip, in place of the fixed five-second highlight it replaced. The song is then ordered against the sum of those windows rather than the raw length of the uploads, capped at three minutes. Clips are compressed on the server first and uploaded in parallel, each stamped with its position before the parallel work starts, because an earlier version let descriptions attach to the wrong files: a laptop screen came back described as palm fronds." },
-      { title: "Write the lyrics in clip order, then stop and ask", body: "Claude receives the read of every clip in its final order and writes the script and lyrics to follow that order, stanza by stanza. That order is fixed before the writing starts, so every later step inherits it rather than voting on it. Claude also writes the single style line the music generator gets, and the non-negotiables — the chosen voice, no instrumental intro — are appended by code afterwards rather than trusted to the model. The run then pauses and waits: the sender reads and approves the lyrics before any music is generated, which is the last cheap moment to change their mind." },
-      { title: "Read the finished song back, then cut against it", body: "The music generator has no duration setting, and it plays an instrumental intro of whatever length it likes however firmly the style line asks for none, so nothing about the timeline can be decided in advance. An early build assumed a two-second intro and ran the picture nine seconds ahead of the vocals. The builder now pulls the timestamped lyrics back from the finished song, works out when the singing really starts, and pins each clip's first appearance to the window between its own line's start and end. A clip is spent once it appears, so a repeating chorus draws a new shot from the unused pool instead of replaying one — before that rule, one simulation placed a single clip five times. The site offers the sender more than one take to choose from; all of this happens to the one they keep." },
-      { title: "Deliver a page, not a file", body: "Creatomate renders the vertical video, it moves to Backblaze, and the gift lives at its own page that the recipient opens with no signup and no app. The privacy policy commits to deleting uploads 30 days after the job finishes, and states they are never used as training data. Payment is a Stripe credits purchase that lands before anything is made: the checkout screen sits straight after the setup questions and its own lede reads \"Choose a plan and pay once, then you can upload your clips and we'll compose the song.\" The pricing page and checkout sell packs — $9.99 for one gift, $39.99 for five, $69.99 for ten." },
+      { title: "Write the lyrics in clip order, then stop and ask", body: "Claude receives the read of every clip in its final order and writes the script and lyrics to follow that order, stanza by stanza. That order is fixed before the writing starts, so every later step inherits it rather than voting on it. Claude also writes the single style line the music generator gets, and the non-negotiables (the chosen voice, no instrumental intro) are appended by code afterwards rather than trusted to the model. The run then pauses and waits: the sender reads and approves the lyrics before any music is generated, which is the last cheap moment to change their mind." },
+      { title: "Read the finished song back, then cut against it", body: "The music generator has no duration setting, and it plays an instrumental intro of whatever length it likes however firmly the style line asks for none, so nothing about the timeline can be decided in advance. An early build assumed a two-second intro and ran the picture nine seconds ahead of the vocals. The builder now pulls the timestamped lyrics back from the finished song, works out when the singing really starts, and pins each clip's first appearance to the window between its own line's start and end. A clip is spent once it appears, so a repeating chorus draws a new shot from the unused pool instead of replaying one. Before that rule, one simulation placed a single clip five times. The site offers the sender more than one take to choose from; all of this happens to the one they keep." },
+      { title: "Deliver a page, not a file", body: "Creatomate renders the vertical video, it moves to Backblaze, and the gift lives at its own page that the recipient opens with no signup and no app. The privacy policy commits to deleting uploads 30 days after the job finishes, and states they are never used as training data. Payment is a Stripe credits purchase that lands before anything is made: the checkout screen sits straight after the setup questions and its own lede reads \"Choose a plan and pay once, then you can upload your clips and we'll compose the song.\" The pricing page and checkout sell packs: $9.99 for one gift, $39.99 for five, $69.99 for ten." },
     ],
     result: [
       "The pipeline runs end to end in private beta: clips in, an approved lyric sheet, a generated song, and a 9:16 reel on its own page.",
@@ -523,11 +535,24 @@ export interface Role {
 
 export const experience: Role[] = [
   {
+    title: "Marketing & Automation Specialist",
+    company: "Upstack Data",
+    start: "2026-05",
+    end: "2026-08",
+    period: "May – Aug 2026 · contract",
+    summary: "A server-side tracking and attribution platform for ecommerce brands. A three-month contract running the marketing and the automation behind it.",
+    points: [
+      "Built the automation that generates the company's static ads and video ads",
+      "Wrote content in the owner's voice for different audiences and published it to X, LinkedIn and Facebook",
+      "Managed ad campaigns, wrote blog posts and edited the website",
+    ],
+  },
+  {
     title: "AI Automation & Platform Manager",
     company: "Bumpy App",
     start: "2025-11",
-    end: null,
-    period: "Since Nov 2025",
+    end: "2026-07",
+    period: "Nov 2025 – Jul 2026",
     summary: "A dating app. Production Claude MCP infrastructure and the paid-social automation suite around it.",
     points: [
       "Built and shipped a production Claude MCP server exposing the internal SDK, proprietary database and attribution platform to Claude as first-class tools",
@@ -538,7 +563,7 @@ export const experience: Role[] = [
   },
   {
     title: "AI Automation Specialist",
-    company: "Creative Abundance",
+    company: "Creative AdBundance",
     start: "2025-08",
     end: null,
     period: "Since Aug 2025",
@@ -547,15 +572,18 @@ export const experience: Role[] = [
       "Built the concept-first static ad service with a vision-QA ship gate that drops sub-bar renders rather than delivering them",
       "Built the AI video editor that turns raw creator footage into an editable Premiere timeline, live in production behind a queue and password gate",
       "Build lead on Creative OS: a self-serve generator that turns a product name, a link and a photo into a captioned fifteen-second vertical ad",
-      "Built the concept pipeline, footage renamer and Figma comment digest that feed and surround the production line",
+      "Built the concept and script engine: ten-point scorecard, compliance sweep, and a production brief per client",
+      "Added a review step that watches and listens to every AI edit, and an editable Premiere handoff linked to the original footage",
+      "Generated 30 creator-ready shoot guides from client decks in one run, with the team's review rules enforced in code",
+      "Audited fifteen internal AI tools by real use and presented the findings to leadership",
     ],
   },
   {
-    title: "Business Consultant — AI Automation",
+    title: "Business Consultant, AI Automation",
     company: "White Key Marketing",
     start: "2024-08",
-    end: null,
-    period: "Since Aug 2024",
+    end: "2026-01",
+    period: "Aug 2024 – Jan 2026",
     summary: "CRM architecture and internal platform for a marketing agency's client base.",
     points: [
       "End-to-end HubSpot: lead flows, pipeline automation, sequences, landing pages and reporting dashboards",
@@ -566,21 +594,27 @@ export const experience: Role[] = [
   {
     title: "Social Media Marketing Associate",
     company: "Actional Marketing",
-    period: "Apr 2024 — Aug 2025",
+    start: "2024-04",
+    end: "2025-08",
+    period: "Apr 2024 – Aug 2025",
     summary: "Organic and paid social execution across client accounts.",
     points: [],
   },
   {
     title: "Digital Marketing Specialist",
     company: "Business Connect World",
-    period: "Jan 2024 — Feb 2025",
+    start: "2024-01",
+    end: "2025-02",
+    period: "Jan 2024 – Feb 2025",
     summary: "Amazon SEO and marketplace listing optimisation.",
     points: [],
   },
   {
-    title: "Marketing Assistant — Paid Ads",
+    title: "Marketing Assistant, Paid Ads",
     company: "DreamTeam PH",
-    period: "Feb 2023 — Mar 2024",
+    start: "2023-02",
+    end: "2024-03",
+    period: "Feb 2023 – Mar 2024",
     summary: "Meta Ads support and campaign operations.",
     points: [],
   },
@@ -592,4 +626,4 @@ export const experience: Role[] = [
  * work on the site — each one was written from the live production graph, not
  * from memory. Creative is real proof but it is the second track, not the thesis.
  */
-export const caseStudies: CaseStudy[] = [...n8nCases, ...automationCases, ...creativeCases];
+export const caseStudies: CaseStudy[] = [...newCases, ...n8nCases, ...automationCases, ...creativeCases];

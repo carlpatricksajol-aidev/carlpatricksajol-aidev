@@ -25,3 +25,9 @@ dist-ssr
 
 # TypeScript incremental build cache — machine-local, never shared
 *.tsbuildinfo
+
+# generated CV — carries a personal phone number, keep it out of the repo
+cv/
+
+# the resume template carries a personal phone number; render it locally with npm run gen:resume
+scripts/resume.html
