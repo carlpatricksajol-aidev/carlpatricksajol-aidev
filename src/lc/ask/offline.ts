@@ -37,6 +37,10 @@ export const offlineAnswer = (question: string): string => {
   if (any(q, ["salary", "rate", "rates", "pay", "compensation", "expected", "budget", "charge", "price"]))
     return `Carl prefers to talk pay and contract terms directly, so the best route is to ${book}. He's open to full-time remote roles and works on UTC+8, the same clock as Singapore.`;
 
+  // "his LinkedIn" as a link is a contact question; LinkedIn as a channel is a social one
+  if (any(q, ["linkedin", "twitter", "x", "facebook", "social", "posts", "posting", "community"]) && !any(q, ["profile", "url", "link", "contact", "reach"]))
+    return `On social, Carl has done both the writing and the systems behind it:\n- At **Upstack Data**, a B2B tracking and attribution platform, he wrote content in the owner's voice for different audiences and published it to X, LinkedIn and Facebook.\n- Before that, two years running organic and paid social for client accounts.\n- Now he builds the machinery: competitor research read off the video frame, and scripts graded on a ten-point scorecard before anyone reads them.\n[[case:concepts-and-scripts-engine]]`;
+
   if (any(q, ["email", "contact", "reach", "call", "book", "calendly", "meet", "talk", "linkedin", "interview"]))
     return `Email Carl at **${profile.email}**, or ${book}. He's on LinkedIn too: ${profile.linkedin}\n\nHe's open to remote roles and works on UTC+8, the same clock as Singapore.`;
 
@@ -49,13 +53,13 @@ export const offlineAnswer = (question: string): string => {
   if (any(q, ["tool", "tools", "stack", "skill", "skills", "tech", "software", "platform", "n8n", "zapier", "make", "code", "python", "claude", "gpt"]))
     return `Carl's day-to-day tools:\n${toolGroups.slice(0, 5).map((g) => `- **${g.group}:** ${g.items.map((i) => i.label).join(", ")}`).join("\n")}\n\nHe builds inside the tools a team already uses, so the work actually gets adopted.`;
 
+  if (any(q, ["why", "fit", "hire", "strength", "strengths", "good at", "best at", "stand out", "different", "value", "qualified"]))
+    return `Three reasons Carl fits an AI marketing role:\n- **He ships to production.** 26 automations shipped so far, with about 500 workflow steps inside them.\n- **He's a marketer first.** Paid ads and social came before the code, so the systems serve the campaign.\n- **He measures it.** Every case study opens with what changed, then how it works.\n[[case:ai-video-editor]]\n[[case:webhook-to-post-ads]]`;
+
   if (any(q, ["experience", "background", "career", "role", "roles", "job", "jobs", "worked", "companies", "history", "years", "resume", "cv"])) {
     const roles = [...experience].sort((a, b) => (b.end ?? "9999").localeCompare(a.end ?? "9999") || (b.start ?? "").localeCompare(a.start ?? "")).slice(0, 4);
     return `Three years in marketing, starting in paid ads and social, now building the AI systems behind them. Most recent roles:\n${roles.map((r) => `- **${r.title}**, ${r.company} (${r.period})`).join("\n")}\n\nThe full timeline is on the About page.`;
   }
-
-  if (any(q, ["why", "fit", "hire", "strength", "strengths", "good at", "best at", "stand out", "different", "value", "qualified"]))
-    return `Three reasons Carl fits an AI marketing role:\n- **He ships to production.** 26 automations shipped so far, with about 500 workflow steps inside them.\n- **He's a marketer first.** Paid ads and social came before the code, so the systems serve the campaign.\n- **He measures it.** Every case study opens with what changed, then how it works.\n[[case:ai-video-editor]]\n[[case:webhook-to-post-ads]]`;
 
   const slug = bestCase(q);
   if (slug) {
