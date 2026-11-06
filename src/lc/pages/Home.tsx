@@ -8,6 +8,7 @@ import { featured, highlightOf, highlights, statusLabel } from "../data/highligh
 import { lanes } from "../data/lanes";
 import { caseBySlug, useTitle } from "../util";
 import { heroDelay } from "../intro";
+import { Brands, Creative } from "../Creative";
 
 const WORDS = ["content.", "creators.", "launches.", "reporting.", "AI agents."];
 
@@ -305,6 +306,8 @@ const Home = () => {
       <Proof />
       <Ticker />
       <Results />
+      <Creative />
+      <Brands />
       <Services />
       <Quotes />
     </>
