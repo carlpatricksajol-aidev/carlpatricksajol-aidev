@@ -58,7 +58,7 @@ A dating app. Production Claude MCP infrastructure and the paid-social automatio
 - Deployed Claude Code agent infrastructure plus three specialist Slack agents scoped to users, acquisition performance and creative concepts
 - Automated bulk creative upload, performance-based ad pruning, campaign parameters and cross-platform reporting across Meta and TikTok
 - Built AI ad-comment moderation on webhook triggers with layered classification, and TikTok creative pre-review before spend
-### Business Consultant, AI Automation, White Key Marketing (Aug 2024 – Jan 2026)
+### AI Developer, White Key Marketing (Aug 2024 – Jan 2026)
 CRM architecture and internal platform for a marketing agency's client base.
 - End-to-end HubSpot: lead flows, pipeline automation, sequences, landing pages and reporting dashboards
 - GoHighLevel onboarding workflows, AI conversation agents and multi-channel nurture sequences

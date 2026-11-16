@@ -579,7 +579,7 @@ export const experience: Role[] = [
     ],
   },
   {
-    title: "Business Consultant, AI Automation",
+    title: "AI Developer",
     company: "White Key Marketing",
     start: "2024-08",
     end: "2026-01",
