@@ -9,6 +9,7 @@ import { lanes } from "../data/lanes";
 import { caseBySlug, useTitle } from "../util";
 import { heroDelay } from "../intro";
 import { Brands, Creative } from "../Creative";
+import { ghlCapabilities } from "../data/highlevel";
 
 const WORDS = ["content.", "creators.", "launches.", "reporting.", "AI agents."];
 
@@ -264,6 +265,23 @@ const Services = () => {
   );
 };
 
+/* GoHighLevel gets its own band: the workflows themselves are on /highlevel */
+const HighLevelBand = () => (
+  <section className="section ghl-band" aria-labelledby="ghl-h">
+    <div className="wrap">
+      <div className="section-head">
+        <div>
+          <Reveal><span className="eyebrow">GoHighLevel</span></Reveal>
+          <h2 id="ghl-h" className="title" style={{ marginTop: 20 }}><Split text="HighLevel, *end to end.*" /></h2>
+        </div>
+        <Reveal delay={0.15}><p className="lede">Websites and funnels, lead capture, follow-up and nurture, pipelines and tags, and AI agents that answer and book. Six of the workflows, redrawn step by step.</p></Reveal>
+      </div>
+      <Reveal className="ghl-chips">{ghlCapabilities.map((c) => <span key={c.title}>{c.title}</span>)}</Reveal>
+      <Reveal delay={0.1}><Link className="btn primary" to="/highlevel"><span>See the HighLevel workflows</span><ArrowRight /></Link></Reveal>
+    </div>
+  </section>
+);
+
 const Quotes = () => {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -308,6 +326,7 @@ const Home = () => {
       <Results />
       <Creative />
       <Brands />
+      <HighLevelBand />
       <Services />
       <Quotes />
     </>

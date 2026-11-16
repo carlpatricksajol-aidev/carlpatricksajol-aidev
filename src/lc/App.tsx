@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Work from "./pages/Work";
 import Case from "./pages/Case";
 import About from "./pages/About";
+import HighLevel from "./pages/HighLevel";
 import Lost from "./pages/Lost";
 
 // Static routes are mirrored in scripts/emit-routes.mjs, which writes a real
@@ -17,6 +18,7 @@ const App = () => (
         <Route path="/work" element={<Work />} />
         <Route path="/work/:slug" element={<Case />} />
         <Route path="/about" element={<About />} />
+        <Route path="/highlevel" element={<HighLevel />} />
         <Route path="/experience" element={<Navigate to="/about" replace />} />
         <Route path="/reel" element={<Navigate to="/work" replace />} />
         <Route path="/play" element={<Navigate to="/about" replace />} />

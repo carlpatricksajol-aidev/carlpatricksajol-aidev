@@ -19,7 +19,7 @@ const dist = join(root, "dist");
 const dataDir = join(root, "src", "data");
 
 const ORIGIN = "https://carlsajol.dev";
-const STATIC_ROUTES = ["/", "/work", "/about", "/experience"];
+const STATIC_ROUTES = ["/", "/work", "/highlevel", "/about", "/experience"];
 
 const slugs = new Set();
 for (const file of readdirSync(dataDir)) {

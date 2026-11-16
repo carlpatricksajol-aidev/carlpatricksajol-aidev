@@ -13,9 +13,10 @@ export const useShell = () => useContext(Ctx);
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/work", label: "Work" },
+  { to: "/highlevel", label: "HighLevel" },
   { to: "/about", label: "About" },
 ];
-const activeFor = (pathname: string) => (pathname === "/" ? "/" : pathname.startsWith("/work") ? "/work" : pathname.startsWith("/about") || pathname.startsWith("/experience") ? "/about" : "");
+const activeFor = (pathname: string) => (pathname === "/" ? "/" : pathname.startsWith("/work") ? "/work" : pathname.startsWith("/highlevel") ? "/highlevel" : pathname.startsWith("/about") || pathname.startsWith("/experience") ? "/about" : "");
 
 /* shown once per visit: the masthead letters rise, a volt bar runs, the curtain lifts */
 const Curtain = () => {
@@ -89,6 +90,7 @@ const Contact = () => {
           <nav aria-label="Footer">
             <Link to="/">Home</Link>
             <Link to="/work">Work</Link>
+            <Link to="/highlevel">HighLevel</Link>
             <Link to="/about">About</Link>
             <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           </nav>
